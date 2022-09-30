@@ -1,0 +1,268 @@
+%% List of Steps
+\section{Solution}
+The strategy here is to adapt the circle-pair cases from prior article\footnotemark[\ref{noteA003}] for the condition of equal circles.  Next, the effect of equal circles upon tangent classes is examined.
+Then, how $I$ tangent intersection point is affected.  Finally, classification for equal circles is performed.
+
+\subsection{Effect upon Circle-Pair Cases\\} 
+Refer to Figure \ref{fig:fig_b} for the discussion that follows.
+
+For each of the cases defined in prior work\footnotemark[\ref{noteA003}] set the radius of circle $B$ to be equal to the radius of circle $A$, such that
+$r_B = r_A$.  For each equation or inequality substitute $r_A$ in place of all occurrences of $r_B$.  Combine terms and simplify the equation or inequality.  Each of the ten cases follow:
+
+\begin{figure}[ht!]
+\centering
+\input{fig_b.tex}
+\caption{Locations of $C_A$ relative to $C_B$}
+\label{fig:fig_b}
+\end{figure}
+
+\begin{itemize}
+\item \textbf{case 0:}
+$x_A = 0$
+
+Identical to case 4.  When the center of $A$ is at the origin, $A$ and $B$ are the \emph{same} circle.
+
+\item \textbf{case 1:}
+$0 < x_A < r_A$
+
+Identical to case 5.  
+When $C_A$ lies less than one $r_A$ radius from the origin, $A$ will overlap left and right regions of $B$.
+
+\item \textbf{case 2:}
+$ x_A = r_A$
+
+Identical to case 6.  
+When $C_A$ lies exactly than one $r_A$ radius from the origin, circle $A$ will pass through center of  $C_B$ at the origin.
+Furthermore, $C_A$ will lie on $B$.
+
+\item \textbf{case 3:}
+This case is UNDEFINED.
+
+Taking case 3 inequality from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+r_A &< x_A < r_B - r_A\\
+r_A &< x_A < r_A - r_A\\
+r_A &< x_A < 0
+\end{align*}
+$x_A$ cannot be less than zero (negative), and simultaneously greater than non-negative values of $r_A$.  Therefore the inequality is not satisfied, and case 3
+is undefined.
+
+\item \textbf{case 4:} $ x_A = 0$
+
+Taking case 4 equation from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+ x_A &= r_B - r_A\\
+ x_A &= r_A - r_A\\
+ x_A &= 0
+\end{align*}
+Since the center of $A$ is at the origin, $A$ and $B$ are the \emph{same} circle. This is identical to case 0 above.
+
+\item \textbf{case 5:}
+$ 0 < x_A < r_A$
+
+Taking case 5 inequality from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+r_B - r_A &< x_A < r_B\\
+r_A - r_A &< x_A < r_A\\
+0 &< x_A < r_A
+\end{align*}
+This is identical to case 1 above.
+
+\item \textbf{case 6:} 
+$ x_A = r_A$
+
+Taking case 6 equation from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+x_A &= r_B\\
+x_A &= r_A
+\end{align*}
+This is identical to case 2 above.
+
+\item \textbf{case 7:}
+$ r_A < x_A <2 \cdot r_A$
+
+Taking case 7 inequality from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+r_B &< x_A < r_B + r_A\\
+r_A &< x_A < r_A + r_A\\
+r_A &< x_A <2 \cdot r_A
+\end{align*}
+The center of $A$ is beyond the edge of circle $B$.  Circle $A$ partially overlaps the right side of $B$.
+
+\item \textbf{case 8:}
+$ x_A = 2  \cdot  r_A$
+
+Taking case 8 equation from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+x_A &= r_B + r_A\\
+x_A &= r_A + r_A\\
+x_A &= 2 \cdot r_A
+\end{align*}
+Circles $A$ an $B$ are tangent to each other with no overlap.
+
+\item \textbf{case 9:}
+$ x_A > 2  \cdot r_A$
+
+Taking case 9 inequality from prior article\footnotemark[\ref{noteA003}], substituting $r_A$ in place of $r_B$, and reducing yields:
+\begin{align*}
+x_A &> r_B + r_A\\
+x_A &> r_A + r_A\\
+x_A &> 2  \cdot r_A
+\end{align*}
+Circle $A$ is entirely outside $B$. $A$ and $B$ are non-overlapping.
+\end{itemize}
+
+\subsection{Effect upon Tangent Classes\\} 
+For each tangent class defined in prior work\footnotemark[\ref{noteA004}] consider how tangents are affected by setting the radii of circles $A$ and $B$ to be equal.
+
+\begin{figure}[hb!]
+\centering
+\input{fig_c.tex}
+\caption{Tangent Classes}
+\label{fig:fig_c}
+\end{figure}
+
+\paragraph{Class A: Null\\}
+The Null class covers those cases where circles $A$ and $B$ have no common tangent line, as seen in cases 0-3 in prior article\footnotemark[\ref{noteA003}].
+
+Null tangent class arises when circle $A$ is wholly contained by circle $B$, and there is no contact between the circles.  This can only occur when $r_A < r_B$.
+
+However, when radii of circles $A$ and $B$ are equal, there can be no case where circle $A$ is wholly contained by circle $B$.  In fact, even when $r_A = r_B$ and the 
+centers $C_A = C_B$ coincide, circle $A$ will not be contained by circle $B$.  This is because for this condition $A$ and $B$ will actually be the \emph{same} circle.
+
+When, $A$ and $B$ are the \emph{same} circle they will have an infinite number of common tangents.
+
+Since $A$ can never be fully contained by $B$ when their radii are equal, the Null tangent class does not apply (is undefined) for $r_A = r_B$.  
+
+\paragraph{Class B: Single\\} 
+When there is a tangent at the point of contact between circles $A$ and $B$, the Single tangent class is satisfied.
+
+Inspecting Figure \ref{fig:fig_b}, shows case 8 has a single tangent at the point where $A$ and $B$ contact.
+
+Furthermore when $r_A = r_B$, cases 0 and 4 degenerate from case 4 in prior article\footnotemark[\ref{noteA003}].  The point of contact for case 4 in prior article\footnotemark[\ref{noteA003}] is $x = r_B$.  For equal circles, the point of contact
+is also equivalent to $x = r_A$.  Therefore $A$ and $B$ will have contact at $x = r_A$ since they are the \emph{same} circle.
+
+In cases 0 and 4, $A$ and $B$ have infinite contact points and tangent lines since they are the \emph{same} circle.  Moreover, for cases 0 and 4, circles $A$ and $B$ reduce to the trivial case of a single circle with tangent lines
+at every point on the circle, essentially infinite.
+
+\paragraph{Class C: Outer\\} 
+Outer tangents only occur when the centers of $A$ and $B$ are separated.  When $r_A = r_B$ separation will occur for cases: 1, 2, 5, 6, 7, 8, 9.
+
+See Figure \ref{fig:fig_c}.  Because $r_A = r_B$ are equal, the Outer tangents will always be parallel to the x-axis.  Furthermore, they will always be parallel to each other and never intersect.
+
+This can be confirmed by attempting to calculate the Outer tangent intersection point $I$ from equations 3 and 4 in prior work\footnotemark[\ref{noteA004}].
+
+\begin{align*}
+x_I &= \frac{r_B \cdot x_A}{r_B - r_A}\\
+x_I &= \frac{r_A \cdot x_A}{r_A - r_A}\\
+x_I &= \frac{r_A \cdot x_A}{0}\\
+x_I &= \infty
+\end{align*}
+Substituting $x_I$ into equation 4 from prior work\footnotemark[\ref{noteA004}] yields:
+\begin{equation*}
+I = (x_I, 0)
+\end{equation*}
+\begin{equation}
+\boxed
+{
+I = (\infty, 0)
+}
+\end{equation}
+Therefore the intersection point of the Outer tangent lines is at somewhere at infinity along the x-axis.  In other words, the Outer tangent lines are parallel because they will never intersect.
+
+\paragraph{Class D: Inner\\} 
+See Figure \ref{fig:fig_c}.  Inner tangents only occur for case 9.  This is due to the fact that inner tangents will intersect each other along the x-axis, while not contacting circles $A$ or $B$ more than once.
+Case 9 is the only to satisfy this condition for Inner class tangents.
+
+Since the x-axis connects centers of $A$ and $B$, the point of intersection $I$ will occur along the x-axis at the midpoint between centers $C_A$ and $C_B$.  This can be confirmed by applying equation 4
+and 9 from prior article\footnotemark[\ref{noteA003}].
+
+ \begin{align*}
+	x_I &= \frac{r_B \cdot x_{A'}}{ r_B + r_A}\\
+	x_I &= \frac{r_A \cdot x_{A'}}{ r_A + r_A}\\
+	x_I &= \frac{r_A \cdot x_{A'}}{2 \cdot r_A}
+\end{align*}
+
+\begin{equation}
+\boxed
+{
+	x_I = \frac{x_{A'}}{2} \label{eq:eqxI}
+}
+\end{equation}
+
+Substituting equation \ref{eq:eqxI} here into equation 4 from prior work\footnotemark[\ref{noteA004}] yields:
+
+\begin{equation}
+\boxed
+{
+I = \left(\frac{x_{A'}}{2}, 0\right)  \label{eq:IResult}
+}
+\end{equation}
+Since the center of circle $B$ is at the origin, it can be seen from equation \ref{eq:IResult} that $I$ is located at the midpoint between $A$ and $B$.
+
+The angle $\theta$ between the inner tangents can be found by taking equation 5 from prior work\footnotemark[\ref{noteA004}], and substituting $r_A$ in place of $r_B$:
+\begin{align}
+	\theta &= 2 \cdot \arcsin{\left( \frac{r_B}{x_I}  \right)}\\
+	\theta &= 2 \cdot \arcsin{\left( \frac{r_A}{x_I}  \right)} \label{eq:theta}
+\end{align}
+
+%%%%%%%
+\begin{table*}[ht!]
+\centering
+\begin{tabular}{|c||c|c|c|c|c|c|} 
+ \hline
+  \multirow{3}{*}{Case} & \multicolumn{5}{c|}{Number of Tangents} & \multirow{3}{*}{Description} \\
+\cline{2-6}
+   & \makecell{(A)\\Null}  & \makecell{(B)\\Single} & \makecell{(C)\\Outer} & \makecell{(D)\\Inner} & Total & \\
+  \hline
+  0 (4) & - & 1 & - & - & 1 & Same circle\\ 
+  \hline
+  1 (5) & - & - & 2 & - & 2 & Parallel outer tangents\\ 
+  \hline
+  2 (6) & - & - & 2 & - & 2 & Parallel outer tangents\\ 
+  \hline
+  3 & - & - & - & - & x & Undefined case\\ 
+  \hline
+  4 (0) & - & 1 & - & - & 1 & Same circle\\ 
+  \hline
+  5 (1) & - & - & 2 & - & 2 & Parallel outer tangents\\ 
+  \hline
+  6 (2) & - & - & 2 & - & 2 & Parallel outer tangents\\ 
+  \hline
+  7 & - & - & 2 & - & 2 & Parallel outer tangents\\ 
+  \hline
+  8 & - & 1 & 2 & - & 3 & Circles tangent to each other, and parallel outer tangents\\ 
+  \hline
+  9 & - & - & 2 & 2 & 4 & Parallel outer tangents and two inner tangents\\ 
+  \hline
+\end{tabular}
+\caption{Classification of Equal Coplanar Circle Cases}
+\label{table:tab_tangents}
+\end{table*}
+%%%%%%%
+Now, equation \ref{eq:eqxI} can be substituted into equation \ref{eq:theta} to find the angle between inner tangents.
+\begin{equation}
+\boxed
+{
+	\theta = 2 \cdot \arcsin{\left( \frac{2 \cdot r_A}{x_{A'}}  \right)} \label{eq:thetaarcsin}
+}
+\end{equation}
+
+\subsection{Effect upon Classification\\} 
+Increasing the radius of $A$ to be equal with radius of $B$ eliminates the possibility of circle $A$ being wholly contained by circle $B$.  As the center of $A$
+moves along the positive x-axis from the origin, the rightmost edge of $A$ will not contact any part of $B$.  
+
+Cases 0-2 become redundant with cases 4-6.  Moreover, case 3 becomes undefined.
+
+There is no Null tangent class defined when circles $A$ and $B$ are equal, this is because there will always be at least one tangent between the circles.
+
+Single tangents are defined for cases 0 and 4 because all points of $A$ and $B$ are in contact.  Single tangent is also defined for case 8 because $A$ and $B$ have one point of contact.
+
+Pairs of Outer tangents will always be parallel to each other.  Pairs of Inner tangents will always intersect halfway between $C_A$ and $C_B$.
+
+
+\begin{flushright}   
+Q.E.D.
+\end{flushright}   
+
+
