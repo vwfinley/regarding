@@ -1,0 +1,82 @@
+\section{Solution}
+
+%% List of Steps
+
+\begin{enumerate}
+\item
+Draw axes, placing the origin at center of $C$, such that point $C=(0,0)$.
+\item
+Project point $P$ vertically downwards to a point $I$ on the x-axis.  Points: $C$, $I$ and $P$; form a right-triangle $CIP$
+having sides: $\Delta x$, $\Delta y$ and $r$.
+
+\begin{figure}[h]
+\centering
+\input{figure_b.tex}
+\caption{Point $P$ projected onto x-axis}
+\label{fig:fig_b}
+\end{figure}
+
+\item
+All points on a circle lie a distance $r$ from the center, the distance $r$ being
+the radius of the circle.  Furthermore, a point on the circle will lie at some angle $\theta$
+from the positive x-axis.  In other words, point $P$ on the circle will be located at polar coordinate $P=(r, \theta)$.
+\item
+A line tangent to a circle will always intersect radius line $r$ at right
+angles.\footnote{ISBN 0-8311-2575-6, Machinery's Handbook, page 46}.
+Which means, $L$ and $r$ will intersect at right angles at point $P = (r, \theta)$.
+\item
+Since $L$ is at an angle $\alpha$ with respect to the x-axis (or parallel to x-axis), \emph{and} $r$ is right
+angles to $L$, then $r$ will be at an angle $\alpha$ with respect to the y-axis (or parallel to y-axis).
+\item
+Aside from having a right angle, triangle $CIP$ has angles $\theta$ and $\alpha$.  The sum of $\theta$ and
+$\lvert \alpha \rvert$ must be $\pi/2$.  However since the actual value of $\alpha$ can be negative with respect to the horizontal,
+$\theta - \alpha = \pi/2$ is used here.  Furthermore $\theta = \pi/2 + \alpha$ .
+
+\item
+Using the fundamental trigonometric functions, polar coordinates can be easily converted to Cartesian
+coordinates, such that $P=P_{r,\theta}=(r, \theta)$ and $P=P_{x,y}=(\Delta x, \Delta y)$, as follows:
+\end{enumerate}
+
+%% Equations 
+From:
+\begin{align*}
+\cos(\theta) &= \frac{\Delta x}{r} \\
+\sin(\theta) &= \frac{\Delta y}{r}
+\end{align*}
+
+it is found,
+\begin{align}
+\Delta x &= r \cdot \cos(\theta)\label{eqn:deltax} \\
+\Delta y &= r \cdot \sin(\theta)\label{eqn:deltay}
+\end{align}
+
+and since:
+\begin{equation*}
+\theta-\alpha=\frac{\pi}{2} \\
+\end{equation*}
+\begin{equation}\label{eqn:90degoffset}
+\theta = \frac{\pi}{2}+\alpha
+\end{equation}
+
+substituting equation \ref{eqn:90degoffset} into equations \ref{eqn:deltax} and \ref{eqn:deltay} yields:
+\begin{align*}
+\Delta x &= r \cdot \cos\left(\frac{\pi}{2} + \alpha\right) \\
+\Delta y &= r \cdot \sin\left(\frac{\pi}{2} + \alpha\right)
+\end{align*}
+
+Therefore, from above:
+\begin{equation*}
+  P = (\Delta x, \Delta y) \\
+\end{equation*}
+\begin{equation}\label{eqn:tangent_point}
+\boxed
+{
+P = \left(r \cdot \cos\left(\frac{\pi}{2} + \alpha\right),  r \cdot \sin\left(\frac{\pi}{2} + \alpha\right)\right)
+}
+\end{equation}
+
+\begin{flushright}   
+Q.E.D.
+\end{flushright}   
+
+

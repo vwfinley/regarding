@@ -1,0 +1,46 @@
+\section{Example}
+
+\paragraph{Given:}
+\begin{itemize}
+\item A line $L$ tangent to circle $C$ whose radius $r = 3.75$,
+\item \emph{and} $L$ is at an angle $\alpha = -12.5\degree$ from the horizontal;
+\end{itemize}
+
+\paragraph{Find:}
+The polar and cartesian coordinates of tangent point $P$.
+
+\paragraph{Steps:}
+\begin{enumerate}
+\item First, $\alpha$ must be converted from degrees to radians:
+  \begin{align*}
+    \alpha_{rad} &= \alpha_{deg}\left(\frac{\pi}{180\degree}\right) \\
+    \alpha_{rad} &= -12.5\degree\left(\frac{\pi}{180\degree}\right) \\
+    \alpha_{rad} &= -0.218166
+  \end{align*}
+
+\item Substituting values for $r$ and $\alpha$ yields:
+  \begin{align*}
+    P_{r,\theta} &= (r, \theta)  \\
+    P_{r,\theta} &= \left(r, \frac{\pi}{2} + \alpha\right) \\
+    P_{r,\theta} & = \left(3.75, \frac{\pi}{2} + -0.218166\right) \\
+    P_{r,\theta} &= \left(3.75, \frac{\pi}{2} - 0.218166\right) \\
+    P_{r,\theta} &= (3.75, 1.570796 - 0.218166) \\
+    P_{r,\theta} &= (3.75, 1.352630)
+  \end{align*}
+
+\item Substituting values into equation \ref{eqn:tangent_point} yields:
+  \begin{align*}
+    P_{x,y} &= \left(r \cdot \cos\left(\frac{\pi}{2} + \alpha\right),  r \cdot \sin\left(\frac{\pi}{2} + \alpha\right)\right) \\
+    P_{x,y} &= {} (r \cdot \cos\left(\frac{\pi}{2} + -0.218166\right), \\
+                  & r \cdot \sin\left(\frac{\pi}{2} + -0.218166\right)) \\
+    P_{x,y} &= {} (r \cdot \cos\left(\frac{\pi}{2} - 0.218166\right), \\
+                  & r \cdot \sin\left(\frac{\pi}{2} - 0.218166\right)) \\
+    P_{x,y} &= {}(r \cdot \cos(1.570796 - 0.218166), \\
+                  & r \cdot \sin(1.570796 - 0.2181662)) \\
+    P_{x,y} &= (r \cdot \cos(1.352630),  r \cdot \sin(1.352630)) \\
+    P_{x,y} &= (3.75 \cdot \cos(1.352630), 3.75 \cdot \sin(1.352630)) \\
+    P_{x,y} &= (3.75 \cdot 0.216440, 3.75 \cdot 0.976296) \\
+    P_{x,y} &= (0.811649, 3.661110)
+  \end{align*}
+
+\end{enumerate}
