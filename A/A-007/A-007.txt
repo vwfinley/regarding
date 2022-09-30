@@ -1,0 +1,56 @@
+A-007 Regarding Circle Intersections and Tangent Ogives
+
+Problem
+\item An alternate method to represent and construct tangent ogives.
+\item The formula to calculate tangent ogive cross-sectional areas.
+\item The forumula to calculate volume of the tangent ogive.
+
+
+- Alternate way to construct Ogives (intersection of semi circles)
+- Relate to A-005 which cases?  what are regions of overlap?
+- A-006 stage4 check is dead give away that drawing is an ogive. 
+- Describe the math
+- Ogive is half of intersection, intersection is twice ogive
+- relate x separation of circles to b on ogive.  distance (of x circle intersections) = 2*b
+- give radius and distance between x-intersections ogive can be calculated.
+\subsection{Comparison to A-005.  Area overlapping coplanar circles } 
+\subsection{Integrate area} 
+\subsection{Integrate volume} 
+
+
+
+The area of the ogive cross section can be found by doubling the area under the circle
+between points $P_a$ and $P_b$.
+
+% https://www.teachoo.com/3354/732/Example-10---Find-area-enclosed-between-two-circles--x2-y24/category/Examples/
+The easiest way to find the integral of a circle with rectangular limits of integration is to lookup the integral in a table of
+integrals.
+
+From the table of integrals\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, See integral \#40 inside front cover} it is found the indefinite integral 
+with respect to $x$ of circle with radius $r$ is:
+\begin{align*}
+\int \sqrt{a^2 - u^2} \,du &= \frac{u}{2}\sqrt{a^2 - u^2} + \frac{a^2}{2}sin^{-1}\left(\frac{u}{a}\right) + C \\
+\int \sqrt{r^2 - x^2} \,dx &= \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right) + C
+\end{align*}
+The definite integral with limits $a$ and $b$ would be:
+\begin{align*}
+\left. F(x) \right]^b_a &= \int^b_a \sqrt{r^2 - x^2} \,dx \\
+&=\left. \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right)\right]^b_a \\
+&=\frac{b}{2}\sqrt{r^2 - b^2} + \frac{r^2}{2}sin^{-1}\left(\frac{b}{r}\right) \\ 
+&\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
+\end{align*}
+Substituing in $a$ and $r$ as the limits of integration yields,
+\begin{align*}
+&=\frac{r}{2}\sqrt{r^2 - r^2} + \frac{r^2}{2}sin^{-1}\left(\frac{r}{r}\right) \\ 
+&\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right) \\
+&= \frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
+\end{align*}
+The area $A$ of the ogive cross-section is twice the area of definite integral.
+\begin{equation*}
+A = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
+\end{equation*}
+\begin{equation}
+\boxed{
+A = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
+}
+\end{equation}
