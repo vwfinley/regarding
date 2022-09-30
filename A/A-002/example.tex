@@ -1,0 +1,57 @@
+\section{Example}
+
+\paragraph{Given:}
+\begin{itemize}
+\item A fillet whose radius is 3.5 units,
+\item \emph{and} whose legs intersect at a $45\degree$ included angle. 
+\end{itemize}
+
+\paragraph{Find:}
+\begin{itemize}
+\item The center of the fillet relative to the point where the fillet legs intersect,
+\item \emph{and} the location where the fillet legs are tangent to the fillet arc,
+\item \emph{and} the point on the fillet nearest to where the legs intersect.
+\end{itemize}
+
+\paragraph{Steps:}
+\begin{enumerate}
+\item
+First, from equation \ref{eqn:alpha}, $\alpha$ is found to be $22.5\degree$
+
+\item
+Converting $\alpha$ to radians, and using equation \ref{eqn:deltax}, $\Delta x$ is calculated to be:
+\begin{align*}
+\Delta x &= \frac{3.5}{\sin{0.3927}} \\
+\Delta x &= 9.1459
+\end{align*}
+
+\item
+Converting $\alpha$ to radians, and applying equation \ref{eqn:d}, $d$ is found:
+\begin{align*}
+d &=  \frac{3.5}{\tan{0.3927}} \\
+d &= 8.4497
+\end{align*}
+
+\item
+Substituting $r$ and $\alpha$ into equation \ref{eqn:Cxy}, the
+center of $C$ is located:
+\begin{equation*}
+C_{x,y} = \left(9.1459, 0 \right)
+\end{equation*}
+
+\item
+The coordinates where $L_1$ and $L_2$ are tangent to the curved part of the fillet are discovered
+by substituting into equations \ref{eqn:Lpolar} and \ref{eqn:Lcartesian}:
+\begin{align*}
+P_{d,\alpha} &= (8.4497, \pm22.5\degree) \\
+P_{x,y} &= (7.8065, \pm 3.2336) 
+\end{align*}
+
+\item
+Finally, from \ref{eqn:Ci} the point on $C$ nearest to where the fillet legs intersect is located:
+\begin{align*}
+C_{I} &= (9.1459 - 3.5, 0)  \\
+C_{I} &= (5.6459, 0)  \\
+\end{align*}
+
+\end{enumerate}

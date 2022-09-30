@@ -1,0 +1,99 @@
+\begin{tikzpicture}[x=1in,y=1in]
+
+	\coordinate (origin) at (0,0);
+	\coordinate (I) at (0,0);
+	\coordinate (t1) at (30 : 0.8660254038);
+	\coordinate (t2) at (-30 : 0.8660254038);
+	\coordinate (t1n) at (210 : 0.8660254038);
+	\coordinate (t2n) at (150 : 0.8660254038);
+	\coordinate (t1s) at (30:2);
+	\coordinate (t2s) at (-30:2);
+	\coordinate (C) at (0:1);
+	
+
+	% centermark
+%VWF_FIGA	
+	\begin{scope}  [shift={(C)}]	
+		\draw (-0.1, 0.0) -- (0.1, 0.0);
+		\draw (0.0, -0.1) -- (0.0, 0.1);
+	\end{scope}	
+%
+	% axes
+% VWF_FIGB
+%	\draw[-{Latex[scale=1.5]}] (-1.0,0) -- (2,0)  node [right] {$x$};
+%	\draw[-{Latex[scale=1.5]}] (0,-1.5) -- (0,1.5)  node [above] {$y$};
+
+
+	\draw[dotted] (t1n) -- (t1);
+	\draw[dotted] (t2n) -- (t2);
+
+	\draw (t1) -- (t1s);
+	\draw (t2) -- (t2s);
+	
+% VWF_FigA	
+	\draw (t1) arc[start angle=120, end angle=240, radius=0.5];
+% 	\draw [dashed] (t1) arc[start angle=120, end angle=-120, radius=0.5];
+%	\draw (t1) arc[start angle=120, end angle=-120, radius=0.5];
+%	
+
+% VWF_FigA	
+	 \draw[-{Latex}] (C) -- (t1);
+%
+
+% VWF_FIGB
+	% \draw (C) ellipse (0.5);
+	% \draw (C) -- (t1);
+%
+	
+	
+% VWF_FIGB
+%	\begin{scope}  [shift={(t1)}]
+%		\draw (210:0.1) -- ++(-60:0.1); 
+%		\draw (-60:0.1) -- ++(210:0.1); 
+%	\end{scope}	
+	
+
+	% point I
+	\begin{scope} [shift={(I)}]
+		\draw [fill=black] circle (0.02);
+	\end{scope}
+
+	% point C
+% VWF_FIGB	
+%	\begin{scope} [shift={(C)}]
+%		\draw [fill=black] circle (0.02);
+%	\end{scope}
+	
+	% point P
+% VWF_FIGB
+%	\begin{scope} [shift={(t1)}]
+%		\draw [fill=black] circle (0.02);
+%	\end{scope}
+
+% VWF_FIGB
+%	\begin{scope} [shift={(I)}]
+%		\draw (0.25,0) arc[start angle=0, end angle=30, radius=0.25];
+%	\end{scope}
+
+
+	\begin{scope} [shift={(I)}]
+		\draw (150:0.25) arc[start angle=150, end angle=210, radius=0.25];
+	\end{scope}
+	
+	
+	%\node [label={Hello}] ;
+	\node [label={[shift={(0.1,-0.25)}]$C$}] at (C) {};
+	\node [label={[shift={(-0.2,-0.1)}]$L_1$}] at (t1s) {};
+	\node [label={[shift={(-0.2,0.1)}]$L_2$}] at (t2s) {};
+	\node [label={[shift={(-0.05,0.1)}]$r$}] at (C) {};
+	\node at (165:0.35) {$\theta$};
+	\node [label={[shift={(0.05,-0.28)}]$I$}] at (I) {};
+	
+% VWF_FIGB	
+%	\node [label={[shift={(0.0,-0.04)}]$P$}] at (t1) {};
+%	\node [label={[shift={(0.65,-0.25)}]$\Delta x$}] at (I) {};	
+%	\node [label={[shift={(0.33,0.15)}]$d$}] at (I) {};	
+%	\node at (15:0.35) {$\alpha$};
+%
+
+\end{tikzpicture}

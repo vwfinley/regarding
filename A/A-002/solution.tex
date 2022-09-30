@@ -1,0 +1,98 @@
+\section{Solution}
+
+%% List of Steps
+
+\begin{enumerate}
+\item
+See Figure \ref{fig:fig_b}. The solution here is similar to the solution found in prior
+work.\footnote{A-001, Regarding Circles and Tangent Lines, Vincent W. Finley, January 2022}
+
+\item
+Draw axes, placing the origin at point $I$.  Orient the x-axis such it
+bisects $L_1$ and $L_2$, and it passes thru the center of $C$.
+
+\item
+A line tangent to a circle will always intersect radius line $r$ at right angles.\footnote{ISBN 0-8311-2575-6, Machinery's Handbook, page 46}  The tangent point $P$ will lie on circle $C$.
+
+%Which means, $L$ and $r$ will intersect at right angles at point $P = (r, \theta)$.
+
+\item
+Let $\alpha$ be the angle formed by points $CIP$.  Since the x-axis bisects angle $\theta$, the angle $\alpha$ is equal to $\theta/2$.
+
+\item
+Let $\Delta x$ be the distance from point $I$ to $C$.  Note: $\Delta x$ is the hypotenuse of right-triangle $IPC$.
+
+\item
+Let $d$ be the distance from point $I$ to $P$.
+
+\item
+Since points $IPC$ form a right triangle, fundamental trigonometric functions can be used to find $\Delta x$ and $d$.
+
+
+\end{enumerate}
+
+\begin{figure}[h]
+\centering
+\input{fig_b.tex}
+\caption{$IPC$ is a right-triangle}
+\label{fig:fig_b}
+\end{figure}
+
+
+%% Equations 
+From:
+\begin{align*}
+\sin(\alpha) &= \frac{r}{\Delta x} \\
+\tan(\alpha) &= \frac{r}{d}
+\end{align*}
+
+it is found,
+\begin{align}
+\Delta x &= \frac{r}{\sin(\alpha)} \label{eqn:deltax} \\
+d &= \frac{r}{\tan(\alpha)} \label{eqn:d}
+\end{align}
+
+and since:
+\begin{equation}
+\alpha = \frac{\theta}{2} \label{eqn:alpha}
+\end{equation}
+
+substituting equation \ref{eqn:alpha} into equations \ref{eqn:deltax} and \ref{eqn:d} yields:
+\begin{align}
+\Delta x &= \frac{r}{\sin \left( \frac{\theta}{2} \right) }\label{eqn:deltax_theta} \\
+d &= \frac{r}{\tan \left( \frac{\theta}{2} \right) }\label{eqn:d_theta}
+\end{align}
+
+The location of the center of $C$ is simply:
+\begin{equation*}
+C_{x,y} = (\Delta x, 0)
+\end{equation*}
+
+\begin{equation}
+\boxed {
+%C_{xy} = \left(\frac{r}{\sin \left( \frac{\theta}{2} \right) }, 0 \right) \label{eqn:Cxy}
+C_{x,y} = \left(\frac{r}{\sin{\alpha}}, 0 \right) \label{eqn:Cxy}
+}
+\end{equation}
+
+Furthermore, the locations where $L_1$ and $L_2$ are tangent to $C$ are simply the polar and Cartesian coordinates of $P$, \emph{and} $P's$ reflection about the x-axis:
+%\begin{subequations}
+\begin{empheq}[box=\widefbox]{align}
+P_{d,\alpha} &= (d, \pm\alpha)\label{eqn:Lpolar} \\
+P_{x,y} &= (d \cdot \cos{\alpha}, \pm d \cdot \sin{\alpha})\label{eqn:Lcartesian}
+\end{empheq}
+%\end{subequations}
+
+Finally, the location where $C$ crosses the x-axis nearest to $I$ is:
+\begin{equation}
+\boxed {
+C_{I} = (\Delta x - r, 0) \label{eqn:Ci}
+}
+\end{equation}
+
+
+\begin{flushright}   
+Q.E.D.
+\end{flushright}   
+
+
