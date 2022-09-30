@@ -2,7 +2,7 @@
 My notes regarding various topics.
 
 # Details
-- LaTex typesetting system
+- LaTeX typesetting system
 - Tikz drawing system
 
 # Software
