@@ -1,0 +1,163 @@
+\section{Solution}
+
+\subsection{(Stage 1) Inscribing ogive section on semi-circle} 
+Refer to Figure \ref{fig:fig_aa} (Stage 1).
+Let a radius $r$ sweep out a semi-circle centered about a point $P$ which coincides with the origin.
+
+The semi-circle intersects the x-axis at a point $P_b$ located on the x-axis at distance $r$ away from point $P$.
+
+Let $c$ be the \textbf{inscribed} vertical line which intersects the semi-circle at some point $P_c$, and intersects the x-axis, at right angles, at a point $P_a$.  Point $P_a$ lies on the x-axis some distance $a$ away from $P$.  Finally, let $b$ be the line-segment between points $P_a$ and $P_b$.
+
+Select the area bounded by sides $b$, $c$, and the arc between $P_b$ and $P_c$.  This area will be used in subsequent stages of the construction. 
+
+Distances between points can be listed as:
+\begin{align*}
+\overline{PP_a} &= a \\
+\overline{P_aP_b} &= b \\
+\overline{P_aP_c} &= c \\
+\overline{PP_b} &= r
+\end{align*}
+
+Furthermore, locations of the points can also be listed:
+\begin{subequations}\label{eq:Points}
+\begin{align}
+P &= (0, 0)\label{eq:P}\\
+P_a &= (a, 0)\label{eq:P_a}\\
+P_b &= (r, 0)\label{eq:P_b}\\
+P_c &= (a, c)\label{eq:P_c}
+\end{align}
+\end{subequations}
+%\Stagecounter{equation}
+Because points $P$, $P_a$ and $P_b$ are collinear, the distance $\overline{PP_b}$ is just the sum of $\overline{PP_a}$
+and $\overline{P_aP_b}$.
+\begin{equation}
+\boxed{
+	r = a+b \label{eq:eqR1}
+}
+\end{equation}
+
+Now since points $P$, $P_a$ and $P_c$ form a right triangle, the Pythagorean theorem can be used to relate hypotenuse $r$ with sides $a$ and $c$.
+\begin{equation}
+\boxed{
+	r = \sqrt{a^2+c^2} \label{eq:eqR2}
+}
+\end{equation}
+
+To find length of side $a$ given lengths of $b$ and $c$, first equate variable $r$ in equations \ref{eq:eqR1} 
+and \ref{eq:eqR2}, then reduce.
+\begin{align*}
+	a+b &= \sqrt{a^2+c^2} \\
+	(a+b)^2 &= a^2+c^2 \\
+	a^2 + 2ab + b^2 &= a^2 + c^2 \\
+	2ab + b^2 &= c^2 \\
+	2ab &= c^2 - b^2
+\end{align*}
+\begin{equation}
+\boxed{
+	a = \frac{c^2 - b^2}{2b} \label{eq:eqA3}
+}
+\end{equation}
+
+\begin{figure}[ht!]
+\centering
+%\input{fig_a1.tex}
+\input{fig_aa.tex}
+\caption{Construction of Tangent Ogive}
+\label{fig:fig_aa}
+\end{figure}
+
+Next, from equation \ref{eq:eqR2}, it is convenient to express $r^2$ in terms of $a^2$ and $c^2$ 
+\begin{align*}
+	r &= \sqrt{a^2+c^2} \\
+	r^2 &= a^2+c^2
+\end{align*}
+Then to substitute $a = r - b$ from equation \ref{eq:eqR1}. 
+\begin{equation}
+	r^2 = (r - b)^2+c^2 \label{eq:eqRSQ4}
+\end{equation}
+
+Using equation \ref{eq:eqRSQ4}, $b$ can be found in terms of $r$ and $c$.
+\begin{align*}
+	r^2 &= (r - b)^2+c^2 \\
+	(r - b)^2 &= r^2 - c^2 \\
+	\sqrt{(r - b)^2} &= \sqrt{r^2 - c^2} \\
+	r - b &= \sqrt{r^2 - c^2}
+\end{align*}
+\begin{equation}
+\boxed{
+	b = r - \sqrt{r^2 - c^2} \label{eq:eqB5}
+}
+\end{equation}
+
+Next, by expanding equation \ref{eq:eqRSQ4} and simplifying, $c$ can be found in terms of $r$ and $b$.
+\begin{align*}
+	r^2 &= (r - b)^2+c^2 \\
+	r^2 &= r^2 - 2rb +  b^2 + c^2 \\
+	c^2 &= 2rb - b^2
+\end{align*}
+\begin{equation}
+\boxed{
+	c = \sqrt{2rb - b^2}  \label{eq:eqC6}
+}
+\end{equation}	
+
+\subsection{(Stage 2) Translate ogive half-section to y-axis} 
+The ogive section is easily translated to the origin and y-axis by subtracting length $a$ from the $x$-coordinates in points $P$ through $P_c$ from equations \ref{eq:P}
+through \ref{eq:P_c}, as follows:
+\begin{subequations}\label{eq:PointsPrime}
+\begin{align}
+P' &= (-a, 0)\label{eq:PPrime}\\
+P'_a &= (0, 0)\label{eq:PPrime_a}\\
+P'_b &= (b, 0)\label{eq:PPrime_b}\\
+P'_c &= (0, c)\label{eq:PPrime_c}
+\end{align}
+\end{subequations}
+%\Stagecounter{equation}
+Prime notation is used here to show how the new points are derived from the original points. 
+
+\subsection{(Stage 3) Reflect ogive half-section about y-axis}
+Reflecting the right ogive half-section across the y-axis is easily accomplished by applying a negative to all $x$-coordinates in points $P'$ through $P'_c$ from equations \ref{eq:PPrime} through \ref{eq:PPrime_c}, as follows:
+\begin{subequations}\label{eq:PointsPrimePrime}
+\begin{align}
+P'' &= (a, 0)\label{eq:PPrimePrime}\\
+P''_a &= (0, 0)\label{eq:PPrimePrime_a}\\
+P''_b &= (-b, 0)\label{eq:PPrimePrime_b}\\
+P''_c &= (0, c)\label{eq:PPrimePrime_c}
+\end{align}
+\end{subequations}
+%\Stagecounter{equation}
+Double-prime notation is used here to show how the new points are derived from the original points. 
+Reflecting the half-section about y-axis yields a full ogive cross-section.
+
+Note: points $P''_a$, $P''_b$ and $P''_c$ are omitted for clarity in Figure \ref{fig:fig_aa} (Stage 3).  However point $P''$ is shown.
+
+\subsection{(Stage 4) Check ogive cross-section for accuracy}\label{check}
+Once the ogive cross-section has been calculated and constructed, checking for correctness and accuracy is recommended.
+
+Checking the completed cross-section is a simple matter of recognizing the relationship between: $P'_c$, $P'$ and $P''$.  Refer to Figure \ref{fig:fig_aa} (Stage 3).  The lines centered at either $P'$ or $P''$, drawn to point $P'_c$, have length $r$ and sweep arcs of radius $r$.  The arcs meet at a common point $P'_c$. 
+
+Refer to Figure \ref{fig:fig_aa} (Stage 4). Lines centered at $P'_c$ drawn back, in the opposite direction, to either $P'$ or $P''$ will also have length $r$.  So, an arc of
+radius $r$, centered at point $P'_c$, will include $P'$ and $P''$.
+
+Therefore, a quick algebraic check for correctness is to measure the distance of lines $\overline{P'_cP'}$ and $\overline{P'_cP''}$.  Both should equal $r$.
+
+A corresponding geometric check is to sweep an arc of radius $r$ centered at $P'_c$.  If points $P'$ and $P''$ lie on the arc, then the ogive cross-section is correctly constructed.
+
+\subsection{Restrictions and valid values}\label{restrictions}
+The three most important variables in equations \ref{eq:eqR1} through \ref{eq:eqC6} are: $a$, $b$ and $r$.  They serve as inputs to the ogive geometry and
+are subject to some restrictions.  These equations are undefined for values outside the valid ranges.
+
+Restrictions:
+\begin{itemize}
+\item $r > 0$ : Otherwise the ogive is undefined.
+\item $0 < a < r$ : Otherwise the ogive is undefined
+\item $0 < b < r$ : Otherwise the ogive is undefined
+\item $0 < c < r$ : Otherwise the ogive is undefined
+\item Equation \ref{eq:eqR1} must be satisfied.  Otherwise, the ogive is undefined. 
+\end{itemize}
+
+\begin{flushright}   
+Q.E.D.
+\end{flushright}   
+
+

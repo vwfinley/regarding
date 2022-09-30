@@ -1,0 +1,119 @@
+\section{Example}
+
+\paragraph{Given:}
+\begin{itemize}
+\item A tangent ogive whose radius is 4.5 units and height is 2.3 units.
+\end{itemize}
+
+\paragraph{Find:}
+\begin{itemize}
+\item Values for $a$ and $b$.
+\item Locations of points $P$ through $P_c$.
+\item Locations of points $P'$ through $P'_c$ for the right half.
+\item Locations of points $P''$ through $P''_c$ for the left half.
+\item Distances of $\overline{P'_cP'}$ and $\overline{P'_cP''}$.
+\end{itemize}
+
+\paragraph{Steps:}
+\begin{enumerate}
+\item
+Let: 
+\begin{align*}
+	r &= 4.5 \\
+	c &= 2.3
+\end{align*}
+
+\item
+From Equation \ref{eq:eqB5}, line-segment $b$ is found by substituting values for $r$ and $c$:
+\begin{align*}
+	b &= r - \sqrt{r^2 - c^2}\\
+	b &= 4.5 - \sqrt{4.5^2 - 2.3^2}\\
+	b &= 4.5 - \sqrt{20.25 - 5.29}\\
+	b &= 4.5 - \sqrt{14.96}\\
+	b &= 4.5 - 3.8678159212
+\end{align*}
+\begin{equation*}
+\boxed{
+	b = 0.6321840788
+}
+\end{equation*}
+
+\item
+The value for $a$ is easily found by rearranging Equaton \ref{eq:eqR1}, solving for $a$, and substituting values for $r$ and $b$.
+\begin{align*}
+	r &= a+b\\
+	a &= r-b\\
+	a &= 4.5-0.6321840788
+\end{align*}
+\begin{equation*}
+\boxed{
+	a = 3.8678159212
+}
+\end{equation*}
+
+\item
+Points $P$ through $P_c$ are found by substituting values of $a$, $b$, $c$ and $r$ into 
+Equations \ref{eq:P} through \ref{eq:P_c}.
+\begin{align*}
+	P &= (0, 0)\\
+	P_a &= (3.8678159212, 0)\\
+	P_b &= (4.5, 0)\\
+	P_c &= (3.8678159212, 2.3)
+\end{align*}
+
+\item
+Points $P'$ through $P'_c$ are found by substituting values of $a$, $b$, $c$ and $r$ into 
+Equations \ref{eq:PPrime} through \ref{eq:PPrime_c}.
+\begin{align*}
+	P' &= (-3.8678159212, 0)\\
+	P'_a &= (0, 0)\\
+	P'_b &= (0.6321840788, 0)\\
+	P'_c &= (0, 2.3)
+\end{align*}
+
+\item
+Points $P''$ through $P''_c$ are found by substituting values of $a$, $b$, $c$ and $r$ into 
+Equations \ref{eq:PPrimePrime} through \ref{eq:PPrimePrime_c}.
+\begin{align*}
+P'' &= (3.8678159212, 0)\\
+P''_a &= (0, 0)\\
+P''_b &= (-0.6321840788, 0)\\
+P''_c &= (0, 2.3)
+\end{align*}
+
+\item
+Use the method of Section \ref{check} to check the correctness of the calculations.
+
+The distance of $\overline{P'_cP'}$ is just the distance between point $P'_c$ and point $P'$.
+
+From above:
+\begin{align*}
+	P'_c &= (0, 2.3)\\
+	P' &= (-3.8678159212, 0)
+\end{align*}
+By using the Pythagorean theorem, the distance is found to be: 
+\begin{align*}
+	d &= \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}\\
+	\overline{P'_cP'} &= \sqrt{(P'_x-P'_{cx})^2 + (P'_y-P'_{cy})^2}\\
+	\overline{P'_cP'} &= \sqrt{(-3.8678159212 - 0)^2 + (0 - 2.3)^2}\\
+	\overline{P'_cP'} &= \sqrt{14.96 + 5.29}\\
+	\overline{P'_cP'} &= \sqrt{20.25}\\
+	\overline{P'_cP'} &= 4.5
+\end{align*}
+As expected, the distance $\overline{P'_cP'}$ is equal to $r$ thereby confirming correctness of calculations.
+
+Furthermore, absolute values $|P'_x| = |P''_x|$, and $P'_x$ or $P''_x$
+are squared when either is substituted.
+\begin{equation*}
+	\overline{P'_cP'} = \overline{P'_cP''} = r = 4.5
+\end{equation*}
+
+\item
+Use Equation \ref{eq:eqR1} as another check.
+\begin{align*}
+	r &= a + b\\
+	r &= 3.8678159212 + 0.6321840788\\
+	r &= 4.5
+\end{align*}
+Since all restrictions of Section \ref{restrictions} are satisfied, correctness of the calculations is confirmed.
+\end{enumerate}

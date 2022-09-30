@@ -1,0 +1,104 @@
+\begin{tikzpicture}[x=1in,y=1in]
+
+	\coordinate (origin) at (0,0);
+	\coordinate (I) at (0,0);
+	\coordinate (t1) at (30 : 0.8660254038);
+	\coordinate (t2) at (-30 : 0.8660254038);
+	\coordinate (t1n) at (210 : 0.8660254038);
+	\coordinate (t2n) at (150 : 0.8660254038);
+	\coordinate (t1s) at (30:2);
+	\coordinate (t2s) at (-30:2);
+	\coordinate (C) at (0:1);
+
+	\coordinate (B) at (0,0);
+	
+	\coordinate (A0) at (0*0.05,0);
+ 	\coordinate (A1) at (1*0.05,0);
+	\coordinate (A2) at (2*0.05,0);
+	\coordinate (A3) at (3*0.05,0);
+	\coordinate (A4) at (4*0.05,0);
+
+	\coordinate (A5) at (5*0.05,0);
+	\coordinate (A6) at (6*0.05,0);
+	\coordinate (A7) at (7*0.05,0);
+
+	\coordinate (A8) at (8*0.05,0);
+	\coordinate (A9) at (9*0.05,0);
+
+
+	\coordinate (Origin0) at (0, -0*0.6);
+	\coordinate (Origin1) at (0, -1*0.6);
+
+	\draw[-{Latex[scale=1.5]}] (0, 9.75 * -0.65) -- (0, 0.5)  node [above] {$y$};
+
+	\foreach \i in {0,...,0}
+	{
+		\begin{scope} [shift={(0, \i * -0.65 )}]
+			\draw[-{Latex[scale=1.5]}] (-0.5,0) -- (1.5,0)  node [right] {$x$};	
+			\draw node [shift={(1.2,-0.24)}] {case \i};			
+			\draw circle (0.3) node [shift={(-0.30, 0.3)}] {$B$};
+			\begin{scope} [shift={(\i * 0.15, 0)}]
+				\draw circle (0.3) node [shift={(0.30, 0.3)}] {$A$};
+			\end{scope}
+		\end{scope}
+	}
+
+	\foreach \i in {1,...,1}
+	{
+		\begin{scope} [shift={(0, \i * -0.65 )}]
+			\draw[lightgray, -{Latex[scale=1.5]}] (-0.5,0) -- (1.5,0);	
+			\draw node [shift={(1.2,-0.24)}] {case \i};
+			\draw[lightgray] circle (0.3) node [shift={(-0.30, 0.3)}] {$B$};
+			\begin{scope} [shift={(\i * 0.15, 0)}]
+				\draw circle (0.3)  node [lightgray, shift={(0.30, 0.3)}] {$A$};			
+				\draw (-0.025,0) -- (0.025, 0);
+				\draw (0, -0.025) -- (0, 0.025);
+			\end{scope}
+		\end{scope}
+	}
+
+	\foreach \i in {2,...,2}
+	{
+		\begin{scope} [shift={(0, \i * -0.65 )}]
+			\draw[lightgray, -{Latex[scale=1.5]}] (-0.5,0) -- (1.5,0);	
+			\draw node [shift={(1.2,-0.24)}] {case \i};
+			\draw[lightgray] circle (0.3);
+			\begin{scope} [shift={(\i * 0.15, 0)}]
+				\draw circle (0.3)  ;			
+				\draw (-0.025,0) -- (0.025, 0);
+				\draw (0, -0.025) -- (0, 0.025);
+			\end{scope}
+		\end{scope}
+	}
+
+	\foreach \i in {3,...,3}
+	{
+		\begin{scope} [shift={(0, \i * -0.65 )}]
+			\draw[lightgray, -{Latex[scale=1.5]}] (-0.5,0) -- (1.5,0);	
+			\draw node [shift={(1.2,-0.24)}] {case \i};
+			\draw node [shift={(0.45, 0.08)}] {$Undefined$};
+			\begin{scope} [shift={(\i * 0.15, 0)}]
+%				\draw circle (0.3);				
+%				\draw (-0.025,0) -- (0.025, 0);
+%				\draw (0, -0.025) -- (0, 0.025);
+			\end{scope}
+		\end{scope}
+	}
+
+	\foreach \i in {4,...,9}
+	{
+		\begin{scope} [shift={(0, \i * -0.65 )}]
+			\draw[lightgray, -{Latex[scale=1.5]}] (-0.5,0) -- (1.5,0);	
+			\draw node [shift={(1.2,-0.24)}] {case \i};
+			\draw[lightgray] circle (0.3);
+			\begin{scope} [shift={(-4  * 0.15, 0)}]
+				\begin{scope} [shift={(\i  * 0.15, 0)}]
+					\draw circle (0.3);				
+					\draw (-0.025,0) -- (0.025, 0);
+					\draw (0, -0.025) -- (0, 0.025);
+				\end{scope}
+			\end{scope}
+		\end{scope}
+	}
+
+\end{tikzpicture}
