@@ -1,0 +1,106 @@
+%% List of Steps
+\section{Solution}
+\begin{enumerate}
+\item
+Refer to Figure \ref{fig:fig_b} for the discussion that follows.
+
+\item
+Since $A$ and $B$ are coplanar circles, center points $C_A$ and $C_B$ lie in the same plane with the circles.
+
+\item
+Two points define the line between them, therefore a line can be drawn between $C_A$ and $C_B$.  This line
+shall be coplanar with circles $A$ and $B$, and their centers.
+
+\item
+A coordinate system can be drawn in the plane containing $A$ and $B$, and the line between their centers.
+For convenience, the coordinate system origin can be arbitrarily chosen to coincide with $C_B$.
+
+\begin{figure}[hb!]
+\centering
+\input{fig_b.tex}
+\caption{Locations of $C_A$ relative to $C_B$}
+\label{fig:fig_b}
+\end{figure}
+
+\item
+Furthermore, for convenience, the coordinate system can be oriented such that the x-axis aligns with the
+line connecting $C_B$ and $C_A$.
+
+\item
+Since the origin is always relative to $C_B$, $C_B$ will always be at $C_B = (x_B, y_B) = (0, 0)$.
+
+\item
+Since the x-axis is aligned with the line connecting $C_B$ and $C_A$, $C_A$ will always lie along the x-axis, such
+that:  $C_A = (x_A, y_A) = (x_A, 0)$.
+
+\item
+Furthermore, the distance between $C_A$ and $C_B$ will always be $\Delta x = x_A - x_B = x_A - 0 = x_A$
+
+\item
+Therefore the problem of finding critical locations of $C_A$ simplifies into the trivial problem of finding critical values of $x_A$.
+
+\item
+The locations of $C_A$ relative to $C_B$ can be generalized into the 10 cases shown in Figure \ref{fig:fig_b}.
+
+\begin{itemize}
+\item \textbf{case 0:}
+$x_A = 0$
+
+At the critical point where $C_A$ is at the origin, $C_A$ will be concentric with $C_B$.
+
+\item \textbf{case 1:}
+$0 < x_A < r_A$
+
+When $C_A$ lies less than one $r_A$ radius from the origin, $A$ will overlap left and right regions of $B$.
+
+\item \textbf{case 2:}
+$ x_A = r_A$
+
+When $C_A$ lies exactly than one $r_A$ radius from the origin, circle $A$ will pass through point $C_B$.
+
+\item \textbf{case 3:}
+$r_A < x_A < r_B - r_A$
+
+In this case, $C_A$ overlaps with the right side region of $B$.
+
+\item \textbf{case 4:}
+$ x_A = r_B - r_A$
+
+When $C_A$ lies at one $r_A$ radius less than $r_B$, $A$ and $B$ will share a tangent point.  $A$ will overlap with right region of $B$.
+
+\item \textbf{case 5:}
+$ r_B - r_A < x_A < r_B$
+
+In this case, $A$ only partially overlaps $B$.  Furthermore it overlaps the right edge of $B$.
+
+\item \textbf{case 6:}
+$ x_A = r_B$
+
+$C_A$, the center of $A$, lies on circle $B$.
+
+\item \textbf{case 7:}
+$ r_B < x_A < r_B + r_A$
+
+The center of $A$ is beyond the edge of circle $B$.  Circle $A$ partially overlaps the right side of $B$.
+
+\item \textbf{case 8:}
+$ x_A = r_B + r_A$
+
+Circles $A$ an $B$ are tangent to each other with no overlap.
+
+
+\item \textbf{case 9:}
+$ x_A > r_B + r_A$
+
+Circle $A$ is entirely outside $B$.  $A$ and $B$ are non-overlapping.
+
+\end{itemize}
+\end{enumerate}
+
+
+\begin{flushright}   
+Q.E.D.
+\end{flushright}   
+
+
+
