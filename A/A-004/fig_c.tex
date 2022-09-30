@@ -1,0 +1,93 @@
+\begin{tikzpicture}[x=1in,y=1in]
+
+	\coordinate (origin) at (0,0);
+
+	\def \yaxisLen{2.0};
+	\def \rA{0.25};
+	\def \rB{0.50};
+	\def \rPoint{0.02};
+
+	\def \offsetX{0.03};
+	\def \offsetY{-0.13};
+	
+	\def \cmLen{0.025}; % centermark
+	\def \alph{17.1}; % degrees
+
+	\def \cornerlen{0.1};
+	
+	\coordinate (xaxisStart) at (-0.75, 0);
+	\coordinate (xaxisEnd) at (3, 0);
+
+	\coordinate (CB) at (0, 0);
+	\coordinate (CA) at (0.85, 0);
+	\coordinate (CA') at (2.55, 0);
+	\coordinate (I) at (1.7, 0);
+
+%%%%
+
+	\coordinate (yaxisStart) at (0, -\yaxisLen / 2 );
+	\coordinate (yaxisEnd) at (0, \yaxisLen / 2 );
+
+
+	% axes
+	\draw[lightgray, -{Latex[scale=1.5]}] (yaxisStart) -- (yaxisEnd) node [right] {$y$}; % x-axis	
+	\draw[lightgray, -{Latex[scale=1.5]}] (xaxisStart) -- (xaxisEnd)  node [above] {$x$}; % y-axis
+			
+%	\draw (origin) -- (I);
+		
+	% Circle B
+	\begin{scope} [shift={(CB)}]
+		\draw[lightgray] circle (\rB); % circle B
+		\draw [lightgray] node [shift={(0.15, \offsetY)}] {$C_B$};  % label B
+%		\draw [-{Latex}] (0, 0) -- (90 - \alph : \rB);
+%		\begin{scope} [shift={(90 - \alph : \rB)}]
+%			\draw node [shift={(\offsetX, -\offsetY)}] {$R_B$};	
+%			\draw ( 90 - \alph : -\cornerlen) -- ++( -\alph : \cornerlen); % square corner 
+%			\draw ( -\alph : \cornerlen) -- ++(90 - \alph : -\cornerlen); 						
+%		\end{scope}
+	\end{scope}		
+	
+	% Circle A		
+	\begin{scope} [shift={(CA)}]
+		\draw (-\cmLen, 0) -- (\cmLen, 0); % centermark
+		\draw (0, -\cmLen) -- (0, \cmLen);
+		\draw[lightgray] circle (\rA);
+		\draw [lightgray] node [shift={(\offsetX, \offsetY)}] {$C_{A}$};  % label A		
+%		\draw [-{Latex}] (0, 0) -- (90 - \alph : \rA);	
+%		\begin{scope} [shift={(90 - \alph : \rA)}]
+%			\draw node [shift={(\offsetX, -\offsetY)}] {$R_A$};
+%			\draw ( 90 - \alph : -\cornerlen) -- ++( -\alph : \cornerlen); % square corner 
+%			\draw ( -\alph : \cornerlen) -- ++(90 - \alph : -\cornerlen); 						
+%		\end{scope}				
+	\end{scope}
+
+	% Point I
+	\begin{scope} [shift={(I)}] % point I
+		\draw[lightgray] (-\alph : 1.2) -- (180.0 - \alph : 2.2); % outer tangent (I)
+%		\draw (-\alph : 1.2) -- (180.0 - \alph : 2.2); % outer tangent (I)
+		\draw[lightgray]  (\alph : 1.2) -- (-180.0 + \alph : 2.2); % outer tangent (I)
+		\draw[fill=black] circle (\rPoint);
+		\draw node [shift={(\offsetX, \offsetY)}] {$I$};  % label I		
+	\end{scope}		
+
+	% Circle A'		
+	\begin{scope} [shift={(CA')}]
+		\draw circle (\rA);
+		\draw node [shift={(\offsetX, \offsetY)}] {$C_{A'}$};  % label A'
+		\draw (-\cmLen, 0) -- (\cmLen, 0); % centermark
+		\draw (0, -\cmLen) -- (0, \cmLen);
+	\end{scope}
+
+%	\begin{scope} [shift={(I)}]
+%		\draw [Latex-Latex] (0.8,0) arc[start angle=0, end angle=-\alph, radius=0.8]; 
+%		\draw [Latex-Latex] (-\alph: 1) arc[start angle=-\alph, end angle=\alph, radius=1];
+%	\end{scope}
+
+%	\begin{scope} [shift={(I)}]
+%		\draw node [shift={(-0.5 * \alph : 0.87)}] {$\alpha$};
+%		\draw node [shift={(0.3 * \alph : 1.07)}] {$\theta$};
+%	\end{scope}
+
+
+
+\end{tikzpicture}

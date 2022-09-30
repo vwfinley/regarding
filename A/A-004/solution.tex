@@ -1,0 +1,252 @@
+\section{Solution}
+As shown in Figure \ref{fig:fig_a} paired circles, $A$ and $B$, can be gathered into 4 classes.
+The classes are based upon the relationship between paired circles and their common tangent line(s), if any.
+
+\begin{figure}[ht]
+\centering
+\input{fig_a.tex}
+\caption{Tangent Classes}
+\label{fig:fig_a}
+\end{figure}
+
+%%%
+\paragraph{Class A: Null\\} 
+No common tangent line between circles $A$ and $B$ is possible.  This is due to two reasons.
+
+First, any line tangent to $A$ will contact $B$ at two points.  The points where the line contacts $B$ will
+be points of intersection rather than points of tangency.
+
+Second, a line tangent to $B$ cannot pass through $B$.  Since $A$ lies entirely within $B$ any line tangent 
+to $B$ cannot contact $A$.
+
+Cases 0, 1, 2 and 3; from article\footnotemark[\ref{noteA003}] are examples of this class.
+
+%%%
+\paragraph{Class B: Single\\}
+Where circle $A$ contacts $B$ at a single point, $A$ and $B$ will be tangent to each other.
+
+Any line that is tangent to $B$ at the point of contact will also be tangent to $A$.
+
+A line tangent to a circle will always intersect a radius line at right 
+angles\footnote{ISBN 0-8311-2575-6, Machinery's Handbook, page 46}.
+Any line that is tangent to $B$ will be at right angles to the radius
+line from the center of $B$ to the tangent point.  
+
+Since $r_B$ is given as the the radius of $B$, the tangent point of any line tangent to $B$ will lie a distance of
+$r_B$ from the center of $B$.  A coordinate system can be arbitrarily constructed such that the origin coincides with
+the center of $B$, and the x-axis coincides with the line between the centers of $A$ and $B$.  In such a construction the
+tangent point will lie at a point ($r_B$, $0$).
+
+Furthermore the center of $A$ must lie a distance $r_A$ from tangent point ($r_B$, $0$).  Therefore the center of $A$
+can lie at locations:
+\begin{equation}
+\boxed
+{
+C_A=(r_B \pm r_A, 0)
+}
+\end{equation}
+
+These two positions correspond to cases 4 and 8 of article\footnotemark[\ref{noteA003}]. 
+
+As the center of $A$ moves from positions covered by Class C and Class D, toward positions covered by Class B, pairs of tangents degenerate into the single tangent line detailed by Class B.
+
+Cases 4 and 8; from article\footnotemark[\ref{noteA003}] are examples of this class.
+
+%%%
+\paragraph{Class C: Outer\\}
+
+The point of intersection for a pair of tangents lays outside the line segment connecting two circle centers, 
+thus the name of the class. It should be noted: the arrangement for this tangent class is identical to the arrangement for 
+fillets\footnote{\label{noteA002}A-002, Regarding Fillets, Vincent W. Finley, February 2022}.
+
+However, there are two important difference between fillets and outer tangents.  First, when examining fillets the 
+point and angle of intersection, $I$ and $\theta$, are usually known, while the center point of the fillet, $C$, is sought.  
+The opposite is true for outer tangents.  Second, a fillet has only one circle.  Whereas the outer tangent class 
+involves tangents common to two circles.
+
+Due to these differences a geometric approach, based on similar triangles, is taken here.
+
+\begin{figure}[ht]
+\centering
+\input{fig_b.tex}
+\caption{Arrangement of Outer Tangents}
+\label{fig:fig_b}
+\end{figure}
+
+Similar triangles are are scaled versions of each other.  They are triangles whose corresponding angles are the congruent, yet whose corresponding sides are proportional.  In other words the respective angles of two similar triangles are equal.  However, the respective sides are multiples of each other.  That is, the ratio of corresponding sides will always be equal.
+
+If Circles $A$ and $B$ are arranged as shown in Figure \ref{fig:fig_b}, a pair of tangent lines can be drawn to connect
+them.  The tangent lines will be at right angles to radius lines from the circle center points to the tangent points.
+
+The upper tangent line will contact $A$ and $B$ at tangent points $R_A$ and $R_B$ respectively.  It will lie at right angles
+to the respective radius lines.
+
+Each tangent line is a reflection of the other.  Together they are symmetric about the x-axis.  
+Both intersect the x-axis at some point $I=(x_{I}, 0)$.  Included angle $\theta$, whose vertex is point $I$, results
+from the intersection.
+
+Triangles $\triangle IC_{A}R_{A}$ and $\triangle IC_{B}R_{B}$ are similar triangles, where side $\overline{IC_A}$ corresponds
+to $\overline{IC_B}$, and side $\overline{C_{A}R_{A}}$ corresponds to $\overline{C_{B}R_{B}}$.  
+
+Let $r_A$ be the length of $\overline{C_{A}R_{A}}$, such that $r_A = C_{A}R_{A}$.  Likewise: let $r_B = C_{B}R_{B}$ and
+let  $x_I = IC_B$.  Moreover, the center of $A$, $C_A = (x_A, 0)$, and length of $\overline{IC_{A}}$ is $IC_A = x_I - x_A$.
+
+Since triangles $\triangle IC_{A}R_{A}$ and $\triangle IC_{B}R_{B}$ are similar, the ratio of their corresponding sides are equal.
+Therefore:
+
+\begin{equation}
+	\frac{IC_A}{IC_B} = \frac{ C_{A}R_{A}}{C_{B}R_{B}}  
+\end{equation}
+
+\begin{align*}
+\frac{x_I - x_A}{x_I} &= \frac{r_A}{r_B}\\
+r_B(x_I - x_A) &=	r_A \cdot x_I\\
+r_B \cdot x_I - r_B \cdot x_A &= r_A \cdot x_I\\
+r_B \cdot x_I - r_A \cdot x_I  &=	r_B \cdot x_A \\
+x_I ( r_B - r_A) &= 	r_B \cdot x_A 
+\end{align*}
+\begin{equation}
+\boxed
+{
+	x_I = \frac{r_B \cdot x_A}{r_B - r_A}  \label{eq:xI}
+}
+\end{equation}
+
+If the radii of two circles are known, and the distance that separates circle centers is known, then Equation \ref{eq:xI} above
+can be used to find the location where the tangent lines will intersect at point:
+\begin{equation}
+\boxed
+{
+	I = (x_I, 0)  \label{eq:pointI}
+}
+\end{equation}
+
+By recognizing the fact that two tangent lines together with a circle form a fillet, the angle of intersection $\theta$ can then be found by rearranging Equation 4 from article\footnotemark[\ref{noteA002}], and substituting variables for triangle $\triangle IC_{B}R_{B}$ as follows:  
+\begin{equation*}
+	\theta = 2 \cdot \arcsin{\left( \frac{r}{\Delta x}  \right)} 
+\end{equation*}
+\begin{equation}
+\boxed
+{
+	\theta = 2 \cdot \arcsin{\left( \frac{r_B}{x_I}  \right)} \label{eq:thetaarcsin}
+}
+\end{equation}
+
+The tangent points: $R_A$, $R_B$, and their reflections; can likewise be found using Equations 7 and 8 from
+article\footnotemark[\ref{noteA002}].
+
+Cases 5, 6, 7, 8 and 9; from article\footnotemark[\ref{noteA003}] are examples of this class.
+
+%%%
+\paragraph{Class D: Inner\\}
+
+This class is characterized by the point of intersection laying inside the line segment connecting two circle centers.
+
+By inspecting Figures \ref{fig:fig_b} and \ref{fig:fig_c} the relationship between Inner tangents and Outer tangents 
+becomes immediately obvious.   
+
+\begin{figure}[ht]
+\centering
+\input{fig_c.tex}
+\caption{Arrangement of Inner Tangents}
+\label{fig:fig_c}
+\end{figure}
+
+When $I$ lays between two circles, the arrangement is as if circle $A$ were reflected about
+point $I$ to a new circle $A'$.  Let the center location of $A'$ be named $C_{A'}$. Meanwhile radius of the reflection, $A'$,
+remains equal to $r_A$, the radius of $A$.
+
+%%%%%%%
+\begin{table*}[ht]
+\centering
+\begin{tabular}{|c||c|c|c|c|c|c|} 
+ \hline
+  \multirow{3}{*}{Case} & \multicolumn{5}{c|}{Number of Tangents} & \multirow{3}{*}{Description} \\
+\cline{2-6}
+   & \makecell{(A)\\Null}  & \makecell{(B)\\Single} & \makecell{(C)\\Outer} & \makecell{(D)\\Inner} & Total & \\
+  \hline
+  0-3 & 0 & - & - & - & 0 & No tangents possible\\ 
+  \hline
+  4 & - & 1 & - & - & 1 & Circles tangent to each other\\ 
+  \hline
+  5-7 & - & - & 2 & - & 2 & Two outer tangents\\ 
+  \hline
+  8 & - & 1 & 2 & - & 3 & Circles tangent to each other, and 2 outer tangents\\ 
+  \hline
+  9 & - & - & 2 & 2 & 4 & Two outer and two inner tangents\\ 
+  \hline
+\end{tabular}
+\caption{Classification of Coplanar Circle Cases}
+\label{table:tab_tangents}
+\end{table*}
+%%%%%%%
+
+The location $C_{A'}$ is simply the interval between $C_{A'}$ and $I$ added to the location of $I$, as follows:
+\begin{align}
+	x_{A'} &= (x_I - x_A) + x_I \\
+	x_{A'} &= 2x_I - x_A \label{eq:xaprime}
+\end{align}
+
+Given two circles, the strategy of finding $I$ for a pair of inner tangents is as follows.  
+\begin{enumerate}
+\item Let $B$ be the larger circle.
+\item Let $A'$ be the smaller circle.  
+\item Assume $A'$ has a reflection thru $I$ named $A$.
+\item Use Equation \ref{eq:xaprime} to find the location of reflection $A$.
+\item Substitute the location of $A$ into Equation \ref{eq:xI}.
+\item Rearrange terms and solve for $x_I$.
+\end{enumerate}
+
+Solving Equation \ref{eq:xaprime} for $x_A$ yields:
+
+\begin{equation}
+\boxed
+{
+	x_A = 2x_I - x_{A'} \label{eq:xA}
+}
+\end{equation}
+
+Substituting Equation \ref{eq:xA} into Equation \ref{eq:xI} yields:
+\begin{align*}
+	x_I &= \frac{r_B \cdot (2 x_I - x_{A'})} {r_B - r_A} \\
+	x_I &= \frac{2 r_B \cdot x_I -  r_B \cdot x_{A'}  }{r_B - r_A}
+\end{align*}
+\begin{equation*}
+	x_I \cdot (r_B - r_A) = 2 r_B \cdot x_I - r_B \cdot x_{A'} 
+\end{equation*}
+\begin{align*}
+	x_I \cdot r_B - x_I \cdot r_A - 2  r_B \cdot x_I &=  - r_B \cdot x_{A'}\\
+	x_I \cdot (r_B - r_A - 2  r_B ) &= - r_B \cdot x_{A'}\\
+	x_I \cdot (-r_B - r_A) &= - r_B \cdot x_{A'} 
+\end{align*}
+
+Finally $x_I$ is found to be:
+\begin{equation}
+\boxed
+{
+	x_I = \frac{r_B \cdot x_{A'}}{ r_B + r_A} \label{eq:xI2}
+}
+\end{equation}
+
+Substituting Equation \ref{eq:xI2} into Equation \ref{eq:pointI} gives the location of $I$.  Because the location
+of point $I$ has been found, Equation \ref{eq:thetaarcsin} can be used to find the angle $\theta$.  Equations 7 and 8 from 
+article\footnotemark[\ref{noteA002}] can be used to find the tangent points.
+
+Case 9 from article\footnotemark[\ref{noteA003}] is an example of this class.
+
+%%%
+\paragraph{Classification\\}
+Now that four tangent classes have been defined, classifying the ten coplanar circle-pairs (identified by 
+article\footnotemark[\ref{noteA003}])
+is desired.  Table \ref{table:tab_tangents} summarizes which tangent classes apply to each of the ten circle-pair cases.
+
+Either one or two tangent classes many apply to a circle-pair case.  Generally, the number of total tangents increases
+as a circle $A$ retreats from circle $B$. Depending upon which tangent classes apply, each case may have a total of zero 
+to four possible tangents.  
+
+The classification of coplanar circle-pairs described here provides a convenient framework for
+future planar-geometry discussion.
+
+\begin{flushright}   
+Q.E.D.
+\end{flushright}

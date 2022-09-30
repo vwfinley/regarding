@@ -1,0 +1,107 @@
+\section{Example}
+
+\paragraph{Given:}
+\begin{itemize}
+\item Two circles $A$ and $B$ whose radii are $r_A = 1.0$ and $r_B = 3.0$ units respectively,
+\item \emph{and} circle centers $C_A$ and $C_B$ separated by a distance of 6.5 units.
+\end{itemize}
+
+\paragraph{Find:}
+\begin{itemize}
+\item Which coplanar circle-pair case best matches the given arrangement.
+\item Which tangent classes apply to the circle-pair case.
+\item The location(s) where tangent lines intersect.
+\item The angle of intersection between tangent lines.
+\end{itemize}
+
+\paragraph{Steps:}
+\begin{enumerate}
+\item
+Let: 
+\begin{align*}
+	r_A &= 1.0\\
+	r_B &= 3.0\\
+	x_A &= 6.5
+\end{align*}
+
+\item
+From the solution section of article\footnotemark[\ref{noteA003}], use the inequality for case 9:
+\begin{equation*}
+	x_A > r_B + r_A
+\end{equation*}
+
+\item
+Plug in values for $r_A$ and $r_B$,
+\begin{equation*}
+	6.5 > 3.0 + 1.0
+\end{equation*}
+\begin{equation*}
+	6.5 > 4.0
+\end{equation*}
+
+\item
+Since $x_A = 6.5$ is greater than the sum of the radii, 3.0 and 1.0, the inequality for circle-pair case 9 is satisfied.  Therefore 
+the relationship between circles $A$ and $B$ are classified by the case 9 circle-pair.
+
+\item
+From table \ref{table:tab_tangents} tangent classes (C) outer and (D) inner apply to circle-pair case 9.  Therefore circles $A$ and
+$B$ are connected by two outer tangent lines and two inner tangent lines.
+
+\item
+Outer tangents:\\
+The point of intersection $I_{outer}$ for the outer tangent pair is found by using Equation \ref{eq:xI} to get the $x$ coordinate.
+Substituting values from above yields.
+\begin{align*}
+x_I &= \frac{3.0 \cdot 6.5}{3.0 - 1.0}   \\
+x_I &= 9.75
+\end{align*}
+
+Then $x_I$ can be substituted into Equation \ref{eq:pointI} to find the point $I_{outer}$.
+\begin{equation*}
+\boxed
+{
+	I_{outer} = (9.75, 0)
+}
+\end{equation*}
+The included angle between the outer tangent pair can be calculated from Equation \ref{eq:thetaarcsin}.
+\begin{align*}
+	\theta_{outer} &= 2 \cdot \arcsin{\left( \frac{3.0}{9.75}  \right)} \\
+	\theta_{outer} &= 0.62553 \hspace{1 mm} rads
+\end{align*}
+\begin{equation*}
+\boxed
+{
+	\theta_{outer} = 35.84^{\circ}
+}
+\end{equation*}
+
+\item
+Inner tangents:\\
+The point of intersection $I_{inner}$ for the inner tangent pair is found by using Equation \ref{eq:xI2} to get the $x$ coordinate.
+Taking $x_{A}$ to be $x_{A'}$ in this context, and substituting values from above yields.
+\begin{align*}
+x_I &= \frac{3.0 \cdot 6.5}{3.0 + 1.0}   \\
+x_I &= 4.875
+\end{align*}
+Then $x_I$ can be substituted into Equation \ref{eq:pointI} to find the point $I_{inner}$.
+\begin{equation*}
+\boxed
+{
+	I_{inner} = (4.875, 0)
+}
+\end{equation*}
+The included angle between the inner tangent pair can be calculated from Equation \ref{eq:thetaarcsin}.
+\begin{align*}
+	\theta_{inner} &= 2 \cdot \arcsin{\left( \frac{3.0}{4.875}  \right)} \\
+	\theta_{inner} &= 1.32575  \hspace{1 mm} rads
+\end{align*}
+\begin{equation*}
+\boxed
+{
+	\theta_{inner} = 75.96^{\circ}
+}
+\end{equation*}
+
+\item
+Finally, all tangent points can be found by referring to Equations 7 and 8 from article\footnotemark[\ref{noteA002}].  This is left as an exercise for the reader.
+\end{enumerate}
