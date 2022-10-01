@@ -1,0 +1,7 @@
+# A-005
+## Regarding Equal Coplanar Circles
+## May 2022
+- Special case of general case A-003
+- General classes in A-004 follows from A-003 cases
+- Comes up quite frequently, so very much worth studying
+- Builds on material from A-003 and A-004
