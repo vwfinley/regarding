@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.29)  1 OCT 2022 07:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.29)  1 OCT 2022 19:53
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -785,7 +785,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 89.
 \Hy@linkcounter=\count325
-(abstract.tex) (problem.tex (fig_a.tex)
+(abstract.tex) (problem.tex (fig_a.tikz)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -797,12 +797,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 6--6
 [1{C:/Users/Owner/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
 
 
-] (fig_b.tex) [2]
+]
+(fig_b.tikz) [2]
 Underfull \hbox (badness 10000) in paragraph at lines 115--115
 
  []
 
-(fig_c.tex
+(fig_c.tikz
 Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no c in font nullfont!
@@ -848,9 +849,9 @@ AED: lastpage setting LastPage
 
 ] (A-005.aux) ) 
 Here is how much of TeX's memory you used:
- 17352 strings out of 478593
- 350254 string characters out of 2844604
- 647255 words of memory out of 3000000
+ 17353 strings out of 478593
+ 350271 string characters out of 2844604
+ 647256 words of memory out of 3000000
  35213 multiletter control sequences out of 15000+600000
  480194 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
