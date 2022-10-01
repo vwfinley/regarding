@@ -1,5 +1,13 @@
 A-007 Regarding Circle Intersections and Tangent Ogives
 
+- A-007
+- Oct 2022
+- Regarding Equal-Diametered Coplanar Circles
+- Article about special case (of the general case in A-002) where coplanar circles are same diameter.
+- How does cases 0-9 degenerate?
+- How to the common, inner, and outer tangents degenerate?
+
+
 Problem
 \item An alternate method to represent and construct tangent ogives.
 \item The formula to calculate tangent ogive cross-sectional areas.
