@@ -1,3 +1,4 @@
+# License Information
 The works within the "**regarding**" repository are licensed under the Creative Commons BY-ND 4.0 license (CC BY-ND 4.0).
 
 See here for details:
