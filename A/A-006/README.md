@@ -1,2 +1,2 @@
-# [A-001, Regarding Circles and Tangent Lines, January 2022](A-001.pdf)
+# [A-006, Regarding Tangent Ogives, September 2022](A-006.pdf)
 - Worth studying.
