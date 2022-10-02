@@ -11,21 +11,6 @@
 - The id of each article has the capital letter of the series and the order of the article in that series.  For example **A-004**.
 - Each series folder in the repo has a README.md file with links to the articles.  You may need to scroll down to see the links.
 
-# Motivation
-Upon reviewing my old notebook, I became disappointed with what I found:
-- Poor handwriting.
-- Notes lacked enough context to decipher my original intent.
-- Half-baked ideas.
-- Brainstorms were lost and confused.
-
-Going forward, something better was needed:
-- Full development and completion of thoughts.
-- Supporting background and context. 
-- Accurate drawings.
-- Clear printing of equations.
-- Versioning of changes.
-- Durable format.
-
 # Details
 - I began collecting my personal thoughts and notes into short articles toward the end of 2021.
 - I moved articles from my hard-drive onto GitHub at the end of September 2022. 
@@ -40,3 +25,18 @@ Going forward, something better was needed:
 - For drawings I use:
   - The [Tikz](https://en.wikipedia.org/wiki/PGF/TikZ) vector drawing system.
   - [TikzEdt version 0.2.3.0](http://www.tikzedt.org/) editor implementation of Tikz.
+
+# Motivation
+Upon reviewing my old notebook, I became disappointed with what I found:
+- Poor handwriting.
+- Notes lacked enough context to decipher my original intent.
+- Half-baked ideas.
+- Brainstorms were lost and confused.
+
+Going forward, something better was needed:
+- Full development and completion of thoughts.
+- Supporting background and context. 
+- Accurate drawings.
+- Clear printing of equations.
+- Versioning of changes.
+- Durable format.
