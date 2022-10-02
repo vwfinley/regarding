@@ -33,7 +33,7 @@ Going forward, something better was needed:
 - The articles are licensed under the [Creative Commons BY-ND 4.0 license](https://creativecommons.org/licenses/by-nd/4.0/).
   - You are free to copy and distribute the articles.
   - Please credit me if you quote or reference an article.
-  - Please keep the article as-is and not as part of derivative work.
+  - Please keep the article as-is and not as part of some derivative work.
 - For the typesetting I use:
   - The [LaTeX](https://www.latex-project.org/) typesetting system.
   - [TeXworks version 0.6.6](https://tug.org/texworks/) implementation of LaTeX.
