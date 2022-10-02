@@ -5,6 +5,7 @@
 - [A-004 Regarding Classification of Coplanar Circle Tangents](A-004/README.md)
 - [A-005 Regarding Relationship and Classification of Equal Coplanar Circles](A-005/README.md)
 - [A-006 Regarding Tangent Ogives](A-006/README.md)
+- [A-007 Regarding Circle Intersections and Tangent Ogives](A-007/README.md)
 
 # Regarding Mathematics
 - Thoughts and notes about analytic geometry, trigonometry, etc.
