@@ -9,5 +9,5 @@
 
 # Summary
 - Thoughts and notes about analytic geometry, trigonometry, etc.
-- Article abstracts hint at engineering application.
 - Presented as: problem statement, solution and brief example. 
+- Article abstracts hint at engineering application.
