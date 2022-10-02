@@ -1,13 +1,15 @@
 # Navigation
-- [A : regarding mathematics](A/README.md)
-- [B : regarding TBD](B/README.md)
+- [Series A : Regarding Mathematics](A/README.md)
+- [Series B : Regarding TBD](B/README.md)
 
-# Regarding the "*regarding*" repository
-This repository contains my personal notes **regarding** various: topics, interests and hobbies. 
-
-It contains a series of articles **regarding** those various topics.
-Each series begins with a capital letter.  For example the series **regarding** mathematics begins with capital **A**.
-The title of each article begins with the word "**Regarding**".
+# Regarding the *"regarding"* repository
+- This repository contains my personal notes **regarding** various: topics, interests and hobbies.
+- It contains series of articles **regarding** those various topics.
+- Each series begins with a capital letter.  For example the series **regarding** mathematics begins with capital **A**.
+- The title of each article begins with the word "**Regarding**".
+- The id of each article has the capital letter of the series and the order of the article in that series.  For example **A-004**.
+- Each article is produced as a .pdf file.
+- Each folder in the repo has a README.md file with navigation links to the contents.  You may need to scroll down to see the links.
 
 # Motivation
 Upon reviewing my old notebook, I became disappointed with what I found:
@@ -24,17 +26,17 @@ Going forward, something better was needed:
 - Versioning of changes.
 - Durable format.
 
-# Solution
-I began collecting my personal notes and thoughts into short 4-6 page articles.
-- LaTeX
-
-
-My notes regarding various topics.
-
 # Details
-- LaTeX typesetting system
-- Tikz drawing system
-
-# Software
-- TeXworks version 0.6.6 software
-- TikzEdt version 0.2.3.0 software
+- I began collecting my personal thoughts and notes into short articles toward the end of 2021.
+- I moved articles from my hard-drive onto GitHub at the end of September 2022. 
+- Each article contains a brief bite-sized topic.
+- The articles are licensed under the [Creative Commons BY-ND 4.0 license](https://creativecommons.org/licenses/by-nd/4.0/).
+  - You are free to copy and distribute the articles.
+  - Please credit me if you quote or reference an article.
+  - Please keep the article as-is and not as part of derivative work.
+- For the typesetting I use:
+  - The [LaTeX](https://www.latex-project.org/) typesetting system.
+  - [TeXworks version 0.6.6](https://tug.org/texworks/) implementation of LaTeX.
+- For drawings I use:
+  - The [Tikz](https://en.wikipedia.org/wiki/PGF/TikZ) vector drawing system.
+  - [TikzEdt version 0.2.3.0](http://www.tikzedt.org/) editor implementation of Tikz.
