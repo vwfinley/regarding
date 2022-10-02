@@ -1,4 +1,4 @@
-# Navigation
+# Series
 - [Series A : Regarding Mathematics](A/README.md)
 - [Series B : Regarding TBD](B/README.md)
 
@@ -9,7 +9,7 @@
 - The title of each article begins with the word "**Regarding**".
 - The id of each article has the capital letter of the series and the order of the article in that series.  For example **A-004**.
 - Each article is produced as a .pdf file.
-- Each folder in the repo has a README.md file with navigation links to the contents.  You may need to scroll down to see the links.
+- Each series folder in the repo has a README.md file with links to the articles.  You may need to scroll down to see the links.
 
 # Motivation
 Upon reviewing my old notebook, I became disappointed with what I found:
