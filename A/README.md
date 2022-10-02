@@ -1,4 +1,4 @@
-# Navigation
+# Articles
 - [A-001 Regarding Circles and Tangent Lines](A-001/A-001.pdf)
 - [A-002 Regarding Fillets](A-002/A-002.pdf)
 - [A-003 Regarding Coplanar Circles](A-003/A-003.pdf)
