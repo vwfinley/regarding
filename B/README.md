@@ -1,1 +1,2 @@
-"TBD WORK IN PROGRESS" 
+# Series B: Regarding ??? 
+- "TBD : WORK IN PROGRESS" 
