@@ -15,7 +15,7 @@
 - I began collecting my personal thoughts and notes into short articles toward the end of 2021.
 - I moved articles from my hard-drive onto GitHub at the end of September 2022. 
 - Each article contains a brief bite-sized topic.
-- The articles are licensed under the [Creative Commons BY-ND 4.0 license](https://creativecommons.org/licenses/by-nd/4.0/).
+- See [license](LICENSE.md). The articles are licensed under the [Creative Commons BY-ND 4.0 license](https://creativecommons.org/licenses/by-nd/4.0/).
   - You are free to copy and distribute the articles.
   - Please credit me if you quote or reference an article.
   - Please keep the article as-is and not as part of some derivative work.
