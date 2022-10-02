@@ -4,7 +4,7 @@
 
 # Regarding the *"regarding"* repository
 - This repository contains my personal notes **regarding** various: topics, interests and hobbies.
-- It contains series of articles **regarding** those various topics.
+- It contains several series of articles **regarding** those various topics.
 - Each series begins with a capital letter.  For example the series **regarding** mathematics begins with capital **A**.
 - The title of each article begins with the word "**Regarding**".
 - The id of each article has the capital letter of the series and the order of the article in that series.  For example **A-004**.
