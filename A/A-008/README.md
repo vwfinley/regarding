@@ -1,4 +1,4 @@
 TBD, WORK IN PROGRESS
-Regarding Applied Multiplication
-Scale, ratios, fractions, decimals, percents, architects scales (1/n inch per foot).
-Slide rules
+- Regarding Applied Multiplication
+- Scale, ratios, fractions, decimals, percents, architects scales (1/n inch per foot).
+- Slide rules
