@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.29)  1 OCT 2022 07:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12.10) (preloaded format=pdflatex 2022.1.29)  2 OCT 2022 07:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -785,7 +785,7 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
 (lastpage)             ! on input line 89.
 \Hy@linkcounter=\count325
-(abstract.tex) (problem.tex) (solution.tex (fig_a.tex
+(abstract.tex) (problem.tex) (solution.tex (fig_a.tikz
 Missing character: There is no d in font nullfont!
 Missing character: There is no e in font nullfont!
 Missing character: There is no c in font nullfont!
@@ -819,7 +819,7 @@ Missing character: There is no ] in font nullfont!
 
 
 ]
-(fig_b.tex
+(fig_b.tikz
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -834,7 +834,7 @@ Overfull \hbox (48.11366pt too wide) in paragraph at lines 92--72
  [][] 
  []
 
-[2] (fig_c.tex
+[2] (fig_c.tikz
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
 Missing character: There is no ; in font nullfont!
@@ -868,8 +868,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--12
 AED: lastpage setting LastPage
 [5] (A-004.aux) ) 
 Here is how much of TeX's memory you used:
- 17497 strings out of 478593
- 353300 string characters out of 2844604
+ 17498 strings out of 478593
+ 353317 string characters out of 2844604
  647258 words of memory out of 3000000
  35358 multiletter control sequences out of 15000+600000
  479286 words of font info for 62 fonts, out of 8000000 for 9000
