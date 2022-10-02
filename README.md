@@ -6,7 +6,7 @@
 - This repository contains my personal notes **regarding** various: topics, interests and hobbies.
 - It contains several series of articles **regarding** those various topics.
 - Each article is produced as a .pdf file.
-- Each series begins with a capital letter.  For example the series **regarding** mathematics begins with capital **A**.
+- Each series begins with a capital letter.  For example, the series **regarding** mathematics begins with capital **A**.
 - The title of each article begins with the word "**Regarding**".
 - The id of each article has the capital letter of the series and the order of the article in that series.  For example **A-004**.
 - Each series folder in the repo has a README.md file with links to the articles.  You may need to scroll down to see the links.
