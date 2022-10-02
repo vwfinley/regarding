@@ -1,4 +1,4 @@
-# Series
+# Regarding Series
 - [Series A : Regarding Mathematics](A/README.md)
 - [Series B : Regarding TBD](B/README.md)
 
