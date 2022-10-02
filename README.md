@@ -6,8 +6,8 @@
 This repository contains my personal notes **regarding** various: topics, interests and hobbies. 
 
 It contains a series of articles **regarding** those various topics.
-Each series begins with a capital letter.  For example the mathematics series begins with capital **A**.
-The title of each article begins with the word "**regarding**".
+Each series begins with a capital letter.  For example the series **regarding** mathematics begins with capital **A**.
+The title of each article begins with the word "**Regarding**".
 
 # Motivation
 Upon reviewing my old notebook, I became disappointed with what I found:
