@@ -1,1 +1,3 @@
-"TBD" 
+- WORK IN PROGRESS
+- Regarding tangent spirals
+- The math behind spirial transistion curves.
