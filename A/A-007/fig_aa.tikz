@@ -9,83 +9,61 @@
 	\coordinate (t1s) at (30:2);
 	\coordinate (t2s) at (-30:2);
 
-%	\coordinate (Origin0) at (0, -0*0.6);
-%	\coordinate (Origin1) at (0, -1*1.6);
+	% axes
+	\draw[lightgray, -{Latex[scale=1.5]}] (0, -1.5) -- (0, 1.5)  node [above] {$y$};	
+	\draw[lightgray, -{Latex[scale=1.5]}] (-1.5,0) -- (1.5,0)  node [right] {$x$};		
 
-	\draw[lightgray, -{Latex[scale=1.5]}] (0, -6.0) -- (0, 1.5)  node [above] {$y$};
+	% right side
+	\begin{scope} [shift={(-0.34202, 0)}]		
+	\begin{scope}[xscale=1,yscale=1]			
+		\draw[lightgray] (0,0) circle [radius=1]; % full-circle
+		\draw[lightgray, fill=lightgray!15] (0,0) -- (0:1) arc [start angle=0, delta angle=-70, radius=1] -- (0.34202,0.0); % lower wedge-region		
+		\draw[fill=lightgray!50] (0,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region					
+	\end{scope}
+	\end{scope}
 
+	% left side
+	\begin{scope} [shift={(0.34202, 0)}]		
+	\begin{scope}[xscale=-1,yscale=1]
+		\draw[lightgray] (0,0) circle [radius=1]; % full-circle
+		\draw[lightgray, fill=lightgray!15] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=-70, radius=1] -- (0.34202,0.0); % lower wedge-region
+		\draw[fill=lightgray!15] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region
+	\end{scope}
+	\end{scope}
 
-
-
-
-		\begin{scope} [shift={(-0.34202, 0)}]
-			\begin{scope} [shift={(0.34202, 0)}]	
-%				\node [anchor=west] at (-75:0.4) {Stage 3: Reflect};
-			\end{scope}
+	% right side
+	\begin{scope} [shift={(-0.34202, 0)}]		
+	\begin{scope}[xscale=1,yscale=1]		
+		% radius and label r
+		\draw[black, -{Latex[scale=1.0]}] (0,0) -- (45:1) node [shift={(-0.5, -0.4)}]{$r$}; 
 		
-			\begin{scope} [shift={(0.34202, 0)}]	
-				\draw[lightgray, -{Latex[scale=1.5]}] (-1.5,0) -- (1.5,0)  node [right] {$x$};		
-			\end{scope}
-			
-%			\draw[lightgray] (0:1) arc [start angle=0, delta angle=360, radius=1]; % full-circle
-%			\draw[lightgray] (0.34202,0) circle [radius=1]; % full-circle
-			\draw[lightgray] (0,0) circle [radius=1]; % full-circle
-			
-			\draw[fill=lightgray!50] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % wedge-region
-
-			\begin{scope} [shift={(0.68404, 0)}]		
-			\begin{scope}[xscale=-1,yscale=1]
-				\draw[lightgray] (0,0) circle [radius=1]; % full-circle
-				\draw[fill=lightgray!15] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % wedge-region
-			\end{scope}
-			\end{scope}
-
-			\begin{scope} [shift={(0, 0)}]
-				\draw  node [shift={(-0.07, -0.13)}]{$P'$};
-			\end{scope}
-			
-			\begin{scope} [shift={(0.68404, 0)}]
-				\draw  node [shift={(-0.0, -0.13)}]{$P''$};
-			\end{scope}
-
-			\begin{scope} [shift={(1, 0 )}]
-				\draw [fill=black] circle (0.02) node [shift={(0.0, -0.15)}]{$P'_b$};
-			\end{scope}
-
-			\begin{scope} [shift={(70:1.0)}]
-				\draw [fill=black] circle (0.02) node [shift={(0.05, 0.11)}]{$P'_c$};
-			\end{scope}
-
-			\begin{scope} [shift={(0.68404, 0)}]
-			\begin{scope}[xscale=-1,yscale=1]		
-				\draw[lightgray, -{Latex[scale=1.0]}] (0,0) -- (45:1);% node [shift={(0.2, -0.4)}]{$r$}; % radius and label r
-			\end{scope}
-			\end{scope}
-
-			\begin{scope} [shift={(0, 0)}]
-				\draw[black, -{Latex[scale=1.0]}] (0,0) -- (45:1) node [shift={(-0.49, -0.4)}]{$r$}; % radius and label r
-			\end{scope}
-
-%			\draw node [shift={(0.15, 0.056)}]{$a$}; %label a
-%			\draw node [shift={(0.67, 0.073)}]{$b$}; %label b
-%			\draw node [shift={(0.41, 0.35)}]{$c$}; %label c
-
-			\begin{scope} [shift={(0, 0)}]
-				\draw (-0.025,0) -- (0.025, 0); % centermark
-				\draw (0, -0.025) -- (0, 0.025);
-			\end{scope}
-
-			\begin{scope} [shift={(0.68404, 0)}]
-				\draw (-0.025,0) -- (0.025, 0); % centermark
-				\draw (0, -0.025) -- (0, 0.025);
-			\end{scope}
-
-			\begin{scope} [shift={(0.34202, 0 )}]
-%				\draw (90: 0.1) -- ++(0: -0.1) -- ++(-90: 0.1) ; % square
-				\draw [fill=black] circle (0.02) node [shift={(0.0, -0.15)}]{$P'_a$};
-			\end{scope}
+		% centermark
+		\draw (-0.025,0) -- (0.025, 0);
+		\draw (0, -0.025) -- (0, 0.025);				
+		
+		% labels
+		\draw  node [shift={(-0.07, -0.13)}]{$P'$};		
+		\draw [fill=black, shift={(0.34202, 0)}] circle (0.02) node [shift={(0.0, -0.15)}]{$P'_a$};				
+		\draw [fill=black, shift={(1, 0)}] circle (0.02) node [shift={(0.0, -0.15)}]{$P'_b$};				
+		\begin{scope} [shift={(70:1.0)}]
+			\draw [fill=black] circle (0.02) node [shift={(0.05, 0.11)}]{$P_c$};
 		\end{scope}
+	\end{scope}
+	\end{scope}
 
-
+	% left side
+	\begin{scope} [shift={(0.34202, 0)}]		
+	\begin{scope}[xscale=-1,yscale=1]		
+		% radius
+		\draw[lightgray, -{Latex[scale=1.0]}] (0,0) -- (45:1);
+		
+		% centermark
+		\draw (-0.025,0) -- (0.025, 0); 
+		\draw (0, -0.025) -- (0, 0.025);				
+		
+		% labels				
+		\draw  node [shift={(-0.07, -0.13)}]{$P''$};				
+	\end{scope}
+	\end{scope}
 
 \end{tikzpicture}
