@@ -1,4 +1,4 @@
-\begin{tikzpicture}[x=1in,y=1in]
+\begin{tikzpicture}[x=1in, y=1in]
 
 	\coordinate (origin) at (0,0);
 	\coordinate (I) at (0,0);
@@ -31,6 +31,21 @@
 	\end{scope}
 	\end{scope}
 
+	% left side
+	\begin{scope} [shift={(0.34202, 0)}]		
+	\begin{scope}[xscale=-1,yscale=1]		
+		% radius
+		\draw[lightgray, -{Latex[scale=1.0]}] (0,0) -- (45:1);
+		
+		% centermark
+		\draw (-0.025,0) -- (0.025, 0); 
+		\draw (0, -0.025) -- (0, 0.025);				
+		
+		% labels				
+		\draw  node [shift={(-0.07, -0.13)}]{$P''$};				
+	\end{scope}
+	\end{scope}
+
 	% right side
 	\begin{scope} [shift={(-0.34202, 0)}]		
 	\begin{scope}[xscale=1,yscale=1]		
@@ -48,21 +63,6 @@
 		\begin{scope} [shift={(70:1.0)}]
 			\draw [fill=black] circle (0.02) node [shift={(0.05, 0.11)}]{$P_c$};
 		\end{scope}
-	\end{scope}
-	\end{scope}
-
-	% left side
-	\begin{scope} [shift={(0.34202, 0)}]		
-	\begin{scope}[xscale=-1,yscale=1]		
-		% radius
-		\draw[lightgray, -{Latex[scale=1.0]}] (0,0) -- (45:1);
-		
-		% centermark
-		\draw (-0.025,0) -- (0.025, 0); 
-		\draw (0, -0.025) -- (0, 0.025);				
-		
-		% labels				
-		\draw  node [shift={(-0.07, -0.13)}]{$P''$};				
 	\end{scope}
 	\end{scope}
 
