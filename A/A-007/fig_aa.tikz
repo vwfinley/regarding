@@ -43,6 +43,7 @@
 		
 		% labels				
 		\draw  node [shift={(-0.07, -0.13)}]{$P''$};				
+		\draw  node [shift={(-1, -1.1)}]{$C_A$};				
 	\end{scope}
 	\end{scope}
 
@@ -63,6 +64,7 @@
 		\begin{scope} [shift={(70:1.0)}]
 			\draw [fill=black] circle (0.02) node [shift={(0.05, 0.11)}]{$P_c$};
 		\end{scope}
+		\draw  node [shift={(1, -1.1)}]{$C_B$};					
 	\end{scope}
 	\end{scope}
 
