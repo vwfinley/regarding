@@ -18,7 +18,7 @@
 	\begin{scope}[xscale=1,yscale=1]			
 		\draw[lightgray] (0,0) circle [radius=1]; % full-circle
 		\draw[lightgray, fill=lightgray!15] (0,0) -- (0:1) arc [start angle=0, delta angle=-70, radius=1] -- (0.34202,0.0); % lower wedge-region		
-		\draw[fill=lightgray!50] (0,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region					
+		\draw[fill=lightgray!75] (0,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region					
 	\end{scope}
 	\end{scope}
 
@@ -27,7 +27,7 @@
 	\begin{scope}[xscale=-1,yscale=1]
 		\draw[lightgray] (0,0) circle [radius=1]; % full-circle
 		\draw[lightgray, fill=lightgray!15] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=-70, radius=1] -- (0.34202,0.0); % lower wedge-region
-		\draw[fill=lightgray!15] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region
+		\draw[fill=lightgray!30] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region
 	\end{scope}
 	\end{scope}
 
@@ -35,7 +35,7 @@
 	\begin{scope} [shift={(0.34202, 0)}]		
 	\begin{scope}[xscale=-1,yscale=1]		
 		% radius
-		\draw[lightgray, -{Latex[scale=1.0]}] (0,0) -- (45:1);
+		\draw[darkgray!60, -{Latex[scale=1.0]}] (0,0) -- (45:1);
 		
 		% centermark
 		\draw (-0.025,0) -- (0.025, 0); 
