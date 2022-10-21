@@ -1,23 +1,38 @@
 \section{Solution}
-
-Blah, blah, blah\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022} 
-
-Blah, blah, blah\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vincent W. Finley, September 2022} 
-
-\begin{itemize}
-\item TBD 1
-\item TBD 2
-\end{itemize}
-
+An alternate Tangent Ogive construction method is to first draw an intersection of equal circles, then retain half of the intersection.
+This method is presented in figure \ref{fig:fig_a}.
+It is identical to that of stage 3 of figure 1 in the previous 
+article\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vincent W. Finley, September 2022}.
+The similarity between these two figures is readily seen.  
 \begin{figure}[ht!]
 \centering
 \input{fig_a.tikz}
 \caption{Tangent Ogive Alternate Construction}
 \label{fig:fig_a}
 \end{figure}
+In this article the ogive is drawn directly in a single step, whereas, the previous article extends the process with laborious detail.
+Each article has something useful to teach, as each approaches the problem from a different direction.
+The prior article emphasizes the ogive geometry.
+However, this article emphasizes relationship of equal coplanar circles.
+It describes tangent ogives and intersection of equal circles are related.
+Furthermore, it makes connections with another previous article\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022}.
 
-\subsection{Comparison to A-005.  Area overlapping coplanar circles } 
+\subsection{Comparison to A-005. Overlapping equal coplanar circles}
+In the article regarding equal coplanar circles, figure 2 show cases where equal coplanar circles will have regions of intersection.
+These are cases 5-7 specifically, with cases 1 and 2 being redundant.
+For all cases resulting in regions of intersecion, only a pair of Class C outer tangent lines are possible.
 
+Recalling the conditions for cases 5-7:
+\begin{itemize}
+\item Case 5: $0 < x_A < r_A$
+\item Case 6: $x_A = r_A$
+\item Case 7: $r_A < x_A < 2 \cdot r_A$
+\end{itemize}
+
+Combining the three conditions yields a composite condition which circle pairs must satisfiy to have an intersection.
+$0 < x_A  < 2 * r_A$
+
+The cases 
 - Another way to view ogive is half of a circle intersection.+
 - Alternate way to construct Ogives (intersection of semi circles)
 - Relate to A-005 which cases?  what are regions of overlap?
@@ -25,6 +40,8 @@ Blah, blah, blah\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vince
 - Describe the math
 - relate x separation of circles to b on ogive.  distance (of x circle intersections) = 2*b
 - give radius and distance between x-intersections ogive can be calculated.
+
+
 
 
 \subsection{Integrate area} 
