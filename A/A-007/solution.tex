@@ -1,5 +1,6 @@
 \section{Solution}
-An alternate Tangent Ogive construction method is to first draw an intersection of equal circles, then retain half of the intersection.
+\subsection{Alternate Construction}
+An alternate tangent ogive construction method is to first draw an intersection of equal circles, then retain half of the intersection.
 This method is presented in figure \ref{fig:fig_a}.
 It is identical to that of stage 3 of figure 1 in the previous 
 article\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vincent W. Finley, September 2022}.
@@ -11,26 +12,50 @@ The similarity between these two figures is readily seen.
 \label{fig:fig_a}
 \end{figure}
 In this article the ogive is drawn directly in a single step, whereas, the previous article extends the process with laborious detail.
-Each article has something useful to teach, as each approaches the problem from a different direction.
+Each article has something useful to teach, as each approaches tangent ogive construction from a different direction.
 The prior article emphasizes the ogive geometry.
 However, this article emphasizes relationship of equal coplanar circles.
 It describes tangent ogives and intersection of equal circles are related.
-Furthermore, it makes connections with another previous article\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022}.
+Furthermore, it makes connections with another previous article.
 
 \subsection{Comparison to A-005. Overlapping equal coplanar circles}
-In the article regarding equal coplanar circles, figure 2 show cases where equal coplanar circles will have regions of intersection.
+Figure 2 of article A-005\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022}, shows cases where equal coplanar circles will have regions of intersection.
 These are cases 5-7 specifically, with cases 1 and 2 being redundant.
-For all cases resulting in regions of intersecion, only a pair of Class C outer tangent lines are possible.
+It is worth noting for all cases resulting in regions of intersecion, only a pair of Class C outer tangent lines are possible.
 
-Recalling the conditions for cases 5-7:
+Recall the conditions for cases 5-7:
 \begin{itemize}
 \item Case 5: $0 < x_A < r_A$
 \item Case 6: $x_A = r_A$
 \item Case 7: $r_A < x_A < 2 \cdot r_A$
 \end{itemize}
 
-Combining the three conditions yields a composite condition which circle pairs must satisfiy to have an intersection.
-$0 < x_A  < 2 * r_A$
+Now, combining the three conditions yields a general condition, which circle pairs must satisfiy in order to have a region of intersection:
+\begin{equation}
+\boxed{
+0 < x_A  < 2 \cdot r_A
+}
+\end{equation}
+
+Since circles $C_B$ and $C_A$ are equal, their radii $r_A = r_B = r$ are equal. Furthermore, the value $x_A$ is simply the
+distance beween the centers of circles $C_B$ and $C_A$ as
+described by A-004\footnote{\label{noteA004}A-004, Regarding Classification of Coplanar Circle Tangents, Vincent W. Finley, April 2022} and A-005.
+In those articles $C_B$ was fixed at the origin and $C_A$ was permitted to vary some
+distance $x_A$ along the non-negative x-axis.
+
+On Stages 2 and 3 in Figure 1 from article A-006, it is seen $C_B$ is centered about point $P'$ and $C_A$ is centered about $P''$.
+These center points lie along the x-axis some distance $a$ from the origin.  This is confirmed by equations 8a and 9a in A-006, where
+locatons $P'$ and $P''$ are given as $P'=(-a,0)$ and $P''=(a,0)$ respectively.
+
+Therefore the relationship between variable $x_A$ in A-005 and variable $a$ in A-006 can be described as:
+\begin{equation}
+\boxed{
+x_A = 2 \cdot a
+}
+\end{equation}
+This relationship bridges articles A-005 and A-006 together.
+Bridging of the articles should have been expected since both merely deal with overlapping equal coplanar circles whose centers are separated by some distance. 
+
 
 The cases 
 - Another way to view ogive is half of a circle intersection.+
