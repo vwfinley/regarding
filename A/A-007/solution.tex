@@ -1,3 +1,10 @@
+%- Another way to view ogive is half of a circle intersection.+
+%- Alternate way to construct Ogives (intersection of semi circles)
+%- Relate to A-005 which cases?  what are regions of overlap?
+%- A-006 stage4 check is dead give away that drawing is an ogive. 
+%- Describe the math
+%- relate x separation of circles to b on ogive.  distance (of x circle intersections) = 2*b
+%- give radius and distance between x-intersections ogive can be calculated.
 \section{Solution}
 \subsection{Alternate Construction}
 An alternate tangent ogive construction method is to first draw an intersection of equal circles, then retain half of the intersection.
@@ -18,7 +25,7 @@ However, this article emphasizes relationship of equal coplanar circles.
 It describes tangent ogives and intersection of equal circles are related.
 Furthermore, it makes connections with another previous article.
 
-\subsection{Comparison to A-005. Overlapping equal coplanar circles}
+\subsection{Relationship between tangent ogives and circle intersections. Comparing to A-005 and A-006.}
 Figure 2 of article A-005\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022}, shows cases where equal coplanar circles will have regions of intersection.
 These are cases 5-7 specifically, with cases 1 and 2 being redundant.
 It is worth noting for all cases resulting in regions of intersecion, only a pair of Class C outer tangent lines are possible.
@@ -81,26 +88,13 @@ x_A = \frac{c^2 - b^2}{b}
 \end{equation}
 Note: equations: 6 and 7; from A-006 are unaffected since they are independant of $a$, and are therefore independent of $x_A$.
 
-The cases 
-- Another way to view ogive is half of a circle intersection.+
-- Alternate way to construct Ogives (intersection of semi circles)
-- Relate to A-005 which cases?  what are regions of overlap?
-- A-006 stage4 check is dead give away that drawing is an ogive. 
-- Describe the math
-- relate x separation of circles to b on ogive.  distance (of x circle intersections) = 2*b
-- give radius and distance between x-intersections ogive can be calculated.
+\subsection{Finding area of ogive cross-section} 
+The area of the ogive cross-section is found by doubling the area under the circle between points $P_a$ and $P_b$ in figure \ref{fig:fig_a}.
 
+By remembering figure \ref{fig:fig_a} is just Stage 3 from Figure 1 in article A-006, one can work backward to Stage 1.
+Conceptualizing the half-ogive as shown in Stage 1 makes the integration that follows more apparent.
 
-
-
-\subsection{Integrate area} 
-
-The area of the ogive cross section can be found by doubling the area under the circle
-between points $P_a$ and $P_b$.
-
-The easiest way to find the integral of a circle with rectangular limits of integration is to lookup the integral in a table of
-integrals.
-
+The simplist way to find the integral of a circle with rectangular limits of integration is to refer to an integral table.
 From the table of integrals\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, See integral \#40 inside front cover} it is found the indefinite integral 
 with respect to $x$ of circle with radius $r$ is:
 \begin{align*}
@@ -120,17 +114,18 @@ Substituing in $a$ and $r$ as the limits of integration yields,
 &\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right) \\
 &= \frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
 \end{align*}
-The area $A$ of the ogive cross-section is twice the area of definite integral.
+The area $A_{to}$ of the ogive cross-section is twice the area of definite integral, where subscript "$to$" is used to denote "tangent ogive".
 \begin{equation*}
-A = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
+A_{to} = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
 \end{equation*}
 \begin{equation}
 \boxed{
-A = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
+A_{to} = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
 }
 \end{equation}
 
-\subsection{Integrate volume} 
+\subsection{Finding volume of tangent ogive} 
+
 
 
 \subsection{Area and Volume of circle intersection}
