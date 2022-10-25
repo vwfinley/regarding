@@ -114,13 +114,13 @@ Substituing in $a$ and $r$ as the limits of integration yields,
 &\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right) \\
 &= \frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
 \end{align*}
-The area $A_{to}$ of the ogive cross-section is twice the area of definite integral, where subscript "$to$" is used to denote "tangent ogive".
+The area $A$ of the ogive cross-section is twice the area of definite integral.
 \begin{equation*}
-A_{to} = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
+A = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
 \end{equation*}
 \begin{equation}
 \boxed{
-A_{to} = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
+A = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
 }
 \end{equation}
 
@@ -141,32 +141,34 @@ r^2 &= (x-h)^2 + y^2\\
 \begin{equation}
 u(y) = x = h + \sqrt{r^2 - y^2} \label{eq:uy}
 \end{equation}
-Using the "Volumes by Disks Perpendicular to the y-Axis"\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, page 380, equation \#7.} to integrate equation \ref{eq:uy}.
+Using the ``Volumes by Disks Perpendicular to
+the y-Axis''\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, page 380, equation \#7.}
+method to integrate equation \ref{eq:uy}.
 \begin{equation}
 V = \int^d_c\pi[u(y)]^2\,dy \label{eq:V}
 \end{equation}
-
+Substituting equation \ref{eq:uy} into \ref{eq:V} yields:
 \begin{align*}
 V &= \int^c_0\pi\left[h + \sqrt{r^2 - y^2}\right]^2\,dy\\
 &= \pi \int^c_0\left[h^2 + 2h\sqrt{r^2 - y^2} + r^2 - y^2\right]\,dy\\
 &= \pi \left[h^2y + hy\sqrt{r^2 - y^2} + hr^2 sin^{-1}\left(\frac{y}{r}\right)+ r^2y - \frac{y^3}{3}\right]^c_0\\
 &= \pi \left[h^2c + hc\sqrt{r^2 - c^2} + hr^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]
 \end{align*}
-%\begin{align*}
-%V &= \pi h^2c + \pi hc\sqrt{r^2 - c^2}  \\ 
-%&\phantom{{}=1}+ \pi hr^2 sin^{-1}\left(\frac{c}{r}\right) + \pi r^2c - \frac{\pi c^3}{3}
-%\end{align*}
-
 Substitute $-a$ for $h$.  Also from equation 3 in A-006, substitute $\sqrt{r^2 - c^2} = a$.  Then factor out c and regroup.
 \begin{align*}
 V &= \pi \left[a^2c - ac\sqrt{r^2 - c^2} - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right] \\
 &= \pi \left[a^2c - a^2c - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
-&= \pi \left[r^2c - \frac{c^3}{3} - ar^2 sin^{-1}\left(\frac{c}{r}\right)\right]\\
-&= \pi \left[r^2\sqrt{r^2 - a^2} - \frac{(r^2 - a^2)^{3/2}}{3} - ar^2 sin^{-1}\left(\frac{\sqrt{r^2 - a^2}}{r}\right)\right]
+&= \pi \left[r^2c - \frac{c^3}{3} - ar^2 sin^{-1}\left(\frac{c}{r}\right)\right]
 \end{align*}
-
-
-%TODO: Substitute for c=\sqrt{r^2 - a^2} and h=-a
+Finally, substitute in $c = \sqrt{r^2 - a^2}$ and multiply through by $\pi$.
+\begin{equation}
+\boxed{
+\begin{split}
+V = \pi r^2\sqrt{r^2 - a^2} - \frac{\pi (r^2 - a^2)^{3/2}}{3} \\
+- \pi ar^2 sin^{-1}\left(\frac{\sqrt{r^2 - a^2}}{r}\right)
+\end{split}
+}
+\end{equation}
 
 \subsection{Area of circle intersection}
 - Ogive is half of intersection, intersection is twice ogive
