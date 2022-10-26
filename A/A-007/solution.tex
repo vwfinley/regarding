@@ -94,22 +94,12 @@ The area of the ogive cross-section is found by doubling the area under the circ
 By remembering figure \ref{fig:fig_a} is just Stage 3 from Figure 1 in article A-006, one can work backward to Stage 1.
 Conceptualizing the half-ogive as shown in Stage 1 makes the integration that follows more apparent.
 
-The simplist way to find the integral of a circle with rectangular limits of integration is to refer to an integral table.
-From the table of integrals\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, See integral \#40 inside front cover.} it is found the indefinite integral 
-with respect to $x$ of circle with radius $r$ is:
+%The simplist way to find an integral of a circle with rectangular limits of integration is to refer to an integral table.
+From a table of integrals\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, See integral \#40 inside front cover.} the 
+definite integral: with respect to $x$, of the circle with having radius $r$, over limits $a$ and $r$; is found to be:
 \begin{align*}
-\int \sqrt{a^2 - u^2} \,du &= \frac{u}{2}\sqrt{a^2 - u^2} + \frac{a^2}{2}sin^{-1}\left(\frac{u}{a}\right) + C \\
-\int \sqrt{r^2 - x^2} \,dx &= \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right) + C
-\end{align*}
-The definite integral with limits $a$ and $b$ would be:
-\begin{align*}
-\left. F(x) \right]^b_a &= \int^b_a \sqrt{r^2 - x^2}\,dx \\
-&=\left. \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right)\right]^b_a \\
-&=\frac{b}{2}\sqrt{r^2 - b^2} + \frac{r^2}{2}sin^{-1}\left(\frac{b}{r}\right) \\ 
-&\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
-\end{align*}
-Substituing in $a$ and $r$ as the limits of integration yields,
-\begin{align*}
+\left. F(x) \right]^r_a &= \int^r_a \sqrt{r^2 - x^2}\,dx \\
+&=\left. \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right)\right]^r_a \\
 &=\frac{r}{2}\sqrt{r^2 - r^2} + \frac{r^2}{2}sin^{-1}\left(\frac{r}{r}\right) \\ 
 &\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right) \\
 &= \frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
@@ -125,21 +115,18 @@ A = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right
 \end{equation}
 
 \subsection{Finding volume of tangent ogive} 
-%\left. F(x) \right]^b_a &= \int^b_a \sqrt{r^2 - x^2} \,dx \\
-%&=\left. \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right)\right]^b_a \\
-%&=\frac{b}{2}\sqrt{r^2 - b^2} + \frac{r^2}{2}sin^{-1}\left(\frac{b}{r}\right) \\ 
-%&\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
-
-
+Starting with the standard equation of a circle, substitute in $P'=(-a, 0)$, for $(h, k)$.
+Doing so will give the translated circle as shown in A-006, Figure 1, Stage 2.
+Solve the equation of $x$, thereby yielding a function of $y$.
 \begin{align*}
 r^2 &= (x-h)^2 + (y-k)^2 \\
-r^2 &= (x-h)^2 + (y-0)^2\\
-r^2 &= (x-h)^2 + y^2\\
-(x-h)^2 &= r^2 - y^2 \\
- x-h &= \sqrt{r^2 - y^2}
+r^2 &= (x-(-a))^2 + (y-0)^2\\
+r^2 &= (x+a)^2 + y^2\\
+(x+a)^2 &= r^2 - y^2 \\
+ x+a &= \sqrt{r^2 - y^2}
 \end{align*}
 \begin{equation}
-u(y) = x = h + \sqrt{r^2 - y^2} \label{eq:uy}
+u(y) = x = -a + \sqrt{r^2 - y^2} \label{eq:uy}
 \end{equation}
 Using the ``Volumes by Disks Perpendicular to
 the y-Axis''\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, page 380, equation \#7.}
@@ -149,16 +136,12 @@ V = \int^d_c\pi[u(y)]^2\,dy \label{eq:V}
 \end{equation}
 Substituting equation \ref{eq:uy} into \ref{eq:V} yields:
 \begin{align*}
-V &= \int^c_0\pi\left[h + \sqrt{r^2 - y^2}\right]^2\,dy\\
-&= \pi \int^c_0\left[h^2 + 2h\sqrt{r^2 - y^2} + r^2 - y^2\right]\,dy\\
-&= \pi \left[h^2y + hy\sqrt{r^2 - y^2} + hr^2 sin^{-1}\left(\frac{y}{r}\right)+ r^2y - \frac{y^3}{3}\right]^c_0\\
-&= \pi \left[h^2c + hc\sqrt{r^2 - c^2} + hr^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]
-\end{align*}
-Substitute $-a$ for $h$.  Also from equation 3 in A-006, substitute $\sqrt{r^2 - c^2} = a$.  Then factor out c and regroup.
-\begin{align*}
-V &= \pi \left[a^2c - ac\sqrt{r^2 - c^2} - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right] \\
-&= \pi \left[a^2c - a^2c - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
-&= \pi \left[r^2c - \frac{c^3}{3} - ar^2 sin^{-1}\left(\frac{c}{r}\right)\right]
+V &= \int^c_0\pi\left[-a + \sqrt{r^2 - y^2}\right]^2\,dy\\
+&= \pi \int^c_0\left[a^2 - 2a\sqrt{r^2 - y^2} + r^2 - y^2\right]\,dy\\
+&= \pi \left[a^2y - 2ay\sqrt{r^2 - y^2} - 2ar^2 sin^{-1}\left(\frac{y}{r}\right)+ r^2y - \frac{y^3}{3}\right]^c_0\\
+&= \pi \left[a^2c - 2ac\sqrt{r^2 - c^2} - 2ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
+&= \pi \left[a^2c - 2a^2c - 2ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
+&= \pi \left[a^2c + r^2c - \frac{c^3}{3} - 2ar^2 sin^{-1}\left(\frac{c}{r}\right)\right]
 \end{align*}
 Finally, substitute in $c = \sqrt{r^2 - a^2}$ and multiply through by $\pi$.
 \begin{equation}
