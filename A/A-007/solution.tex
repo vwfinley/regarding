@@ -104,22 +104,27 @@ definite integral: with respect to $x$, of the circle with having radius $r$, ov
 &\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right) \\
 &= \frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
 \end{align*}
-The area $A$ of the ogive cross-section is twice the area of definite integral.
+The area $A_{to}$ of the tangent ogive cross-section is twice the area of definite integral.
 \begin{equation*}
-A = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
+A_{to} = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
 \end{equation*}
 \begin{equation}
+A_{to} = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
+\end{equation}
+Recognizing $\sqrt{r^2 - a^2}=c$ yields the equation of $A_{to}$ in a more convenient form.
+\begin{equation}
 \boxed{
-A = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
+A_{to} = \frac{\pi r^2}{2} - ac - r^2 sin^{-1}\left(\frac{a}{r}\right) \label{eq:ato}
 }
 \end{equation}
 
 \subsection{Finding volume of tangent ogive} 
-Starting with the standard equation of a circle, substitute in $P'=(-a, 0)$, for $(h, k)$.
-Doing so will give the translated circle as shown in A-006, Figure 1, Stage 2.
-Solve the equation of $x$, thereby yielding a function of $y$.
+Starting with the standard form of the equation of a circle\footnote{ISBN 0-471-85045-4, Anton, page 49, equation \#1.}, substitute
+in $P'=(-a, 0)$ in place of $(x_0, y_0)$.
+Doing so will translate the circle center to $P'$ as shown in figure \ref{fig:fig_a} and in A-006, Figure 1, Stage 2.
+Solve the equation for $x$, thereby yielding a function of $y$.
 \begin{align*}
-r^2 &= (x-h)^2 + (y-k)^2 \\
+r^2 &= (x-x_0)^2 + (y-y_0)^2 \\
 r^2 &= (x-(-a))^2 + (y-0)^2\\
 r^2 &= (x+a)^2 + y^2\\
 (x+a)^2 &= r^2 - y^2 \\
@@ -129,43 +134,90 @@ r^2 &= (x+a)^2 + y^2\\
 u(y) = x = -a + \sqrt{r^2 - y^2} \label{eq:uy}
 \end{equation}
 Using the ``Volumes by Disks Perpendicular to
-the y-Axis''\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, page 380, equation \#7.}
+the y-Axis''\footnote{ISBN 0-471-85045-4, Anton, page 380, equation \#7.}
 method to integrate equation \ref{eq:uy}.
 \begin{equation}
 V = \int^d_c\pi[u(y)]^2\,dy \label{eq:V}
 \end{equation}
-Substituting equation \ref{eq:uy} into \ref{eq:V} yields:
+Substituting equation \ref{eq:uy} into \ref{eq:V}, integrating from y=0 to y=c (A-006, Fig 1, Stage 2), and recognizing $\sqrt{r^2 - c^2} = a$ (A-006, Eq 3); yields:
 \begin{align*}
-V &= \int^c_0\pi\left[-a + \sqrt{r^2 - y^2}\right]^2\,dy\\
+V_{to} &= \int^c_0\pi\left[-a + \sqrt{r^2 - y^2}\right]^2\,dy\\
 &= \pi \int^c_0\left[a^2 - 2a\sqrt{r^2 - y^2} + r^2 - y^2\right]\,dy\\
-&= \pi \left[a^2y - 2ay\sqrt{r^2 - y^2} - 2ar^2 sin^{-1}\left(\frac{y}{r}\right)+ r^2y - \frac{y^3}{3}\right]^c_0\\
-&= \pi \left[a^2c - 2ac\sqrt{r^2 - c^2} - 2ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
-&= \pi \left[a^2c - 2a^2c - 2ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
-&= \pi \left[a^2c + r^2c - \frac{c^3}{3} - 2ar^2 sin^{-1}\left(\frac{c}{r}\right)\right]
+&= \pi \left[a^2y - ay\sqrt{r^2 - y^2} - ar^2 sin^{-1}\left(\frac{y}{r}\right)+ r^2y - \frac{y^3}{3}\right]^c_0\\
+&= \pi \left[a^2c - ac\sqrt{r^2 - c^2} - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
+&= \pi \left[a^2c - a^2c - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]
 \end{align*}
-Finally, substitute in $c = \sqrt{r^2 - a^2}$ and multiply through by $\pi$.
+Further reduction yields the volume $V_{to}$ of the tangent ogive in terms of $a$, $c$ and $r$:
 \begin{equation}
 \boxed{
-\begin{split}
-V = \pi r^2\sqrt{r^2 - a^2} - \frac{\pi (r^2 - a^2)^{3/2}}{3} \\
-- \pi ar^2 sin^{-1}\left(\frac{\sqrt{r^2 - a^2}}{r}\right)
-\end{split}
+V_{to} = \pi \left[r^2c - \frac{c^3}{3} - ar^2 sin^{-1}\left(\frac{c}{r}\right)\right] \label{eq:vto_acr}
 }
 \end{equation}
+Substituting in $c = \sqrt{r^2 - a^2}$ and multiplying through by $\pi$; gives the ogive volume $V$ only in terms of distance $a$ and radius $r$.
+\begin{equation} \label{eq:vto_ar}
+\begin{split}
+V_{to} = \pi r^2\sqrt{r^2 - a^2} - \frac{\pi (r^2 - a^2)^{3/2}}{3} \\
+- \pi ar^2 sin^{-1}\left(\frac{\sqrt{r^2 - a^2}}{r}\right)
+\end{split}
+\end{equation}
+However, describing $V_{to}$ in terms of the two variables in equation \ref{eq:vto_ar} is computationally intensive.  
+In practice, first calculating $c$ from $a$ and $r$, then substituting the value of $c$ into equation \ref{eq:vto_acr} requires less redundant computation.
 
 \subsection{Area of circle intersection}
-- Ogive is half of intersection, intersection is twice ogive
-- set operations
-- Intersection, union, xor
-- Venn diagrams, set operations
+Upon inspectng figure \ref{fig:fig_a} one can see similarities between intersecting circles and Venn diagrams.
+While Venn diagrams concern themselves with set membership, figure \ref{fig:fig_a} is concerned with regions on a plane.
+However, if one considers all points in some bounded region to be members of an infinite point set for that region, then figure \ref{fig:fig_a} becomes a Venn diagram representing point membership.
+Thinking of figure \ref{fig:fig_a} in this manner relates: tangent ogive area and circle intersection area; to set theory and set operations.
+
+Start by realizing the circle intersectional area $A_{ci}$ of two equal coplanar circles is simply twice the area of the tangent ogive.
+This is due to the reflection of the tangent ogive cross-section about the x-axis.
+\begin{equation}
+\boxed{
+A_{ci} = 2 \cdot A_{to} \label{eq:aci}
+}
+\end{equation}
+Now let $Q$ and $R$ be two equal overlapping circles, such that the area of each circle is:
+\begin{equation*}
+A_Q = A_R = \pi r^2
+\end{equation*}
+
+Set operators could be defined as operations upon areas of $Q$ and $R$.   For example, define the: intersection, union, set difference and symmetric difference; of $Q$ and $R$ as:
+
+\begin{subequations}
+\begin{align}
+\begin{split}
+Q \cap R &= A_{ci}
+\end{split}\\
+\begin{split}
+Q \cup R &= A_Q + A_R - A_{ci} \\
+  &= \pi r^2 + \pi r^2 - A_{ci} \\
+  &= 2\pi r^2 - A_{ci}
+\end{split}\\
+\begin{split}
+Q - R &= A_Q - A_{ci} \\
+  &= \pi r^2 - A_{ci}
+\end{split}\\
+\begin{split}
+Q \ominus R &= A_Q + A_R - 2 \cdot A_{ci} \\
+  &= \pi r^2 + \pi r^2 - 2 \cdot A_{ci} \\
+  &= 2\pi r^2 - 2 \cdot A_{ci}
+\end{split}
+\end{align}
+\label{eq:setops}
+\end{subequations}
+
+A complete collection of set operators could be defined in a similar manner.
+Mapping set operators to boolean operators could also be useful.
 
 \subsection{Volume of circle intersection}
-
-
-
-
+The volume, $V_{ci}$, of the circle intersection area revolved around the y-axis is simply twice the volume of the solid tangent ogive.
+This is due to the fact that the revolved circle intersetion is just a solid tangent ogive and its reflection about the x-axis.
+\begin{equation}
+\boxed{
+V_{ci} = 2 \cdot V_{to} \label{eq:vci}
+}
+\end{equation}
+Note: $V_{ci}$ is not the same as the volume of the intersection of 2 equal spheres.
 \begin{flushright}   
 Q.E.D.
-\end{flushright}   
-
-
+\end{flushright}

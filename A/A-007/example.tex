@@ -1,0 +1,133 @@
+\section{Example}
+
+\paragraph{Given:}
+\begin{itemize}
+\item Two equal circles A and B whose radii are 4.5 units, and whose centers are separated by 7.7356318424 units.
+This is the same circle pair from the example section of A-006.
+\end{itemize}
+
+\paragraph{Find:}
+\begin{itemize}
+\item The range of distances between centers where intersections are defined.
+\item The case of overlap, tangent classes and number of common tanget lines.
+\item The values of $a$, $b$ and $c$ for both circles.
+\item A tangent ogive cross-sectional area formed by the circles.
+\item The area of intersection for both circles.
+\item The symmetric difference operation $A \ominus B$.
+\item The volume of the tangent ogive.
+\item Volume of rotation for the intersection region.
+\end{itemize}
+
+\paragraph{Steps:}
+\begin{enumerate}
+\item
+Let: 
+\begin{align*}
+	r &= 4.5 \\
+	x_A &= 7.7356318424
+\end{align*}
+
+\item
+Use inequality \ref{eq:a} to verify the circle pair has a region of intersection.
+\begin{align*}
+0 &< x_A < 2 \cdot r_A\\
+0 &< x_A < 2 \cdot 4.5\\
+0 &< x_A < 9.0
+\end{align*}
+Intersections will be defined if the circles centers are separated by less than 9.0 units.
+\begin{align*}
+0 < 7.7356318424 < 9.0
+\end{align*}
+The inequality is satisfied for 7.7356318424 therefore the circle pair intersects.
+
+\item
+From A-005 the circle pair satisfies the condition for case 7 overlap.
+\begin{align*}
+r_A &< x_A < 2 \cdot r_A \\
+4.5 &< x_A < 2 \cdot 4.5 \\
+4.5 &< x_A < 9.0 \\
+4.5 &< 7.7356318424 < 9.0
+\end{align*}
+A-005 Table 1 states that this circle pair can only support two outer class common tangent lines.
+
+\item
+Use equation \ref{eq:a} to find $a$.
+\begin{align*}
+a &= \frac{x_A}{2}\label{eq:a}\\
+&= \frac{7.7356318424}{2}\\
+&= 3.8678159212 \: units
+\end{align*}
+
+\item
+Use equation 2 from A-006 to find $b$.
+\begin{align*}
+b &= r - a \\
+&= 4.5 - 3.8678159212 \\
+&= 0.6321840788 \: units
+\end{align*}
+
+\item
+Use equation 3 from A-006 to find $c$.
+\begin{align*}
+c &=\sqrt{r^2 - a^2} \\
+&=\sqrt{(4.5)^2 - (3.8678159212)^2} \\
+&=\sqrt{20.25 - 14.96} \\
+&=2.3 \: units
+\end{align*}
+
+\item
+Use equation \ref{eq:ato} to get the tangent ogive cross-sectional area.
+\begin{align*}
+A_{to} &= \frac{\pi r^2}{2} - ac - r^2 sin^{-1}\left(\frac{a}{r}\right) \\
+&= \frac{\pi (4.5)^2}{2} - (3.8678159212)(2.3) \\
+  &\phantom{{}=1}- (4.5)^2 sin^{-1}\left(\frac{3.8678159212}{4.5}\right) \\
+&= 10.125 \pi - 8.8959766185 \\
+  &\phantom{{}=1}- 20.25 \cdot sin^{-1}(0.8595146492) \\
+&= 31.8086256176 - 8.8959766185 \\
+  &\phantom{{}=1}- 20.25 \cdot 1.0343193134 \\
+&= 31.8086256176 - 8.8959766185 \\
+  &\phantom{{}=1}-20.9449660964  \\
+&=1.9676829028 \: units^2
+\end{align*}
+
+\item
+Use equation \ref{eq:aci} and the value of $A_{to}$ above to find the area of the circle intersection.
+\begin{align*}
+A_{ci} &= 2 \cdot A_{to} \\
+A_{ci} &= 2 \cdot 1.9676829028 \\
+A_{ci} &= 3.9353658055 \: units^2
+\end{align*}
+
+\item
+From equation \ref{eq:setops}d the symmetric difference between the circles is found.
+\begin{align*}
+A \ominus B &= 2\pi r^2 - 2 \cdot A_{ci} \\
+  &= 2\pi (4.5)^2 - 2 \cdot 3.9353658055 \\
+  &= 40.5 \cdot \pi - 2 \cdot 3.9353658055 \\
+  &= 127.2345024704 - 7.870731611 \\
+  &= 119.3637708594 \: units^2
+\end{align*}
+
+\item
+The volume of a tangent ogive between the circles is calculated using equation \ref{eq:vto_acr}.
+\begin{align*}
+V_{to} &= \pi \left[r^2c - \frac{c^3}{3} - ar^2 sin^{-1}\left(\frac{c}{r}\right)\right] \\
+&= \pi \left[(4.5)^2 \cdot 2.3 - \frac{(2.3)^3}{3} \right. \\ 
+  &\phantom{{}=1}\left. - 3.8678159212(4.5)^2 sin^{-1}\left(\frac{2.3}{4.5}\right)\right] \\
+&= \pi \left[20.25 \cdot 2.3 - \frac{12.167}{3} \right. \\ 
+  &\phantom{{}=1}\left. - 3.8678159212 \cdot 20.25 \cdot sin^{-1}\left(0.5111111111\right)\right] \\
+&= \pi \left[46.575 - 4.0556666667\right. \\ 
+  &\phantom{{}=1}\left. - 3.8678159212 \cdot 20.25 \cdot 0.5364770134 \right] \\
+&= \pi \left[46.575 - 4.0556666667 - 42.0186352592\right] \\
+&= \pi \left[0.5006980741\right] \\
+&= 1.5729893913 \: units^3
+\end{align*}
+
+\item
+Use equation \ref{eq:vci} to calculate the volume of the circle intersection from $V_{to}$ above.
+\begin{align*}
+V_{ci} &= 2 \cdot V_{to}\\
+  &= 2 \cdot 1.5729893913 \\
+  &= 3.1459787825 \: units^3
+\end{align*}
+\end{enumerate}
