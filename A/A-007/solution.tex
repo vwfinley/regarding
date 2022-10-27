@@ -28,7 +28,7 @@ Furthermore, it makes connections with another previous article.
 \subsection{Relationship between tangent ogives and circle intersections. Comparing to A-005 and A-006.}
 Figure 2 of article A-005\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022}, shows cases where equal coplanar circles will have regions of intersection.
 These are cases 5-7 specifically, with cases 1 and 2 being redundant.
-It is worth noting for all cases resulting in regions of intersecion, only a pair of Class C outer tangent lines are possible.
+It is worth noting for all cases resulting in regions of intersection, only a pair of Class C outer tangent lines are possible.
 
 Recall the conditions for cases 5-7:
 \begin{itemize}
@@ -37,7 +37,7 @@ Recall the conditions for cases 5-7:
 \item Case 7: $r_A < x_A < 2 \cdot r_A$
 \end{itemize}
 
-Now, combining the three conditions yields a general condition, which circle pairs must satisfiy in order to have a region of intersection:
+Now, combining the three conditions yields a general condition, which circle pairs must satisfy in order to have a region of intersection:
 \begin{equation}
 \boxed{
 0 < x_A  < 2 \cdot r_A
@@ -45,17 +45,16 @@ Now, combining the three conditions yields a general condition, which circle pai
 \end{equation}
 
 Since circles $C_B$ and $C_A$ are equal, their radii $r_A = r_B = r$ are equal. Furthermore, the value $x_A$ is simply the
-distance beween the centers of circles $C_B$ and $C_A$ as
+distance between the centers of circles $C_B$ and $C_A$ as
 described by A-004\footnote{\label{noteA004}A-004, Regarding Classification of Coplanar Circle Tangents, Vincent W. Finley, April 2022} and A-005.
 In those articles $C_B$ was fixed at the origin and $C_A$ was permitted to vary some
 distance $x_A$ along the non-negative x-axis.
 
 On Stages 2 and 3 in Figure 1 from article A-006, it is seen $C_B$ is centered about point $P'$ and $C_A$ is centered about $P''$.
 These center points lie along the x-axis some distance $a$ from the origin.  This is confirmed by equations 8a and 9a in A-006, where
-locatons $P'$ and $P''$ are given as $P'=(-a,0)$ and $P''=(a,0)$ respectively.
+locations $P'$ and $P''$ are given as $P'=(-a,0)$ and $P''=(a,0)$ respectively.
 
 Therefore the relationship between variable $x_A$ in A-005 and variable $a$ in A-006 can be described as:
-% x_A &= 2 \cdot a;
 \begin{equation}
 x_A = 2 \cdot a
 \end{equation}
@@ -70,7 +69,7 @@ This relationship bridges articles A-005 and A-006 together.
 Bridging of these articles is expected since both merely deal with overlapping equal coplanar circles whose centers are separated by some distance. 
 
 To further strengthen the bridge between articles, substitute equation \ref{eq:a} above into the ogive equations: 2, 3 and 4; from A-006.
-The subsitution yields the respective ogive equation in terms of circle separation distance, as follows:
+The substitution yields the respective ogive equation in terms of circle separation distance, as follows:
 \begin{equation}
 \boxed{
 r = \frac{x_A}{2} + b
@@ -86,7 +85,7 @@ r = \sqrt{\left(\frac{x_A}{2}\right)^2+c^2}
 x_A = \frac{c^2 - b^2}{b}
 }
 \end{equation}
-Note: equations: 6 and 7; from A-006 are unaffected since they are independant of $a$, and are therefore independent of $x_A$.
+Note: equations: 6 and 7; from A-006 are unaffected since they are independent of $a$, and are therefore independent of $x_A$.
 
 \subsection{Finding area of ogive cross-section} 
 The area of the ogive cross-section is found by doubling the area under the circle between points $P_a$ and $P_b$ in figure \ref{fig:fig_a}.
@@ -94,7 +93,6 @@ The area of the ogive cross-section is found by doubling the area under the circ
 By remembering figure \ref{fig:fig_a} is just Stage 3 from Figure 1 in article A-006, one can work backward to Stage 1.
 Conceptualizing the half-ogive as shown in Stage 1 makes the integration that follows more apparent.
 
-%The simplist way to find an integral of a circle with rectangular limits of integration is to refer to an integral table.
 From a table of integrals\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, See integral \#40 inside front cover.} the 
 definite integral: with respect to $x$, of the circle with having radius $r$, over limits $a$ and $r$; is found to be:
 \begin{align*}
@@ -164,7 +162,7 @@ However, describing $V_{to}$ in terms of the two variables in equation \ref{eq:v
 In practice, first calculating $c$ from $a$ and $r$, then substituting the value of $c$ into equation \ref{eq:vto_acr} requires less redundant computation.
 
 \subsection{Area of circle intersection}
-Upon inspectng figure \ref{fig:fig_a} one can see similarities between intersecting circles and Venn diagrams.
+Upon inspecting figure \ref{fig:fig_a} one can see similarities between intersecting circles and Venn diagrams.
 While Venn diagrams concern themselves with set membership, figure \ref{fig:fig_a} is concerned with regions on a plane.
 However, if one considers all points in some bounded region to be members of an infinite point set for that region, then figure \ref{fig:fig_a} becomes a Venn diagram representing point membership.
 Thinking of figure \ref{fig:fig_a} in this manner relates: tangent ogive area and circle intersection area; to set theory and set operations.
@@ -180,9 +178,7 @@ Now let $Q$ and $R$ be two equal overlapping circles, such that the area of each
 \begin{equation*}
 A_Q = A_R = \pi r^2
 \end{equation*}
-
 Set operators could be defined as operations upon areas of $Q$ and $R$.   For example, define the: intersection, union, set difference and symmetric difference; of $Q$ and $R$ as:
-
 \begin{subequations}
 \begin{align}
 \begin{split}
@@ -207,11 +203,11 @@ Q \ominus R &= A_Q + A_R - 2 \cdot A_{ci} \\
 \end{subequations}
 
 A complete collection of set operators could be defined in a similar manner.
-Mapping set operators to boolean operators could also be useful.
+Mapping set operators to Boolean operators could also be useful.
 
 \subsection{Volume of circle intersection}
 The volume, $V_{ci}$, of the circle intersection area revolved around the y-axis is simply twice the volume of the solid tangent ogive.
-This is due to the fact that the revolved circle intersetion is just a solid tangent ogive and its reflection about the x-axis.
+This is due to the fact that the revolved circle intersectional is just a solid tangent ogive and its reflection about the x-axis.
 \begin{equation}
 \boxed{
 V_{ci} = 2 \cdot V_{to} \label{eq:vci}
