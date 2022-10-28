@@ -16,9 +16,11 @@
 - I moved articles from my hard-drive onto GitHub at the end of September 2022. 
 - Each article contains a brief bite-sized topic.
 - See [license](LICENSE.md). The articles are licensed under the [Creative Commons BY 4.0 license](https://creativecommons.org/licenses/by/4.0/).
+  - No warranty is implied. You use all information contained in the articles at your own risk!
+  - I bear no resposibility for errors or omissions.
+  - Credit me if you quote or reference an article.
   - You are free to copy and distribute the articles.
-  - Please credit me if you quote or reference an article.
-  - You may use articles as part of some derivative work.
+  - You may use articles as part of some derivative work, be sure to credit me.
 - For the typesetting I use:
   - The [LaTeX](https://www.latex-project.org/) typesetting system.
   - [TeXworks version 0.6.6](https://tug.org/texworks/) implementation of LaTeX.
