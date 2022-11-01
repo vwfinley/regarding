@@ -1,2 +1,2 @@
-# Series B: Regarding TBD
-- "TBD : WORK IN PROGRESS" 
+# Series B: Regarding Engineering
+- B-001 Regarding NMRA RP-25
