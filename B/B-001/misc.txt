@@ -1,6 +1,69 @@
+https://www.nmra.org/sites/default/files/standards/sandrp/pdf/s-4.2_2019.01.04.pdf
 https://www.nmra.org/sites/default/files/standards/sandrp/pdf/RP-25%202009.07.pdf
+
 http://www.parostroj.net/modely/vztah_norem/nmra_rp_25.pdf
 https://www.gaugeoguild.com/manual/01_1_standards.pdf
 http://dda40x.blog.jp/archives/51972132.html
 https://www.kohs.com/Technical_Pages/Wheel_Gauging.html
+
+# Abstract
+- Perplexing
+- Disambiguation
+- How to you draw accurately with the given dimensions?
+- How to construct?
+- Parametric CAD?
+
+# Motivation
+- Create dimensioned drawing
+- Clear drawing prior to fabrication
+- Tools, dies, molds
+
+
+
+# Machining
+- Basic S-4.2 blocky wheel
+- RP not standard
+- In truth, many profiles are a solution...
+- Leading to different unstated interpretatons per manufacturer calling themselves "RP25".
+- Most will turn S-4.2 block wheel on lathe...
+- ...and round over the flange with file.
+- Laborous, not repeatable
+- Tooling would assure accuracy from wheel to wheel and speed process.
+
+# Errors
+- Units are unstated.  Assuming inches?
+- How was the RP25 contour determined? Is there a forumula or was it ad-hoc?  Based upon existing vendor's products?  Interface with track standards?
+- OK, D' does vary from D for some codes, but why differentiate between N and N' when no tolerance given?
+- Note #2 how was "reasonable tolerance" determined? Based on track standard?
+- Note #3 what is meant by Gaging Point? Is related to nmra gauge (inspection tool)? Gauge vs. gage.  
+- Note #3 "point of tangency between R1 and R2" implies A-004 Class B single tangent.  (A-003 case 8) Circles are tangent to each other.
+- Note #3 "point of crossing of R2 with the inside of the wheel" is not possible since center of R2 is above the "P" line.
+- Note #3 is P a point or distance?  Vague.  If distance from/to where?  If distance where is gaging point P?
+- Note #4 is vague.  What does "large as possible" mean?  Why not just state some tolerances?
+- Note #5 Worn wheels on prototype or model? 
+	- Is reverse taper deseriable?
+	- Will reverse taper help center?
+	- Is reverse table above or below horizontal tread line?
+	- Can tread be 0 deg (horizontal)?
+- Drawing: Where is the origin?  At the "gaging point" P?
+- Drawing: How were construction lines for R1 determined?
+- Drawing: Flange depth is geometrically incorrect for stated value of D'.  Flange will be too short.
+- Drawing: Is there a tangent line between R1 and R2?  
+	- This cannot be vertical as it won't connect to R2.  Discontinuous or require left offset of R2.
+- Drawing: Where are centers of R1, R2, R3?
+- Drawing: R2 & R3 form ogive.  Thus arc between them centered at bottom of flange (ogive check).
+- Drawing: R2 & R3 where are the vertical bi-secting arcs centered?
+- Drawing: Why are R2 & R3 arrows shown in different positions?
+- Drawing: Right N' vertical line has discontunity where it meets R3.  R3 center above "P" horiz "axis".
+- Drawing: shows 0 deg tread slope, can slope also be between 0 and 1?  Disagrees with note 5.
+
+Assuming we want continuous segments, no discontinuities.
+analyze in two halves, left & right
+straight segment.  vertical?
+left: A-001 & A-002 circles, tangent lines & fillets
+right: A-006 & A-007 ogives
+connecting segment: A-003, 4, 5
+
+Drawings:
+
 
