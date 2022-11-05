@@ -6,6 +6,8 @@ https://www.gaugeoguild.com/manual/01_1_standards.pdf
 http://dda40x.blog.jp/archives/51972132.html
 https://www.kohs.com/Technical_Pages/Wheel_Gauging.html
 
+https://www.youtube.com/watch?v=JBdWvMHEN8s
+
 # Abstract
 - Perplexing
 - Disambiguation
@@ -13,14 +15,14 @@ https://www.kohs.com/Technical_Pages/Wheel_Gauging.html
 - How to construct?
 - Parametric CAD?
 
-# Motivation
+# S1 Motivation
 - Create dimensioned drawing
 - Clear drawing prior to fabrication
 - Tools, dies, molds
 
 
 
-# Machining
+# S2 Machining
 - Basic S-4.2 blocky wheel
 - RP not standard
 - In truth, many profiles are a solution...
@@ -30,7 +32,7 @@ https://www.kohs.com/Technical_Pages/Wheel_Gauging.html
 - Laborous, not repeatable
 - Tooling would assure accuracy from wheel to wheel and speed process.
 
-# Errors
+# S3 Errors
 - Units are unstated.  Assuming inches?
 - How was the RP25 contour determined? Is there a forumula or was it ad-hoc?  Based upon existing vendor's products?  Interface with track standards?
 - OK, D' does vary from D for some codes, but why differentiate between N and N' when no tolerance given?
@@ -66,4 +68,31 @@ connecting segment: A-003, 4, 5
 
 Drawings:
 
+# S4 Construction
+Step 0:
+Strategy: Draw the envelop (of the standard) construction lines
+
+Step 1: (Left side, the tread)
+Draw circle of radius R1
+Radius line to tangent point
+Tread w/ taper from tangent point
+
+Step 2:
+Drop gaging line P from tangent point (x-axis)
+Vertical line (y-axis) where x-axis intersects R1
+
+Step 3: (Right Side, the flange)
+Draw ogive
+See spreadsheet.
+
+Step 4: (Join together Left & Right sides)
+There is a dependency on tread angle, as this will change location of R1 tangent point.  This will change location of P gage line.
+Connect R1 to ogive
+3 approaches
+	a. Live with the discontinuity at P.  R1 abrubtly intersects vertical line.  Reference http://dda40x.blog.jp/archives/51972132.html regarding NMRA "advice".
+	b. Approach "a" above but "blend" the discontinutity with some filing.  May change gaging point slightly.  Will this deepen the flange?
+	c. Or use techniques of A-004 to find a common tangent between R1 and R2.  Won't be vertical.  May shift gaging point slightly to right (within "tolerance"? 0.001???) Will this deepen the flange?
+
+Step 5: Non-critical radius on tread edge (break the corner)
+May be useful for tooling or CNC
 
