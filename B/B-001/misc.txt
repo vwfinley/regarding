@@ -1,12 +1,51 @@
 https://www.nmra.org/sites/default/files/standards/sandrp/pdf/s-4.2_2019.01.04.pdf
 https://www.nmra.org/sites/default/files/standards/sandrp/pdf/RP-25%202009.07.pdf
 
+https://www.nmra.org/sites/default/files/standards/sandrp/pdf/rp-2_2019.07.07_typo_correctiontrack_gages.pdf
+https://www.nmra.org/sites/default/files/standards/sandrp/pdf/rp-15.1.pdf
 http://www.parostroj.net/modely/vztah_norem/nmra_rp_25.pdf
+
 https://www.gaugeoguild.com/manual/01_1_standards.pdf
 http://dda40x.blog.jp/archives/51972132.html
 https://www.kohs.com/Technical_Pages/Wheel_Gauging.html
 
 https://www.youtube.com/watch?v=JBdWvMHEN8s
+
+How do I draw RP-25?  Not an easy answer.  But a very rich learning exercise.
+Must be understood in context of fuller system of standards and RPs.
+Interchangability.  Interchangeable parts from different producers, in different places at different times.
+Really how do I deal with inperfection?
+Tolerances are difference between math and engineering.
+Perfection vs. real world.
+Real world is not perfect.
+Even if you could measure with infinite you would eventually measure a deviation from ideal.
+Manufacturing variation.  Between manufacturers, but also batches, parts.
+Variation in rail height, bumpts and dips.  Rail spread and constrictions.  Twists.
+Level (lack of) of maintance.
+Weather.  Freeze/thaw cycle heaving.  Erosion.  Saturation of sub bed.
+Dimensional change.  Materials change with temperature.  Temperature change is not uniform everywhere for all materials. Rails and wheels (tires) are wear parts, they change dimension over service-life as they wear.
+What is needed, is the "idealized" design AND a system to deal with variations over time and space.
+How much inperfection can be tolerated?  What is the acceptable worst-case scenario that still works?
+
+Quite an engineering achievement.  Solution to a difficult problem.  More so to align interests of many different vendors, modelers, clubs, etc. over many decades.
+
+To understand RP-25 look at nmra RP-2 standards gage.
+On wheels side, gage is really a proxy for the rails (and all it's variations).
+On: track, points, flangeways sides, gage is really a proxy for the wheelset.(and all it's variations).
+
+Gage point is not origin!!!
+
+RP-15.1  note railhead flat on top.  Railhead has two points-of-contact with wheel top (along C/R) and side (along H).  Wheel has two points-of-contact with railhead (flange tangent) and (gage point).
+
+In truth there are many solutions to the wheel profile problem.
+Gage acts as an envelop of a few critical dimensions and tolerances.
+Standard gage (wheels): Does wheel fit in the slot(s)?
+Primitive box profile.  Tread and flange.  Does it fit?
+Point of tread contact.  Clearance (fillet rolloff vs. railhead radius).  Gage point and gage point point-of-contact
+S-4.2 Dmax.  Flange can be shorter but not taller.
+S-4.2 tolerance of K, B and Tmax requirement.  Almost like a budget, you can spend tolerance on K and/or B but total tolerance cannot exceed Tmax.
+Gage has rounded bottom wheel slot.  Flange must fit in this envelope.  Otherwise box flange would work.  Okay, round off bottom of flange so now standard is satisfied.
+
 
 # Abstract
 - Perplexing
@@ -67,10 +106,9 @@ right: A-006 & A-007 ogives
 connecting segment: A-003, 4, 5
 
 Drawings:
-
 # S4 Construction
 Step 0:
-Strategy: Draw the envelop (of the standard) construction lines
+Strategy: Draw tread, draw axes, draw the envelop (of the standard) construction lines, join sides, cleanup
 
 Step 1: (Left side, the tread)
 Draw circle of radius R1
