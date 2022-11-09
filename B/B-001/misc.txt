@@ -14,6 +14,8 @@ https://www.youtube.com/watch?v=JBdWvMHEN8s
 NMRA Bulletin	 January	1983	  	 1	Inside Engineering: The RP-25 wheel in NMRA standards	page -1	 
 NMRA Bulletin	 November	1996	 -1	 11	NMRA Recommended Practices Wheel Contour RP-25 July 1986 page 44
 
+Theorems
+Bisecting an isosceles triangle.
 
 Euclid's Elements Redux : Daniel Callahan : Free Download, Borrow, and Streaming : Internet Archive
 Page 161, Proposition 3.12. Intersecting Circles 1.
