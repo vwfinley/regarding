@@ -1,0 +1,108 @@
+\begin{tikzpicture}[x=1in, y=1in]
+
+	\coordinate (origin) at (0,0);
+	\coordinate (I) at (0,0);
+	\coordinate (t1) at (30 : 0.8660254038);
+	\coordinate (t2) at (-30 : 0.8660254038);
+	\coordinate (t1n) at (210 : 0.8660254038);
+	\coordinate (t2n) at (150 : 0.8660254038);
+	\coordinate (t1s) at (30:2);
+	\coordinate (t2s) at (-30:2);
+
+	\begin{scope}[xscale=30, yscale=30]	
+
+		% axes
+		\draw[lightgray, -{Latex[scale=1.5]}] (0, -0.030) -- (0, 0.030)  node [above] {$y$};	
+		\draw[lightgray, -{Latex[scale=1.5]}] (-0.050, 0) -- (0.050, 0)  node [right] {$x$};		
+
+		% vertical
+		\draw[lightgray] (.030, -.030) -- (.030, .030);		
+
+		% horizontal
+		\draw[lightgray] (-0.050, 0.010) -- (0.050, 0.010);			% above xaxis
+		\draw[lightgray] (-0.050, -0.015) -- (0.050, -0.015);		% below xaxis
+
+		% locate R2 & R3 centers
+		\draw[lightgray] ([shift=(65 : 0.018)] 0.015, -0.015) arc (65 : 115 : 0.018);
+		\draw[lightgray] ([shift=(2 : 0.018)] 0, 0) arc (2 : 15 : 0.018);
+		\draw[lightgray] ([shift=(178 : 0.018)] .030, 0) arc (178 : 165 : 0.018);
+
+		% draw arcs 2 and 3
+		\draw[lightgray] ([shift=(160 : 0.018)] 0.0178, 0.0028) arc (160 : 300 : 0.018); % Arc2
+		\draw[lightgray] ([shift=(20 : 0.018)] 0.0122, 0.0028) arc (20 : -120 : 0.018); % Arc3
+		
+		% locate R1 center
+		\draw[lightgray] ([shift=(170 : 0.014)] 0,0) arc (170 : 210 : 0.014);
+		\draw[lightgray] (0.0178, 0.0028) -- (-0.0198, -0.0031);
+
+		% draw arc 1
+		\draw[lightgray] ([shift=(-30 : 0.014)] -0.0138, -0.0022) arc (-30 : 100 : 0.014);
+
+	\end{scope}
+
+
+
+
+
+	% right side
+%	\begin{scope} [shift={(-0.34202, 0)}]		
+%	\begin{scope}[xscale=1,yscale=1]			
+%		\draw[lightgray] (0,0) circle [radius=1]; % full-circle
+%		\draw[lightgray, fill=lightgray!15] (0,0) -- (0:1) arc [start angle=0, delta angle=-70, radius=1] -- (0.34202,0.0); % lower wedge-region		
+%		\draw[fill=lightgray!75] (0,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region					
+%	\end{scope}
+%	\end{scope}
+
+	% left side
+%	\begin{scope} [shift={(0.34202, 0)}]		
+%	\begin{scope}[xscale=-1,yscale=1]
+%		\draw[lightgray] (0,0) circle [radius=1]; % full-circle
+%		\draw[lightgray, fill=lightgray!15] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=-70, radius=1] -- (0.34202,0.0); % lower wedge-region
+%		\draw[fill=lightgray!30] (0.34202,0) -- (0:1) arc [start angle=0, delta angle=70, radius=1] -- (0.34202,0.0); % upper wedge-region
+%	\end{scope}
+%	\end{scope}
+
+	% left side
+%	\begin{scope} [shift={(0.34202, 0)}]		
+%	\begin{scope}[xscale=-1,yscale=1]		
+%		% radius
+%		\draw[darkgray!60, -{Latex[scale=1.0]}] (0,0) -- (45:1);
+		
+		% centermark
+%		\draw (-0.025,0) -- (0.025, 0); 
+%		\draw (0, -0.025) -- (0, 0.025);				
+		
+		% labels				
+%		\draw  node [shift={(-0.07, -0.13)}]{$P''$};				
+%		\draw  node [shift={(-1, -1.1)}]{$B$};				
+%	\end{scope}
+%	\end{scope}
+
+	% right side
+%	\begin{scope} [shift={(-0.34202, 0)}]		
+%	\begin{scope}[xscale=1,yscale=1]		
+		% radius and label r
+%		\draw[black, -{Latex[scale=1.0]}] (0,0) -- (45:1) node [shift={(-0.5, -0.4)}]{$r$}; 
+		
+		% centermark
+%		\draw (-0.025,0) -- (0.025, 0);
+%		\draw (0, -0.025) -- (0, 0.025);				
+		
+		% labels
+%		\draw  node [shift={(-0.07, -0.13)}]{$P'$};		
+%		\draw [fill=black, shift={(0.34202, 0)}] circle (0.02) node [shift={(0.0, -0.15)}]{$P'_a$};				
+%		\draw [fill=black, shift={(1, 0)}] circle (0.02) node [shift={(0.0, -0.15)}]{$P'_b$};				
+%		\begin{scope} [shift={(70:1.0)}]
+%			\draw [fill=black] circle (0.02) node [shift={(0.05, 0.11)}]{$P_c$};
+%		\end{scope}
+%		\draw  node [shift={(1, -1.1)}]{$A$};					
+%	\end{scope}
+%	\end{scope}
+
+	% Dimensions a and x_A
+	%\draw[{Latex}-{Latex}] (-0.34202,-0.4) -- (0.34202, -0.4); 
+	%\draw[{Latex[scale=1.0]}-{Latex[scale=1.0]}] (-0.34202,-0.6) -- (0, -0.6) node [shift={(-0.17, -0.07)}]{$a$}; 
+	%\draw[black] (-0.34202,-0.35) -- (-0.34202, -0.65);
+	%\draw[black] (0.34202,-0.35) -- (0.34202, -0.45);
+
+\end{tikzpicture}
