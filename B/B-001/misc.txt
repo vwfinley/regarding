@@ -14,14 +14,72 @@ https://www.youtube.com/watch?v=JBdWvMHEN8s
 NMRA Bulletin	 January	1983	  	 1	Inside Engineering: The RP-25 wheel in NMRA standards	page -1	 
 NMRA Bulletin	 November	1996	 -1	 11	NMRA Recommended Practices Wheel Contour RP-25 July 1986 page 44
 
-Theorems
-Bisecting an isosceles triangle.
+# Theorems
+- Bisecting an isosceles triangle.
+- Euclid's Elements Redux : Daniel Callahan : Free Download, Borrow, and Streaming : Internet Archive
+	- Page 161, Proposition 3.12. Intersecting Circles 1.
+	- Page 186 Proposition 3.28
+- Page 143 Proposition 3.1. THE CENTER OF A CIRCLE I.
 
-Euclid's Elements Redux : Daniel Callahan : Free Download, Borrow, and Streaming : Internet Archive
-Page 161, Proposition 3.12. Intersecting Circles 1.
-Page 186 Proposition 3.28
+# Historic context
+- Developed during time of slide rules
+- before personal computers.
+- Most hobbiests are not engineers, machinists.
+- Most hobbiests are unfamiliar with trigonometry and analytic geometry.
+- Maybe familar with constructive geometry 
 
-Page 143 Proposition 3.1. THE CENTER OF A CIRCLE I.
+# Strategy
+- Constructive geometry
+- Then analytic geometry to make drawing on CAD easier.
+- Draw tread, Draw flange
+- Reduce problem to essence.  We are just trying to arrange 3 circles.
+- Drawing order suggested by the spec authors
+- R1, R2, R3
+- or R3, R2, R1???  Results in treadline above P. 
+
+# R1 location
+- Discussion of R1 location.
+- Gage point should be referenced from 0deg treadline.  
+- Otherwise relationship between tread and flange changes.
+- Discussion of taper angle.  
+- Inspection gage designed to make contact at gage point Pg.  Fillet radius bears against the fillet.  Until taper point.  Beyond the tread taper rises.
+- 3deg layout lines
+
+# R2 location
+- Draw
+- Problem
+- Ambiguous.  
+- Draw R2, no tangent with R1.  Centers unconnected.  Differs with the note.
+- How are centers of R2 & R3 determined.  Notes text, Doesn't agree with drawing.
+
+- Approaches fall in to two categories
+	- ignore the point gage point (Pg) requirement
+	- ignore the published values of R2 & R3, calculate new values R2' and R3'
+- Three suggested solutions
+	- None guaranteed to pass NMRA gage test.  
+	- Performance may vary.  
+	- Selection depends on materials (metal vs. plastic), process (casting, forging, machining), tooling vs. moulding
+1) Vertical connecting line.  Pros: simple to draw, Cons: discontinuity
+2) Tangent connecting line.  Pros: smooth transition, Cons: harder to find tangent points
+3) Change published values of R2, R3.  Pros: easy to draw, complies with (Pg) tangent requirement,  Cons: R3 discontinuity at wheelback, must be calculated.
+  - How to locate centerpoint.  bi-sect isosceles triangle method
+4) Custom solution flange=square, round, angled
+
+# R3 location
+
+
+- The goal is to get a profile what fits inside envelope of the s4.2 standard.
+- In theory many solutions to the problem if stated as profile must fit standard.  
+	- Many profiles have been proposed and manufactured.  
+	- Reference MR article.
+- In practice many solutions fit the NMRA test gage profile.
+- Profile could have 
+
+# Tables
+- Solution 1,2,3 inch/mm
+- Calculate values for R2 & R3.
+- Locate all critical points.  Circle centers, tangent points, ogive tip, etc.
+
 
 How do I draw RP-25?  Not an easy answer.  But a very rich learning exercise.
 Must be understood in context of fuller system of standards and RPs.
