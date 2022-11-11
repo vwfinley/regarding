@@ -32,7 +32,32 @@ NMRA Bulletin	 November	1996	 -1	 11	NMRA Recommended Practices Wheel Contour RP
 - Constructive geometry
 - Then analytic geometry to make drawing on CAD easier.
 - Draw tread, Draw flange
-- Reduce problem to essence.  We are just trying to arrange 3 circles.
+- Reduce problem to essence.  Trying to find the centers of 3 circles such they are arranged in a specific way.  We are just trying to arrange 3 circles.
+- Find R2 center given Constraints(Conditions) 
+	- Constraint A: Radius is R2=0.018
+	- Constraint B: Tangent to R1 at Pg (passes thru Pg, Pg is on R2 circle)
+	- Constraint C: Passes thru ogive tip (tip is on R2 circle)
+- All three constrains cannot be satisfied.
+	- Case 1 (cyan): Constraints AB, C not satisfied 
+		- (Pg is on circle, but not tangent, discontinuity at Pg, furthermore ogive tip not on circle(bad!))
+		- Disagrees with RP25 note 3
+		- Flange too short, too flat and broad.
+		- Some have suggested to drop R2 circle down and connect R1 and R2 with a vertical line.  
+			- Results in 2 discontinuities where R1 intersects vert line and where R2 intersects vert line
+		- A sloped connecting tangent line may work.
+		- Eitherway R2 center must be lowered (hackish!) and R2 won't be tangent to R1.
+			
+	- Case 2 (yellow): Constraints AC, B not satisfied (Pg is on circle, but not tangent, discontinuity at Pg, ogive tip on circle (better! no hacks required))
+		- Disagrees with RP25 note 3
+
+	- Case 3 (white): Constraints BC, A not satisfied (although a new R2' can be calculated, best!)
+		- R2 and R1 will be tangent at Pg.  No discontinuity at Pg. (ok)
+		- Ogive tip is on R2 (ok)
+		- Results in narrower/sharper ogive (ok, looks better, more clearance when gaged)
+		- Method to determine R2' center must be found (bi-sect isosceles triangle)
+		- New values for R2' and R3' must be calculated (ok, no problem)
+
+
 - Drawing order suggested by the spec authors
 - R1, R2, R3
 - or R3, R2, R1???  Results in treadline above P. 

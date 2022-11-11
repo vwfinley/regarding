@@ -91,7 +91,7 @@ STANDARD
   9
 $CLAYER
   8
-R018_R1tan
+0
   9
 $CELTYPE
   6
@@ -1115,9 +1115,9 @@ AcDbViewportTableRecord
  21
 1
  12
-0.02866332526150378
+0.03167362882778046
  22
-0.01095052456718029
+0.01217209702885778
  13
 0
  23
@@ -1143,7 +1143,7 @@ AcDbViewportTableRecord
  37
 0
  40
-0.04685602942291485
+0.0468560294229149
  41
 1.951582867783985
  42
@@ -2255,7 +2255,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-R018_R1tan
+case1
  70
     4
  62
@@ -2277,7 +2277,7 @@ AcDbSymbolTableRecord
 100
 AcDbLayerTableRecord
   2
-R018_bottomcenter
+case2
  70
     4
  62
@@ -2941,33 +2941,9 @@ AcDbLine
  21
 -0.015
   0
-LINE
-  5
-59
-100
-AcDbEntity
-  8
-0
-  6
-ByLayer
- 62
-  256
-370
-   -1
-100
-AcDbLine
- 10
--7.063567811865546
- 20
--7.078567811865404
- 11
-7.078567811865547
- 21
-7.063567811865405
-  0
 ARC
   5
-5A
+59
 100
 AcDbEntity
   8
@@ -2995,7 +2971,7 @@ AcDbArc
   0
 ARC
   5
-5B
+5A
 100
 AcDbEntity
   8
@@ -3023,7 +2999,7 @@ AcDbArc
   0
 ARC
   5
-5C
+5B
 100
 AcDbEntity
   8
@@ -3051,7 +3027,7 @@ AcDbArc
   0
 ARC
   5
-5D
+5C
 100
 AcDbEntity
   8
@@ -3079,7 +3055,7 @@ AcDbArc
   0
 ARC
   5
-5E
+5D
 100
 AcDbEntity
   8
@@ -3107,7 +3083,7 @@ AcDbArc
   0
 LINE
   5
-5F
+5E
 100
 AcDbEntity
   8
@@ -3131,11 +3107,11 @@ AcDbLine
   0
 ARC
   5
-60
+5F
 100
 AcDbEntity
   8
-R018_bottomcenter
+case2
   6
 ByLayer
  62
@@ -3159,11 +3135,11 @@ AcDbArc
   0
 ARC
   5
-61
+60
 100
 AcDbEntity
   8
-R018_bottomcenter
+case2
   6
 ByLayer
  62
@@ -3187,11 +3163,11 @@ AcDbArc
   0
 ARC
   5
-62
+61
 100
 AcDbEntity
   8
-R018_bottomcenter
+case2
   6
 ByLayer
  62
@@ -3215,11 +3191,11 @@ AcDbArc
   0
 ARC
   5
-63
+62
 100
 AcDbEntity
   8
-R018_bottomcenter
+case2
   6
 ByLayer
  62
@@ -3243,11 +3219,11 @@ AcDbArc
   0
 ARC
   5
-64
+63
 100
 AcDbEntity
   8
-R018_bottomcenter
+case2
   6
 ByLayer
  62
@@ -3271,11 +3247,11 @@ AcDbArc
   0
 ARC
   5
-65
+64
 100
 AcDbEntity
   8
-R018_R1tan
+case1
   6
 ByLayer
  62
@@ -3299,11 +3275,11 @@ AcDbArc
   0
 ARC
   5
-66
+65
 100
 AcDbEntity
   8
-R018_R1tan
+case1
   6
 ByLayer
  62
@@ -3327,11 +3303,11 @@ AcDbArc
   0
 LINE
   5
-67
+66
 100
 AcDbEntity
   8
-R018_R1tan
+case1
   6
 ByLayer
  62
@@ -3351,11 +3327,11 @@ AcDbLine
   0
 ARC
   5
-68
+67
 100
 AcDbEntity
   8
-R018_R1tan
+case1
   6
 ByLayer
  62
@@ -3379,11 +3355,11 @@ AcDbArc
   0
 ARC
   5
-69
+68
 100
 AcDbEntity
   8
-R018_R1tan
+case1
   6
 ByLayer
  62
@@ -3404,6 +3380,54 @@ AcDbArc
 219.6100827095079
  51
 9.343013453952594
+  0
+LINE
+  5
+69
+100
+AcDbEntity
+  8
+0
+  6
+DASHED2
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+-7.063567811865546
+ 20
+-7.078567811865404
+ 11
+7.078567811865547
+ 21
+7.063567811865405
+  0
+LINE
+  5
+6A
+100
+AcDbEntity
+  8
+0
+  6
+DASHED2
+ 62
+  256
+370
+   -1
+100
+AcDbLine
+ 10
+0.02422899939311814
+ 20
+0.01595500501097433
+ 11
+0.01214285714285695
+ 21
+-0.02458314847499902
   0
 ENDSEC
   0
