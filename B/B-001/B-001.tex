@@ -89,6 +89,18 @@
 % SVG files
 \usepackage[inkscapeformat=pdf]{svg}
 
+% Packages for Blockquotes
+\usepackage{setspace} % for \onehalfspacing and \singlespacing macros
+\onehalfspacing 
+\usepackage{etoolbox}
+\AtBeginEnvironment{quote}{\par\singlespacing\small}
+
+% Endnotes package
+\usepackage{endnotes}
+\renewcommand{\notesname}{Endnotes}
+
+
+
 %%% END Article customizations
 
 %%% The "real" document content comes below...
@@ -104,7 +116,9 @@
 \input{abstract.tex}
 \input{introduction.tex}
 \input{problem.tex}
+%\input{context.tex}
+\input{theorems.tex}
 \input{solution.tex}
 \input{example.tex}
-
+\theendnotes
 \end{document}

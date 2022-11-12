@@ -1,11 +1,112 @@
+\section{Constructive Solution}
 
-\section{Solution}
+\subsection{Axes and Layout lines}
 
-While concise, the RP-25 document can be perplexing.
-Location of circle centers and critical points is omitted.
-Description of how the contour was constructed is absent.
-Furthermore, missing how values $R1$, $R2$ and $R3$ were determined.
-This leads to ambiguity when interpreting the drawing.
+\subsection{Locate P1}
+- Discussion of R1 location.
+- Gage point should be referenced from 0deg treadline.  
+- Otherwise relationship between tread and flange changes.
+- Discussion of taper angle.  
+- Inspection gage designed to make contact at gage point Pg.  Fillet radius bears against the fillet.  Until taper point.  Beyond the tread taper rises.
+- 3deg layout lines
+
+\subsection{Locate P2}
+Find R2 center given Constraints(Conditions) 
+- Draw
+- Problem
+- Ambiguous.  
+- Draw R2, no tangent with R1.  Centers unconnected.  Differs with the note.
+- How are centers of R2 and R3 determined.  Notes text, Doesn't agree with drawing.
+
+- Approaches fall in to two categories
+	- ignore the point gage point (Pg) requirement
+	- ignore the published values of R2 and R3, calculate new values R2' and R3'
+- Three suggested solutions
+	- None guaranteed to pass NMRA gage test.  
+	- Performance may vary.  
+	- Selection depends on materials (metal vs. plastic), process (casting, forging, machining), tooling vs. moulding
+1) Vertical connecting line.  Pros: simple to draw, Cons: discontinuity
+2) Tangent connecting line.  Pros: smooth transition, Cons: harder to find tangent points
+3) Change published values of R2, R3.  Pros: easy to draw, complies with (Pg) tangent requirement,  Cons: R3 discontinuity at wheelback, must be calculated.
+  - How to locate centerpoint.  bi-sect isosceles triangle method
+4) Custom solution flange=square, round, angled
+
+\subsubsection{Constraints}
+\begin{itemize}
+\item Constraint A: Radius is R2=0.018
+\item Constraint B: Tangent to R1 at Pg (passes thru Pg, Pg is on R2 circle)
+\item Constraint C: Passes thru ogive tip (tip is on R2 circle)
+\end{itemize}
+
+All three constrains cannot be satisfied!  Thus the source of confusion.
+
+\subsubsection{Case1}
+ Case 1 (cyan): Constraints AB, C not satisfied 
+\begin{itemize}
+\item (Pg is on circle, but not tangent, discontinuity at Pg, furthermore ogive tip not on circle(bad!))
+\item Disagrees with RP25 note 3
+\item Flange too short, too flat and broad.
+\item Some have suggested to drop R2 circle down and connect R1 and R2 with a vertical line.  
+	\item Results in 2 discontinuities where R1 intersects vert line and where R2 intersects vert line
+\item A sloped connecting tangent line may work.
+\item  Eitherway R2 center must be lowered (hackish!) and R2 won't be tangent to R1.
+\end{itemize}
+
+\subsubsection{Case2}
+Case 2 (yellow): Constraints AC, B not satisfied (Pg is on circle, but not tangent, discontinuity at Pg, ogive tip on circle (better! no hacks required))
+		- Disagrees with RP25 note 3
+
+\subsubsection{Case3}
+Case 3 (white): Constraints BC, A not satisfied (although a new R2' can be calculated, best!)
+\begin{itemize}
+\item R2 and R1 will be tangent at Pg.  No discontinuity at Pg. (ok)
+\item Ogive tip is on R2 (ok)
+\item Results in narrower/sharper ogive (ok, looks better, more clearance when gaged)
+\item Method to determine R2' center must be found (bi-sect isosceles triangle)
+\item New values for R2' and R3' must be calculated (ok, no problem)
+\end{itemize}
+
+
+
+\subsection{Locate P3}
+
+
+- The goal is to get a profile what fits inside envelope of the s4.2 standard.
+- In theory many solutions to the problem if stated as profile must fit standard.  
+	- Many profiles have been proposed and manufactured.  
+	- Reference MR article.
+- In practice many solutions fit the NMRA test gage profile.
+- Profile could have 
+
+
+
+\subsection{Taper}
+% 0 - 3 deg
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Analytic Solution}
+
+Analytic Geometry
+Equations
+
+
+Tables
+- Solution 1,2,3 inch/mm
+- Calculate values for R2 and R3.
+- Locate all critical points.  Circle centers, tangent points, ogive tip, etc.
+
+
+
 
 
 
@@ -17,21 +118,7 @@ While it isIt o as it omits
 - How to construct?
 - Parametric CAD?
 
-Historic context
-- Developed during time of slide rules
-- before personal computers.
-- Most hobbiests are not engineers, machinists.
-- Most hobbiests are unfamiliar with trigonometry and analytic geometry.
-- Maybe familar with constructive geometry 
-- Omits (too much) detail
-References
 
-\section{Geometric Theorems}
-- Bisecting an isosceles triangle.
-- Euclid's Elements Redux : Daniel Callahan : Free Download, Borrow, and Streaming : Internet Archive
-	- Page 161, Proposition 3.12. Intersecting Circles 1.
-	- Page 186 Proposition 3.28
-- Page 143 Proposition 3.1. THE CENTER OF A CIRCLE I.
 
 
 %# S1 Motivation
@@ -237,6 +324,6 @@ Tables
 - Locate all critical points.  Circle centers, tangent points, ogive tip, etc.
 
 
-\section{References}
+
 
 
