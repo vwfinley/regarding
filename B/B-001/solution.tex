@@ -1,5 +1,97 @@
+
 \section{Solution}
-\subsection{Sub1}
+
+While concise, the RP-25 document can be perplexing.
+Location of circle centers and critical points is omitted.
+Description of how the contour was constructed is absent.
+Furthermore, missing how values $R1$, $R2$ and $R3$ were determined.
+This leads to ambiguity when interpreting the drawing.
+
+
+
+
+
+While it isIt o as it omits 
+- Disambiguation
+- How to you draw accurately with the given dimensions?
+- How to construct?
+- Parametric CAD?
+
+Historic context
+- Developed during time of slide rules
+- before personal computers.
+- Most hobbiests are not engineers, machinists.
+- Most hobbiests are unfamiliar with trigonometry and analytic geometry.
+- Maybe familar with constructive geometry 
+- Omits (too much) detail
+References
+
+\section{Geometric Theorems}
+- Bisecting an isosceles triangle.
+- Euclid's Elements Redux : Daniel Callahan : Free Download, Borrow, and Streaming : Internet Archive
+	- Page 161, Proposition 3.12. Intersecting Circles 1.
+	- Page 186 Proposition 3.28
+- Page 143 Proposition 3.1. THE CENTER OF A CIRCLE I.
+
+
+%# S1 Motivation
+- Create dimensioned drawing
+- Clear drawing prior to fabrication
+- Tools, dies, molds
+
+How do I draw RP-25?  Not an easy answer.  But a very rich learning exercise.
+Must be understood in context of fuller system of standards and RPs.
+Interchangability.  Interchangeable parts from different producers, in different places at different times.
+Really how do I deal with inperfection?
+Tolerances are difference between math and engineering.
+Perfection vs. real world.
+Real world is not perfect.
+Even if you could measure with infinite you would eventually measure a deviation from ideal.
+Manufacturing variation.  Between manufacturers, but also batches, parts.
+Variation in rail height, bumpts and dips.  Rail spread and constrictions.  Twists.
+Level (lack of) of maintance.
+Weather.  Freeze/thaw cycle heaving.  Erosion.  Saturation of sub bed.
+Dimensional change.  Materials change with temperature.  Temperature change is not uniform everywhere for all materials. Rails and wheels (tires) are wear 
+parts, they change dimension over service-life as they wear.
+What is needed, is the "idealized" design AND a system to deal with variations over time and space.
+How much inperfection can be tolerated?  What is the acceptable worst-case scenario that still works?
+
+Quite an engineering achievement.  Solution to a difficult problem.  More so to align interests of many different vendors, modelers, clubs, etc. over many 
+decades.
+
+To understand RP-25 look at nmra RP-2 standards gage.
+On wheels side, gage is really a proxy for the rails (and all it's variations).
+On: track, points, flangeways sides, gage is really a proxy for the wheelset.(and all it's variations).
+
+
+
+RP-15.1  note railhead flat on top.  Railhead has two points-of-contact with wheel top (along C/R) and side (along H).  Wheel has two points-of-contact with 
+railhead (flange tangent) and (gage point).
+
+In truth there are many solutions to the wheel profile problem.
+Gage acts as an envelop of a few critical dimensions and tolerances.
+Standard gage (wheels): Does wheel fit in the slot(s)?
+Primitive box profile.  Tread and flange.  Does it fit?
+Point of tread contact.  Clearance (fillet rolloff vs. railhead radius).  Gage point and gage point point-of-contact
+S-4.2 Dmax.  Flange can be shorter but not taller.
+S-4.2 tolerance of K, B and Tmax requirement.  Almost like a budget, you can spend tolerance on K and/or B but total tolerance cannot exceed Tmax.
+Gage has rounded bottom wheel slot.  Flange must fit in this envelope.  Otherwise box flange would work.  Okay, round off bottom of flange so now standard is 
+satisfied.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Construction}
+ Constructive Geometry
 Todo: Write me.
 
 
@@ -17,7 +109,134 @@ Todo: Write me.
 \end{figure}
 
 
+\subsection{Strategy}
+Reduce problem to it's essence.
+% Tread, fillet and flange
+% The essence of the solution is locating the centers of 3 circles.
+- Drawing order suggested by the spec authors
+- R1, R2, R3
+- or R3, R2, R1???  Results in treadline above P. 
 
-\begin{flushright}   
-Q.E.D.
-\end{flushright}
+- Constructive geometry
+- Then analytic geometry to make drawing on CAD easier.
+- Draw tread, Draw flange
+- Reduce problem to essence.  Trying to find the centers of 3 circles such they are arranged in a specific way.  We are just trying to arrange 3 circles.
+- Find R2 center given Constraints(Conditions) 
+	- Constraint A: Radius is R2=0.018
+	- Constraint B: Tangent to R1 at Pg (passes thru Pg, Pg is on R2 circle)
+	- Constraint C: Passes thru ogive tip (tip is on R2 circle)
+
+
+
+\subsection{Layout lines}
+\subsection{Locating R1}
+- Discussion of R1 location.
+- Gage point should be referenced from 0deg treadline.  
+- Otherwise relationship between tread and flange changes.
+- Discussion of taper angle.  
+- Inspection gage designed to make contact at gage point Pg.  Fillet radius bears against the fillet.  Until taper point.  Beyond the tread taper rises.
+- 3deg layout lines
+
+
+\subsection{Locating R2}
+Find R2 center given Constraints(Conditions) 
+
+- Draw
+- Problem
+- Ambiguous.  
+- Draw R2, no tangent with R1.  Centers unconnected.  Differs with the note.
+- How are centers of R2 and R3 determined.  Notes text, Doesn't agree with drawing.
+
+- Approaches fall in to two categories
+	- ignore the point gage point (Pg) requirement
+	- ignore the published values of R2 and R3, calculate new values R2' and R3'
+- Three suggested solutions
+	- None guaranteed to pass NMRA gage test.  
+	- Performance may vary.  
+	- Selection depends on materials (metal vs. plastic), process (casting, forging, machining), tooling vs. moulding
+1) Vertical connecting line.  Pros: simple to draw, Cons: discontinuity
+2) Tangent connecting line.  Pros: smooth transition, Cons: harder to find tangent points
+3) Change published values of R2, R3.  Pros: easy to draw, complies with (Pg) tangent requirement,  Cons: R3 discontinuity at wheelback, must be calculated.
+  - How to locate centerpoint.  bi-sect isosceles triangle method
+4) Custom solution flange=square, round, angled
+
+
+
+
+
+\subsubsection{Constraints}
+\begin{itemize}
+\item Constraint A: Radius is R2=0.018
+\item Constraint B: Tangent to R1 at Pg (passes thru Pg, Pg is on R2 circle)
+\item Constraint C: Passes thru ogive tip (tip is on R2 circle)
+\end{itemize}
+
+All three constrains cannot be satisfied!  Thus the source of confusion.
+
+
+
+
+
+
+\subsubsection{Case1}
+ Case 1 (cyan): Constraints AB, C not satisfied 
+\begin{itemize}
+\item (Pg is on circle, but not tangent, discontinuity at Pg, furthermore ogive tip not on circle(bad!))
+\item Disagrees with RP25 note 3
+\item Flange too short, too flat and broad.
+\item Some have suggested to drop R2 circle down and connect R1 and R2 with a vertical line.  
+	\item Results in 2 discontinuities where R1 intersects vert line and where R2 intersects vert line
+\item A sloped connecting tangent line may work.
+\item  Eitherway R2 center must be lowered (hackish!) and R2 won't be tangent to R1.
+\end{itemize}
+
+\subsubsection{Case2}
+Case 2 (yellow): Constraints AC, B not satisfied (Pg is on circle, but not tangent, discontinuity at Pg, ogive tip on circle (better! no hacks required))
+		- Disagrees with RP25 note 3
+
+\subsubsection{Case3}
+Case 3 (white): Constraints BC, A not satisfied (although a new R2' can be calculated, best!)
+\begin{itemize}
+\item R2 and R1 will be tangent at Pg.  No discontinuity at Pg. (ok)
+\item Ogive tip is on R2 (ok)
+\item Results in narrower/sharper ogive (ok, looks better, more clearance when gaged)
+\item Method to determine R2' center must be found (bi-sect isosceles triangle)
+\item New values for R2' and R3' must be calculated (ok, no problem)
+\end{itemize}
+
+
+
+\subsection{Locating R3}
+
+
+- The goal is to get a profile what fits inside envelope of the s4.2 standard.
+- In theory many solutions to the problem if stated as profile must fit standard.  
+	- Many profiles have been proposed and manufactured.  
+	- Reference MR article.
+- In practice many solutions fit the NMRA test gage profile.
+- Profile could have 
+
+
+
+\subsection{Taper}
+% 0 - 3 deg
+
+
+%\begin{flushright}   
+%Q.E.D.
+%\end{flushright}
+
+\section{Analysis}
+Analytic Geometry
+Equations
+
+
+Tables
+- Solution 1,2,3 inch/mm
+- Calculate values for R2 and R3.
+- Locate all critical points.  Circle centers, tangent points, ogive tip, etc.
+
+
+\section{References}
+
+
