@@ -9,18 +9,19 @@
 	\coordinate (t1s) at (30:2);
 	\coordinate (t2s) at (-30:2);
 
-	\begin{scope}[xscale=30, yscale=30]	
+	\begin{scope}[xscale=35, yscale=35]	
 
 		% axes
-		\draw[lightgray, -{Latex[scale=1.5]}] (0, -0.030) -- (0, 0.030)  node [above] {$y$};	
-		\draw[lightgray, -{Latex[scale=1.5]}] (-0.050, 0) -- (0.050, 0)  node [right] {$x$};		
+		\draw[black, -{Latex[scale=1.5]}] (0, -0.030) -- (0, 0.030)  node [above] {$y$};	
+		\draw[black, -{Latex[scale=1.5]}] (-0.090, 0) -- (0.04500, 0)  node [right] {$x$};		
 
 		% vertical
-		\draw[lightgray] (.030, -.030) -- (.030, .030);		
+		\draw[lightgray] (-.080, -.025) -- (-.080, .025);		
+		\draw[lightgray] (.030, -.025) -- (.030, .025);		
 
 		% horizontal
-		\draw[lightgray] (-0.050, 0.010) -- (0.050, 0.010);			% above xaxis
-		\draw[lightgray] (-0.050, -0.015) -- (0.050, -0.015);		% below xaxis
+		\draw[lightgray] (-0.085, 0.010) -- (0.04, 0.010);			% above xaxis
+		\draw[lightgray] (-0.085, -0.015) -- (0.04, -0.015);		% below xaxis
 
 		% locate R2 & R3 centers
 		\draw[lightgray] ([shift=(65 : 0.018)] 0.015, -0.015) arc (65 : 115 : 0.018);
