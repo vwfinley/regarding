@@ -31,6 +31,52 @@ NMRA Bulletin	 November	1996	 -1	 11	NMRA Recommended Practices Wheel Contour RP
 	- Page 186 Proposition 3.28
 - Page 143 Proposition 3.1. THE CENTER OF A CIRCLE I.
 
+# Summary
+- Three critical points
+- Locating R1 and R2 is the core of the problem.  Focus on that.
+- Depth point is also important.
+# Procedure
+- Select Code
+- Draw axes
+- Draw construction lines (label them)
+- Locate R1
+- Draw center line R1 thru origin, extend
+- Draw arc from origin a distance R2 along center line.
+- Sweep R2 from mark on centerline
+- Reflect R2 across flange middleline to get R3.
+
+- Result is short and broad, far from max depth
+- If you are happy with the profile, great, then skip ahead to taper section.
+- If you want to make adjustments, continue reading next section.
+
+# Adjustments
+- Two (three) adjustments
+- The slide: Slide R2 along centerline
+- The see-saw: Adjust slope/pitch of the centerline
+- Flange depth
+
+## The slide
+- R1 fixed
+- Marking off arbitrary R2
+- setting depth desired/full depth
+
+## The see-saw (lever)
+- Two points (locations of R1 &R2) control see-saw centerline slope/pitch 
+- R1 first or R2 first
+- Arbitrary R1
+- Arbitrary R2
+  - box center
+  - Impact on R1, how to calculate R1
+
+## Depth adjustment
+
+
+
+
+
+
+
+
 # Historic context
 - Developed during time of slide rules
 - before personal computers.
