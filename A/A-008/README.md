@@ -1,4 +1,2 @@
-TBD, WORK IN PROGRESS
-- Regarding Applied Multiplication
-- Scale, ratios, fractions, decimals, percents, architects scales (1/n inch per foot).
-- Slide rules
+Work in progress
+A-008 Regarding Location of a Circle under Constraints
