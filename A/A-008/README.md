@@ -1,2 +1,2 @@
 Work in progress
-A-008 Regarding Location of a Circle under Constraints
+A-008 Regarding Constrained Placement of a Circle
