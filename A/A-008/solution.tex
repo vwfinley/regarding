@@ -1,30 +1,96 @@
-%- Another way to view ogive is half of a circle intersection.+
-%- Alternate way to construct Ogives (intersection of semi circles)
-%- Relate to A-005 which cases?  what are regions of overlap?
-%- A-006 stage4 check is dead give away that drawing is an ogive. 
-%- Describe the math
-%- relate x separation of circles to b on ogive.  distance (of x circle intersections) = 2*b
-%- give radius and distance between x-intersections ogive can be calculated.
 \section{Solution}
-\subsection{Alternate Construction}
-An alternate tangent ogive construction method is to first draw an intersection of equal circles, then retain half of the intersection.
-This method is presented in figure \ref{fig:fig_a}.
-It is identical to that found in stage 3 of figure 1 in the previous article\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vincent W. Finley, September 2022}.
-The similarity between these two figures is readily seen.  
-\begin{figure}[ht!]
-\centering
-\input{fig_a.tikz}
-\caption{Tangent Ogive Alternate Construction}
-\label{fig:fig_a}
-\end{figure}
-Here the ogive is drawn directly in a single step, whereas, the previous article presents the process in extensive detail.
-Each article has something useful to teach, as each approaches tangent ogive construction from a different perspective.
-The prior article emphasizes ogive geometry.
-However, this article emphasizes relationship of equal coplanar circles.
-Furthermore, it makes connections with another previous article\footnote{\label{noteA005}A-005, Regarding Relationship and Classification of Equal Coplanar Circles, Vincent W. Finley, May 2022}
-by describing how tangent ogives and intersections of equal circles are related.
+Two solutions are presented here.  Both are useful and address different design needs.
 
-\subsection{Relationship between tangent ogives and circle intersections. Comparing to A-005 and A-006.}
+When drafting a design, either manually or with CAD software, graphical solutions save time.  
+The convenient \emph{geometric construction} described below will speed progress.
+
+When creating: programs, scripts, spreadsheets or tabular data;  equations are preferred.
+The \emph{trigonometric calculation} detailed below will eliminate any guesswork.
+
+\subsection{Geometric Construction}
+It is desirable to find a simple geometric construction to locate the problem statement's hypothetical circle.
+
+Neither the hypothetical circle's center nor radius is known.
+This makes locating it difficult, as knowing one can usually be used to find the other, with simple drafting tools: compass, ruler and square.
+
+Refer to figure \ref{fig:fig_a} for the following discussion.  Let's define points of interest:
+\begin{itemize}
+\item Let point $A$ be the unknown center of the hypothetical circle that lies somewhere on sloped line $L_s$.
+\item Let point $B$ an alias for the the origin.  It lies on the circle since the circle passes through it.  Furthermore it also lies on sloped line $L_s$ since $L_s$ passes through the origin.
+\item Let point $C$ be a location on the circle where it is tangent to line $L_h$.  In other words, $C$ is the tangent point.
+\item Let point $D$ be the location where line $\overline{AC}$ intersects the $x$-axis at right angles.
+\item Let point $E$ be the location where line $L_h$ intersects the $y$-axis at right angles.
+\end{itemize}
+
+%It is identical to that found in stage 3 of figure 1 in the previous article\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vincent W. Finley, September 2022}.
+
+Any point that is distance $r$, from a point $A$, lies on the circle of radius $r$ centered at $A$. 
+Therefore to be on the circle of radius $r$ centered at $A$, points $B$ and $C$ must be a distance $r$ from $A$.  
+This implies that the line from $A$ to $B$ is of length $r$.  
+Also implied is the line from $A$ to $C$ is of length $r$, and it is equal to the length of the line from $A$ to $B$, as follows:
+\begin{equation}
+\overline{AB} = \overline{AC} = r
+\end{equation}
+
+Since $\overline{AB} = \overline{AC}$ two sides of the hypothetical triangle $\triangle{ABC}$ are equal; therfore $\triangle{ABC}$ an isosceles triangle.
+
+The radius and center of $\triangle{ABC}$ is still unknown.  The points $A$, $B$ and $C$ are also still unknown.  To find them some algebra will be applied to triangles.
+
+Let $\alpha$ be the angle $L_s$ makes with the negative $x$-axis.  
+Also, let $\beta$ be the angle complimentary to $\alpha$ such that:
+\begin{align}
+\alpha &= \angle{ABD}\\
+\beta &= 90^{\circ} - \alpha  \label{eq:beta}
+\end{align}
+
+Now $\beta$ forms an alternate interior angle with $\angle{CAB}$ so that:
+\begin{equation}
+\angle{CAB} = \beta
+\end{equation}
+
+Since $\triangle{ABC}$ is isosceles the other two angles, $\angle{ACB}$ and $\angle{ABC}$, must be equal.
+Name these other angles $\gamma$ so that.
+\begin{equation}
+\angle{ACB} = \angle{ABC}  = \gamma = \frac{180^{\circ} - \beta}{2}  \label{eq:gamma}
+\end{equation}
+
+Substituting equation \ref{eq:beta} into equation \ref{eq:gamma} it is found:
+\begin{equation}
+\gamma = \frac{90^{\circ} + \alpha}{2} \label{eq:gamma2}
+\end{equation}
+
+By inspecting equation \ref{eq:gamma2} it can be seen that angle $\gamma$ on the $\triangle{ABC}$ is half of some angle
+whose value is $90^{\circ} + \alpha$.  Let's call the angle $\delta$ so that:
+\begin{equation}
+\delta = 90^{\circ} + \alpha
+\end{equation}
+and,
+\begin{equation}
+\gamma = \frac{\delta}{2}
+\end{equation}
+
+$\gamma$ on the triangle is just half some angle $\delta = 90^{\circ} + \alpha$, but:
+\begin{equation}
+\delta = 90^{\circ} + \alpha = \angle{ABE}
+\end{equation}
+and, it is readily observed angle $\angle{ABE}$ is just the angle between sloped line $L_s$ and the $y$-axis.
+
+\noindent\fbox{%
+    \parbox{\linewidth}{%
+\textbf{Therefore, geometric construction procedure to find circle center and radius is:}
+\begin{enumerate}
+\item Bisect angle $\angle{ABE}$ (see figure \ref{fig:fig_a} dashed line),
+\item \emph{next}, extend the bisection line from $B$, at the origin, and intersect line $L_h$,
+\item \emph{next}, label the intersection of the bisection line and $L_h$ as point $C$, ($C$ is the tangent point)
+\item \emph{next}, draw a vertical line down from $C$, 
+\item \emph{next}, label the intersection of the vertical line with $L_s$ as point $A$, ($A$ is the circle center)
+\item \emph{next}, the value of radius $r$ can be found by measuring length of either $\overline{AB}$ or $\overline{AC}$,
+\item \emph{next}, verfify $\overline{AB} = \overline{AC} = r$.  They should be equal, otherwise an error occurred while applying the construction procedure.
+\end{enumerate}
+	}%
+}
+
+\subsection{Trigonometric Calculation}
 Figure 2 of article A-005, shows cases where equal coplanar circles will have regions of intersection.
 These are cases 5 through 7 specifically, with cases 1 and 2 being redundant.
 It is worth noting, for all cases resulting in regions of intersection, only a pair of Class C outer tangent lines is possible.
@@ -45,7 +111,7 @@ Combining the three conditions yields a general condition, which equal circle pa
 
 Since circles $A$ and $B$ are equal, their radii $r_A = r_B = r$ are equal. Furthermore, the value $x_A$ is simply the
 distance between the centers of circles $C_A$ and $C_B$ as described by A-005.
-In that article $C_B$ was fixed at the origin and $C_A$ was permitted to vary some distance $x_A$ along the non-negative x-axis.
+In that article $C_B$ was fixed at the origin and $C_A$ was permitted to vary some distance $x_A$ along the non-negative $x$-axis.
 
 In Stage 3 on Figure 1 from article A-006, the two circles are centered about points $P'$ and $P''$.
 These center points lie along the x-axis some distance $a$ from the origin.
