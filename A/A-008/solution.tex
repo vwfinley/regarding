@@ -91,192 +91,26 @@ and, it is readily observed angle $\angle{ABE}$ is just the angle between sloped
 }
 
 \subsection{Trigonometric Calculation}
-Figure 2 of article A-005, shows cases where equal coplanar circles will have regions of intersection.
-These are cases 5 through 7 specifically, with cases 1 and 2 being redundant.
-It is worth noting, for all cases resulting in regions of intersection, only a pair of Class C outer tangent lines is possible.
 
-Recall the conditions for cases 5 through 7:
-\begin{itemize}
-\item Case 5: $0 < x_A < r_A$
-\item Case 6: $x_A = r_A$
-\item Case 7: $r_A < x_A < 2 \cdot r_A$
-\end{itemize}
 
-Combining the three conditions yields a general condition, which equal circle pairs must satisfy, to have a region of intersection:
-\begin{equation}
-\boxed{
-0 < x_A  < 2 \cdot r_A
-}
-\end{equation}
-
-Since circles $A$ and $B$ are equal, their radii $r_A = r_B = r$ are equal. Furthermore, the value $x_A$ is simply the
-distance between the centers of circles $C_A$ and $C_B$ as described by A-005.
-In that article $C_B$ was fixed at the origin and $C_A$ was permitted to vary some distance $x_A$ along the non-negative $x$-axis.
-
-In Stage 3 on Figure 1 from article A-006, the two circles are centered about points $P'$ and $P''$.
-These center points lie along the x-axis some distance $a$ from the origin.
-This is confirmed by equations 8a and 9a in A-006, where these are given as $P'=(-a,0)$ and $P''=(a,0)$ respectively.
-
-Therefore the relationship between variable $x_A$ in A-005 and variable $a$ in A-006 can be described as:
-\begin{equation}
-x_A = 2 \cdot a
-\end{equation}
-where $x_A$ is the distance between centers, and:
-\begin{equation}
-\boxed{
-a = \frac{x_A}{2}\label{eq:a}
-}
-\end{equation}
-
-This relationship bridges articles A-005 and A-006 together.
-Bridging of these articles is expected since both merely deal with overlapping equal coplanar circles whose centers are separated by some distance. 
-
-To fortify the bridge between articles, substitute equation \ref{eq:a} above into the ogive equations: 2, 3 and 4; from A-006.
-The substitution yields the respective ogive equation in terms of circle separation distance, as follows:
-\begin{equation}
-\boxed{
-r = \frac{x_A}{2} + b
-}
-\end{equation}
-\begin{equation}
-\boxed{
-r = \sqrt{\left(\frac{x_A}{2}\right)^2+c^2}
-}
-\end{equation}
-\begin{equation}
-\boxed{
-x_A = \frac{c^2 - b^2}{b}
-}
-\end{equation}
-Note: equations: 6 and 7; from A-006 are unaffected since they are independent of $a$, and are therefore independent of $x_A$.
-
-\subsection{Finding area of ogive cross-section} 
-The area of the ogive cross-section is found by doubling the area under the circle between points $P_a$ and $P_b$ in figure \ref{fig:fig_a}.
-
-By remembering figure \ref{fig:fig_a} here is just Stage 3 from Figure 1 in article A-006, one can work backward to Stage 1.
-Referring to the half-ogive shown in Stage 1 makes the following integration more apparent.
-
-From a table of integrals\footnote{ISBN 0-471-85045-4, Calculus, 3rd Edition, Howard Anton, Drexel University, Copyright 1988 Anton Textbooks, Inc., John Wiley \& Sons, See integral \#40 inside front cover.} the 
-definite integral: with respect to $x$, of the circle with having radius $r$, over limits $a$ and $r$; is found to be:
 \begin{align*}
-\left. F(x) \right]^r_a &= \int^r_a \sqrt{r^2 - x^2}\,dx \\
-&=\left. \frac{x}{2}\sqrt{r^2 - x^2} + \frac{r^2}{2}sin^{-1}\left(\frac{x}{r}\right)\right]^r_a \\
-&=\frac{r}{2}\sqrt{r^2 - r^2} + \frac{r^2}{2}sin^{-1}\left(\frac{r}{r}\right) \\ 
-&\phantom{{}=1}- \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right) \\
-&= \frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)
-\end{align*}
-The area $A_{to}$ of the tangent ogive cross-section is twice the area of definite integral.
-\begin{equation*}
-A_{to} = 2 \left[\frac{\pi r^2}{4} - \frac{a}{2}\sqrt{r^2 - a^2} - \frac{r^2}{2}sin^{-1}\left(\frac{a}{r}\right)\right]
-\end{equation*}
-\begin{equation}
-A_{to} = \frac{\pi r^2}{2} - a \sqrt{r^2 - a^2} - r^2 sin^{-1}\left(\frac{a}{r}\right)
-\end{equation}
-Recognizing $\sqrt{r^2 - a^2}=c$, from A-006 equation 3, yields $A_{to}$ in a more convenient form.
-\begin{equation}
-\boxed{
-A_{to} = \frac{\pi r^2}{2} - ac - r^2 sin^{-1}\left(\frac{a}{r}\right) \label{eq:ato}
-}
-\end{equation}
-
-\subsection{Finding volume of tangent ogive} 
-Starting with the standard form of the equation of a circle\footnote{ISBN 0-471-85045-4, Anton, page 49, equation \#1.}, substitute
-in $P'=(-a, 0)$ in place of $(x_0, y_0)$.
-Doing so will translate the circle center to $P'$ as shown in figure \ref{fig:fig_a} and in A-006, Figure 1, Stage 2.
-Solve the equation for $x$, thereby yielding a function of $y$.
-\begin{align*}
-r^2 &= (x-x_0)^2 + (y-y_0)^2 \\
-r^2 &= (x-(-a))^2 + (y-0)^2\\
-r^2 &= (x+a)^2 + y^2\\
-(x+a)^2 &= r^2 - y^2 \\
- x+a &= \sqrt{r^2 - y^2}
+\sin{\alpha} &= \frac{i}{r} \\
+i &= r \cdot \sin{\alpha} \\
+r - h &= r \cdot \sin{\alpha} \\
+r - r \cdot \sin{\alpha} &= h \\
+r(1 - \sin{\alpha}) &= h 
 \end{align*}
 \begin{equation}
-u(y) = x = -a + \sqrt{r^2 - y^2} \label{eq:uy}
-\end{equation}
-Use the ``Volumes by Disks Perpendicular to
-the y-Axis''\footnote{ISBN 0-471-85045-4, Anton, page 380, equation \#7.}
-method to integrate equation \ref{eq:uy}.
-\begin{equation}
-V = \int^d_c\pi[u(y)]^2\,dy \label{eq:V}
-\end{equation}
-Substituting equation \ref{eq:uy} into \ref{eq:V}, integrating from $y=0$ to $y=c$ (A-006, Figure 1, Stage 2), and recognizing $\sqrt{r^2 - c^2} = a$ (A-006, Equation 3); yields:
-\begin{align*}
-V_{to} &= \int^c_0\pi\left[-a + \sqrt{r^2 - y^2}\right]^2\,dy\\
-&= \pi \int^c_0\left[a^2 - 2a\sqrt{r^2 - y^2} + r^2 - y^2\right]\,dy\\
-&= \pi \left[a^2y - ay\sqrt{r^2 - y^2} - ar^2 sin^{-1}\left(\frac{y}{r}\right)+ r^2y - \frac{y^3}{3}\right]^c_0\\
-&= \pi \left[a^2c - ac\sqrt{r^2 - c^2} - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]\\
-&= \pi \left[a^2c - a^2c - ar^2 sin^{-1}\left(\frac{c}{r}\right)+ r^2c - \frac{c^3}{3}\right]
-\end{align*}
-Further reduction yields the volume $V_{to}$ of the tangent ogive in terms of $a$, $c$ and $r$:
-\begin{equation}
 \boxed{
-V_{to} = \pi \left[r^2c - \frac{c^3}{3} - ar^2 sin^{-1}\left(\frac{c}{r}\right)\right] \label{eq:vto_acr}
+r = \frac{h}{ 1 - \sin{\alpha}}
 }
 \end{equation}
-Substituting in $c = \sqrt{r^2 - a^2}$ and multiplying through by $\pi$; gives the ogive volume $V$ only in terms of distance $a$ and radius $r$.
-\begin{equation} \label{eq:vto_ar}
-\begin{split}
-V_{to} = \pi r^2\sqrt{r^2 - a^2} - \frac{\pi (r^2 - a^2)^{3/2}}{3} \\
-- \pi ar^2 sin^{-1}\left(\frac{\sqrt{r^2 - a^2}}{r}\right)
-\end{split}
-\end{equation}
-However, describing $V_{to}$ in terms of the two variables in equation \ref{eq:vto_ar} is computationally intensive.  
-In practice, first calculating $c$ from $a$ and $r$, then substituting the value of $c$ into equation \ref{eq:vto_acr} requires less redundant computation.
 
-\subsection{Area of circle intersection}
-Upon inspecting figure \ref{fig:fig_a} one can see similarities between intersecting circles and Venn diagrams.
-While Venn diagrams concern themselves with set membership, figure \ref{fig:fig_a} is concerned with regions on a plane.
-However, if one considers all points in some bounded region to be members of an infinite point set for that region, then figure \ref{fig:fig_a} becomes a Venn diagram representing point membership.
-Thinking of figure \ref{fig:fig_a} in this manner relates: tangent ogive area and intersectional circle area; to set theory and set operations.
 
-Start by realizing the intersectional circle area $A_{ci}$ of two equal coplanar circles is simply twice the area of the tangent ogive cross-section.
-This is due to the reflection of the tangent ogive cross-section about the x-axis.
-\begin{equation}
-\boxed{
-A_{ci} = 2 \cdot A_{to} \label{eq:aci}
-}
-\end{equation}
-Now let $Q$ and $R$ be two equal overlapping circles, such that the area of each circle is:
-\begin{equation*}
-A_Q = A_R = \pi r^2
-\end{equation*}
-Set operators could be defined as operations upon areas of $Q$ and $R$.   For example, define the: intersection, union, set difference and symmetric difference; of $Q$ and $R$ as:
-\begin{subequations}
-\begin{align}
-\begin{split}
-Q \cap R &= A_{ci}
-\end{split}\\
-\begin{split}
-Q \cup R &= A_Q + A_R - A_{ci} \\
-  &= \pi r^2 + \pi r^2 - A_{ci} \\
-  &= 2\pi r^2 - A_{ci}
-\end{split}\\
-\begin{split}
-Q - R &= A_Q - A_{ci} \\
-  &= \pi r^2 - A_{ci}
-\end{split}\\
-\begin{split}
-Q \ominus R &= A_Q + A_R - 2 \cdot A_{ci} \\
-  &= \pi r^2 + \pi r^2 - 2 \cdot A_{ci} \\
-  &= 2\pi r^2 - 2 \cdot A_{ci}
-\end{split}
-\end{align}
-\label{eq:setops}
-\end{subequations}
 
-A complete collection of set operators could be defined in a similar manner.
-Mapping set operators to Boolean operators could also be useful.
+\subsection{Notes on general application}
 
-\subsection{Volume of circle intersection}
-The volume, $V_{ci}$, of the circle intersection area revolved around the y-axis is simply twice the volume of the solid tangent ogive.
-This is due to the fact that the revolved circle intersection is just the solid tangent ogive and its reflection about the x-axis.
-\begin{equation}
-\boxed{
-V_{ci} = 2 \cdot V_{to} \label{eq:vci}
-}
-\end{equation}
-Note: $V_{ci}$ is not the same as the volume of the intersection of 2 equal spheres.
+
 \begin{flushright}   
 Q.E.D.
 \end{flushright}
