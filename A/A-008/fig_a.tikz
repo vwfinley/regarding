@@ -1,0 +1,66 @@
+
+\begin{tikzpicture}[x=1in, y=1in]
+	\begin{scope}[xscale=.10, yscale=.10]	
+
+%		\coordinate (origin) at (0,0);
+%		\coordinate (P1) at (-0.0134, -0.0040);
+%		\coordinate (P2) at (.0214, .0064);
+%		\coordinate (P3) at (0.0086, 0.0064);
+%		\coordinate (Pf) at (0.015, -0.015);
+%		\coordinate (Pb) at (0.030, 0);
+%		\coordinate (Pm) at (0.0075, -0.0075);		
+
+		\clip (-21, -10) rectangle (10, 17);
+
+		% axes
+		\draw[lightgray, -{Latex[scale=1.5]}] (0, -30.0) -- (0, 15.0)  node [above] {$y$};	
+		\draw[lightgray, -{Latex[scale=1.5]}] (-40.0, 0) -- (8.0, 0)  node [right] {$x$};		
+
+		% vertical
+		\draw[lightgray] (-16.0097, -35) -- (-16.0097, 35); % left
+
+		% horizontal
+		\draw[lightgray] (-50, 12.5) -- (90, 12.5) node[shift={(179.3 : 8.2)}]{$L_H$}; % L_H
+		\draw[lightgray] (-19.0097, -4.0024) -- (-9.0097, -4.0024);	 % R center mark
+
+		% sloped
+		\draw[lightgray] (194.04 : 58) -- (14.04 : 98) node[shift={(-166.6 : 9.0)}]{$L_S$}; % L_S
+
+		% bisector
+		\draw[lightgray, dashed] (142.02 : -4) -- (142.02 : 24); % dashed line
+		\draw[lightgray] ([shift=(135 :  20.3116)] 0, 0)  arc (135 : 150 : 20.3116); % mark
+
+		% angle labels
+		\draw[black] ([shift=(180 : 6)] 0, 0)  arc (180 : 194.04 : 6) node[shift={(-0.11, 0.06)}]{$\alpha$} ; % alpha
+		\draw[black] ([shift=(194.04 : 2)] 0, 0)  arc (194.04 : 270 : 2) node[shift={(-0.17, -0.05)}]{$\beta$}; % beta
+		\draw[black] ([shift=(142.02 : 4)] 0, 0)  arc (142.02 : 194.04 : 4) node[shift={(-0.06, 0.24)}]{$\gamma$}; % gamma
+
+\draw[black] ([shift=(194.04 : 2.5)] 0, 0)  arc (194.04 : 90 : 2.5) node[shift={(-0.18, 0.02)}]{$\delta$}; % gamma
+
+		\draw[black] ([shift=(0 : 6)] 194.04 : 16.5024)  arc (0 : 14.04 : 6) node[shift={(0.1, -0.07)}]{$\alpha$}; % alpha
+		\draw[black] ([shift=(14.04 : 2)] 194.04 : 16.5024)  arc (14.04 : 90 : 2) node[shift={(0.17, 0.05)}]{$\beta$}; % beta		
+		\draw[black] ([shift=(142.02 : 20.3116)] 270 : 3)  arc (270 : 322.02 : 3) node[shift={(-0.07, -0.17)}]{$\gamma$}; % gamma
+
+
+		% locate arc
+%		\draw[black] ([shift=(-40 : 16.5024)] 194.04 : 16.5024) arc (-40  : 105 : 16.5024); % The arc
+		\draw[black, thick] (194.04 : 16.5024) circle (16.5024); % The arc
+		
+		% radius lines
+		\draw[black, -{Latex[scale=1.0]}] (194.04 : 16.5024) -- +(90 : 16.5024) node[shift={(-94 : 0.9)}]{$r$};
+		\draw[black, -{Latex[scale=1.0]}] (194.04 : 16.5024) -- +(14.04 : 16.5024) node[shift={(200 : 0.75)}]{$r$};
+
+		% Labels
+		\draw[black] (197 : 17.5)  node{$A$};
+		\draw[black] (50 : 1.3)  node{$B$};
+		\draw[black] ((139.6 : 22)  node{$C$};
+\draw[black] ((86 : 13.4)  node{$D$};
+
+	\end{scope}
+		
+
+
+
+
+
+\end{tikzpicture}
