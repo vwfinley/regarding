@@ -10,23 +10,24 @@
 %		\coordinate (Pb) at (0.030, 0);
 %		\coordinate (Pm) at (0.0075, -0.0075);		
 
-		\clip (-21, -10) rectangle (10, 17);
+%		\clip (-21, -10) rectangle (10, 17);
+		\clip (-24, -10) rectangle (7, 17);
 
 		% axes
+		\draw[lightgray, -{Latex[scale=1.5]}] (-40.0, 0) -- (5.0, 0)  node [right] {$x$};		
 		\draw[lightgray, -{Latex[scale=1.5]}] (0, -30.0) -- (0, 15.0)  node [above] {$y$};	
-		\draw[lightgray, -{Latex[scale=1.5]}] (-40.0, 0) -- (8.0, 0)  node [right] {$x$};		
 
 		% vertical
 		\draw[lightgray] (-16.0097, -35) -- (-16.0097, 35); % left
 
 		% horizontal
-		\draw[lightgray] (-50, 12.5) -- (90, 12.5) node[shift={(179.3 : 8.2)}]{$L_h$}; % L_H
+		\draw[lightgray] (-50, 12.5) -- (90, 12.5) node[shift={(179.4 : 8.5)}]{$L_h$};    % node[shift={(179.3 : 8.2)}]{$L_h$}; % L_H
 		\draw[lightgray] (-19.0097, -4.0024) -- (-9.0097, -4.0024);	 % A center mark
 
 		\draw[lightgray] (-16.0097, -0.75) -- ++(0  : 0.75) -- ++(90 : 0.75) ;	 % A center mark
 
 		% sloped
-		\draw[lightgray] (194.04 : 58) -- (14.04 : 98) node[shift={(-166.6 : 9.0)}]{$L_s$}; % L_S
+		\draw[lightgray] (194.04 : 58) -- (14.04 : 98) node[shift={(-166.54 : 9.27)}]{$L_s$}; % L_S
 
 		% circle
 		\draw[lightgray] ([shift=(135 :  20.3116)] 0, 0)  arc (135 : 150 : 20.3116); % mark
@@ -44,6 +45,14 @@
 		\draw[black] ([shift=(14.04 : 2)] 194.04 : 16.5024)  arc (14.04 : 90 : 2) node[shift={(0.17, 0.05)}]{$\beta$}; % beta		
 		\draw[black] ([shift=(142.02 : 20.3116)] 270 : 4)  arc (270 : 322.02 : 4) node[shift={(-0.09, -0.19)}]{$\gamma$}; % gamma
 
+		% dimensions
+%		\draw[lightgray, latex - latex] (0 : 4.5) -- +(90 : 12.5) node[shift={(-84 : 0.65)}]{$h$};
+%		\draw[lightgray, latex - latex] (0 : 4.5) -- +(-90 : 4.0024) node[shift={(75 : 0.24)}]{$i$};
+%		\draw[lightgray] (3.5, -4.0024) -- (5.5, -4.0024);	 % A center mark
+		\draw[lightgray, latex - latex] (0 : -22.5) -- +(90 : 12.5) node[shift={(-84 : 0.65)}]{$h$};
+		\draw[lightgray, latex - latex] (0 : -22.5) -- +(-90 : 4.0024) node[shift={(75 : 0.24)}]{$i$};
+		\draw[lightgray] (-23.5, -4.0024) -- (-21.5, -4.0024);	 % A center mark
+
 		% locate arc
 		\draw[black, thick] (194.04 : 16.5024) circle (16.5024); % The arc
 		
@@ -51,10 +60,8 @@
 		\draw[black, -latex] (194.04 : 16.5024) -- +(90 : 16.5024) node[shift={(-94 : 0.9)}]{$r$};
 		\draw[black, -latex] (194.04 : 16.5024) -- +(14.04 : 16.5024) node[shift={(200 : 0.75)}]{$r$};
 
-		% dimensions
-		\draw[lightgray, latex - latex] (0 : 4.5) -- +(90 : 12.5) node[shift={(-84 : 0.65)}]{$h$};
-		\draw[lightgray, latex - latex] (0 : 4.5) -- +(-90 : 4.0024) node[shift={(75 : 0.24)}]{$i$};
-		\draw[lightgray] (3.5, -4.0024) -- (5.5, -4.0024);	 % A center mark
+
+
 
 		% point labels
 		\draw[black] (197 : 17.6)  node{$A$};
