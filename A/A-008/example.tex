@@ -1,10 +1,9 @@
-
 \section{Example}
 
 \paragraph{Given:}
 \begin{itemize}
 \item Line $L_s$, with slope $m = 0.268$, passing through the origin,
-\item \emph{and} horizontal line $L_h$ passing distance $h = 13$ above the origin. 
+\item \emph{and} horizontal line $L_h$ passing distance $h = 13 \: units$ above the origin. 
 \end{itemize}
 
 \paragraph{Find:}
@@ -20,16 +19,59 @@
 \item Numeric values for all angles and critical points.
 \end{itemize}
 
+\begin{figure}[ht!]
+\centering
+\input{fig_b.tikz}
+\caption{Example Circle}
+\label{fig:fig_b}
+\end{figure}
+
 \paragraph{Steps:}
 \begin{enumerate}
 \item
-%α = 15◦
-%From equation
-%h
-%1 − sin α
-%13r=1 − sin 5◦
-%r=r=
+Follow the ``Geometric Construction Procedure'' from the end of subsection \ref{gConst}.
+Then, on figure \ref{fig:fig_b}:
+\begin{itemize}
+\item bisect $\angle{ABE}$,
+\item label the intersection of the bisection line and $L_h$,
+\item draw a vertical line downward to intersect with $L_s$,
+\item draw a circle: centered at $A$ the intersection of the vertical line and $L_s$, through point $B$ the origin, and through $C$ the intersection of the bisection line with $L_h$.
+\end{itemize}
 
+\item
+To get the angle $\alpha$ from slope $m$:
+\begin{align}
+\alpha &= \tan^{-1} \left( m \right) \label{eq:m_alpha}\\
+\alpha &= \tan^{-1} \left( 0.268 \right) \nonumber \\
+\alpha &= 15^\circ   \nonumber
+\end{align}
+
+\item
+From the given values, $m$ and $h$, all other values can be calculated using the numbered equations as follows:
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+\hline
+Variable & Value & Equation \\ [0.5ex] 
+\hline
+$m$ & 0.268 & \\ 
+$h$ & 13.0 &  \\
+\hline
+$\alpha$ & $15^\circ$ & \ref{eq:m_alpha}\\ 
+$r$ & 17.540 & \ref{eq:eq_r}\\ 
+$x_A$ & -16.942 & \ref{eq:eq_xa} \\
+\hline
+$A$ & (-16.942, -4.540) & \ref{eq:eq_A}\\ 
+$B$ & (0.0, 0.0) & \ref{eq:eq_B}\\ 
+$C$ & (-16.942, 13.0) & \ref{eq:eq_C}\\ 
+$D$ & (-16.942, 0.0) & \ref{eq:eq_D}\\ 
+$E$ & (0.0, 13.0) & \ref{eq:eq_E}\\
+\hline
+$\beta$ & $75.0^\circ$ & \ref{eq:beta}\\ 
+$\gamma$ & $52.5^\circ$ & \ref{eq:gamma3}\\ 
+$\delta$ & $105.0^\circ$ & \ref{eq:eq_delta}\\
+\hline
+\end{tabular}
+\end{center}
 \end{enumerate}
 
 

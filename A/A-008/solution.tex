@@ -7,7 +7,7 @@ The convenient \emph{geometric construction} described below will speed progress
 When creating: programs, scripts, spreadsheets or tabular data;  equations are preferred.
 The \emph{trigonometric calculation} detailed below will eliminate any guesswork.
 
-\subsection{Geometric Construction}
+\subsection{Geometric Construction} \label{gConst}
 It is desirable to find a simple geometric construction to locate the problem statement's hypothetical circle.
 
 Neither the hypothetical circle's center nor radius is known.
@@ -22,8 +22,6 @@ Refer to figure \ref{fig:fig_a} for the following discussion.  Let's define poin
 \item Let point $E$ be the location where line $L_h$ intersects the $y$-axis at right angles.
 \end{itemize}
 
-%It is identical to that found in stage 3 of figure 1 in the previous article\footnote{\label{noteA006}A-006, Regarding Tangent Ogives, Vincent W. Finley, September 2022}.
-
 Any point that is distance $r$, from a point $A$, lies on the circle of radius $r$ centered at $A$. 
 Therefore to be on the circle of radius $r$ centered at $A$, points $B$ and $C$ must be a distance $r$ from $A$.  
 This implies that the line from $A$ to $B$ is of length $r$.  
@@ -32,7 +30,7 @@ Also implied is the line from $A$ to $C$ is of length $r$, and it is equal to th
 \overline{AB} = \overline{AC} = r
 \end{equation}
 
-Since $\overline{AB} = \overline{AC}$ two sides of the hypothetical triangle $\triangle{ABC}$ are equal; therfore $\triangle{ABC}$ an isosceles triangle.
+Since $\overline{AB} = \overline{AC}$ two sides of the hypothetical triangle $\triangle{ABC}$ are equal; therefore $\triangle{ABC}$ an isosceles triangle.
 
 The radius and center of $\triangle{ABC}$ is still unknown.  The points $A$, $B$ and $C$ are also still unknown.  To find them some algebra will be applied to triangles.
 
@@ -66,14 +64,14 @@ whose value is $90^{\circ} + \alpha$.  Let's call the angle $\delta$ so that:
 \end{equation}
 and,
 \begin{equation}
-\gamma = \frac{\delta}{2}
+\gamma = \frac{\delta}{2} \label{eq:gamma3}
 \end{equation}
 
 $\gamma$ on the triangle is just half some angle $\delta = 90^{\circ} + \alpha$, but:
 \begin{equation}
 \delta = 90^{\circ} + \alpha = \angle{ABE}
 \end{equation}
-and, it is readily observed angle $\angle{ABE}$ is just the angle between sloped line $L_s$ and the $y$-axis.
+and, it is readily observed $\angle{ABE}$ is just the angle between sloped line $L_s$ and the $y$-axis.
 
 \noindent\fbox{%
     \parbox{\linewidth}{%
@@ -85,7 +83,7 @@ and, it is readily observed angle $\angle{ABE}$ is just the angle between sloped
 \item \emph{next}, draw a vertical line down from $C$, 
 \item \emph{next}, label the intersection of the vertical line with $L_s$ as point $A$, ($A$ is the circle center)
 \item \emph{next}, the value of radius $r$ can be found by measuring length of either $\overline{AB}$ or $\overline{AC}$,
-\item \emph{next}, verfify $\overline{AB} = \overline{AC} = r$.  They should be equal, otherwise an error occurred while applying the construction procedure.
+\item \emph{next}, verify $\overline{AB} = \overline{AC} = r$.  They should be equal, otherwise an error occurred while applying the construction procedure.
 \end{enumerate}
 	}%
 }
@@ -93,7 +91,7 @@ and, it is readily observed angle $\angle{ABE}$ is just the angle between sloped
 \subsection{Trigonometric Calculation}
 Application of trigonometry makes discovery of the circle radius and center a trivial exercise.
 
-Figure \ref{fig:fig_a} shows radius $r$ as the hypotonuese of $\triangle{ABD}$.
+Figure \ref{fig:fig_a} shows radius $r$ as the hypotenuse of $\triangle{ABD}$.
 Recall from equation \ref{eq:abd} the value of angle of $\angle{ABD}$ is $\alpha$.
 
 Unknown length $i$ is just the vertical radius distance $r$ less the distance $h$:
@@ -121,36 +119,36 @@ Substituting values for $\alpha$ and $h$ into equation \ref{eq:eq_r} yields the 
 
 The location of point $A$, the circle center, now can be calculated. 
 Use the cosine function to find $x_A$.
-\begin{equation}
-x_A = \overline{BD} = r \cdot \cos{\alpha} \label{eq:eq_xa} 
+\begin{equation} \label{eq:eq_xa}
+x_A = \overline{BD} = -r \cdot \cos{\alpha}   
 \end{equation}
 
-Since $r$ was found in equation \ref{eq:eq_r}, use equations \ref{eq:eqi} and \label{eq:eq_xa} to find $A$.
+Since $r$ was found in equation \ref{eq:eq_r}, use equations \ref{eq:eqi} and \ref{eq:eq_xa} to find $A$.
 \begin{align}
 A &= (x_A, y_A)\\
 A &= (\overline{BD}, -i)\\
-A &= (r \cdot \cos{\alpha}, h - r)
+A &= (-r \cdot \cos{\alpha}, h - r) \label{eq:eq_A} 
 \end{align}
 
 Point $B$ is already known since it is just an alias for the origin.
 \begin{equation}
-B = (0, 0) 
+B = (0, 0)   \label{eq:eq_B}
 \end{equation}
 
 Point $C$ is then easily found since $h$ was given in the problem statement and $x_A$ has already 
 been calculated in equation \ref{eq:eq_xa}.
 \begin{align}
-C &= (x_A, h)
+C &= (x_A, h)  \label{eq:eq_C}
 \end{align}
 
 Point $D$ also uses the value of $x_A$ from equation \ref{eq:eq_xa}.
 \begin{equation}
-D = (x_A, 0) 
+D = (x_A, 0)  \label{eq:eq_D}
 \end{equation}
 
 Point $E$ is simply distance $h$ above the origin.
 \begin{equation}
-E = (0, h) 
+E = (0, h)  \label{eq:eq_E}
 \end{equation}
 
 Angles $\beta$, $\gamma$ and $\delta$ are easily calculated from $\alpha$ and 
