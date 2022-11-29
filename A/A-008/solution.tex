@@ -117,29 +117,35 @@ r = \frac{h}{ 1 - \sin{\alpha}} \label{eq:eq_r}
 \end{equation}
 
 Since line $L_s$ is a given from the problem statement, and from equation \ref{eq:abd} its angle $\alpha$ with the $x$-axis, can either: be calculated from its slope, or measured directly.  
-Substituting values for $/alpha$ and $h$ into equation \ref{eq:eq_r} yields the length of $r$.
+Substituting values for $\alpha$ and $h$ into equation \ref{eq:eq_r} yields the length of $r$.
 
-The location of point $A$, the circle center can be calculated. Using the cosine function to find $A_x = \overline{BD}$.
-Now that $r$ has been found, use equation \ref{eq:eqi} to find $-i$.
-\begin{align*}
+The location of point $A$, the circle center, now can be calculated. 
+Use the cosine function to find $x_A$.
+\begin{equation}
+x_A = \overline{BD} = r \cdot \cos{\alpha} \label{eq:eq_xa} 
+\end{equation}
+
+Since $r$ was found in equation \ref{eq:eq_r}, use equations \ref{eq:eqi} and \label{eq:eq_xa} to find $A$.
+\begin{align}
 A &= (x_A, y_A)\\
 A &= (\overline{BD}, -i)\\
 A &= (r \cdot \cos{\alpha}, h - r)
-\end{align*}
+\end{align}
 
 Point $B$ is already known since it is just an alias for the origin.
 \begin{equation}
 B = (0, 0) 
 \end{equation}
 
-Point $C$ is then easily found since $h$ was given in the problem statement and $x_A$ has already been calculated:
+Point $C$ is then easily found since $h$ was given in the problem statement and $x_A$ has already 
+been calculated in equation \ref{eq:eq_xa}.
 \begin{align}
-C &= (r \cdot \cos{\alpha}, h)
+C &= (x_A, h)
 \end{align}
 
-Point $D$ also uses the value of $x_A = x_D$ 
+Point $D$ also uses the value of $x_A$ from equation \ref{eq:eq_xa}.
 \begin{equation}
-D = (r \cdot \cos{\alpha}, 0) 
+D = (x_A, 0) 
 \end{equation}
 
 Point $E$ is simply distance $h$ above the origin.
@@ -149,7 +155,6 @@ E = (0, h)
 
 Angles $\beta$, $\gamma$ and $\delta$ are easily calculated from $\alpha$ and 
 equations: \ref{eq:beta}, \ref{eq:gamma2} and \ref{eq:eq_delta}.
-
 \begin{flushright}   
 Q.E.D.
 \end{flushright}
