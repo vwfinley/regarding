@@ -11,7 +11,7 @@ The \emph{trigonometric calculation} detailed below will eliminate any guesswork
 It is desirable to find a simple geometric construction to locate the problem statement's hypothetical circle.
 
 Neither the hypothetical circle's center nor radius is known.
-This makes locating it difficult, as knowing one can usually be used to find the other, with simple drafting tools: compass, ruler and square.
+This makes locating it difficult as knowing one can usually be used to find the other with simple drafting tools: compass, ruler and square.
 
 Refer to figure \ref{fig:fig_a} for the following discussion.  Let's define points of interest:
 \begin{itemize}
@@ -32,7 +32,7 @@ Also implied is the line from $A$ to $C$ is of length $r$, and it is equal to th
 
 Since $\overline{AB} = \overline{AC}$ two sides of the hypothetical triangle $\triangle{ABC}$ are equal; therefore $\triangle{ABC}$ an isosceles triangle.
 
-The radius and center of $\triangle{ABC}$ is still unknown.  The points $A$, $B$ and $C$ are also still unknown.  To find them some algebra will be applied to triangles.
+The radius and center of $\triangle{ABC}$ are still unknown.  The points $A$, $B$ and $C$ are also still unknown.  To find them some algebra will be applied to triangles.
 
 Let $\alpha$ be the angle $L_s$ makes with the negative $x$-axis.  
 Also, let $\beta$ be the angle complimentary to $\alpha$ such that:
@@ -57,7 +57,7 @@ Substituting equation \ref{eq:beta} into equation \ref{eq:gamma} it is found:
 \gamma = \frac{90^{\circ} + \alpha}{2} \label{eq:gamma2}
 \end{equation}
 
-By inspecting equation \ref{eq:gamma2} it can be seen that angle $\gamma$ on the $\triangle{ABC}$ is half of some angle
+By inspecting equation \ref{eq:gamma2} it can be seen that angle $\gamma$ on $\triangle{ABC}$ is half of some angle
 whose value is $90^{\circ} + \alpha$.  Let's call the angle $\delta$ so that:
 \begin{equation}
 \delta = 90^{\circ} + \alpha \label{eq:eq_delta}
@@ -114,16 +114,19 @@ r = \frac{h}{ 1 - \sin{\alpha}} \label{eq:eq_r}
 }
 \end{equation}
 
-Since line $L_s$ is a given from the problem statement, and from equation \ref{eq:abd} its angle $\alpha$ with the $x$-axis, can either: be calculated from its slope, or measured directly.  
+Line $L_s$ is a given by the problem statement.  Its angle $\alpha$ with the $x$-axis, can be: measured directly (equation \ref{eq:abd}) or calculated from the slope $m$ of $L_s$ as follows:
+\begin{equation}
+\alpha = \tan^{-1} \left( m \right) \label{eq:m_alpha}
+\end{equation}
 Substituting values for $\alpha$ and $h$ into equation \ref{eq:eq_r} yields the length of $r$.
 
 The location of point $A$, the circle center, now can be calculated. 
-Use the cosine function to find $x_A$.
+Use equation \ref{eq:eqi} to find $y_A$, and use the cosine function to find $x_A$.
 \begin{equation} \label{eq:eq_xa}
 x_A = \overline{BD} = -r \cdot \cos{\alpha}   
 \end{equation}
 
-Since $r$ was found in equation \ref{eq:eq_r}, use equations \ref{eq:eqi} and \ref{eq:eq_xa} to find $A$.
+Substitute to find $A$.
 \begin{align}
 A &= (x_A, y_A)\\
 A &= (\overline{BD}, -i)\\
