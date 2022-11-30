@@ -6,6 +6,7 @@
 - [A-005 Regarding Relationship and Classification of Equal Coplanar Circles](A-005/A-005.pdf)
 - [A-006 Regarding Tangent Ogives](A-006/A-006.pdf)
 - [A-007 Regarding Circle Intersections and Tangent Ogives](A-007/A-007.pdf)
+- [A-008 Regarding Placement of a Constrained Circle](A-008/A-008.pdf)
 
 # Summary
 - Thoughts and notes about analytic geometry, trigonometry, etc.
