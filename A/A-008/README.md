@@ -1,2 +1,1 @@
-Work in progress
-A-008 Regarding Constrained Placement of a Circle
+Article: [A-008 Regarding Placement of a Constrained Circle, November 2022](A-008.pdf)
