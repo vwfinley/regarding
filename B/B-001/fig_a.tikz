@@ -1,3 +1,6 @@
+
+% Code 110 wheel profile
+
 \begin{tikzpicture}[x=1in, y=1in]
 	\begin{scope}[xscale=45, yscale=45]	
 		\coordinate (origin) at (0,0);
