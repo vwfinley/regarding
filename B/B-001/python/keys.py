@@ -1,0 +1,18 @@
+CODE = "CODE"
+N_PRIME = "N_PRIME"
+T = "T"
+W = "W"
+D_PRIME = "D_PRIME"
+P = "P"
+R1 = "R1"
+R2 = "R2"
+R3 = "R3"
+
+alpha = "alpha"
+
+g = "g"
+theta_g = "theta_g"
+t = "t"
+p1 = "p1"
+p2 = "p2"
+p3 = "p3"
