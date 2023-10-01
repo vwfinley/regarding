@@ -8,7 +8,7 @@ R1 = "R1"
 R2 = "R2"
 R3 = "R3"
 
-alpha = "alpha"
+slope = "slope"
 
 g = "g"
 theta_g = "theta_g"

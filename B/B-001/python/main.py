@@ -1,8 +1,6 @@
-import json
 from argparse import ArgumentParser
-from common import *
-from keys import *
-from data import *
+import json
+
 from rp25 import *
 
 default_code = 110
@@ -13,8 +11,8 @@ def main():
 	# Handle args
 	###
 	parser = ArgumentParser(
-		prog="RP-25 Calculator",
-		description="vwf todo",
+		prog="rp25",
+		description="Wheel contour calculator for NMRA RP-25 (rev. July 2009) contours.",
 		epilog="Vincent W. Finley, Bear, DE, USA, 2023"
 	)
 
@@ -35,33 +33,18 @@ def main():
 	
 	args = parser.parse_args()
 
-	# Todo, validate args
+	# vwf Todo, validate args
+
+	# Call core routine.
+	result = rp25(int(args.code), float(args.slope))
 
 	###
-	# Input
-	###
-	input = data[int(args.code)]
-	input[alpha] = {value: int(args.slope), unit: degrees}
-
-	###
-	# Calculations
-	###
-	output = calculate(
-		input[alpha][value],
-		input[T][value], 
-		input[P][value],
-		input[R1][value],
-		input[R2][value],
-		input[R3][value]
-	)
-
-	###
-	# Outputs
+	# Display results
 	###
 	print("--- INPUTS ---")
-	print(json.dumps(input, indent=2))
+	print(json.dumps(result[inputs], indent=2))
 	print("--- OUTPUTS ---")
-	print(json.dumps(output, indent=2))
+	print(json.dumps(result[outputs], indent=2))
 
-
+# The main entry point for commandline application.
 main()
