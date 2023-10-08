@@ -47,4 +47,5 @@ def main():
 	print(json.dumps(result[outputs], indent=2))
 
 # The main entry point for commandline application.
-main()
+if __name__ == "__main__":
+	main()
