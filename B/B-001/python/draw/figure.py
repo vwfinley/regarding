@@ -1,8 +1,7 @@
 import sys, math, json
 from argparse import ArgumentParser
-
 from abc import ABC, abstractmethod 
-
+from enum import Enum
 
 sys.path.insert(0, '../rp25')
 from rp25 import *
@@ -12,115 +11,96 @@ Point = namedtuple('Point', 'label x y')
 
 default_code = 110
 default_slope = 3.0
-
-on = "black"
-off = "lightgray"
-
-def begin_picture(x: float, y: float):
-	return "\\begin{{tikzpicture}}[x={}in, y={}in]\n".format(x, y)
-def end_picture():
-	return "\end{tikzpicture}\n"
-
-def begin_scale(xscale:float, yscale: float):
-	return "\\begin{{scope}}[xscale={}, yscale={}]\n".format(xscale, yscale)
-
-def end_scope():
-	return "\end{scope}\n"
+region = 1
+scale = 45
+overhang = 0.005
 
 
-def xaxis(color: str, x1: float, x2: float):
-	return "\\draw[{}, -{{Latex[scale=1.5]}}] ({:.5f}, 0) -- ({:.5f}, 0)  node [right] {{$x$}};\n".format(color, x1, x2)		
 
-def yaxis(color: str, y1: float, y2: float):
-	return "\\draw[{}, -{{Latex[scale=1.5]}}] (0, {:.5f}) -- (0, {:.5f})  node [above] {{$y$}};\n".format(color, y1, y2)
-
-def line(color: str, label: str, x1: float, y1: float, x2: float, y2: float):
-	return "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n".format(color, x1, y1, x2, y2, label)		
-
-def cline(color: str, label: str, x: float, y: float, angle: float, r1: float, r2: float):
-	cos = math.cos(math.radians(angle))
-	sin = math.sin(math.radians(angle))
-	dx1 = r1 * cos
-	dy1 = r1 * sin
-	dx2 = r2 * cos
-	dy2 = r2 * sin
-	return line(color, label, x - dx1, y - dy1, x + dx2, y + dy2)
+class State(Enum):
+	Hide = 1
+	Off = 2
+	On = 3
 	
-
-def centermark(color: str, label: str, x: float, y: float):
-	len = 0.001
-	x1 = x - len
-	x2 = x + len
-	y1 = y - len
-	y2 = y + len
-	horiz = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n".format(color, x1, y, x2, y, label)
-	vert = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f});\n".format(color, x, y1, x, y2)
-	return horiz + vert
-
-def arc(color: str, label: str, x: float, y: float, radius: float, start_angle: float, end_angle: float):
-	return "\\draw[{0}] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n".format(color, x, y, radius, start_angle, end_angle)
-
-def arrow(color: str, label: str, x: float, y: float, length: float, angle: float):
-	dx = length * math.cos(math.radians(angle))
-	dy = length * math.sin(math.radians(angle))
-	return "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n".format(color, x, y, x + dx, y + dy, label)		
-
-#--------------
 class Drawable(ABC):
-	def draw(self) -> str: 
-		return self.output
+	def draw(self, state: State = State.On) -> str: 
+		match state:
+			case State.Hide:
+				return ""
+			case State.Off:
+				return self.off
+			case State.On:
+				return self.on
 
 class Begin(Drawable):
 	def __init__(self, clip: float, scale: float):
-		self.output = "\\begin{{tikzpicture}}[x={0}in, y={0}in]\n".format(clip) + "\\begin{{scope}}[xscale={0}, yscale={0}]\n".format(scale)
+		self.off = self.on = "\\begin{{tikzpicture}}[x={0}in, y={0}in]\n".format(clip) + "\\begin{{scope}}[xscale={0}, yscale={0}]\n".format(scale)
 
 class End(Drawable):
 	def __init__(self):
-		self.output =  "\end{scope}\n" + "\end{tikzpicture}\n"
+		self.off = self.on = "\end{scope}\n" + "\end{tikzpicture}\n"
 
 class XAxis(Drawable):
-	def __init__(self, color: str, x1: float, x2: float):
-		self.output = "\\draw[{}, -{{Latex[scale=1.5]}}] ({:.5f}, 0) -- ({:.5f}, 0)  node [right] {{$x$}};\n".format(color, x1, x2)		
+	def __init__(self, offcolor: str, oncolor: str, x1: float, x2: float):
+		s = "\\draw[{}, -{{Latex[scale=1.5]}}] ({:.5f}, 0) -- ({:.5f}, 0)  node [right] {{$x$}};\n"
+		self.off = s.format(offcolor, x1, x2)		
+		self.on = s.format(oncolor, x1, x2)		
 
 class YAxis(Drawable):
-	def __init__(self, color: str, y1: float, y2: float):
-		self.output = "\\draw[{}, -{{Latex[scale=1.5]}}] (0, {:.5f}) -- (0, {:.5f})  node [above] {{$y$}};\n".format(color, y1, y2)
-
+	def __init__(self, offcolor: str, oncolor: str, y1: float, y2: float):
+		s = "\\draw[{}, -{{Latex[scale=1.5]}}] (0, {:.5f}) -- (0, {:.5f})  node [above] {{$y$}};\n"
+		self.off = s.format(offcolor, y1, y2)
+		self.on = s.format(oncolor, y1, y2)
 
 class Line(Drawable):
-	def __init__(self, color: str, label: str, x1: float, y1: float, x2: float, y2: float):
-		self.output = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n".format(color, x1, y1, x2, y2, label)	
+	def __init__(self, offcolor: str, oncolor: str, label: str, x1: float, y1: float, x2: float, y2: float):
+		s = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
+		self.off = s.format(offcolor, x1, y1, x2, y2, label)	
+		self.on = s.format(oncolor, x1, y1, x2, y2, label)	
 
 class CLine(Line):
-	def __init__(self, color: str, label: str, x: float, y: float, angle: float, r1: float, r2: float):
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, angle: float, r1: float, r2: float):
 		cos = math.cos(math.radians(angle))
 		sin = math.sin(math.radians(angle))
 		dx1 = r1 * cos
 		dy1 = r1 * sin
 		dx2 = r2 * cos
 		dy2 = r2 * sin
-		super().__init__(color, label, x - dx1, y - dy1, x + dx2, y + dy2)
+		super().__init__(offcolor, oncolor, label, x - dx1, y - dy1, x + dx2, y + dy2)
 
 class Centermark(Drawable):
-	def __init__(self, color: str, label: str, x: float, y: float):
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float):
 		len = 0.001
 		x1 = x - len
 		x2 = x + len
 		y1 = y - len
 		y2 = y + len
-		horiz = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n".format(color, x1, y, x2, y, label)
-		vert = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f});\n".format(color, x, y1, x, y2)
-		self.output = horiz + vert
+		h = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
+		v = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f});\n"	
+		self.off = h.format(offcolor, x1, y, x2, y, label) + v.format(offcolor, x, y1, x, y2)
+		self.on = h.format(oncolor, x1, y, x2, y, label) + v.format(oncolor, x, y1, x, y2)
 
 class Arc(Drawable): 
-	def __init__(self, color: str, label: str, x: float, y: float, radius: float, start_angle: float, end_angle: float):
-		self.output = "\\draw[{0}] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n".format(color, x, y, radius, start_angle, end_angle)
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, radius: float, start_angle: float, end_angle: float):
+		s = "\\draw[{0}] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n"
+		self.off = s.format(offcolor, x, y, radius, start_angle, end_angle)
+		self.on = s.format(oncolor, x, y, radius, start_angle, end_angle)
 
 class Arrow(Drawable): 
-	def __init__(self, color: str, label: str, x: float, y: float, length: float, angle: float):
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, length: float, angle: float):
 		dx = length * math.cos(math.radians(angle))
 		dy = length * math.sin(math.radians(angle))
-		self.output = "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n".format(color, x, y, x + dx, y + dy, label)		
+		s = "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
+		self.off = s.format(offcolor, x, y, x + dx, y + dy, label)
+		self.on = s.format(oncolor, x, y, x + dx, y + dy, label)
+
+
+
+
+def Draw(d: dict, filename: str):
+	with open(filename, 'w') as f:
+		for key, value in d.items():
+			f.write(key.draw(value))
 
 def draw(code: int, slope: float):
 
@@ -148,96 +128,129 @@ def draw(code: int, slope: float):
 	p3 = Point("p3", output["p3"]["x"], output["p3"]["y"])
 	theta_g =  output["theta_g"]["value"]
 
-	overhang = 0.005
-	with open('output.tikz', 'w') as f:
 
-		f.write(Begin(1, 45).draw())
-		
-		f.write(XAxis(off, -W - 2 * overhang, T + 2 * overhang).draw())
-		f.write(YAxis(off, P - D_PRIME - 2 * overhang , P + 2 * overhang).draw())
+	# -------------------------
+	begin = Begin(region, scale)
+	end = End()
 
+	x_axis = XAxis("lightgray", "black", -W - 2 * overhang, T + 2 * overhang)
+	y_axis = YAxis("lightgray", "black", P - D_PRIME - 2 * overhang , P + 2 * overhang)
 
-		# horiz
-		left = -W - overhang
-		right = T + overhang
-		f.write(Line(off, "", left, P, right, P).draw())
-		f.write(Line(off, "", left, P - D_PRIME, right, P - D_PRIME).draw())
+	# h lines
+	left = -W - overhang
+	right = T + overhang
+	line_P = Line("lightgray", "black", "", left, P, right, P)
+	line_Dprime = Line("lightgray", "black", "", left, P - D_PRIME, right, P - D_PRIME)
 
+	# v lines
+	top = P + overhang
+	bottom = P - D_PRIME - overhang
+	line_T = Line("lightgray", "black", "", T, bottom, T, top)
+	line_T2 = Line("lightgray", "black", "", T / 2, bottom, T / 2, top)
+	line_W = Line("lightgray", "black", "", -W, bottom, -W, top)
 
-		# vert
-		top = P + overhang
-		bottom = P - D_PRIME - overhang
-		f.write(Line(off, "", T, bottom, T, top).draw())
-		f.write(Line(off, "", T / 2, bottom, T / 2, top).draw())		
-		f.write(Line(off, "", -W, bottom, -W, top).draw())	
+	# centermarks
+	center_p1 = Centermark("lightgray", "black", p1.label, p1.x, p1.y)
+	center_p2 = Centermark("lightgray", "black", p2.label, p2.x, p2.y)
+	center_p3 = Centermark("lightgray", "black", p3.label, p3.x, p3.y)
 
-		f.write(Centermark(off, p1.label, p1.x, p1.y).draw())	
-		f.write(Centermark(off, p2.label, p2.x, p2.y).draw())	
-		f.write(Centermark(off, p3.label, p3.x, p3.y).draw())	
+	# arcs
+	arc_c1 = Arc("lightgray", "black", "c1", p1.x, p1.y, R1, -30, 115)
+	arc_c2 = Arc("lightgray", "black", "c2", p2.x, p2.y, R2, 180, 285)
+	arc_c3 = Arc("lightgray", "black", "c3", p3.x, p3.y, R3, 255, 360)
 
+	# arrows
+	arrow_r1 = Arrow("lightgray", "black", "R1", p1.x, p1.y, R1, 75.0)
+	arrow_r2 = Arrow("lightgray", "black", "R2", p2.x, p2.y, R2, -135.0)
+	arrow_r3 = Arrow("lightgray", "black", "R3", p3.x, p3.y, R3, -45.0)
 
-		f.write(Arc(off, "c1", p1.x, p1.y, R1, -30, 115).draw())
-		f.write(Arc(off, "c2", p2.x, p2.y, R2, 180, 285).draw())
-		f.write(Arc(off, "c3", p3.x, p3.y, R3, 255, 360).draw())
+	# clines
+	cline_L = CLine("lightgray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
 
-		f.write(Arrow(off, "R1", p1.x, p1.y, R1, 75.0).draw())
-		f.write(Arrow(off, "R2", p2.x, p2.y, R2, -135.0).draw())
-		f.write(Arrow(off, "R3", p3.x, p3.y, R3, -45.0).draw())
+	# arrows
+	arrow_r1_layout = Arrow("lightgray", "black", "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0)
+	arrow_r2_layout = Arrow("lightgray", "black", "R2", origin.x, origin.y, R2, theta_g + 10.0)
 
-		f.write(CLine(off, "L", 0, 0, theta_g, 0.035, 0.035).draw())
+	# arcs
+	arc_v1 = Arc("lightgray", "black", "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
+	arc_v2 = Arc("lightgray", "black", "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0)
 
-		###
-		f.write(Arrow(off, "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0).draw())
-		f.write(Arrow(off, "R2", origin.x, origin.y, R2, theta_g + 10.0).draw())
+	fig1 = {
+		begin: State.On,
 
-		f.write(Arc(off, "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0).draw())
-		f.write(Arc(off, "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0).draw())
+		x_axis: State.On,
+		y_axis: State.Off,
 
-		f.write(End().draw())
+		line_P: State.Off,
+		line_Dprime: State.Off,
 
+		line_T: State.Off,
+		line_T2: State.Off,
+		line_W: State.Off,
 
-#		f.write(begin_picture(1, 1))
-#		f.write(begin_scale(45, 45))
+		center_p1: State.Off,
+		center_p2: State.Off,
+		center_p3: State.Off,
 
-#		f.write(xaxis(off, -W - 2 * overhang, T + 2 * overhang))
-#		f.write(yaxis(off, P - D_PRIME - 2 * overhang , P + 2 * overhang))
+		arc_c1: State.Off,
+		arc_c2: State.Off,
+		arc_c3: State.Off,
 
-		# horiz
-#		left = -W - overhang
-#		right = T + overhang
-#		f.write(line(off, "", left, P, right, P))
-#		f.write(line(off, "", left, P - D_PRIME, right, P - D_PRIME))
-		
-		# vert
-#		top = P + overhang
-#		bottom = P - D_PRIME - overhang
-#		f.write(line(off, "", T, bottom, T, top))
-#		f.write(line(off, "", T / 2, bottom, T / 2, top))		
-#		f.write(line(off, "", -W, bottom, -W, top))		
+		arrow_r1: State.Off,
+		arrow_r2: State.Off,
+		arrow_r3: State.Off,
 
-#		f.write(centermark(off, p1.label, p1.x, p1.y))
-#		f.write(centermark(off, p2.label, p2.x, p2.y))
-#		f.write(centermark(off, p3.label, p3.x, p3.y))
+		cline_L: State.Off,
 
-#		f.write(arc(off, "c1", p1.x, p1.y, R1, -30, 115))
-#		f.write(arc(off, "c2", p2.x, p2.y, R2, 180, 285))
-#		f.write(arc(off, "c3", p3.x, p3.y, R3, 255, 360))
+		arrow_r1_layout: State.Off,
+		arrow_r2_layout: State.Off,
 
-#		f.write(arrow(off, "R1", p1.x, p1.y, R1, 75.0))
-#		f.write(arrow(off, "R2", p2.x, p2.y, R2, -135.0))
-#		f.write(arrow(off, "R3", p3.x, p3.y, R3, -45.0))
+		arc_v1: State.Off,
+		arc_v2: State.Off,
 
-#		f.write(cline(off, "L", 0, 0, theta_g, 0.035, 0.035))
+		end: State.On
+	}
 
-		###
-#		f.write(arrow(off, "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0))
-#		f.write(arrow(off, "R2", origin.x, origin.y, R2, theta_g + 10.0))
+	Draw(fig1, "fig1.tikz")
 
-#		f.write(arc(off, "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0))
-#		f.write(arc(off, "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0))
+	fig2 = {
+		begin: State.On,
 
-#		f.write(end_scope())
-#		f.write(end_picture())
+		x_axis: State.On,
+		y_axis: State.On,
+
+		line_P: State.Off,
+		line_Dprime: State.Off,
+
+		line_T: State.Off,
+		line_T2: State.Off,
+		line_W: State.Off,
+
+		center_p1: State.Off,
+		center_p2: State.Off,
+		center_p3: State.Off,
+
+		arc_c1: State.On,
+		arc_c2: State.On,
+		arc_c3: State.On,
+
+		arrow_r1: State.Off,
+		arrow_r2: State.Off,
+		arrow_r3: State.Off,
+
+		cline_L: State.Off,
+
+		arrow_r1_layout: State.Off,
+		arrow_r2_layout: State.Off,
+
+		arc_v1: State.Off,
+		arc_v2: State.Off,
+
+		end: State.On
+	}
+
+	Draw(fig2, "fig2.tikz")
+
 
 
 def main():
