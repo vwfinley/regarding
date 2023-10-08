@@ -76,7 +76,7 @@ class Begin(Drawable):
 
 class End(Drawable):
 	def __init__(self):
-		self.output =  "\end{tikzpicture}\n" + "\end{scope}\n"
+		self.output =  "\end{scope}\n" + "\end{tikzpicture}\n"
 
 class XAxis(Drawable):
 	def __init__(self, color: str, x1: float, x2: float):
@@ -151,48 +151,95 @@ def draw(code: int, slope: float):
 	overhang = 0.005
 	with open('output.tikz', 'w') as f:
 
-		f.write(begin_picture(1, 1))
-		f.write(begin_scale(45, 45))
+		f.write(Begin(1, 45).draw())
+		
+		f.write(XAxis(off, -W - 2 * overhang, T + 2 * overhang).draw())
+		f.write(YAxis(off, P - D_PRIME - 2 * overhang , P + 2 * overhang).draw())
 
-		f.write(xaxis(off, -W - 2 * overhang, T + 2 * overhang))
-		f.write(yaxis(off, P - D_PRIME - 2 * overhang , P + 2 * overhang))
 
 		# horiz
 		left = -W - overhang
 		right = T + overhang
-		f.write(line(off, "", left, P, right, P))
-		f.write(line(off, "", left, P - D_PRIME, right, P - D_PRIME))
-		
+		f.write(Line(off, "", left, P, right, P).draw())
+		f.write(Line(off, "", left, P - D_PRIME, right, P - D_PRIME).draw())
+
+
 		# vert
 		top = P + overhang
 		bottom = P - D_PRIME - overhang
-		f.write(line(off, "", T, bottom, T, top))
-		f.write(line(off, "", T / 2, bottom, T / 2, top))		
-		f.write(line(off, "", -W, bottom, -W, top))		
+		f.write(Line(off, "", T, bottom, T, top).draw())
+		f.write(Line(off, "", T / 2, bottom, T / 2, top).draw())		
+		f.write(Line(off, "", -W, bottom, -W, top).draw())	
 
-		f.write(centermark(off, p1.label, p1.x, p1.y))
-		f.write(centermark(off, p2.label, p2.x, p2.y))
-		f.write(centermark(off, p3.label, p3.x, p3.y))
+		f.write(Centermark(off, p1.label, p1.x, p1.y).draw())	
+		f.write(Centermark(off, p2.label, p2.x, p2.y).draw())	
+		f.write(Centermark(off, p3.label, p3.x, p3.y).draw())	
 
-		f.write(arc(off, "c1", p1.x, p1.y, R1, -30, 115))
-		f.write(arc(off, "c2", p2.x, p2.y, R2, 180, 285))
-		f.write(arc(off, "c3", p3.x, p3.y, R3, 255, 360))
 
-		f.write(arrow(off, "R1", p1.x, p1.y, R1, 75.0))
-		f.write(arrow(off, "R2", p2.x, p2.y, R2, -135.0))
-		f.write(arrow(off, "R3", p3.x, p3.y, R3, -45.0))
+		f.write(Arc(off, "c1", p1.x, p1.y, R1, -30, 115).draw())
+		f.write(Arc(off, "c2", p2.x, p2.y, R2, 180, 285).draw())
+		f.write(Arc(off, "c3", p3.x, p3.y, R3, 255, 360).draw())
 
-		f.write(cline(off, "L", 0, 0, theta_g, 0.035, 0.035))
+		f.write(Arrow(off, "R1", p1.x, p1.y, R1, 75.0).draw())
+		f.write(Arrow(off, "R2", p2.x, p2.y, R2, -135.0).draw())
+		f.write(Arrow(off, "R3", p3.x, p3.y, R3, -45.0).draw())
+
+		f.write(CLine(off, "L", 0, 0, theta_g, 0.035, 0.035).draw())
 
 		###
-		f.write(arrow(off, "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0))
-		f.write(arrow(off, "R2", origin.x, origin.y, R2, theta_g + 10.0))
+		f.write(Arrow(off, "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0).draw())
+		f.write(Arrow(off, "R2", origin.x, origin.y, R2, theta_g + 10.0).draw())
 
-		f.write(arc(off, "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0))
-		f.write(arc(off, "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0))
+		f.write(Arc(off, "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0).draw())
+		f.write(Arc(off, "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0).draw())
 
-		f.write(end_scope())
-		f.write(end_picture())
+		f.write(End().draw())
+
+
+#		f.write(begin_picture(1, 1))
+#		f.write(begin_scale(45, 45))
+
+#		f.write(xaxis(off, -W - 2 * overhang, T + 2 * overhang))
+#		f.write(yaxis(off, P - D_PRIME - 2 * overhang , P + 2 * overhang))
+
+		# horiz
+#		left = -W - overhang
+#		right = T + overhang
+#		f.write(line(off, "", left, P, right, P))
+#		f.write(line(off, "", left, P - D_PRIME, right, P - D_PRIME))
+		
+		# vert
+#		top = P + overhang
+#		bottom = P - D_PRIME - overhang
+#		f.write(line(off, "", T, bottom, T, top))
+#		f.write(line(off, "", T / 2, bottom, T / 2, top))		
+#		f.write(line(off, "", -W, bottom, -W, top))		
+
+#		f.write(centermark(off, p1.label, p1.x, p1.y))
+#		f.write(centermark(off, p2.label, p2.x, p2.y))
+#		f.write(centermark(off, p3.label, p3.x, p3.y))
+
+#		f.write(arc(off, "c1", p1.x, p1.y, R1, -30, 115))
+#		f.write(arc(off, "c2", p2.x, p2.y, R2, 180, 285))
+#		f.write(arc(off, "c3", p3.x, p3.y, R3, 255, 360))
+
+#		f.write(arrow(off, "R1", p1.x, p1.y, R1, 75.0))
+#		f.write(arrow(off, "R2", p2.x, p2.y, R2, -135.0))
+#		f.write(arrow(off, "R3", p3.x, p3.y, R3, -45.0))
+
+#		f.write(cline(off, "L", 0, 0, theta_g, 0.035, 0.035))
+
+		###
+#		f.write(arrow(off, "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0))
+#		f.write(arrow(off, "R2", origin.x, origin.y, R2, theta_g + 10.0))
+
+#		f.write(arc(off, "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0))
+#		f.write(arc(off, "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0))
+
+#		f.write(end_scope())
+#		f.write(end_picture())
+
+
 def main():
 	###
 	# Handle args
