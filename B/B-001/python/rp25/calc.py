@@ -30,7 +30,7 @@ def calculate(slope, T, P, R1, R2, R3) -> dict:
 	# Calc other centers relative to g (origin)
 	###
 	p2 = Point(R2 * math.cos(theta_g), R2 * math.sin(theta_g))
-	p3 = Point(p2.x - 0.5 * T, p2.y)
+	p3 = Point(T - p2.x, p2.y) # Reflect p2 across T/2 line
 
 	###
 	# Convert for output
