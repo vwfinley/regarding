@@ -15,8 +15,6 @@ region = 1
 scale = 45
 overhang = 0.005
 
-
-
 class State(Enum):
 	Hide = 1
 	Off = 2
@@ -95,12 +93,88 @@ class Arrow(Drawable):
 		self.on = s.format(oncolor, x, y, x + dx, y + dy, label)
 
 
+fig1 = {
+	"begin": State.On,
+
+	"x_axis": State.On,
+	"y_axis": State.On,
+
+	"line_P": State.Off,
+	"line_Dprime": State.Off,
+
+	"line_T": State.Off,
+	"line_T2": State.Off,
+	"line_W": State.Off,
+
+	"center_p1": State.Off,
+	"center_p2": State.Off,
+	"center_p3": State.Off,
+
+	"arc_c1": State.Off,
+	"arc_c2": State.Off,
+	"arc_c3": State.Off,
+
+	"arrow_r1": State.Off,
+	"arrow_r2": State.Off,
+	"arrow_r3": State.Off,
+
+	"cline_L": State.Off,
+
+	"arrow_r1_layout": State.Off,
+	"arrow_r2_layout": State.Off,
+
+	"arc_v1": State.Off,
+	"arc_v2": State.Off,
+
+	"end": State.On
+}
 
 
-def Draw(d: dict, filename: str):
+fig2 = {
+	"begin": State.On,
+
+	"x_axis": State.On,
+	"y_axis": State.On,
+
+	"line_P": State.Off,
+	"line_Dprime": State.Off,
+
+	"line_T": State.Off,
+	"line_T2": State.Off,
+	"line_W": State.Off,
+
+	"center_p1": State.Off,
+	"center_p2": State.Off,
+	"center_p3": State.Off,
+
+	"arc_c1": State.On,
+	"arc_c2": State.On,
+	"arc_c3": State.On,
+
+	"arrow_r1": State.Off,
+	"arrow_r2": State.Off,
+	"arrow_r3": State.Off,
+
+	"cline_L": State.Off,
+
+	"arrow_r1_layout": State.Off,
+	"arrow_r2_layout": State.Off,
+
+	"arc_v1": State.Off,
+	"arc_v2": State.Off,
+
+	"end": State.On
+}
+
+figs = {
+	"fig1": fig1,
+	"fig2": fig2
+}
+
+def Draw(drawables: dict, d: dict, filename: str):
 	with open(filename, 'w') as f:
 		for key, value in d.items():
-			f.write(key.draw(value))
+			f.write(drawables[key].draw(value))
 
 def draw(code: int, slope: float):
 
@@ -128,129 +202,56 @@ def draw(code: int, slope: float):
 	p3 = Point("p3", output["p3"]["x"], output["p3"]["y"])
 	theta_g =  output["theta_g"]["value"]
 
-
 	# -------------------------
-	begin = Begin(region, scale)
-	end = End()
+	drawables = {}
 
-	x_axis = XAxis("lightgray", "black", -W - 2 * overhang, T + 2 * overhang)
-	y_axis = YAxis("lightgray", "black", P - D_PRIME - 2 * overhang , P + 2 * overhang)
+	drawables["begin"] = Begin(region, scale)
+	drawables["end"] = End()
+
+	drawables["x_axis"] = XAxis("lightgray", "black", -W - 2 * overhang, T + 2 * overhang)
+	drawables["y_axis"] = YAxis("lightgray", "black", P - D_PRIME - 2 * overhang , P + 2 * overhang)
 
 	# h lines
 	left = -W - overhang
 	right = T + overhang
-	line_P = Line("lightgray", "black", "", left, P, right, P)
-	line_Dprime = Line("lightgray", "black", "", left, P - D_PRIME, right, P - D_PRIME)
+	drawables["line_P"] = Line("lightgray", "black", "", left, P, right, P)
+	drawables["line_Dprime"] = Line("lightgray", "black", "", left, P - D_PRIME, right, P - D_PRIME)
 
 	# v lines
 	top = P + overhang
 	bottom = P - D_PRIME - overhang
-	line_T = Line("lightgray", "black", "", T, bottom, T, top)
-	line_T2 = Line("lightgray", "black", "", T / 2, bottom, T / 2, top)
-	line_W = Line("lightgray", "black", "", -W, bottom, -W, top)
+	drawables["line_T"] = Line("lightgray", "black", "", T, bottom, T, top)
+	drawables["line_T2"] = Line("lightgray", "black", "", T / 2, bottom, T / 2, top)
+	drawables["line_W"] = Line("lightgray", "black", "", -W, bottom, -W, top)
 
 	# centermarks
-	center_p1 = Centermark("lightgray", "black", p1.label, p1.x, p1.y)
-	center_p2 = Centermark("lightgray", "black", p2.label, p2.x, p2.y)
-	center_p3 = Centermark("lightgray", "black", p3.label, p3.x, p3.y)
+	drawables["center_p1"] = Centermark("lightgray", "black", p1.label, p1.x, p1.y)
+	drawables["center_p2"] = Centermark("lightgray", "black", p2.label, p2.x, p2.y)
+	drawables["center_p3"] = Centermark("lightgray", "black", p3.label, p3.x, p3.y)
 
 	# arcs
-	arc_c1 = Arc("lightgray", "black", "c1", p1.x, p1.y, R1, -30, 115)
-	arc_c2 = Arc("lightgray", "black", "c2", p2.x, p2.y, R2, 180, 285)
-	arc_c3 = Arc("lightgray", "black", "c3", p3.x, p3.y, R3, 255, 360)
+	drawables["arc_c1"] = Arc("lightgray", "black", "c1", p1.x, p1.y, R1, -30, 115)
+	drawables["arc_c2"] = Arc("lightgray", "black", "c2", p2.x, p2.y, R2, 180, 285)
+	drawables["arc_c3"] = Arc("lightgray", "black", "c3", p3.x, p3.y, R3, 255, 360)
 
 	# arrows
-	arrow_r1 = Arrow("lightgray", "black", "R1", p1.x, p1.y, R1, 75.0)
-	arrow_r2 = Arrow("lightgray", "black", "R2", p2.x, p2.y, R2, -135.0)
-	arrow_r3 = Arrow("lightgray", "black", "R3", p3.x, p3.y, R3, -45.0)
+	drawables["arrow_r1"] = Arrow("lightgray", "black", "R1", p1.x, p1.y, R1, 75.0)
+	drawables["arrow_r2"] = Arrow("lightgray", "black", "R2", p2.x, p2.y, R2, -135.0)
+	drawables["arrow_r3"] = Arrow("lightgray", "black", "R3", p3.x, p3.y, R3, -45.0)
 
 	# clines
-	cline_L = CLine("lightgray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
+	drawables["cline_L"] = CLine("lightgray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
 
 	# arrows
-	arrow_r1_layout = Arrow("lightgray", "black", "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0)
-	arrow_r2_layout = Arrow("lightgray", "black", "R2", origin.x, origin.y, R2, theta_g + 10.0)
+	drawables["arrow_r1_layout"] = Arrow("lightgray", "black", "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0)
+	drawables["arrow_r2_layout"] = Arrow("lightgray", "black", "R2", origin.x, origin.y, R2, theta_g + 10.0)
 
 	# arcs
-	arc_v1 = Arc("lightgray", "black", "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
-	arc_v2 = Arc("lightgray", "black", "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0)
+	drawables["arc_v1"] = Arc("lightgray", "black", "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
+	drawables["arc_v2"] = Arc("lightgray", "black", "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0)
 
-	fig1 = {
-		begin: State.On,
-
-		x_axis: State.On,
-		y_axis: State.Off,
-
-		line_P: State.Off,
-		line_Dprime: State.Off,
-
-		line_T: State.Off,
-		line_T2: State.Off,
-		line_W: State.Off,
-
-		center_p1: State.Off,
-		center_p2: State.Off,
-		center_p3: State.Off,
-
-		arc_c1: State.Off,
-		arc_c2: State.Off,
-		arc_c3: State.Off,
-
-		arrow_r1: State.Off,
-		arrow_r2: State.Off,
-		arrow_r3: State.Off,
-
-		cline_L: State.Off,
-
-		arrow_r1_layout: State.Off,
-		arrow_r2_layout: State.Off,
-
-		arc_v1: State.Off,
-		arc_v2: State.Off,
-
-		end: State.On
-	}
-
-	Draw(fig1, "fig1.tikz")
-
-	fig2 = {
-		begin: State.On,
-
-		x_axis: State.On,
-		y_axis: State.On,
-
-		line_P: State.Off,
-		line_Dprime: State.Off,
-
-		line_T: State.Off,
-		line_T2: State.Off,
-		line_W: State.Off,
-
-		center_p1: State.Off,
-		center_p2: State.Off,
-		center_p3: State.Off,
-
-		arc_c1: State.On,
-		arc_c2: State.On,
-		arc_c3: State.On,
-
-		arrow_r1: State.Off,
-		arrow_r2: State.Off,
-		arrow_r3: State.Off,
-
-		cline_L: State.Off,
-
-		arrow_r1_layout: State.Off,
-		arrow_r2_layout: State.Off,
-
-		arc_v1: State.Off,
-		arc_v2: State.Off,
-
-		end: State.On
-	}
-
-	Draw(fig2, "fig2.tikz")
-
+	for key, value in figs.items():
+		Draw(drawables, value, key + ".tikz")
 
 
 def main():
