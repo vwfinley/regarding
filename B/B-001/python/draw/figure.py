@@ -16,9 +16,9 @@ scale = 45
 overhang = 0.005
 
 class State(Enum):
-	Hide = 1
-	Off = 2
-	On = 3
+	Hide = 0
+	Off = 1
+	On = 2
 	
 class Drawable(ABC):
 	def draw(self, state: State = State.On) -> str: 
@@ -92,83 +92,77 @@ class Arrow(Drawable):
 		self.off = s.format(offcolor, x, y, x + dx, y + dy, label)
 		self.on = s.format(oncolor, x, y, x + dx, y + dy, label)
 
-
-fig1 = {
-	"begin": State.On,
-
-	"x_axis": State.On,
-	"y_axis": State.On,
-
-	"line_P": State.Off,
-	"line_Dprime": State.Off,
-
-	"line_T": State.Off,
-	"line_T2": State.Off,
-	"line_W": State.Off,
-
-	"center_p1": State.Off,
-	"center_p2": State.Off,
-	"center_p3": State.Off,
-
-	"arc_c1": State.Off,
-	"arc_c2": State.Off,
-	"arc_c3": State.Off,
-
-	"arrow_r1": State.Off,
-	"arrow_r2": State.Off,
-	"arrow_r3": State.Off,
-
-	"cline_L": State.Off,
-
-	"arrow_r1_layout": State.Off,
-	"arrow_r2_layout": State.Off,
-
-	"arc_v1": State.Off,
-	"arc_v2": State.Off,
-
-	"end": State.On
-}
-
-
-fig2 = {
-	"begin": State.On,
-
-	"x_axis": State.On,
-	"y_axis": State.On,
-
-	"line_P": State.Off,
-	"line_Dprime": State.Off,
-
-	"line_T": State.Off,
-	"line_T2": State.Off,
-	"line_W": State.Off,
-
-	"center_p1": State.Off,
-	"center_p2": State.Off,
-	"center_p3": State.Off,
-
-	"arc_c1": State.On,
-	"arc_c2": State.On,
-	"arc_c3": State.On,
-
-	"arrow_r1": State.Off,
-	"arrow_r2": State.Off,
-	"arrow_r3": State.Off,
-
-	"cline_L": State.Off,
-
-	"arrow_r1_layout": State.Off,
-	"arrow_r2_layout": State.Off,
-
-	"arc_v1": State.Off,
-	"arc_v2": State.Off,
-
-	"end": State.On
-}
-
 figs = {
-	"fig1": fig1,
-	"fig2": fig2
+	"fig1": {
+		"begin": State.On,
+
+		"x_axis": State.On,
+		"y_axis": State.On,
+
+		"line_P": State.Off,
+		"line_Dprime": State.Off,
+
+		"line_T": State.Off,
+		"line_T2": State.Off,
+		"line_W": State.Off,
+
+		"center_p1": State.Off,
+		"center_p2": State.Off,
+		"center_p3": State.Off,
+
+		"arc_c1": State.Off,
+		"arc_c2": State.Off,
+		"arc_c3": State.Off,
+
+		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+		"arrow_r3": State.Off,
+
+		"cline_L": State.Off,
+
+		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+
+		"end": State.On
+	},
+	"fig2": {
+		"begin": State.On,
+
+		"x_axis": State.On,
+		"y_axis": State.On,
+
+		"line_P": State.Off,
+		"line_Dprime": State.Off,
+
+		"line_T": State.Off,
+		"line_T2": State.Off,
+		"line_W": State.Off,
+
+		"center_p1": State.Off,
+		"center_p2": State.Off,
+		"center_p3": State.Off,
+
+		"arc_c1": State.On,
+		"arc_c2": State.On,
+		"arc_c3": State.On,
+
+		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+		"arrow_r3": State.Off,
+
+		"cline_L": State.Off,
+
+		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+
+		"end": State.On
+	}
 }
 
 def Draw(drawables: dict, d: dict, filename: str):
