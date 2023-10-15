@@ -13,7 +13,7 @@ default_code = 110
 default_slope = 3.0
 region = 1
 scale = 45
-overhang = 0.005
+overhang = 0.007
 
 class State(Enum):
 	Hide = 0
@@ -78,6 +78,12 @@ class Centermark(Drawable):
 		self.off = h.format(offcolor, x1, y, x2, y, label) + v.format(offcolor, x, y1, x, y2)
 		self.on = h.format(oncolor, x1, y, x2, y, label) + v.format(oncolor, x, y1, x, y2)
 
+class Pointmark(Drawable):
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float):
+		s = "\\filldraw[{}] ({:.5f}, {:.5f}) circle (0.02pt) node[anchor=west] {{${}$}};\n"
+		self.off = s.format(offcolor, x , y, label)
+		self.on = s.format(oncolor, x , y, label)
+
 class Arc(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, radius: float, start_angle: float, end_angle: float):
 		s = "\\draw[{0}] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n"
@@ -106,9 +112,15 @@ figs = {
 		"line_T2": State.Off,
 		"line_W": State.Off,
 
-		"center_p1": State.Off,
-		"center_p2": State.Off,
-		"center_p3": State.Off,
+		"line_slope": State.On,
+
+		"centermark_p1": State.Off,
+		"centermark_p2": State.Off,
+		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+		"pointmark_pd": State.On,
 
 		"arc_c1": State.Off,
 		"arc_c2": State.Off,
@@ -141,9 +153,15 @@ figs = {
 		"line_T2": State.Off,
 		"line_W": State.Off,
 
-		"center_p1": State.Off,
-		"center_p2": State.Off,
-		"center_p3": State.Off,
+		"line_slope": State.On,
+
+		"centermark_p1": State.Off,
+		"centermark_p2": State.Off,
+		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+		"pointmark_pd": State.On,
 
 		"arc_c1": State.On,
 		"arc_c2": State.On,
@@ -181,20 +199,24 @@ def draw(code: int, slope: float):
 	print("--- OUTPUTS ---")
 	print(json.dumps(output, indent=2))
 
-	R1 = input["R1"]["value"]
-	R2 = input["R2"]["value"]
-	R3 = input["R3"]["value"]
 	N_PRIME = input["N_PRIME"]["value"]
 	T = input["T"]["value"]
 	W = input["W"]["value"]
 	D_PRIME = input["D_PRIME"]["value"]
 	P = input["P"]["value"]
+	R1 = input["R1"]["value"]
+	R2 = input["R2"]["value"]
+	R3 = input["R3"]["value"]
+	slope = input["slope"]["value"]
 
-	origin = Point("g", output["g"]["x"], output["g"]["y"])
+	pg = Point("pg", output["pg"]["x"], output["pg"]["y"])
+	theta_g =  output["theta_g"]["value"]
+	ps = Point("ps", output["ps"]["x"], output["ps"]["y"])
+	pd = Point("pd", output["pd"]["x"], output["pd"]["y"])
 	p1 = Point("p1", output["p1"]["x"], output["p1"]["y"])
 	p2 = Point("p2", output["p2"]["x"], output["p2"]["y"])
 	p3 = Point("p3", output["p3"]["x"], output["p3"]["y"])
-	theta_g =  output["theta_g"]["value"]
+	d_prime =  output["d_prime"]["value"]
 
 	# -------------------------
 	drawables = {}
@@ -218,10 +240,26 @@ def draw(code: int, slope: float):
 	drawables["line_T2"] = Line("lightgray", "black", "", T / 2, bottom, T / 2, top)
 	drawables["line_W"] = Line("lightgray", "black", "", -W, bottom, -W, top)
 
+	# diag lines
+	slope1 =  math.radians(0.0 - slope)
+	slope2 = math.radians(180.0 - slope)
+	l1 = 0.8 * T
+	l2 = 0.9 * W
+	x1 = l1 * math.cos(slope1)
+	y1 = l1 * math.sin(slope1)
+	x2 = l2 * math.cos(slope2)
+	y2 = l2 * math.sin(slope2)
+	drawables["line_slope"] = Line("lightgray", "black", "slope", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # Tread slope
+
 	# centermarks
-	drawables["center_p1"] = Centermark("lightgray", "black", p1.label, p1.x, p1.y)
-	drawables["center_p2"] = Centermark("lightgray", "black", p2.label, p2.x, p2.y)
-	drawables["center_p3"] = Centermark("lightgray", "black", p3.label, p3.x, p3.y)
+	drawables["centermark_p1"] = Centermark("lightgray", "black", p1.label, p1.x, p1.y)
+	drawables["centermark_p2"] = Centermark("lightgray", "black", p2.label, p2.x, p2.y)
+	drawables["centermark_p3"] = Centermark("lightgray", "black", p3.label, p3.x, p3.y)
+
+	# pointmarks
+	drawables["pointmark_pg"] = Pointmark("lightgray", "black", pg.label, pg.x, pg.y)
+	drawables["pointmark_ps"] = Pointmark("lightgray", "black", ps.label, ps.x, ps.y)
+	drawables["pointmark_pd"] = Pointmark("lightgray", "black", pd.label, pd.x, pd.y)
 
 	# arcs
 	drawables["arc_c1"] = Arc("lightgray", "black", "c1", p1.x, p1.y, R1, -30, 115)
@@ -237,12 +275,12 @@ def draw(code: int, slope: float):
 	drawables["cline_L"] = CLine("lightgray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
 
 	# arrows
-	drawables["arrow_r1_layout"] = Arrow("lightgray", "black", "R1", origin.x, origin.y, R1, 180.0 + theta_g - 10.0)
-	drawables["arrow_r2_layout"] = Arrow("lightgray", "black", "R2", origin.x, origin.y, R2, theta_g + 10.0)
+	drawables["arrow_r1_layout"] = Arrow("lightgray", "black", "R1", pg.x, pg.y, R1, 180.0 + theta_g - 10.0)
+	drawables["arrow_r2_layout"] = Arrow("lightgray", "black", "R2", pg.x, pg.y, R2, theta_g + 10.0)
 
 	# arcs
-	drawables["arc_v1"] = Arc("lightgray", "black", "V1", origin.x, origin.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
-	drawables["arc_v2"] = Arc("lightgray", "black", "V2", origin.x, origin.y, R2, theta_g - 15.0, theta_g + 15.0)
+	drawables["arc_v1"] = Arc("lightgray", "black", "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
+	drawables["arc_v2"] = Arc("lightgray", "black", "V2", pg.x, pg.y, R2, theta_g - 15.0, theta_g + 15.0)
 
 	for key, value in figs.items():
 		Draw(drawables, value, key + ".tikz")

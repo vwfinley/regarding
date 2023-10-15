@@ -10,9 +10,11 @@ R3 = "R3"
 
 slope = "slope"
 
-g = "g"
+pg = "pg"
 theta_g = "theta_g"
-t = "t"
+ps = "ps"
+pd = "pd"  # note lower case d_prime (location of ogive tip)
 p1 = "p1"
 p2 = "p2"
 p3 = "p3"
+d_prime = "d_prime"
