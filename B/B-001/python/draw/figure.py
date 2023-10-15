@@ -209,13 +209,13 @@ def draw(code: int, slope: float):
 	R3 = input["R3"]["value"]
 	slope = input["slope"]["value"]
 
-	pg = Point("pg", output["pg"]["x"], output["pg"]["y"])
+	pg = Point("p_g", output["pg"]["x"], output["pg"]["y"])
 	theta_g =  output["theta_g"]["value"]
-	ps = Point("ps", output["ps"]["x"], output["ps"]["y"])
-	pd = Point("pd", output["pd"]["x"], output["pd"]["y"])
-	p1 = Point("p1", output["p1"]["x"], output["p1"]["y"])
-	p2 = Point("p2", output["p2"]["x"], output["p2"]["y"])
-	p3 = Point("p3", output["p3"]["x"], output["p3"]["y"])
+	ps = Point("p_s", output["ps"]["x"], output["ps"]["y"])
+	pd = Point("p_d", output["pd"]["x"], output["pd"]["y"])
+	p1 = Point("p_1", output["p1"]["x"], output["p1"]["y"])
+	p2 = Point("p_2", output["p2"]["x"], output["p2"]["y"])
+	p3 = Point("p_3", output["p3"]["x"], output["p3"]["y"])
 	d_prime =  output["d_prime"]["value"]
 
 	# -------------------------
