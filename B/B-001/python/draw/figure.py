@@ -91,10 +91,13 @@ class Arc(Drawable):
 		self.on = s.format(oncolor, x, y, radius, start_angle, end_angle)
 
 class Arrow(Drawable): 
-	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, length: float, angle: float):
+	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float):
 		dx = length * math.cos(math.radians(angle))
 		dy = length * math.sin(math.radians(angle))
-		s = "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
+		if atstart:
+			s = "\\draw[{}, {{Latex[scale=0.75]}}-{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
+		else:
+			s = "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
 		self.off = s.format(offcolor, x, y, x + dx, y + dy, label)
 		self.on = s.format(oncolor, x, y, x + dx, y + dy, label)
 
@@ -113,6 +116,9 @@ figs = {
 		"line_W": State.Off,
 
 		"line_slope": State.On,
+		"line_ps_p1": State.On,
+		"line_slope_corner_1": State.On,
+		"line_slope_corner_2": State.On,
 
 		"centermark_p1": State.Off,
 		"centermark_p2": State.Off,
@@ -125,10 +131,18 @@ figs = {
 		"arc_c1": State.Off,
 		"arc_c2": State.Off,
 		"arc_c3": State.Off,
+		"arc_ps_p1": State.On,
+
+		"arrow_NPrime": State.On,
+		"arrow_W": State.On,
+		"arrow_T": State.On,
+		"arrow_P": State.On,
+		"arrow_DPrime": State.On,
 
 		"arrow_r1": State.Off,
 		"arrow_r2": State.Off,
 		"arrow_r3": State.Off,
+		"arrow_ps_p1": State.On,
 
 		"cline_L": State.Off,
 
@@ -154,6 +168,9 @@ figs = {
 		"line_W": State.Off,
 
 		"line_slope": State.On,
+		"line_ps_p1": State.On,
+		"line_slope_corner_1": State.On,
+		"line_slope_corner_2": State.On,
 
 		"centermark_p1": State.Off,
 		"centermark_p2": State.Off,
@@ -166,10 +183,18 @@ figs = {
 		"arc_c1": State.On,
 		"arc_c2": State.On,
 		"arc_c3": State.On,
+		"arc_ps_p1": State.On,
+
+		"arrow_NPrime": State.Off,
+		"arrow_W": State.Off,
+		"arrow_T": State.Off,
+		"arrow_P": State.Off,
+		"arrow_DPrime": State.Off,
 
 		"arrow_r1": State.Off,
 		"arrow_r2": State.Off,
 		"arrow_r3": State.Off,
+		"arrow_ps_p1": State.On,
 
 		"cline_L": State.Off,
 
@@ -251,6 +276,31 @@ def draw(code: int, slope: float):
 	y2 = l2 * math.sin(slope2)
 	drawables["line_slope"] = Line("lightgray", "black", "slope", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # Tread slope
 
+
+	len = 0.001
+	slope1 =  math.radians(180.0 - slope)
+	slope2 = math.radians(135.0 - slope)
+	x1 = len * 1.0 * math.cos(slope1)
+	y1 = len * 1.0 * math.sin(slope1)
+	x2 = len * 1.414 * math.cos(slope2)
+	y2 = len * 1.414 * math.sin(slope2)
+	drawables["line_slope_corner_1"] = Line("lightgray", "black", "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # 
+
+	slope3 = math.radians(90.0 - slope)
+	x3 = len * 1.0 * math.cos(slope3)
+	y3 = len * 1.0 * math.sin(slope3)
+	drawables["line_slope_corner_2"] = Line("lightgray", "black", "", ps.x + x2, ps.y + y2, ps.x + x3, ps.y + y3)  # 
+
+
+	slope1 =  math.radians(90.0 - slope)
+	slope2 = math.radians(270.0 - slope)
+	x1 = 0.5 * R1 * math.cos(slope1)
+	y1 = 0.5 * R1 * math.sin(slope1)
+	x2 = 1.5 * R1 * math.cos(slope2)
+	y2 = 1.5 * R1 * math.sin(slope2)
+	drawables["line_ps_p1"] = Line("lightgray", "black", "slope", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # ps->p1 line
+
+
 	# centermarks
 	drawables["centermark_p1"] = Centermark("lightgray", "black", p1.label, p1.x, p1.y)
 	drawables["centermark_p2"] = Centermark("lightgray", "black", p2.label, p2.x, p2.y)
@@ -266,21 +316,30 @@ def draw(code: int, slope: float):
 	drawables["arc_c2"] = Arc("lightgray", "black", "c2", p2.x, p2.y, R2, 180, 285)
 	drawables["arc_c3"] = Arc("lightgray", "black", "c3", p3.x, p3.y, R3, 255, 360)
 
-	# arrows
-	drawables["arrow_r1"] = Arrow("lightgray", "black", "R1", p1.x, p1.y, R1, 75.0)
-	drawables["arrow_r2"] = Arrow("lightgray", "black", "R2", p2.x, p2.y, R2, -135.0)
-	drawables["arrow_r3"] = Arrow("lightgray", "black", "R3", p3.x, p3.y, R3, -45.0)
+	# arrows (layout)
+	drawables["arrow_NPrime"] = Arrow("lightgray", "black", "N'", True, -W, 3.5 * P , W+T, 0)
+	drawables["arrow_W"] = Arrow("lightgray", "black", "W", True, 0, 3 * P, W, -180)
+	drawables["arrow_T"] = Arrow("lightgray", "black", "T", True, 0, 3 * P, T, 0)
+	drawables["arrow_P"] = Arrow("lightgray", "black", "P", True, -0.5 * W, 0, P, 90.0)
+	drawables["arrow_DPrime"] = Arrow("lightgray", "black", "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0)
+
+	# arrows (radius)
+	drawables["arrow_r1"] = Arrow("lightgray", "black", "R1", False, p1.x, p1.y, R1, 45.0)
+	drawables["arrow_r2"] = Arrow("lightgray", "black", "R2", False, p2.x, p2.y, R2, -135.0)
+	drawables["arrow_r3"] = Arrow("lightgray", "black", "R3", False, p3.x, p3.y, R3, -45.0)
+	drawables["arrow_ps_p1"] = Arrow("lightgray", "black", "R1", False, ps.x, ps.y, R1, -105.0)
 
 	# clines
 	drawables["cline_L"] = CLine("lightgray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
 
 	# arrows
-	drawables["arrow_r1_layout"] = Arrow("lightgray", "black", "R1", pg.x, pg.y, R1, 180.0 + theta_g - 10.0)
-	drawables["arrow_r2_layout"] = Arrow("lightgray", "black", "R2", pg.x, pg.y, R2, theta_g + 10.0)
+	drawables["arrow_r1_layout"] = Arrow("lightgray", "black", "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0)
+	drawables["arrow_r2_layout"] = Arrow("lightgray", "black", "R2", False, pg.x, pg.y, R2, theta_g + 10.0)
 
 	# arcs
 	drawables["arc_v1"] = Arc("lightgray", "black", "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
 	drawables["arc_v2"] = Arc("lightgray", "black", "V2", pg.x, pg.y, R2, theta_g - 15.0, theta_g + 15.0)
+	drawables["arc_ps_p1"] = Arc("lightgray", "black", "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
 
 	for key, value in figs.items():
 		Draw(drawables, value, key + ".tikz")
