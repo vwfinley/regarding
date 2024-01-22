@@ -39,6 +39,12 @@ class End(Drawable):
 	def __init__(self):
 		self.off = self.on = "\end{scope}\n" + "\end{tikzpicture}\n"
 
+
+class Clip(Drawable):
+	def __init__(self, left: float, top: float, w: float, h: float):
+		s = "\\clip ({:.5f}, {:.5f}) rectangle ({:.5f}, {:.5f});\n"
+		self.on = self.off = s.format(left, top, w, h)
+
 class XAxis(Drawable):
 	def __init__(self, offcolor: str, oncolor: str, x1: float, x2: float):
 		s = "\\draw[{}, -{{Latex[scale=1.5]}}] ({:.5f}, 0) -- ({:.5f}, 0)  node [right] {{$x$}};\n"
@@ -105,6 +111,7 @@ class Arrow(Drawable):
 figs = {
 	"fig1": {
 		"begin": State.On,
+		"clip": State.On,
 
 		"x_axis": State.On,
 		"y_axis": State.On,
@@ -157,6 +164,7 @@ figs = {
 	},
 	"fig2": {
 		"begin": State.On,
+		"clip": State.On,
 
 		"x_axis": State.On,
 		"y_axis": State.On,
@@ -249,6 +257,7 @@ def draw(code: int, slope: float, outdir: str):
 
 	drawables["begin"] = Begin(region, scale)
 	drawables["end"] = End()
+	drawables["clip"] = Clip(-.02, -.03, .05,.05)
 
 	drawables["x_axis"] = XAxis("lightgray", "black", -W - 2 * overhang, T + 2 * overhang)
 	drawables["y_axis"] = YAxis("lightgray", "black", P - D_PRIME - 2 * overhang , P + 2 * overhang)
