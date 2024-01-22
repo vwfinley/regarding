@@ -1,4 +1,4 @@
-import sys, math, json
+import os, sys, math, json, shutil
 from argparse import ArgumentParser
 from abc import ABC, abstractmethod 
 from enum import Enum
@@ -10,6 +10,7 @@ from collections import namedtuple
 Point = namedtuple('Point', 'label x y')
 
 default_code = 110
+default_outdir = "output"
 default_slope = 3.0
 region = 1
 scale = 45
@@ -213,7 +214,7 @@ def Draw(drawables: dict, d: dict, filename: str):
 		for key, value in d.items():
 			f.write(drawables[key].draw(value))
 
-def draw(code: int, slope: float):
+def draw(code: int, slope: float, outdir: str):
 
 	results = rp25(code, slope)
 	input = results[inputs]
@@ -341,8 +342,18 @@ def draw(code: int, slope: float):
 	drawables["arc_v2"] = Arc("lightgray", "black", "V2", pg.x, pg.y, R2, theta_g - 15.0, theta_g + 15.0)
 	drawables["arc_ps_p1"] = Arc("lightgray", "black", "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
 
+	try:
+		shutil.rmtree(outdir)
+	except:
+		print("Warning: %s not found" % (outdir))
+	
+	try:
+		os.mkdir(outdir)
+	except:
+		print("Warning: unable to create %s" % (outdir))
+
 	for key, value in figs.items():
-		Draw(drawables, value, key + ".tikz")
+		Draw(drawables, value, outdir + "/" + key + ".tikz")
 
 
 def main():
@@ -364,6 +375,13 @@ def main():
 	)
 
 	parser.add_argument(
+		"-o",
+		"--outdir",
+		default=default_outdir,
+		help="[default={}]".format(str(default_outdir)) + " Output directory.  For example -o \"../figures\""
+	)
+
+	parser.add_argument(
 		"-s",
 		"--slope",
 		default=default_slope,
@@ -371,7 +389,7 @@ def main():
 	)
 	
 	args = parser.parse_args()
-	draw(int(args.code), float(args.slope))
+	draw(int(args.code), float(args.slope), str(args.outdir))
 
 
 # The main entry point for commandline application.
