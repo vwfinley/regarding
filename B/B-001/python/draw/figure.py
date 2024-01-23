@@ -113,56 +113,668 @@ figs = {
 		"begin": State.On,
 		"clip": State.On,
 
-		"x_axis": State.On,
-		"y_axis": State.On,
+#		"x_axis": State.Off,
+#		"y_axis": State.Off,
+
+		"line_P": State.On,
+#		"line_Dprime": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+#		"line_slope": State.On,
+#		"line_ps_p1": State.On,
+#		"line_slope_corner_1": State.On,
+#		"line_slope_corner_2": State.On,
+
+#		"centermark_p1": State.Off,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+
+#		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+#		"arc_ps_p1": State.On,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.On,
+#
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+
+		"end": State.On
+	},
+	"fig2": {
+		"begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.Off,
+#		"y_axis": State.Off,
 
 		"line_P": State.Off,
-		"line_Dprime": State.Off,
+#		"line_Dprime": State.Off,
 
-		"line_T": State.Off,
-		"line_T2": State.Off,
-		"line_W": State.Off,
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
 
 		"line_slope": State.On,
 		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.On,
 		"line_slope_corner_2": State.On,
 
-		"centermark_p1": State.Off,
-		"centermark_p2": State.Off,
-		"centermark_p3": State.Off,
+#		"centermark_p1": State.Off,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
+#		"pointmark_pg": State.On,
 		"pointmark_ps": State.On,
-		"pointmark_pd": State.On,
+#		"pointmark_pd": State.On,
 
-		"arc_c1": State.Off,
-		"arc_c2": State.Off,
-		"arc_c3": State.Off,
-		"arc_ps_p1": State.On,
+#		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+#		"arc_ps_p1": State.On,
 
-		"arrow_NPrime": State.On,
-		"arrow_W": State.On,
-		"arrow_T": State.On,
-		"arrow_P": State.On,
-		"arrow_DPrime": State.On,
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
 
-		"arrow_r1": State.Off,
-		"arrow_r2": State.Off,
-		"arrow_r3": State.Off,
-		"arrow_ps_p1": State.On,
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.On,
+#
+#		"cline_L": State.Off,
 
-		"cline_L": State.Off,
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
 
-		"arrow_r1_layout": State.Off,
-		"arrow_r2_layout": State.Off,
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
 
-		"arc_v1": State.Off,
-		"arc_v2": State.Off,
 
 		"end": State.On
 	},
-	"fig2": {
+	"fig3": {
+		"begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.Off,
+#		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+#		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.On,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+		"arrow_ps_p1": State.On,
+
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig4": {
+		"begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.Off,
+#		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+#		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig5": {
+		"begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.Off,
+#		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+		"line_false_x_axis": State.On,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+#		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig6": {
+		"begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.Off,
+#		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+		"line_false_x_axis": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"arc_c1": State.On,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+		"arrow_r1": State.On,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+#		"cline_L": State.On,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig7": {
+		"begin": State.On,
+		"clip": State.On,
+
+		"x_axis": State.On,
+		"y_axis": State.On,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+#		"cline_L": State.On,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig8": {
+		"begin": State.Off,
+		"clip": State.Off,
+
+		"x_axis": State.Off,
+		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+		"cline_L": State.On,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig9": {
+		"begin": State.Off,
+		"clip": State.Off,
+
+		"x_axis": State.Off,
+		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+#		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.On,
+
+#		"arc_v1": State.Off,
+		"arc_v2": State.On,
+		"end": State.On
+	},
+	"fig10": {
+		"begin": State.Off,
+		"clip": State.Off,
+
+		"x_axis": State.Off,
+		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+		"arc_c2": State.On,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+#		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+		"arrow_r2": State.On,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig11": {
+		"begin": State.Off,
+		"clip": State.Off,
+
+		"x_axis": State.Off,
+		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+
+		"line_T": State.On,
+		"line_T2": State.On,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+		"arrow_T": State.On,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig12": {
+		"begin": State.Off,
+		"clip": State.Off,
+
+		"x_axis": State.Off,
+		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+
+		"line_T": State.Off,
+		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+		"arc_c2": State.Off,
+#		"arc_c3": State.Off,
+		"arc_ps_p1": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+		"arrow_T": State.Off,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.Off,
+
+		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig99": {
 		"begin": State.On,
 		"clip": State.On,
 
@@ -188,6 +800,9 @@ figs = {
 		"pointmark_pg": State.On,
 		"pointmark_ps": State.On,
 		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
 
 		"arc_c1": State.On,
 		"arc_c2": State.On,
@@ -266,6 +881,7 @@ def draw(code: int, slope: float, outdir: str):
 	left = -W - overhang
 	right = T + overhang
 	drawables["line_P"] = Line("lightgray", "black", "", left, P, right, P)
+	drawables["line_false_x_axis"] = Line("lightgray", "black", "", -1, 0, 1, 0)
 	drawables["line_Dprime"] = Line("lightgray", "black", "", left, P - D_PRIME, right, P - D_PRIME)
 
 	# v lines
@@ -294,12 +910,12 @@ def draw(code: int, slope: float, outdir: str):
 	y1 = len * 1.0 * math.sin(slope1)
 	x2 = len * 1.414 * math.cos(slope2)
 	y2 = len * 1.414 * math.sin(slope2)
-	drawables["line_slope_corner_1"] = Line("lightgray", "black", "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # 
+	drawables["line_slope_corner_1"] = Line("lightgray", "black", "", ps.x - x1, ps.y - y1, ps.x - x2, ps.y - y2)  # 
 
 	slope3 = math.radians(90.0 - slope)
 	x3 = len * 1.0 * math.cos(slope3)
 	y3 = len * 1.0 * math.sin(slope3)
-	drawables["line_slope_corner_2"] = Line("lightgray", "black", "", ps.x + x2, ps.y + y2, ps.x + x3, ps.y + y3)  # 
+	drawables["line_slope_corner_2"] = Line("lightgray", "black", "", ps.x - x2, ps.y - y2, ps.x - x3, ps.y - y3)  # 
 
 
 	slope1 =  math.radians(90.0 - slope)
@@ -320,6 +936,9 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["pointmark_pg"] = Pointmark("lightgray", "black", pg.label, pg.x, pg.y)
 	drawables["pointmark_ps"] = Pointmark("lightgray", "black", ps.label, ps.x, ps.y)
 	drawables["pointmark_pd"] = Pointmark("lightgray", "black", pd.label, pd.x, pd.y)
+	drawables["pointmark_p1"] = Pointmark("lightgray", "black", p1.label, p1.x, p1.y)
+	drawables["pointmark_p2"] = Pointmark("lightgray", "black", p2.label, p2.x, p2.y)
+	drawables["pointmark_p3"] = Pointmark("lightgray", "black", p3.label, p3.x, p3.y)
 
 	# arcs
 	drawables["arc_c1"] = Arc("lightgray", "black", "c1", p1.x, p1.y, R1, -30, 115)
