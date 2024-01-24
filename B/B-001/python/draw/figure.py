@@ -101,11 +101,11 @@ class Arc(Drawable):
 class ArcArrow(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, radius: float, start_angle: float, end_angle: float):
 		if atstart:
-			s = "\\draw[{0}, -{{Latex[scale=0.75]}}] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n"
+			s = "\\draw[{0}, -{{Latex[scale=0.75]}}] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [right] {{${1}$}};\n"
 		else:
-			s = "\\draw[{0}, {{Latex[scale=0.75]}}-] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n"
-		self.off = s.format(offcolor, x, y, radius, start_angle, end_angle)
-		self.on = s.format(oncolor, x, y, radius, start_angle, end_angle)
+			s = "\\draw[{0}, {{Latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [right] {{${1}$}};\n"
+		self.off = s.format(offcolor, label, x, y, radius, start_angle, end_angle)
+		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle)
 
 class Arrow(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float):
@@ -1003,7 +1003,7 @@ def draw(code: int, slope: float, outdir: str):
 	y1 = 0.5 * R1 * math.sin(slope1)
 	x2 = 1.5 * R1 * math.cos(slope2)
 	y2 = 1.5 * R1 * math.sin(slope2)
-	drawables["line_ps_p1"] = Line("lightgray", "black", "slope", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # ps->p1 line
+	drawables["line_ps_p1"] = Line("lightgray", "black", "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # ps->p1 line
 
 
 	# centermarks
@@ -1028,7 +1028,7 @@ def draw(code: int, slope: float, outdir: str):
 #VWF
 	arc_slope_radius = 0.023
 #	drawables["arc_slope"] = Arc("lightgray", "black", "slope",  ps.x, ps.y,  arc_slope_radius , 360 - slope, 360)
-	drawables["arc_slope_upper"] = ArcArrow("lightgray", "black", "slope", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
+	drawables["arc_slope_upper"] = ArcArrow("lightgray", "black", "", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
 	drawables["arc_slope_lower"] = ArcArrow("lightgray", "black", "slope", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
 
 	# arrows (layout)
