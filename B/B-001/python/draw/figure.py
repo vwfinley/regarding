@@ -97,6 +97,16 @@ class Arc(Drawable):
 		self.off = s.format(offcolor, x, y, radius, start_angle, end_angle)
 		self.on = s.format(oncolor, x, y, radius, start_angle, end_angle)
 
+
+class ArcArrow(Drawable): 
+	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, radius: float, start_angle: float, end_angle: float):
+		if atstart:
+			s = "\\draw[{0}, -{{Latex[scale=0.75]}}] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n"
+		else:
+			s = "\\draw[{0}, {{Latex[scale=0.75]}}-] ([shift=({4:.5f} : {3:.5f})] {1:.5f},{2:.5f}) arc ({4:.5f} : {5:.5f} : {3:.5f});\n"
+		self.off = s.format(offcolor, x, y, radius, start_angle, end_angle)
+		self.on = s.format(oncolor, x, y, radius, start_angle, end_angle)
+
 class Arrow(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float):
 		dx = length * math.cos(math.radians(angle))
@@ -188,6 +198,10 @@ figs = {
 #		"pointmark_pg": State.On,
 		"pointmark_ps": State.On,
 #		"pointmark_pd": State.On,
+
+#		"arc_slope": State.On,
+		"arc_slope_upper": State.On,
+		"arc_slope_lower": State.On,
 
 #		"arc_c1": State.Off,
 #		"arc_c2": State.Off,
@@ -1011,6 +1025,11 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arc_c3"] = Arc("lightgray", "black", "c3", p3.x, p3.y, R3, 255, 360)
 
 	drawables["arc_p3"] = Arc("lightgray", "black", "p3",  T / 2, p3.y,  T / 2 - p3.x, 140, 240)
+#VWF
+	arc_slope_radius = 0.023
+#	drawables["arc_slope"] = Arc("lightgray", "black", "slope",  ps.x, ps.y,  arc_slope_radius , 360 - slope, 360)
+	drawables["arc_slope_upper"] = ArcArrow("lightgray", "black", "slope", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
+	drawables["arc_slope_lower"] = ArcArrow("lightgray", "black", "slope", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
 
 	# arrows (layout)
 	drawables["arrow_NPrime"] = Arrow("lightgray", "black", "N'", True, -W, 3.5 * P , W+T, 0)
