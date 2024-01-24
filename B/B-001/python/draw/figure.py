@@ -804,7 +804,7 @@ figs = {
 
 		"pointmark_pg": State.On,
 		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
+		"pointmark_pd": State.On,
 		"pointmark_p1": State.On,
 		"pointmark_p2": State.On,
 		"pointmark_p3": State.On,
