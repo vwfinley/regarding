@@ -728,6 +728,7 @@ figs = {
 		"line_P": State.Off,
 #		"line_Dprime": State.Off,
 #		"line_false_x_axis": State.Off,
+		"line_p2_p3":  State.On,
 
 		"line_T": State.Off,
 		"line_T2": State.Off,
@@ -753,6 +754,7 @@ figs = {
 		"arc_c2": State.Off,
 #		"arc_c3": State.Off,
 		"arc_ps_p1": State.Off,
+		"arc_p3": State.On,
 
 #		"arrow_NPrime": State.On,
 #		"arrow_W": State.On,
@@ -764,6 +766,66 @@ figs = {
 		"arrow_r2": State.Off,
 #		"arrow_r3": State.Off,
 #		"arrow_ps_p1": State.Off,
+		"arrow_p3": State.On,
+
+		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig13": {
+		"begin": State.Off,
+		"clip": State.Off,
+
+		"x_axis": State.Off,
+		"y_axis": State.Off,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+#		"line_false_x_axis": State.Off,
+		"line_p2_p3":  State.Off,
+
+		"line_T": State.Off,
+		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
+
+		"arc_c1": State.Off,
+		"arc_c2": State.Off,
+		"arc_c3": State.On,
+		"arc_ps_p1": State.Off,
+		"arc_p3": State.Off,
+
+#		"arrow_NPrime": State.On,
+#		"arrow_W": State.On,
+		"arrow_T": State.Off,
+#		"arrow_P": State.On,
+#		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+		"arrow_r3": State.On,
+#		"arrow_ps_p1": State.Off,
+		"arrow_p3": State.Off,
 
 		"cline_L": State.Off,
 
@@ -884,6 +946,9 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["line_false_x_axis"] = Line("lightgray", "black", "", -1, 0, 1, 0)
 	drawables["line_Dprime"] = Line("lightgray", "black", "", left, P - D_PRIME, right, P - D_PRIME)
 
+	drawables["line_p2_p3"] = Line("lightgray", "black", "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y)
+
+
 	# v lines
 	top = P + overhang
 	bottom = P - D_PRIME - overhang
@@ -945,6 +1010,8 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arc_c2"] = Arc("lightgray", "black", "c2", p2.x, p2.y, R2, 180, 285)
 	drawables["arc_c3"] = Arc("lightgray", "black", "c3", p3.x, p3.y, R3, 255, 360)
 
+	drawables["arc_p3"] = Arc("lightgray", "black", "p3",  T / 2, p3.y,  T / 2 - p3.x, 140, 240)
+
 	# arrows (layout)
 	drawables["arrow_NPrime"] = Arrow("lightgray", "black", "N'", True, -W, 3.5 * P , W+T, 0)
 	drawables["arrow_W"] = Arrow("lightgray", "black", "W", True, 0, 3 * P, W, -180)
@@ -957,6 +1024,8 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arrow_r2"] = Arrow("lightgray", "black", "R2", False, p2.x, p2.y, R2, -135.0)
 	drawables["arrow_r3"] = Arrow("lightgray", "black", "R3", False, p3.x, p3.y, R3, -45.0)
 	drawables["arrow_ps_p1"] = Arrow("lightgray", "black", "R1", False, ps.x, ps.y, R1, -105.0)
+
+	drawables["arrow_p3"] = Arrow("lightgray", "black", "p3", False, T / 2, p3.y, T / 2 - p3.x, 150.0)
 
 	# clines
 	drawables["cline_L"] = CLine("lightgray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
