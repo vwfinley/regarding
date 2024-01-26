@@ -86,10 +86,10 @@ class Centermark(Drawable):
 		self.on = h.format(oncolor, x1, y, x2, y, label) + v.format(oncolor, x, y1, x, y2)
 
 class Pointmark(Drawable):
-	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float):
-		s = "\\filldraw[{}] ({:.5f}, {:.5f}) circle (0.02pt) node[anchor=west] {{${}$}};\n"
-		self.off = s.format(offcolor, x , y, label)
-		self.on = s.format(oncolor, x , y, label)
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, anchor: str):
+		s = "\\filldraw[{}] ({:.5f}, {:.5f}) circle (0.02pt) node[anchor={}] {{${}$}};\n"
+		self.off = s.format(offcolor, x , y, anchor, label)
+		self.on = s.format(oncolor, x , y, anchor, label)
 
 class Arc(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, radius: float, start_angle: float, end_angle: float):
@@ -660,6 +660,7 @@ figs = {
 		"pointmark_p2": State.On,
 		"pointmark_p3": State.On,
 
+
 		"arc_c1": State.On,
 		"arc_c2": State.On,
 		"arc_c3": State.On,
@@ -684,6 +685,7 @@ figs = {
 		"arc_v1": State.Off,
 		"arc_v2": State.Off,
 
+
 		"end": State.On
 	}
 }
@@ -694,10 +696,12 @@ def Draw(drawables: dict, d: dict, filename: str):
 			f.write(drawables[key].draw(value))
 
 def draw(code: int, slope: float, outdir: str):
-
 	results = rp25(code, slope)
 	input = results[inputs]
 	output = results[outputs]
+
+	oncolor = "black"
+	offcolor = "lightgray"
 
 	print("--- INPUTS ---")
 	print(json.dumps(input, indent=2))
@@ -730,25 +734,24 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["end"] = End()
 	drawables["clip"] = Clip(-.021, -.030, .05,.05)
 
-	drawables["x_axis"] = XAxis("gray", "black", -W - 2 * overhang, T + 2 * overhang)
-	drawables["y_axis"] = YAxis("gray", "black", P - D_PRIME - 2 * overhang , P + 2 * overhang)
+	drawables["x_axis"] = XAxis(offcolor, oncolor, -W - 2 * overhang, T + 2 * overhang)
+	drawables["y_axis"] = YAxis(offcolor, oncolor, P - D_PRIME - 2 * overhang , P + 2 * overhang)
 
 	# h lines
 	left = -W - overhang
 	right = T + overhang
-	drawables["line_P"] = Line("gray", "black", "", left, P, right, P)
-	drawables["line_false_x_axis"] = Line("gray", "black", "", -1, 0, 1, 0)
-	drawables["line_Dprime"] = Line("gray", "black", "", left, P - D_PRIME, right, P - D_PRIME)
+	drawables["line_P"] = Line(offcolor, oncolor, "", left, P, right, P)
+	drawables["line_false_x_axis"] = Line(offcolor, oncolor, "", -1, 0, 1, 0)
+	drawables["line_Dprime"] = Line(offcolor, oncolor, "", left, P - D_PRIME, right, P - D_PRIME)
 
-	drawables["line_p2_p3"] = Line("gray", "black", "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y)
-
+	drawables["line_p2_p3"] = Line(offcolor, oncolor, "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y)
 
 	# v lines
 	top = P + overhang
 	bottom = P - D_PRIME - overhang
-	drawables["line_T"] = Line("gray", "black", "", T, bottom, T, top)
-	drawables["line_T2"] = Line("gray", "black", "", T / 2, bottom, T / 2, top)
-	drawables["line_W"] = Line("gray", "black", "", -W, bottom, -W, top)
+	drawables["line_T"] = Line(offcolor, oncolor, "", T, bottom, T, top)
+	drawables["line_T2"] = Line(offcolor, oncolor, "", T / 2, bottom, T / 2, top)
+	drawables["line_W"] = Line(offcolor, oncolor, "", -W, bottom, -W, top)
 
 	# diag lines
 	slope1 =  math.radians(0.0 - slope)
@@ -759,8 +762,7 @@ def draw(code: int, slope: float, outdir: str):
 	y1 = l1 * math.sin(slope1)
 	x2 = l2 * math.cos(slope2)
 	y2 = l2 * math.sin(slope2)
-	drawables["line_slope"] = Line("gray", "black", "slope", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # Tread slope
-
+	drawables["line_slope"] = Line(offcolor, oncolor, "slope", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # Tread slope
 
 	len = 0.001
 	slope1 =  math.radians(180.0 - slope)
@@ -769,13 +771,12 @@ def draw(code: int, slope: float, outdir: str):
 	y1 = len * 1.0 * math.sin(slope1)
 	x2 = len * 1.414 * math.cos(slope2)
 	y2 = len * 1.414 * math.sin(slope2)
-	drawables["line_slope_corner_1"] = Line("gray", "black", "", ps.x - x1, ps.y - y1, ps.x - x2, ps.y - y2)  # 
+	drawables["line_slope_corner_1"] = Line(offcolor, oncolor, "", ps.x - x1, ps.y - y1, ps.x - x2, ps.y - y2)  # 
 
 	slope3 = math.radians(90.0 - slope)
 	x3 = len * 1.0 * math.cos(slope3)
 	y3 = len * 1.0 * math.sin(slope3)
-	drawables["line_slope_corner_2"] = Line("gray", "black", "", ps.x - x2, ps.y - y2, ps.x - x3, ps.y - y3)  # 
-
+	drawables["line_slope_corner_2"] = Line(offcolor, oncolor, "", ps.x - x2, ps.y - y2, ps.x - x3, ps.y - y3)  # 
 
 	slope1 =  math.radians(90.0 - slope)
 	slope2 = math.radians(270.0 - slope)
@@ -783,60 +784,57 @@ def draw(code: int, slope: float, outdir: str):
 	y1 = 0.5 * R1 * math.sin(slope1)
 	x2 = 1.5 * R1 * math.cos(slope2)
 	y2 = 1.5 * R1 * math.sin(slope2)
-	drawables["line_ps_p1"] = Line("gray", "black", "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # ps->p1 line
-
+	drawables["line_ps_p1"] = Line(offcolor, oncolor, "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # ps->p1 line
 
 	# centermarks
-	drawables["centermark_p1"] = Centermark("gray", "black", p1.label, p1.x, p1.y)
-	drawables["centermark_p2"] = Centermark("gray", "black", p2.label, p2.x, p2.y)
-	drawables["centermark_p3"] = Centermark("gray", "black", p3.label, p3.x, p3.y)
+	drawables["centermark_p1"] = Centermark(offcolor, oncolor, p1.label, p1.x, p1.y)
+	drawables["centermark_p2"] = Centermark(offcolor, oncolor, p2.label, p2.x, p2.y)
+	drawables["centermark_p3"] = Centermark(offcolor, oncolor, p3.label, p3.x, p3.y)
 
 	# pointmarks
-	drawables["pointmark_pg"] = Pointmark("gray", "black", pg.label, pg.x, pg.y)
-	drawables["pointmark_ps"] = Pointmark("gray", "black", ps.label, ps.x, ps.y)
-	drawables["pointmark_pd"] = Pointmark("gray", "black", pd.label, pd.x, pd.y)
-	drawables["pointmark_p1"] = Pointmark("gray", "black", p1.label, p1.x, p1.y)
-	drawables["pointmark_p2"] = Pointmark("gray", "black", p2.label, p2.x, p2.y)
-	drawables["pointmark_p3"] = Pointmark("gray", "black", p3.label, p3.x, p3.y)
+	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, "south west")
+	drawables["pointmark_ps"] = Pointmark(offcolor, oncolor, ps.label, ps.x, ps.y, "north west")
+	drawables["pointmark_pd"] = Pointmark(offcolor, oncolor, pd.label, pd.x, pd.y, "north west")
+	drawables["pointmark_p1"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, "north west")
+	drawables["pointmark_p2"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, "north west")
+	drawables["pointmark_p3"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, "east")
 
 	# arcs
-	drawables["arc_c1"] = Arc("gray", "black", "c1", p1.x, p1.y, R1, -30, 115)
-	drawables["arc_c2"] = Arc("gray", "black", "c2", p2.x, p2.y, R2, 180, 285)
-	drawables["arc_c3"] = Arc("gray", "black", "c3", p3.x, p3.y, R3, 255, 360)
-
-	drawables["arc_p3"] = Arc("gray", "black", "p3",  T / 2, p3.y,  T / 2 - p3.x, 140, 240)
+	drawables["arc_c1"] = Arc(offcolor, oncolor, "c1", p1.x, p1.y, R1, -30, 115)
+	drawables["arc_c2"] = Arc(offcolor, oncolor, "c2", p2.x, p2.y, R2, 180, 285)
+	drawables["arc_c3"] = Arc(offcolor, oncolor, "c3", p3.x, p3.y, R3, 255, 360)
+	drawables["arc_p3"] = Arc(offcolor, oncolor, "p3",  T / 2, p3.y,  T / 2 - p3.x, 140, 240)
 #VWF
 	arc_slope_radius = 0.023
-#	drawables["arc_slope"] = Arc("gray", "black", "slope",  ps.x, ps.y,  arc_slope_radius , 360 - slope, 360)
-	drawables["arc_slope_upper"] = ArcArrow("gray", "black", "", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
-	drawables["arc_slope_lower"] = ArcArrow("gray", "black", "slope", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
+#	drawables["arc_slope"] = Arc(offcolor, oncolor, "slope",  ps.x, ps.y,  arc_slope_radius , 360 - slope, 360)
+	drawables["arc_slope_upper"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
+	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
 
 	# arrows (layout)
-	drawables["arrow_NPrime"] = Arrow("gray", "black", "N'", True, -W, 3.5 * P , W+T, 0)
-	drawables["arrow_W"] = Arrow("gray", "black", "W", True, 0, 3 * P, W, -180)
-	drawables["arrow_T"] = Arrow("gray", "black", "T", True, 0, 3 * P, T, 0)
-	drawables["arrow_P"] = Arrow("gray", "black", "P", True, -0.5 * W, 0, P, 90.0)
-	drawables["arrow_DPrime"] = Arrow("gray", "black", "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0)
+	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 3.5 * P , W+T, 0)
+	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3 * P, W, -180)
+	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3 * P, T, 0)
+	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.5 * W, 0, P, 90.0)
+	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0)
 
 	# arrows (radius)
-	drawables["arrow_r1"] = Arrow("gray", "black", "R1", False, p1.x, p1.y, R1, 45.0)
-	drawables["arrow_r2"] = Arrow("gray", "black", "R2", False, p2.x, p2.y, R2, -135.0)
-	drawables["arrow_r3"] = Arrow("gray", "black", "R3", False, p3.x, p3.y, R3, -45.0)
-	drawables["arrow_ps_p1"] = Arrow("gray", "black", "R1", False, ps.x, ps.y, R1, -105.0)
-
-	drawables["arrow_p3"] = Arrow("gray", "black", "p3", False, T / 2, p3.y, T / 2 - p3.x, 150.0)
+	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0)
+	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0)
+	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0)
+	drawables["arrow_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, -105.0)
+	drawables["arrow_p3"] = Arrow(offcolor, oncolor, "p3", False, T / 2, p3.y, T / 2 - p3.x, 150.0)
 
 	# clines
-	drawables["cline_L"] = CLine("gray", "black", "L", 0, 0, theta_g, 0.035, 0.035)
+	drawables["cline_L"] = CLine(offcolor, oncolor, "L", 0, 0, theta_g, 0.035, 0.035)
 
 	# arrows
-	drawables["arrow_r1_layout"] = Arrow("gray", "black", "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0)
-	drawables["arrow_r2_layout"] = Arrow("gray", "black", "R2", False, pg.x, pg.y, R2, theta_g + 10.0)
+	drawables["arrow_r1_layout"] = Arrow(offcolor, oncolor, "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0)
+	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0)
 
 	# arcs
-	drawables["arc_v1"] = Arc("gray", "black", "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
-	drawables["arc_v2"] = Arc("gray", "black", "V2", pg.x, pg.y, R2, theta_g - 15.0, theta_g + 15.0)
-	drawables["arc_ps_p1"] = Arc("gray", "black", "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
+	drawables["arc_v1"] = Arc(offcolor, oncolor, "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
+	drawables["arc_v2"] = Arc(offcolor, oncolor, "V2", pg.x, pg.y, R2, theta_g - 15.0, theta_g + 15.0)
+	drawables["arc_ps_p1"] = Arc(offcolor, oncolor, "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
 
 	try:
 		shutil.rmtree(outdir)
