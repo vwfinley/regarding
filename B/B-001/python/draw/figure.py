@@ -817,10 +817,10 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["centermark_p3"] = Centermark(offcolor, oncolor, p3.label, p3.x, p3.y)
 
 	# pointmarks
-	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, 0.14, -0.07)
-	drawables["pointmark_ps"] = Pointmark(offcolor, oncolor, ps.label, ps.x, ps.y, 0.13, -0.08)
+	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, 0.14, -0.09)
+	drawables["pointmark_ps"] = Pointmark(offcolor, oncolor, ps.label, ps.x, ps.y, 0.13, -0.09)
 	drawables["pointmark_pd"] = Pointmark(offcolor, oncolor, pd.label, pd.x, pd.y, 0.13, -0.07)
-	drawables["pointmark_p1"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, 0.13, -0.07)
+	drawables["pointmark_p1"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, 0.13, -0.08)
 	drawables["pointmark_p2"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, 0.13, -0.07)
 	drawables["pointmark_p3"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, -0.14, 0)
 
@@ -837,9 +837,8 @@ def draw(code: int, slope: float, outdir: str):
 	# arrows (layout)
 	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 3.5 * P , W+T, 0, 0.0, 0.0)
 	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3 * P, W, -180, 0.0, 0.0)
-#VWF
-	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, -0.09)
-	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, -0.09)
+	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, -0.1)
+	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, -0.1)
 
 	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.5 * W, 0, P, 90.0, 0.0, 0.0)
 	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0, 0.0, 0.0)
@@ -860,7 +859,7 @@ def draw(code: int, slope: float, outdir: str):
 
 	# arcs
 	drawables["arc_v1"] = Arc(offcolor, oncolor, "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
-	drawables["arc_v2"] = Arc(offcolor, oncolor, "V2", pg.x, pg.y, R2, theta_g - 15.0, theta_g + 15.0)
+	drawables["arc_v2"] = Arc(offcolor, oncolor, "V2", pg.x, pg.y, R2, theta_g - 13.0, theta_g + 13.0)
 	drawables["arc_ps_p1"] = Arc(offcolor, oncolor, "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
 
 	try:
