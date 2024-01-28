@@ -86,10 +86,10 @@ class Centermark(Drawable):
 		self.on = h.format(oncolor, x1, y, x2, y, label) + v.format(oncolor, x, y1, x, y2)
 
 class Pointmark(Drawable):
-	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, anchor: str):
-		s = "\\filldraw[{}] ({:.5f}, {:.5f}) circle (0.02pt) node[anchor={}] {{${}$}};\n"
-		self.off = s.format(offcolor, x , y, anchor, label)
-		self.on = s.format(oncolor, x , y, anchor, label)
+	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, x_label_offset: float, y_label_offset: float):
+		s = "\\filldraw[{}] ({:.5f}, {:.5f}) circle (0.02pt) node [shift={{({:.5f}, {:.5f})}}]  {{${}$}};\n"
+		self.off = s.format(offcolor, x , y, x_label_offset, y_label_offset, label)
+		self.on = s.format(oncolor, x , y, x_label_offset, y_label_offset, label)
 
 class Arc(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, radius: float, start_angle: float, end_angle: float):
@@ -794,12 +794,12 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["centermark_p3"] = Centermark(offcolor, oncolor, p3.label, p3.x, p3.y)
 
 	# pointmarks
-	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, "north west")
-	drawables["pointmark_ps"] = Pointmark(offcolor, oncolor, ps.label, ps.x, ps.y, "north west")
-	drawables["pointmark_pd"] = Pointmark(offcolor, oncolor, pd.label, pd.x, pd.y, "north west")
-	drawables["pointmark_p1"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, "north west")
-	drawables["pointmark_p2"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, "north west")
-	drawables["pointmark_p3"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, "east")
+	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, 0.14, -0.07)
+	drawables["pointmark_ps"] = Pointmark(offcolor, oncolor, ps.label, ps.x, ps.y, 0.13, -0.08)
+	drawables["pointmark_pd"] = Pointmark(offcolor, oncolor, pd.label, pd.x, pd.y, 0.13, -0.07)
+	drawables["pointmark_p1"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, 0.13, -0.07)
+	drawables["pointmark_p2"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, 0.13, -0.07)
+	drawables["pointmark_p3"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, -0.14, 0)
 
 	# arcs
 	drawables["arc_c1"] = Arc(offcolor, oncolor, "c1", p1.x, p1.y, R1, -30, 115)
