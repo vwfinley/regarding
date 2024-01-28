@@ -43,7 +43,8 @@ class End(Drawable):
 class Clip(Drawable):
 	def __init__(self, left: float, top: float, w: float, h: float):
 		s = "\\clip ({:.5f}, {:.5f}) rectangle ({:.5f}, {:.5f});\n"
-		self.on = self.off = s.format(left, top, w, h)
+		self.off = ""
+		self.on = s.format(left, top, w, h)
 
 class XAxis(Drawable):
 	def __init__(self, offcolor: str, oncolor: str, x1: float, x2: float):
@@ -124,6 +125,7 @@ figs = {
 	"fig1": {
 		"begin": State.On,
 		"clip": State.On,
+		"full_clip": State.Off,
 
 #		"x_axis": State.Off,
 #		"y_axis": State.Off,
@@ -182,6 +184,7 @@ figs = {
 	"fig2": {
 		"begin": State.On,
 		"clip": State.On,
+		"full_clip": State.Off,
 
 #		"x_axis": State.Off,
 #		"y_axis": State.Off,
@@ -237,6 +240,7 @@ figs = {
 	"fig3": {
 		"begin": State.On,
 		"clip": State.On,
+		"full_clip": State.Off,
 
 #		"x_axis": State.Off,
 #		"y_axis": State.Off,
@@ -293,6 +297,7 @@ figs = {
 	"fig4": {
 		"begin": State.On,
 		"clip": State.On,
+		"full_clip": State.Off,
 
 		"x_axis": State.On,
 		"y_axis": State.On,
@@ -348,7 +353,8 @@ figs = {
 	},
 	"fig5": {
 		"begin": State.Off,
-		"clip": State.Off,
+		"clip": State.On,
+		"full_clip": State.Off,
 
 		"x_axis": State.Off,
 		"y_axis": State.Off,
@@ -404,7 +410,8 @@ figs = {
 	},
 	"fig6": {
 		"begin": State.Off,
-		"clip": State.Off,
+		"clip": State.On,
+		"full_clip": State.Off,
 
 		"x_axis": State.Off,
 		"y_axis": State.Off,
@@ -460,7 +467,8 @@ figs = {
 	},
 	"fig7": {
 		"begin": State.Off,
-		"clip": State.Off,
+		"clip": State.On,
+		"full_clip": State.Off,
 
 		"x_axis": State.Off,
 		"y_axis": State.Off,
@@ -522,7 +530,8 @@ figs = {
 	},
 	"fig8": {
 		"begin": State.Off,
-		"clip": State.Off,
+		"clip": State.On,
+		"full_clip": State.Off,
 
 		"x_axis": State.Off,
 		"y_axis": State.Off,
@@ -586,7 +595,8 @@ figs = {
 	},
 	"fig9": {
 		"begin": State.Off,
-		"clip": State.Off,
+		"clip": State.On,
+		"full_clip": State.Off,
 
 		"x_axis": State.Off,
 		"y_axis": State.Off,
@@ -633,6 +643,73 @@ figs = {
 		"arrow_T2": State.Off,
 #		"arrow_P": State.On,
 #		"arrow_DPrime": State.On,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+		"arrow_r3": State.On,
+#		"arrow_ps_p1": State.Off,
+#		"arrow_p3": State.Off,
+
+		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+#		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+		"end": State.On
+	},
+	"fig10": {
+		"begin": State.Off,
+		"clip": State.Off,
+		"full_clip": State.On,
+
+
+		"x_axis": State.On,
+		"y_axis": State.On,
+
+		"line_P": State.Off,
+		"line_Dprime": State.On,
+#		"line_false_x_axis": State.Off,
+		"line_p2_p3":  State.Off,
+
+		"line_T": State.Off,
+		"line_T2": State.Off,
+		"line_Tbase_dim": State.Off,
+		"line_T_dim": State.Off,
+		"line_T2_dim": State.Off,
+
+		"line_T_full": State.On,
+		"line_W": State.On,
+
+		"line_slope": State.Off,
+		"line_ps_p1": State.Off,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.On,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
+
+		"arc_c1": State.On,
+		"arc_c2": State.On,
+		"arc_c3": State.On,
+		"arc_ps_p1": State.Off,
+		"arc_p3": State.Off,
+
+		"arrow_NPrime": State.On,
+		"arrow_W": State.On,
+		"arrow_T": State.On,
+		"arrow_T2": State.Off,
+		"arrow_P": State.On,
+		"arrow_DPrime": State.On,
 
 #		"arrow_r1": State.Off,
 #		"arrow_r2": State.Off,
@@ -753,16 +830,17 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["begin"] = Begin(region, scale)
 	drawables["end"] = End()
 	drawables["clip"] = Clip(-.021, -.030, .05,.05)
+	drawables["full_clip"] = Clip(-.1, -.030, .05,.05)
 
-	drawables["x_axis"] = XAxis(offcolor, oncolor, -W - 2 * overhang, T + 2 * overhang)
+	drawables["x_axis"] = XAxis(offcolor, oncolor, -W - 0.005, T + 2 * overhang)
 	drawables["y_axis"] = YAxis(offcolor, oncolor, P - D_PRIME - 2 * overhang , P + 2 * overhang)
 
 	# h lines
 	left = -W - overhang
 	right = T + overhang
-	drawables["line_P"] = Line(offcolor, oncolor, "", left, P, right, P)
+	drawables["line_P"] = Line(offcolor, oncolor, "", -W - 0.01, P, right, P)
 	drawables["line_false_x_axis"] = Line(offcolor, oncolor, "", -1, 0, 1, 0)
-	drawables["line_Dprime"] = Line(offcolor, oncolor, "", left, P - D_PRIME, right, P - D_PRIME)
+	drawables["line_Dprime"] = Line(offcolor, oncolor, "", -W - 0.01, P - D_PRIME, right, P - D_PRIME)
 
 	drawables["line_p2_p3"] = Line(offcolor, oncolor, "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y)
 
@@ -771,12 +849,12 @@ def draw(code: int, slope: float, outdir: str):
 	bottom = P - D_PRIME - overhang
 	drawables["line_T"] = Line(offcolor, oncolor, "", T, bottom, T, top)
 	drawables["line_T2"] = Line(offcolor, oncolor, "", T / 2, bottom, T / 2, top)
-# VWF
 	drawables["line_Tbase_dim"] = Line(offcolor, oncolor, "", 0, 2.9 * P, 0, 3.6 * P)
 	drawables["line_T_dim"] = Line(offcolor, oncolor, "", T, 3.4 * P, T, 3.6 * P)
 	drawables["line_T2_dim"] = Line(offcolor, oncolor, "", T / 2, 2.9 * P, T / 2, 3.1 * P)
 
-	drawables["line_W"] = Line(offcolor, oncolor, "", -W, bottom, -W, top)
+	drawables["line_T_full"] = Line(offcolor, oncolor, "", T, 0, T, 4.5 * P)
+	drawables["line_W"] = Line(offcolor, oncolor, "", -W, P, -W, 4.5 * P)
 
 	# diag lines
 	slope1 =  math.radians(0.0 - slope)
@@ -835,13 +913,13 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
 
 	# arrows (layout)
-	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 3.5 * P , W+T, 0, 0.0, 0.0)
-	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3 * P, W, -180, 0.0, 0.0)
-	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, -0.1)
-	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, -0.1)
+	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 4.0 * P , W+T, 0, -2.5, 0.1)
+	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3.5 * P, W, -180, 1.8, 0.1)
+	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, 0.1)
+	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, 0.1)
 
-	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.5 * W, 0, P, 90.0, 0.0, 0.0)
-	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0, 0.0, 0.0)
+	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -1.05 * W, 0, P, 90.0, -0.07, -0.25)
+	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -1.1 * W, P - D_PRIME, D_PRIME, 90.0, -0.1, -0.5)
 
 	# arrows (radius)
 	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
