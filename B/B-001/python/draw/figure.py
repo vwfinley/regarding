@@ -820,7 +820,7 @@ def draw(code: int, slope: float, outdir: str):
 
 	# arrows (radius)
 	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
-	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0, 0.05, 0.2)
+	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0, 0.27, 0.12)
 	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0, -0.05,0.2)
 	drawables["arrow_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, -105.0, -0.05, 0.3)
 	drawables["arrow_p3"] = Arrow(offcolor, oncolor, "", False, T / 2, p3.y, T / 2 - p3.x, 150.0, 0.0, 0.0)
