@@ -108,15 +108,17 @@ class ArcArrow(Drawable):
 		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle)
 
 class Arrow(Drawable): 
-	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float):
+	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float, x_label_offset: float, y_label_offset: float):
 		dx = length * math.cos(math.radians(angle))
 		dy = length * math.sin(math.radians(angle))
 		if atstart:
-			s = "\\draw[{}, {{Latex[scale=0.75]}}-{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
+			s = "\\draw[{}, {{Latex[scale=0.75]}}-{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f}) node [shift={{({:.5f}, {:.5f})}}] {{${}$}};\n"
 		else:
-			s = "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
-		self.off = s.format(offcolor, x, y, x + dx, y + dy, label)
-		self.on = s.format(oncolor, x, y, x + dx, y + dy, label)
+			s = "\\draw[{}, -{{Latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [shift={{({:.5f}, {:.5f})}}] {{${}$}};\n"
+
+		self.off = s.format(offcolor, x, y, x + dx, y + dy, x_label_offset, y_label_offset, label)
+		self.on = s.format(oncolor, x, y, x + dx, y + dy, x_label_offset, y_label_offset, label)
+
 
 figs = {
 	"fig1": {
@@ -792,7 +794,7 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["centermark_p3"] = Centermark(offcolor, oncolor, p3.label, p3.x, p3.y)
 
 	# pointmarks
-	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, "south west")
+	drawables["pointmark_pg"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, "north west")
 	drawables["pointmark_ps"] = Pointmark(offcolor, oncolor, ps.label, ps.x, ps.y, "north west")
 	drawables["pointmark_pd"] = Pointmark(offcolor, oncolor, pd.label, pd.x, pd.y, "north west")
 	drawables["pointmark_p1"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, "north west")
@@ -804,32 +806,31 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arc_c2"] = Arc(offcolor, oncolor, "c2", p2.x, p2.y, R2, 180, 285)
 	drawables["arc_c3"] = Arc(offcolor, oncolor, "c3", p3.x, p3.y, R3, 255, 360)
 	drawables["arc_p3"] = Arc(offcolor, oncolor, "p3",  T / 2, p3.y,  T / 2 - p3.x, 140, 240)
-#VWF
+
 	arc_slope_radius = 0.023
-#	drawables["arc_slope"] = Arc(offcolor, oncolor, "slope",  ps.x, ps.y,  arc_slope_radius , 360 - slope, 360)
 	drawables["arc_slope_upper"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
 	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
 
 	# arrows (layout)
-	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 3.5 * P , W+T, 0)
-	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3 * P, W, -180)
-	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3 * P, T, 0)
-	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.5 * W, 0, P, 90.0)
-	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0)
+	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 3.5 * P , W+T, 0, 0.0, 0.0)
+	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3 * P, W, -180, 0.0, 0.0)
+	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3 * P, T, 0, -0.65, 0.1)
+	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.5 * W, 0, P, 90.0, 0.0, 0.0)
+	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0, 0.0, 0.0)
 
 	# arrows (radius)
-	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0)
-	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0)
-	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0)
-	drawables["arrow_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, -105.0)
-	drawables["arrow_p3"] = Arrow(offcolor, oncolor, "p3", False, T / 2, p3.y, T / 2 - p3.x, 150.0)
-
-	# clines
-	drawables["cline_L"] = CLine(offcolor, oncolor, "L", 0, 0, theta_g, 0.035, 0.035)
+	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
+	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0, 0.05, 0.2)
+	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0, -0.05,0.2)
+	drawables["arrow_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, -105.0, -0.05, 0.3)
+	drawables["arrow_p3"] = Arrow(offcolor, oncolor, "", False, T / 2, p3.y, T / 2 - p3.x, 150.0, 0.0, 0.0)
 
 	# arrows
-	drawables["arrow_r1_layout"] = Arrow(offcolor, oncolor, "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0)
-	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0)
+	drawables["arrow_r1_layout"] = Arrow(offcolor, oncolor, "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0, 0.0, 0.0)
+	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.4, -0.1)
+
+	# clines
+	drawables["cline_L"] = CLine(offcolor, oncolor, "L", 0, 0, theta_g, 0.035, 0.040)
 
 	# arcs
 	drawables["arc_v1"] = Arc(offcolor, oncolor, "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
