@@ -669,7 +669,7 @@ figs = {
 		"y_axis": State.On,
 
 		"line_P": State.Off,
-		"line_Dprime": State.On,
+		"line_Dprime": State.Off,
 #		"line_false_x_axis": State.Off,
 		"line_p2_p3":  State.Off,
 
@@ -704,12 +704,12 @@ figs = {
 		"arc_ps_p1": State.Off,
 		"arc_p3": State.Off,
 
-		"arrow_NPrime": State.On,
-		"arrow_W": State.On,
-		"arrow_T": State.On,
+		"arrow_NPrime": State.Off,
+		"arrow_W": State.Off,
+		"arrow_T": State.Off,
 		"arrow_T2": State.Off,
-		"arrow_P": State.On,
-		"arrow_DPrime": State.On,
+		"arrow_P": State.Off,
+		"arrow_DPrime": State.Off,
 
 #		"arrow_r1": State.Off,
 #		"arrow_r2": State.Off,
@@ -918,8 +918,8 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, 0.1)
 	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, 0.1)
 
-	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -1.05 * W, 0, P, 90.0, -0.07, -0.25)
-	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -1.1 * W, P - D_PRIME, D_PRIME, 90.0, -0.1, -0.5)
+	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -1.05 * W, 0, P, 90.0, 0.07, -0.25)
+	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -1.1 * W, P - D_PRIME, D_PRIME, 90.0, 0.1, -0.6)
 
 	# arrows (radius)
 	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
