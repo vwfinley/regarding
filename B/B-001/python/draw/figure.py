@@ -471,6 +471,11 @@ figs = {
 
 		"line_T": State.On,
 		"line_T2": State.On,
+		"line_Tbase_dim": State.On,
+		"line_T_dim": State.On,
+		"line_T2_dim": State.On,
+
+
 #		"line_W": State.Off,
 
 		"line_slope": State.Off,
@@ -497,6 +502,7 @@ figs = {
 #		"arrow_NPrime": State.On,
 #		"arrow_W": State.On,
 		"arrow_T": State.On,
+		"arrow_T2": State.On,
 #		"arrow_P": State.On,
 #		"arrow_DPrime": State.On,
 
@@ -528,6 +534,10 @@ figs = {
 
 		"line_T": State.Off,
 		"line_T2": State.Off,
+		"line_Tbase_dim": State.Off,
+		"line_T_dim": State.Off,
+		"line_T2_dim": State.Off,
+
 #		"line_W": State.Off,
 
 		"line_slope": State.Off,
@@ -555,6 +565,7 @@ figs = {
 #		"arrow_NPrime": State.On,
 #		"arrow_W": State.On,
 		"arrow_T": State.Off,
+		"arrow_T2": State.Off,
 #		"arrow_P": State.On,
 #		"arrow_DPrime": State.On,
 
@@ -587,6 +598,11 @@ figs = {
 
 		"line_T": State.Off,
 		"line_T2": State.Off,
+		"line_Tbase_dim": State.Off,
+		"line_T_dim": State.Off,
+		"line_T2_dim": State.Off,
+
+
 #		"line_W": State.Off,
 
 		"line_slope": State.Off,
@@ -614,6 +630,7 @@ figs = {
 #		"arrow_NPrime": State.On,
 #		"arrow_W": State.On,
 		"arrow_T": State.Off,
+		"arrow_T2": State.Off,
 #		"arrow_P": State.On,
 #		"arrow_DPrime": State.On,
 
@@ -671,6 +688,7 @@ figs = {
 		"arrow_NPrime": State.Off,
 		"arrow_W": State.Off,
 		"arrow_T": State.Off,
+		"arrow_T2": State.Off,
 		"arrow_P": State.Off,
 		"arrow_DPrime": State.Off,
 
@@ -753,6 +771,11 @@ def draw(code: int, slope: float, outdir: str):
 	bottom = P - D_PRIME - overhang
 	drawables["line_T"] = Line(offcolor, oncolor, "", T, bottom, T, top)
 	drawables["line_T2"] = Line(offcolor, oncolor, "", T / 2, bottom, T / 2, top)
+# VWF
+	drawables["line_Tbase_dim"] = Line(offcolor, oncolor, "", 0, 2.9 * P, 0, 3.6 * P)
+	drawables["line_T_dim"] = Line(offcolor, oncolor, "", T, 3.4 * P, T, 3.6 * P)
+	drawables["line_T2_dim"] = Line(offcolor, oncolor, "", T / 2, 2.9 * P, T / 2, 3.1 * P)
+
 	drawables["line_W"] = Line(offcolor, oncolor, "", -W, bottom, -W, top)
 
 	# diag lines
@@ -814,7 +837,10 @@ def draw(code: int, slope: float, outdir: str):
 	# arrows (layout)
 	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 3.5 * P , W+T, 0, 0.0, 0.0)
 	drawables["arrow_W"] = Arrow(offcolor, oncolor, "W", True, 0, 3 * P, W, -180, 0.0, 0.0)
-	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3 * P, T, 0, -0.65, 0.1)
+#VWF
+	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, -0.09)
+	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, -0.09)
+
 	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.5 * W, 0, P, 90.0, 0.0, 0.0)
 	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -0.55 * W, P - D_PRIME, D_PRIME, 90.0, 0.0, 0.0)
 
