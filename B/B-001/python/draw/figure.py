@@ -711,9 +711,9 @@ figs = {
 		"arrow_P": State.Off,
 		"arrow_DPrime": State.Off,
 
-#		"arrow_r1": State.Off,
-#		"arrow_r2": State.Off,
-		"arrow_r3": State.On,
+		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+		"arrow_r3": State.Off,
 #		"arrow_ps_p1": State.Off,
 #		"arrow_p3": State.Off,
 
@@ -724,6 +724,10 @@ figs = {
 
 #		"arc_v1": State.Off,
 		"arc_v2": State.Off,
+
+		"arc_fillet_0deg": State.On,
+#		"corner0deg": State.Off,
+
 		"end": State.On
 	},
 	"fig99": {
@@ -787,6 +791,35 @@ figs = {
 	}
 }
 
+
+def RotatePoint(x: float, y: float, theta_rad: float):
+	x1 = x * math.cos(theta_rad) - y * math.sin(theta_rad)
+	y1 = x * math.sin(theta_rad) + y * math.cos(theta_rad)
+	return (x1, y1)
+
+def CalcFillet(radius: float, theta_deg: float, rot_deg: float):
+	theta_rad = math.radians(theta_deg)
+	rot_rad = math.radians(rot_deg)
+
+	alpha_rad = theta_rad / 2
+	dx = radius / math.sin(alpha_rad)
+	d = radius / math.tan(alpha_rad)
+	
+	Cx = dx
+	Cy = 0
+	Px = d * math.cos(alpha_rad)
+	Py = d * math.sin(alpha_rad)
+	P1x = Px
+	P1y = -Py
+	
+	C = RotatePoint(Cx, Cy, rot_rad)
+	P = RotatePoint(Px, Py, rot_rad)
+	P1 = RotatePoint(P1x, P1y, rot_rad)
+
+	return (C, P, P1)
+		
+
+
 def Draw(drawables: dict, d: dict, filename: str):
 	with open(filename, 'w') as f:
 		for key, value in d.items():
@@ -823,6 +856,19 @@ def draw(code: int, slope: float, outdir: str):
 	p2 = Point("p_2", output["p2"]["x"], output["p2"]["y"])
 	p3 = Point("p_3", output["p3"]["x"], output["p3"]["y"])
 	d_prime =  output["d_prime"]["value"]
+
+
+
+#-------
+	
+#	pCorner3deg = Point("pCorner3deg", W, ps.y + math.tan(slopeRads)/tw);
+
+#	pCenter3deg = Point("pCenter3deg", W - filletRadius, ps.x + filletRadius)
+
+#	tan 3 = op,adj
+#	tan 3 / adj = op
+
+#	pCorner3deg = Point("pCorner0deg", W - filletRadius, ps.x + filletRadius)
 
 	# -------------------------
 	drawables = {}
@@ -939,6 +985,38 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arc_v1"] = Arc(offcolor, oncolor, "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
 	drawables["arc_v2"] = Arc(offcolor, oncolor, "V2", pg.x, pg.y, R2, theta_g - 13.0, theta_g + 13.0)
 	drawables["arc_ps_p1"] = Arc(offcolor, oncolor, "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
+
+#x,y,r,startang,endang
+#corner3deg -0.075,0.0182724,0.005,267,180
+#corner0deg -0.075,0.015,0.005,270,180
+	#drawables["corner3deg"] = Arc(offcolor, oncolor, "corner3deg", -0.075,0.0182724,0.005,180,267)
+	#drawables["arc_fillet_0deg"] = Arc(offcolor, oncolor, "corner0deg", -0.075,0.015,0.005,180,270)
+
+
+
+
+	slopeRads =  math.radians(slope)
+	filletRadius = 0.005
+	tw = W - ps.x     # treadwidth
+
+
+	(Cxy, Pxy, P1xy) = CalcFillet(filletRadius, 90.0, 45.0)
+	pCorner0deg = Point("pCorner0deg", -W, ps.y)
+	pCenter0deg = Point("pCenter0deg", Cxy[0] + pCorner0deg.x, Cxy[1] + pCorner0deg.y)
+	pLegX0deg = Point("pLegX0deg", P1xy[0] + pCorner0deg.x, P1xy[1] + pCorner0deg.y)
+	pLegY0deg = Point("pLegY0deg", Pxy[0] + pCorner0deg.x, Pxy[0] + pCorner0deg.y)
+
+#	drawables["arc_fillet_0deg"] = Arc("red", "red", "arc_fillet_0deg", pCenter0deg.x, pCenter0deg.y, filletRadius, 90, 270)
+	drawables["arc_fillet_0deg"] = Arc("red", "red", "arc_fillet_0deg", pCenter0deg.x, pCenter0deg.y, filletRadius, 180, 270)
+
+
+
+
+
+
+
+
+
 
 	try:
 		shutil.rmtree(outdir)
