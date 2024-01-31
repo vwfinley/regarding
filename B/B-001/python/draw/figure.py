@@ -1006,7 +1006,6 @@ def draw(code: int, slope: float, outdir: str):
 	pLegX0deg = Point("pLegX0deg", P1xy[0] + pCorner0deg.x, P1xy[1] + pCorner0deg.y)
 	pLegY0deg = Point("pLegY0deg", Pxy[0] + pCorner0deg.x, Pxy[0] + pCorner0deg.y)
 
-#	drawables["arc_fillet_0deg"] = Arc("red", "red", "arc_fillet_0deg", pCenter0deg.x, pCenter0deg.y, filletRadius, 90, 270)
 	drawables["arc_fillet_0deg"] = Arc("red", "red", "arc_fillet_0deg", pCenter0deg.x, pCenter0deg.y, filletRadius, 180, 270)
 
 
