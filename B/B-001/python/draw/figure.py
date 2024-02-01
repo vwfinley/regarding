@@ -726,7 +726,7 @@ figs = {
 		"arc_v2": State.Off,
 
 		"arc_fillet_0deg": State.On,
-#		"corner0deg": State.Off,
+		"arc_fillet_3deg": State.On,
 
 		"end": State.On
 	},
@@ -786,11 +786,9 @@ figs = {
 		"arc_v1": State.Off,
 		"arc_v2": State.Off,
 
-
 		"end": State.On
 	}
 }
-
 
 def RotatePoint(x: float, y: float, theta_rad: float):
 	x1 = x * math.cos(theta_rad) - y * math.sin(theta_rad)
@@ -817,8 +815,6 @@ def CalcFillet(radius: float, theta_deg: float, rot_deg: float):
 	P1 = RotatePoint(P1x, P1y, rot_rad)
 
 	return (C, P, P1)
-		
-
 
 def Draw(drawables: dict, d: dict, filename: str):
 	with open(filename, 'w') as f:
@@ -856,19 +852,6 @@ def draw(code: int, slope: float, outdir: str):
 	p2 = Point("p_2", output["p2"]["x"], output["p2"]["y"])
 	p3 = Point("p_3", output["p3"]["x"], output["p3"]["y"])
 	d_prime =  output["d_prime"]["value"]
-
-
-
-#-------
-	
-#	pCorner3deg = Point("pCorner3deg", W, ps.y + math.tan(slopeRads)/tw);
-
-#	pCenter3deg = Point("pCenter3deg", W - filletRadius, ps.x + filletRadius)
-
-#	tan 3 = op,adj
-#	tan 3 / adj = op
-
-#	pCorner3deg = Point("pCorner0deg", W - filletRadius, ps.x + filletRadius)
 
 	# -------------------------
 	drawables = {}
@@ -985,20 +968,11 @@ def draw(code: int, slope: float, outdir: str):
 	drawables["arc_v1"] = Arc(offcolor, oncolor, "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
 	drawables["arc_v2"] = Arc(offcolor, oncolor, "V2", pg.x, pg.y, R2, theta_g - 13.0, theta_g + 13.0)
 	drawables["arc_ps_p1"] = Arc(offcolor, oncolor, "ps_p1", ps.x, ps.y, R1, -90 - slope - 15.0, -90 - slope + 15.0)
-
-#x,y,r,startang,endang
-#corner3deg -0.075,0.0182724,0.005,267,180
-#corner0deg -0.075,0.015,0.005,270,180
-	#drawables["corner3deg"] = Arc(offcolor, oncolor, "corner3deg", -0.075,0.0182724,0.005,180,267)
-	#drawables["arc_fillet_0deg"] = Arc(offcolor, oncolor, "corner0deg", -0.075,0.015,0.005,180,270)
-
-
-
-
+	
+	# corner fillets
 	slopeRads =  math.radians(slope)
 	filletRadius = 0.005
-	tw = W - ps.x     # treadwidth
-
+	tw = math.fabs(W + ps.x)     # treadwidth (plus ps.x because ps.x is already negative)
 
 	(Cxy, Pxy, P1xy) = CalcFillet(filletRadius, 90.0, 45.0)
 	pCorner0deg = Point("pCorner0deg", -W, ps.y)
@@ -1006,15 +980,15 @@ def draw(code: int, slope: float, outdir: str):
 	pLegX0deg = Point("pLegX0deg", P1xy[0] + pCorner0deg.x, P1xy[1] + pCorner0deg.y)
 	pLegY0deg = Point("pLegY0deg", Pxy[0] + pCorner0deg.x, Pxy[0] + pCorner0deg.y)
 
-	drawables["arc_fillet_0deg"] = Arc("red", "red", "arc_fillet_0deg", pCenter0deg.x, pCenter0deg.y, filletRadius, 180, 270)
+	drawables["arc_fillet_0deg"] = Arc(offcolor, oncolor, "arc_fillet_0deg", pCenter0deg.x, pCenter0deg.y, filletRadius, 180, 270)
 
+	(Cxy, Pxy, P1xy) = CalcFillet(filletRadius, 90.0 + slope, 90.0 - 0.5 * (90.0 + slope))
+	pCorner3deg = Point("pCorner3deg", -W, tw * math.tan(slopeRads) + ps.y);
+	pCenter3deg = Point("pCenter3deg", Cxy[0] + pCorner3deg.x, Cxy[1] + pCorner3deg.y)
+	pLegX3deg = Point("pLegX3deg", P1xy[0] + pCorner3deg.x, P1xy[1] + pCorner3deg.y)
+	pLegY3deg = Point("pLegY3deg", Pxy[0] + pCorner3deg.x, Pxy[0] + pCorner3deg.y)
 
-
-
-
-
-
-
+	drawables["arc_fillet_3deg"] = Arc(offcolor, oncolor, "arc_fillet_3deg", pCenter3deg.x, pCenter3deg.y, filletRadius, 180, 267)
 
 
 	try:
