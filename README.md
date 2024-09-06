@@ -1,4 +1,4 @@
-# Series
+#Series
 - [Series A : Regarding Mathematics](A/README.md)
 - [Series B : Regarding Engineering](B/README.md)
 
@@ -42,3 +42,5 @@ Going forward, something better was needed:
 - Clear printing of equations.
 - Versioning of changes.
 - Durable format.
+
+TODO
