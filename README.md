@@ -43,4 +43,3 @@ Going forward, something better was needed:
 - Versioning of changes.
 - Durable format.
 
-TODO
