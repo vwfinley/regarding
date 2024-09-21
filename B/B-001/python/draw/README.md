@@ -1,4 +1,4 @@
-Usage: ./run.sh
+Usage: ./build.sh
 
 Generates figures for the B-001 article.
 
