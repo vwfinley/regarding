@@ -37,7 +37,7 @@ class Begin(Drawable):
 
 class End(Drawable):
 	def __init__(self):
-		self.off = self.on = "\end{scope}\n" + "\end{tikzpicture}\n"
+		self.off = self.on = "\\end{scope}\n" + "\\end{tikzpicture}\n"
 
 
 class Clip(Drawable):
