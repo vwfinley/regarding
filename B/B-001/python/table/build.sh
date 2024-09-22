@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python table.py -c 110 -s 3 -o ../tables
+mkdir output
+python main.py -c 110 -s 3 -o ../tables > output/table.tex
