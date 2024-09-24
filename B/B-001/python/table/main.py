@@ -64,7 +64,7 @@ def generate_row(code: int, slope: float) -> str:
     p3 = format_point(Point("p_3", output["p3"]["x"], output["p3"]["y"]))
     d_prime = output["d_prime"]["value"]
 
-    s = f'{code} & {slope:.1f} & {N_PRIME:.3f} & {pg} & {theta_g:.4f} & {
+    s = f'{code} & {slope:.1f} & {pg} & {theta_g:.4f} & {
         ps} & {pd} & {p1} & {p2} & {p3} & {d_prime:.4f}'
 
     return s
@@ -72,7 +72,7 @@ def generate_row(code: int, slope: float) -> str:
 
 def begin_table() -> str:
 #    return '\\begin{table*}[ht!]\n\\centering\n\\begin{tabular}{|c|c|c||c|c|c|c|c|c|c|c|}'
-    return '\\begin{table*}[ht!]\n\\centering\n\\resizebox{1.0\\textwidth}{!}\n{\n\\begin{tabular}{|c|c|c||c|c|c|c|c|c|c|c|}'
+    return '\\begin{table*}[ht!]\n\\centering\n\\resizebox{1.0\\textwidth}{!}\n{\n\\begin{tabular}{|c|c||c|c|c|c|c|c|c|c|}'
  
 
 def end_table() -> str:
@@ -116,14 +116,21 @@ def main():
 
     args = parser.parse_args()
     print(begin_table())
+    print('\\hline')
+    print('Code & slope  & $p_g=(x,y)$ & $\\theta_g$ & $p_s=(x,y)$ & $p_d=(x,y)$ & $p_1=(x,y)$ & $p_2=(x,y)$ & $p_3=(x,y)$ & $d\'$    \\\\ [0.5ex]') 
+    print('     & (degs) & (inches)    & (degs)      & (inches)    & (inches)    & (inches)    & (inches)    & (inches)    & (inches) \\\\ [0.5ex]') 
+    print('\\hline')
+
     last_key = list(data.keys())[-1]
     n = 3
     for key in data.keys():
         for i in range(n + 1):
             s = generate_row(key, i)
-            if key != last_key or i != n:
+#            if key != last_key or i != n:
+            if True:
                 s = s + ' \\\\'
             print(s)
+        print('\\hline')
     print(end_table())
 
 
