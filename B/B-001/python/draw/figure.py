@@ -146,10 +146,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-#		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-
 #		"arc_slope": State.On,
 		"arc_slope_upper": State.On,
 		"arc_slope_lower": State.On,
@@ -178,6 +174,9 @@ figs = {
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
+#		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
 
 		"end": State.On
 	},
@@ -205,13 +204,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-#		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-#		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
-
 #		"arc_c1": State.Off,
 #		"arc_c2": State.Off,
 #		"arc_c3": State.Off,
@@ -235,6 +227,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
+
+#		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig3": {
@@ -262,13 +262,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-#		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
-
 		"arc_c1": State.On,
 #		"arc_c2": State.Off,
 #		"arc_c3": State.Off,
@@ -292,6 +285,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig4": {
@@ -319,13 +320,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-#		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
-
 		"arc_c1": State.Off,
 #		"arc_c2": State.Off,
 #		"arc_c3": State.Off,
@@ -349,6 +343,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig5": {
@@ -376,13 +378,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
-
 		"arc_c1": State.Off,
 #		"arc_c2": State.Off,
 #		"arc_c3": State.Off,
@@ -406,6 +401,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 		"arc_v2": State.On,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig6": {
@@ -433,13 +436,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
-
 		"arc_c1": State.Off,
 		"arc_c2": State.On,
 #		"arc_c3": State.Off,
@@ -463,6 +459,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig7": {
@@ -483,7 +487,6 @@ figs = {
 		"line_T_dim": State.On,
 		"line_T2_dim": State.On,
 
-
 #		"line_W": State.Off,
 
 		"line_slope": State.Off,
@@ -494,13 +497,6 @@ figs = {
 #		"centermark_p1": State.On,
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
-
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
 
 		"arc_c1": State.Off,
 		"arc_c2": State.Off,
@@ -526,6 +522,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig8": {
@@ -558,13 +562,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-		"pointmark_p3": State.On,
-
 		"arc_c1": State.Off,
 		"arc_c2": State.Off,
 #		"arc_c3": State.Off,
@@ -591,6 +588,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig9": {
@@ -624,13 +629,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-		"pointmark_p3": State.On,
-
 		"arc_c1": State.Off,
 		"arc_c2": State.Off,
 		"arc_c3": State.On,
@@ -657,6 +655,14 @@ figs = {
 
 #		"arc_v1": State.Off,
 		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
+
 		"end": State.On
 	},
 	"fig10": {
@@ -691,13 +697,6 @@ figs = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-		"pointmark_p3": State.On,
-
 		"arc_c1": State.On,
 		"arc_c2": State.On,
 		"arc_c3": State.On,
@@ -727,6 +726,13 @@ figs = {
 
 		"arc_fillet_0deg": State.On,
 		"arc_fillet_3deg": State.On,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
 
 		"end": State.On
 	},
