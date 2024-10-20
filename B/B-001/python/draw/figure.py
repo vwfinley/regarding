@@ -12,8 +12,10 @@ Point = namedtuple('Point', 'label x y')
 default_code = 110
 default_outdir = "output"
 default_slope = 3.0
+#default_slope = 15.0
 region = 1
 scale = 45
+detail_scale = 100
 overhang = 0.007
 
 class State(Enum):
@@ -737,7 +739,7 @@ figs = {
 		"end": State.On
 	},
 	"fig11": {
-		"begin": State.On,
+		"detail_begin": State.On,
 		"clip": State.On,
 
 #		"x_axis": State.On,
@@ -755,12 +757,16 @@ figs = {
 
 		"line_slope": State.On,
 #		"line_ps_p1": State.On,
-#		"line_slope_corner_1": State.On,
-#		"line_slope_corner_2": State.On,
+		"line_slope_corner_1": State.On,
+		"line_slope_corner_2": State.On,
 
 #		"centermark_p1": State.Off,
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
+
+#		"arc_slope": State.On,
+		"arc_slope_upper": State.On,
+		"arc_slope_lower": State.On,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -924,6 +930,7 @@ def draw(code: int, slope: float, outdir: str):
 	drawables = {}
 
 	drawables["begin"] = Begin(region, scale)
+	drawables["detail_begin"] = Begin(region, detail_scale)
 	drawables["end"] = End()
 	drawables["clip"] = Clip(-.021, -.030, .05,.05)
 	drawables["full_clip"] = Clip(-.1, -.030, .05,.05)
