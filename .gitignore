@@ -4,3 +4,6 @@
 *.ent
 *.pyc
 *.tikz
+*.fdb_latexmk
+*.fls
+*.gz
