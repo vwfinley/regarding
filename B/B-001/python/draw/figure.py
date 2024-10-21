@@ -123,7 +123,7 @@ class Arrow(Drawable):
 		self.on = s.format(oncolor, x, y, x + dx, y + dy, x_label_offset, y_label_offset, label)
 
 
-figs = {
+figs3 = {
 	"fig1": {
 		"begin": State.On,
 		"clip": State.On,
@@ -738,6 +738,67 @@ figs = {
 
 		"end": State.On
 	},
+	"fig99": {
+		"begin": State.On,
+		"clip": State.On,
+
+		"x_axis": State.On,
+		"y_axis": State.On,
+
+		"line_P": State.Off,
+		"line_Dprime": State.Off,
+
+		"line_T": State.Off,
+		"line_T2": State.Off,
+		"line_W": State.Off,
+
+		"line_slope": State.On,
+		"line_ps_p1": State.On,
+		"line_slope_corner_1": State.On,
+		"line_slope_corner_2": State.On,
+
+		"centermark_p1": State.Off,
+		"centermark_p2": State.Off,
+		"centermark_p3": State.Off,
+
+		"arc_c1": State.On,
+		"arc_c2": State.On,
+		"arc_c3": State.On,
+		"arc_ps_p1": State.On,
+
+		"arrow_NPrime": State.Off,
+		"arrow_W": State.Off,
+		"arrow_T": State.Off,
+		"arrow_T2": State.Off,
+		"arrow_P": State.Off,
+		"arrow_DPrime": State.Off,
+
+		"arrow_r1": State.Off,
+		"arrow_r2": State.Off,
+		"arrow_r3": State.Off,
+		"arrow_ps_p1": State.On,
+
+		"cline_L": State.Off,
+
+		"arrow_r1_layout": State.Off,
+		"arrow_r2_layout": State.Off,
+
+		"arc_v1": State.Off,
+		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+		"pointmark_p3": State.On,
+
+		"end": State.On
+	}
+}
+
+figs15 = {
+
 	"fig11": {
 		"detail_begin": State.On,
 		"clip": State.On,
@@ -803,63 +864,6 @@ figs = {
 #		"pointmark_p3": State.On,
 
 		"end": State.On
-	},
-	"fig99": {
-		"begin": State.On,
-		"clip": State.On,
-
-		"x_axis": State.On,
-		"y_axis": State.On,
-
-		"line_P": State.Off,
-		"line_Dprime": State.Off,
-
-		"line_T": State.Off,
-		"line_T2": State.Off,
-		"line_W": State.Off,
-
-		"line_slope": State.On,
-		"line_ps_p1": State.On,
-		"line_slope_corner_1": State.On,
-		"line_slope_corner_2": State.On,
-
-		"centermark_p1": State.Off,
-		"centermark_p2": State.Off,
-		"centermark_p3": State.Off,
-
-		"arc_c1": State.On,
-		"arc_c2": State.On,
-		"arc_c3": State.On,
-		"arc_ps_p1": State.On,
-
-		"arrow_NPrime": State.Off,
-		"arrow_W": State.Off,
-		"arrow_T": State.Off,
-		"arrow_T2": State.Off,
-		"arrow_P": State.Off,
-		"arrow_DPrime": State.Off,
-
-		"arrow_r1": State.Off,
-		"arrow_r2": State.Off,
-		"arrow_r3": State.Off,
-		"arrow_ps_p1": State.On,
-
-		"cline_L": State.Off,
-
-		"arrow_r1_layout": State.Off,
-		"arrow_r2_layout": State.Off,
-
-		"arc_v1": State.Off,
-		"arc_v2": State.Off,
-
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
-		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
-		"pointmark_p2": State.On,
-		"pointmark_p3": State.On,
-
-		"end": State.On
 	}
 }
 
@@ -888,15 +892,6 @@ def CalcFillet(radius: float, theta_deg: float, rot_deg: float):
 	P1 = RotatePoint(P1x, P1y, rot_rad)
 
 	return (C, P, P1)
-
-
-
-
-
-
-
-
-
 
 
 def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
@@ -1081,25 +1076,22 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	return drawables
 
 
-
-
-
-
-
-
-
-
-
-
 def Draw(drawables: dict, d: dict, filename: str):
 	with open(filename, 'w') as f:
 		for key, value in d.items():
 			f.write(drawables[key].draw(value))
 
-def draw(code: int, slope: float, outdir: str):
+def draw(code: int, slope: float, outdir: str, figures: dict[str, dict[str, State]]):
+
+	#figures =  dict[str, dict[str, State]]
 
 	drawables = generate_drawables(code, slope)
 
+	for key, value in figures.items():
+		Draw(drawables, value, outdir + "/" + key + ".tikz")
+
+
+def create_outdir(outdir: str):
 	try:
 		shutil.rmtree(outdir)
 	except:
@@ -1110,8 +1102,6 @@ def draw(code: int, slope: float, outdir: str):
 	except:
 		print("Warning: unable to create %s" % (outdir))
 
-	for key, value in figs.items():
-		Draw(drawables, value, outdir + "/" + key + ".tikz")
 
 
 def main():
@@ -1147,7 +1137,10 @@ def main():
 	)
 	
 	args = parser.parse_args()
-	draw(int(args.code), float(args.slope), str(args.outdir))
+
+	create_outdir(str(args.outdir))
+	draw(int(args.code), float(args.slope), str(args.outdir), figs3)
+	draw(int(args.code), 15.0, str(args.outdir), figs15)
 
 
 # The main entry point for commandline application.
