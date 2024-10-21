@@ -889,12 +889,17 @@ def CalcFillet(radius: float, theta_deg: float, rot_deg: float):
 
 	return (C, P, P1)
 
-def Draw(drawables: dict, d: dict, filename: str):
-	with open(filename, 'w') as f:
-		for key, value in d.items():
-			f.write(drawables[key].draw(value))
 
-def draw(code: int, slope: float, outdir: str):
+
+
+
+
+
+
+
+
+
+def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	results = rp25(code, slope)
 	input = results[inputs]
 	output = results[outputs]
@@ -1073,6 +1078,27 @@ def draw(code: int, slope: float, outdir: str):
 
 	drawables["arc_fillet_3deg"] = Arc(offcolor, oncolor, "arc_fillet_3deg", pCenter3deg.x, pCenter3deg.y, filletRadius, 180, 267)
 
+	return drawables
+
+
+
+
+
+
+
+
+
+
+
+
+def Draw(drawables: dict, d: dict, filename: str):
+	with open(filename, 'w') as f:
+		for key, value in d.items():
+			f.write(drawables[key].draw(value))
+
+def draw(code: int, slope: float, outdir: str):
+
+	drawables = generate_drawables(code, slope)
 
 	try:
 		shutil.rmtree(outdir)
