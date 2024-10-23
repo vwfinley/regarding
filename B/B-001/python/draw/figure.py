@@ -123,7 +123,7 @@ class Arrow(Drawable):
 		self.on = s.format(oncolor, x, y, x + dx, y + dy, x_label_offset, y_label_offset, label)
 
 
-figs3 = {
+figs3deg = {
 	"fig1": {
 		"begin": State.On,
 		"clip": State.On,
@@ -797,7 +797,7 @@ figs3 = {
 	}
 }
 
-figs15 = {
+figs15deg = {
 
 	"fig11": {
 		"detail_begin": State.On,
@@ -809,25 +809,25 @@ figs15 = {
 		"line_P": State.Off,
 #		"line_Dprime": State.Off,
 
-		"line_ps_p1_horizontal": State.Off,
-		"line_ps_p1_vertical": State.Off,
+		"line_ps_p1_horizontal": State.On,
+		"line_ps_p1_vertical": State.On,
 
 #		"line_T": State.Off,
 #		"line_T2": State.Off,
 #		"line_W": State.Off,
 
-		"line_slope": State.On,
+		"line_slope": State.Off,
 #		"line_ps_p1": State.On,
-		"line_slope_corner_1": State.On,
-		"line_slope_corner_2": State.On,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
 
 #		"centermark_p1": State.Off,
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
 #		"arc_slope": State.On,
-		"arc_slope_upper": State.On,
-		"arc_slope_lower": State.On,
+		"arc_slope_upper": State.Off,
+		"arc_slope_lower": State.Off,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -864,7 +864,250 @@ figs15 = {
 #		"pointmark_p3": State.On,
 
 		"end": State.On
+	},
+
+	"fig12": {
+		"detail_begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.On,
+#		"y_axis": State.On,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+
+#		"line_ps_p1_horizontal": State.Off,
+#		"line_ps_p1_vertical": State.Off,
+		"line_pg_horizontal": State.Off,
+
+		"line_p1_pg_horizontal": State.On,
+		"line_p1_pg_vertical": State.On,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+#		"line_ps_p1": State.On,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.Off,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"arc_slope": State.On,
+		"arc_slope_upper": State.Off,
+		"arc_slope_lower": State.Off,
+
+#		"arc_c1": State.On,
+#		"arc_c2": State.On,
+#		"arc_c3": State.On,
+#		"arc_ps_p1": State.On,
+
+#		"arrow_NPrime": State.Off,
+#		"arrow_W": State.Off,
+#		"arrow_T": State.Off,
+#		"arrow_T2": State.Off,
+#		"arrow_P": State.Off,
+#		"arrow_DPrime": State.Off,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.On,
+
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+		"arrow_r1_ps_p1": State.Off,
+		"arrow_r1_p1_pg": State.On,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+#		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"end": State.On
+	},
+
+
+
+
+
+
+
+
+
+
+	"fig13": {
+		"detail_begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.On,
+#		"y_axis": State.On,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+
+#		"line_ps_p1_horizontal": State.Off,
+#		"line_ps_p1_vertical": State.Off,
+		"line_pg_horizontal": State.Off,
+
+#		"line_p1_pg_horizontal": State.On,
+#		"line_p1_pg_vertical": State.On,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+#		"line_ps_p1": State.On,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.Off,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"arc_slope": State.On,
+		"arc_slope_upper": State.Off,
+		"arc_slope_lower": State.Off,
+
+#		"arc_c1": State.On,
+#		"arc_c2": State.On,
+#		"arc_c3": State.On,
+#		"arc_ps_p1": State.On,
+
+#		"arrow_NPrime": State.Off,
+#		"arrow_W": State.Off,
+#		"arrow_T": State.Off,
+#		"arrow_T2": State.Off,
+#		"arrow_P": State.Off,
+#		"arrow_DPrime": State.Off,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.On,
+
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+		"arrow_r1_ps_p1": State.Off,
+		"arrow_r1_p1_pg": State.Off,
+		"arrow_r2_pg_p2": State.On,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"end": State.On
+	},
+
+
+
+
+
+
+
+
+	"fig14": {
+		"detail_begin": State.On,
+		"clip": State.On,
+
+#		"x_axis": State.On,
+#		"y_axis": State.On,
+
+		"line_P": State.Off,
+#		"line_Dprime": State.Off,
+
+#		"line_ps_p1_horizontal": State.Off,
+#		"line_ps_p1_vertical": State.Off,
+		"line_pg_horizontal": State.Off,
+
+#		"line_p1_pg_horizontal": State.On,
+#		"line_p1_pg_vertical": State.On,
+
+#		"line_T": State.Off,
+#		"line_T2": State.Off,
+#		"line_W": State.Off,
+
+		"line_slope": State.Off,
+#		"line_ps_p1": State.On,
+		"line_slope_corner_1": State.Off,
+		"line_slope_corner_2": State.Off,
+
+#		"centermark_p1": State.Off,
+#		"centermark_p2": State.Off,
+#		"centermark_p3": State.Off,
+
+#		"arc_slope": State.On,
+		"arc_slope_upper": State.Off,
+		"arc_slope_lower": State.Off,
+
+#		"arc_c1": State.On,
+#		"arc_c2": State.On,
+#		"arc_c3": State.On,
+#		"arc_ps_p1": State.On,
+
+#		"arrow_NPrime": State.Off,
+#		"arrow_W": State.Off,
+#		"arrow_T": State.Off,
+#		"arrow_T2": State.Off,
+#		"arrow_P": State.Off,
+#		"arrow_DPrime": State.Off,
+
+#		"arrow_r1": State.Off,
+#		"arrow_r2": State.Off,
+#		"arrow_r3": State.Off,
+#		"arrow_ps_p1": State.On,
+
+#		"cline_L": State.Off,
+
+#		"arrow_r1_layout": State.Off,
+#		"arrow_r2_layout": State.Off,
+
+		"arrow_r1_ps_p1": State.Off,
+		"arrow_r1_p1_pg": State.Off,
+		"arrow_r2_pg_p2": State.On,
+
+#		"arc_v1": State.Off,
+#		"arc_v2": State.Off,
+
+		"pointmark_pg": State.On,
+		"pointmark_ps": State.On,
+#		"pointmark_pd": State.On,
+		"pointmark_p1": State.On,
+		"pointmark_p2": State.On,
+#		"pointmark_p3": State.On,
+
+		"end": State.On
 	}
+
+
+
+
+
+
+
+
+
 }
 
 def RotatePoint(x: float, y: float, theta_rad: float):
@@ -948,6 +1191,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["line_p2_p3"] = Line(offcolor, oncolor, "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y)
 
 	drawables["line_ps_p1_horizontal"] = Line(offcolor, oncolor, "x_s", ps.x, p1.y, p1.x, p1.y)
+	drawables["line_pg_horizontal"] = Line(offcolor, oncolor, "", pg.x - 0.1, pg.y, pg.x + 0.1, pg.y)
+
+	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y)
 
 
 	# v lines
@@ -964,6 +1210,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["line_ps_p1_vertical"] = Line(offcolor, oncolor, "y_s", ps.x, ps.y, ps.x, p1.y)
 
+	drawables["line_p1_pg_vertical"] = Line(offcolor, oncolor, "y_g", pg.x, p1.y, pg.x, pg.y)
 
 	# diag lines
 	slope1 =  math.radians(0.0 - slope)
@@ -1042,6 +1289,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.4, -0.1)
 
 	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.1, 0.3)
+	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.5, -0.3)
+
+	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.3)
 
 
 	# clines
@@ -1139,8 +1389,8 @@ def main():
 	args = parser.parse_args()
 
 	create_outdir(str(args.outdir))
-	draw(int(args.code), float(args.slope), str(args.outdir), figs3)
-	draw(int(args.code), 15.0, str(args.outdir), figs15)
+	draw(int(args.code), float(args.slope), str(args.outdir), figs3deg)
+	draw(int(args.code), 15.0, str(args.outdir), figs15deg)
 
 
 # The main entry point for commandline application.
