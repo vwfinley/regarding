@@ -122,6 +122,17 @@ class Arrow(Drawable):
 		self.off = s.format(offcolor, x, y, x + dx, y + dy, x_label_offset, y_label_offset, label)
 		self.on = s.format(oncolor, x, y, x + dx, y + dy, x_label_offset, y_label_offset, label)
 
+class RArrow(Drawable): 
+	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, x2: float, y2: float, x_label_offset: float, y_label_offset: float):
+		if atstart:
+			s = "\\draw[{}, {{latex[scale=0.75]}}-{{latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f}) node [shift={{({:.5f}, {:.5f})}}] {{${}$}};\n"
+		else:
+			s = "\\draw[{}, -{{latex[scale=0.75]}}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [shift={{({:.5f}, {:.5f})}}] {{${}$}};\n"
+
+		self.off = s.format(offcolor, x, y, x2, y2, x_label_offset, y_label_offset, label)
+		self.on = s.format(oncolor, x, y, x2, y2, x_label_offset, y_label_offset, label)
+
+
 
 figs3deg = {
 	"fig1": {
@@ -1085,17 +1096,21 @@ figs15deg = {
 
 		"arrow_r1_ps_p1": State.Off,
 		"arrow_r1_p1_pg": State.Off,
-		"arrow_r2_pg_p2": State.On,
+		"arrow_r2_pg_p2": State.Off,
+
+		"rarrow_p2_pd": State.On,
+		"rarrow_p2_p3": State.On,
+
 
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
 		"pointmark_pg": State.On,
 		"pointmark_ps": State.On,
-#		"pointmark_pd": State.On,
+		"pointmark_pd": State.On,
 		"pointmark_p1": State.On,
 		"pointmark_p2": State.On,
-#		"pointmark_p3": State.On,
+		"pointmark_p3": State.On,
 
 		"end": State.On
 	}
@@ -1293,6 +1308,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.3)
 
+	# rarrows
+	drawables["rarrow_p2_pd"] = RArrow(offcolor, oncolor, "R2", False, p2.x, p2.y, pd.x, pd.y, 0.25, 0.8)
+	drawables["rarrow_p2_p3"] = RArrow(offcolor, oncolor, "?", False, p2.x, p2.y, p3.x, p3.y, 0.2, 0.1)
 
 	# clines
 	drawables["cline_L"] = CLine(offcolor, oncolor, "L", 0, 0, theta_g, 0.035, 0.040)
