@@ -15,7 +15,7 @@ default_slope = 3.0
 #default_slope = 15.0
 region = 1
 scale = 45
-detail_scale = 100
+detail_scale = 70
 overhang = 0.007
 
 class State(Enum):
@@ -812,7 +812,7 @@ figs15deg = {
 
 	"fig11": {
 		"detail_begin": State.On,
-		"clip": State.On,
+		"detail_clip": State.On,
 
 #		"x_axis": State.On,
 #		"y_axis": State.On,
@@ -879,7 +879,7 @@ figs15deg = {
 
 	"fig12": {
 		"detail_begin": State.On,
-		"clip": State.On,
+		"detail_clip": State.On,
 
 #		"x_axis": State.On,
 #		"y_axis": State.On,
@@ -960,7 +960,7 @@ figs15deg = {
 
 	"fig13": {
 		"detail_begin": State.On,
-		"clip": State.On,
+		"detail_clip": State.On,
 
 #		"x_axis": State.On,
 #		"y_axis": State.On,
@@ -1040,7 +1040,7 @@ figs15deg = {
 
 	"fig14": {
 		"detail_begin": State.On,
-		"clip": State.On,
+		"detail_clip": State.On,
 
 #		"x_axis": State.On,
 #		"y_axis": State.On,
@@ -1190,8 +1190,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["begin"] = Begin(region, scale)
 	drawables["detail_begin"] = Begin(region, detail_scale)
 	drawables["end"] = End()
-	drawables["clip"] = Clip(-.021, -.030, .05,.05)
-	drawables["full_clip"] = Clip(-.1, -.030, .05,.05)
+	drawables["clip"] = Clip(-0.021, -0.030, 0.05, 0.05)
+	drawables["full_clip"] = Clip(-0.1, -0.030, 0.05, 0.05)
+#vwf
+	drawables["detail_clip"] = Clip(-0.021, -0.015, 0.02, 0.012)
 
 	drawables["x_axis"] = XAxis(offcolor, oncolor, -W - 0.005, T + 2 * overhang)
 	drawables["y_axis"] = YAxis(offcolor, oncolor, P - D_PRIME - 2 * overhang , P + 2 * overhang)
