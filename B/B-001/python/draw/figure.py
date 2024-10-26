@@ -940,7 +940,7 @@ figs15deg = {
 #		"arc_v2": State.Off,
 
 		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
+		"pointmark_ps": State.Off,
 #		"pointmark_pd": State.On,
 		"pointmark_p1": State.On,
 #		"pointmark_p2": State.On,
@@ -1022,9 +1022,9 @@ figs15deg = {
 #		"arc_v2": State.Off,
 
 		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
+		"pointmark_ps": State.Off,
 #		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
+		"pointmark_p1": State.Off,
 		"pointmark_p2": State.On,
 #		"pointmark_p3": State.On,
 
@@ -1040,7 +1040,7 @@ figs15deg = {
 
 	"fig14": {
 		"detail_begin": State.On,
-		"detail_clip": State.On,
+		"full_detail_clip": State.On,
 
 #		"x_axis": State.On,
 #		"y_axis": State.On,
@@ -1105,10 +1105,10 @@ figs15deg = {
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
-		"pointmark_pg": State.On,
-		"pointmark_ps": State.On,
+		"pointmark_pg": State.Off,
+		"pointmark_ps": State.Off,
 		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
+		"pointmark_p1": State.Off,
 		"pointmark_p2": State.On,
 		"pointmark_p3": State.On,
 
@@ -1193,7 +1193,8 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["clip"] = Clip(-0.021, -0.030, 0.05, 0.05)
 	drawables["full_clip"] = Clip(-0.1, -0.030, 0.05, 0.05)
 #vwf
-	drawables["detail_clip"] = Clip(-0.021, -0.015, 0.02, 0.012)
+	drawables["detail_clip"] = Clip(-0.021, -0.006, 0.021, 0.012)
+	drawables["full_detail_clip"] = Clip(-0.021, -0.015, 0.021, 0.012)
 
 	drawables["x_axis"] = XAxis(offcolor, oncolor, -W - 0.005, T + 2 * overhang)
 	drawables["y_axis"] = YAxis(offcolor, oncolor, P - D_PRIME - 2 * overhang , P + 2 * overhang)
