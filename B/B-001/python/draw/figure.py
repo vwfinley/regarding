@@ -61,10 +61,10 @@ class YAxis(Drawable):
 		self.on = s.format(oncolor, y1, y2)
 
 class Line(Drawable):
-	def __init__(self, offcolor: str, oncolor: str, label: str, x1: float, y1: float, x2: float, y2: float):
-		s = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f})  node [right] {{${}$}};\n"
-		self.off = s.format(offcolor, x1, y1, x2, y2, label)	
-		self.on = s.format(oncolor, x1, y1, x2, y2, label)	
+	def __init__(self, offcolor: str, oncolor: str, label: str, x1: float, y1: float, x2: float, y2: float, x_label_offset: float, y_label_offset: float):
+		s = "\\draw[{}] ({:.5f}, {:.5f}) -- ({:.5f}, {:.5f}) node [shift={{({:.5f}, {:.5f})}}] {{${}$}};\n"
+		self.off = s.format(offcolor, x1, y1, x2, y2, x_label_offset, y_label_offset, label)	
+		self.on = s.format(oncolor, x1, y1, x2, y2, x_label_offset, y_label_offset, label)		
 
 class CLine(Line):
 	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float, angle: float, r1: float, r2: float):
@@ -74,7 +74,7 @@ class CLine(Line):
 		dy1 = r1 * sin
 		dx2 = r2 * cos
 		dy2 = r2 * sin
-		super().__init__(offcolor, oncolor, label, x - dx1, y - dy1, x + dx2, y + dy2)
+		super().__init__(offcolor, oncolor, label, x - dx1, y - dy1, x + dx2, y + dy2, 0.0, 0.0)
 
 class Centermark(Drawable):
 	def __init__(self, offcolor: str, oncolor: str, label: str, x: float, y: float):
@@ -109,31 +109,6 @@ class ArcArrow(Drawable):
 			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{({7:.5f}, {8:.5f})}}] {{${1}$}};\n"
 		self.off = s.format(offcolor, label, x, y, radius, start_angle, end_angle, x_label_offset, y_label_offset)
 		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle, x_label_offset, y_label_offset)
-
-
-#vwf
-
-#	arc_slope_radius_15deg = 0.01
-#	drawables["arc_slope_upper_15deg"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius_15deg, 0, 10)
-#	drawables["arc_slope_lower_15deg"] = ArcArrow(offcolor, oncolor, "\\theta_s", True, ps.x, ps.y, arc_slope_radius_15deg, 360 - slope - 10, 360 - slope)
-
-
-class ArcDimArrow(Drawable): 
-	def __init__(self, offcolor: str, oncolor: str, label: str, inside: bool, x: float, y: float, radius: float, start_angle: float, end_angle: float):
-		delta_angle = end_angle - start_angle
-		half_angle = 0.5 * delta_angle
-		label_angle = start_angle + half_angle
-		if inside:
-#			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f}, {3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{({4:.5f}: {7:.5f})}}] {{${1}$}};\n"
-			s = "\\draw[{0}, {{latex[scale=0.75]}}-{{latex[scale=0.75]}}] ([shift=({5:.5f} : {4:.5f})] {2:.5f}, {3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{(-30 : 0.1)}}] {{${1}$}};\n"
-#		else:
-#			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [right] {{${1}$}};\n"
-		self.off = s.format(offcolor, label, x, y, radius, start_angle, end_angle, label_angle, label_angle)
-		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle, label_angle, label_angle)
-
-
-
-
 
 class Arrow(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float, x_label_offset: float, y_label_offset: float):
@@ -852,7 +827,7 @@ figs15deg = {
 #		"line_T2": State.Off,
 #		"line_W": State.Off,
 
-		"line_slope": State.Off,
+		"line_slope_detail": State.Off,
 #		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
@@ -925,7 +900,7 @@ figs15deg = {
 #		"line_T2": State.Off,
 #		"line_W": State.Off,
 
-		"line_slope": State.Off,
+		"line_slope_detail": State.Off,
 #		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
@@ -1007,7 +982,7 @@ figs15deg = {
 #		"line_T2": State.Off,
 #		"line_W": State.Off,
 
-		"line_slope": State.Off,
+		"line_slope_detail": State.Off,
 #		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
@@ -1088,7 +1063,7 @@ figs15deg = {
 #		"line_T2": State.Off,
 #		"line_W": State.Off,
 
-		"line_slope": State.Off,
+		"line_slope_detail": State.Off,
 #		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
@@ -1232,33 +1207,33 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	# h lines
 	left = -W - overhang
 	right = T + overhang
-	drawables["line_P"] = Line(offcolor, oncolor, "", -W - 0.01, P, right, P)
-	drawables["line_false_x_axis"] = Line(offcolor, oncolor, "", -1, 0, 1, 0)
-	drawables["line_Dprime"] = Line(offcolor, oncolor, "", -W - 0.01, P - D_PRIME, right, P - D_PRIME)
+	drawables["line_P"] = Line(offcolor, oncolor, "", -W - 0.01, P, right, P, 0.0, 0.0)
+	drawables["line_false_x_axis"] = Line(offcolor, oncolor, "", -1, 0, 1, 0, 0.0, 0.0)
+	drawables["line_Dprime"] = Line(offcolor, oncolor, "", -W - 0.01, P - D_PRIME, right, P - D_PRIME, 0.0, 0.0)
 
-	drawables["line_p2_p3"] = Line(offcolor, oncolor, "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y)
+	drawables["line_p2_p3"] = Line(offcolor, oncolor, "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y, 0.0, 0.0)
 
-	drawables["line_ps_p1_horizontal"] = Line(offcolor, oncolor, "x_s", ps.x, p1.y, p1.x, p1.y)
-	drawables["line_pg_horizontal"] = Line(offcolor, oncolor, "", pg.x - 0.1, pg.y, pg.x + 0.1, pg.y)
+	drawables["line_ps_p1_horizontal"] = Line(offcolor, oncolor, "x_s", ps.x, p1.y, p1.x, p1.y, 0.15, 0.0)
+	drawables["line_pg_horizontal"] = Line(offcolor, oncolor, "", pg.x - 0.1, pg.y, pg.x + 0.1, pg.y, 0.0, 0.0)
 
-	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y)
+	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y, -0.35, -0.1)
 
 
 	# v lines
 	top = P + overhang
 	bottom = P - D_PRIME - overhang
-	drawables["line_T"] = Line(offcolor, oncolor, "", T, bottom, T, top)
-	drawables["line_T2"] = Line(offcolor, oncolor, "", T / 2, bottom, T / 2, top)
-	drawables["line_Tbase_dim"] = Line(offcolor, oncolor, "", 0, 2.9 * P, 0, 3.6 * P)
-	drawables["line_T_dim"] = Line(offcolor, oncolor, "", T, 3.4 * P, T, 3.6 * P)
-	drawables["line_T2_dim"] = Line(offcolor, oncolor, "", T / 2, 2.9 * P, T / 2, 3.1 * P)
+	drawables["line_T"] = Line(offcolor, oncolor, "", T, bottom, T, top, 0.0, 0.0)
+	drawables["line_T2"] = Line(offcolor, oncolor, "", T / 2, bottom, T / 2, top, 0.0, 0.0)
+	drawables["line_Tbase_dim"] = Line(offcolor, oncolor, "", 0, 2.9 * P, 0, 3.6 * P, 0.0, 0.0)
+	drawables["line_T_dim"] = Line(offcolor, oncolor, "", T, 3.4 * P, T, 3.6 * P, 0.0, 0.0)
+	drawables["line_T2_dim"] = Line(offcolor, oncolor, "", T / 2, 2.9 * P, T / 2, 3.1 * P, 0.0, 0.0)
 
-	drawables["line_T_full"] = Line(offcolor, oncolor, "", T, 0, T, 4.5 * P)
-	drawables["line_W"] = Line(offcolor, oncolor, "", -W, P, -W, 4.5 * P)
+	drawables["line_T_full"] = Line(offcolor, oncolor, "", T, 0, T, 4.5 * P, 0.0, 0.0)
+	drawables["line_W"] = Line(offcolor, oncolor, "", -W, P, -W, 4.5 * P, 0.0, 0.0)
 
-	drawables["line_ps_p1_vertical"] = Line(offcolor, oncolor, "y_s", ps.x, ps.y, ps.x, p1.y)
+	drawables["line_ps_p1_vertical"] = Line(offcolor, oncolor, "y_s", ps.x, ps.y, ps.x, p1.y, 0.1, 0.4)
 
-	drawables["line_p1_pg_vertical"] = Line(offcolor, oncolor, "y_g", pg.x, p1.y, pg.x, pg.y)
+	drawables["line_p1_pg_vertical"] = Line(offcolor, oncolor, "y_g", pg.x, p1.y, pg.x, pg.y, 0.1, -0.15)
 
 	# diag lines
 	slope1 =  math.radians(0.0 - slope)
@@ -1269,7 +1244,16 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	y1 = l1 * math.sin(slope1)
 	x2 = l2 * math.cos(slope2)
 	y2 = l2 * math.sin(slope2)
-	drawables["line_slope"] = Line(offcolor, oncolor, "slope (\\theta_s)", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # Tread slope
+	drawables["line_slope"] = Line(offcolor, oncolor, "slope (\\theta_s)", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2, 0.0, 0.0)  # Tread slope
+
+	l1 = 0.4 * T
+	l2 = 0.9 * W
+	x1 = l1 * math.cos(slope1)
+	y1 = l1 * math.sin(slope1)
+	x2 = l2 * math.cos(slope2)
+	y2 = l2 * math.sin(slope2)
+	drawables["line_slope_detail"] = Line(offcolor, oncolor, "slope (\\theta_s)", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2, 0.0, 0.0)  # Tread slope
+
 
 	len = 0.001
 	slope1 =  math.radians(180.0 - slope)
@@ -1278,12 +1262,12 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	y1 = len * 1.0 * math.sin(slope1)
 	x2 = len * 1.414 * math.cos(slope2)
 	y2 = len * 1.414 * math.sin(slope2)
-	drawables["line_slope_corner_1"] = Line(offcolor, oncolor, "", ps.x - x1, ps.y - y1, ps.x - x2, ps.y - y2)  # 
+	drawables["line_slope_corner_1"] = Line(offcolor, oncolor, "", ps.x - x1, ps.y - y1, ps.x - x2, ps.y - y2, 0.0, 0.0)  # 
 
 	slope3 = math.radians(90.0 - slope)
 	x3 = len * 1.0 * math.cos(slope3)
 	y3 = len * 1.0 * math.sin(slope3)
-	drawables["line_slope_corner_2"] = Line(offcolor, oncolor, "", ps.x - x2, ps.y - y2, ps.x - x3, ps.y - y3)  # 
+	drawables["line_slope_corner_2"] = Line(offcolor, oncolor, "", ps.x - x2, ps.y - y2, ps.x - x3, ps.y - y3, 0.0, 0.0)  # 
 
 	slope1 =  math.radians(90.0 - slope)
 	slope2 = math.radians(270.0 - slope)
@@ -1291,7 +1275,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	y1 = 0.5 * R1 * math.sin(slope1)
 	x2 = 1.5 * R1 * math.cos(slope2)
 	y2 = 1.5 * R1 * math.sin(slope2)
-	drawables["line_ps_p1"] = Line(offcolor, oncolor, "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2)  # ps->p1 line
+	drawables["line_ps_p1"] = Line(offcolor, oncolor, "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2, 0.0, 0.0)  # ps->p1 line
 
 	# centermarks
 	drawables["centermark_p1"] = Centermark(offcolor, oncolor, p1.label, p1.x, p1.y)
@@ -1341,12 +1325,12 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.4, -0.1)
 
 	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.03, 0.45)
-	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.5, -0.3)
+	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.56, -0.06)
 
-	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.3)
+	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.22)
 
 	# rarrows
-	drawables["rarrow_p2_pd"] = RArrow(offcolor, oncolor, "R2", False, p2.x, p2.y, pd.x, pd.y, 0.25, 0.8)
+	drawables["rarrow_p2_pd"] = RArrow(offcolor, oncolor, "R2", False, p2.x, p2.y, pd.x, pd.y, 0.2, 0.6)
 	drawables["rarrow_p2_p3"] = RArrow(offcolor, oncolor, "?", False, p2.x, p2.y, p3.x, p3.y, 0.2, 0.1)
 
 	# clines
