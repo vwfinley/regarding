@@ -102,13 +102,38 @@ class Arc(Drawable):
 
 
 class ArcArrow(Drawable): 
-	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, radius: float, start_angle: float, end_angle: float):
+	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, radius: float, start_angle: float, end_angle: float, x_label_offset: float, y_label_offset: float):
 		if atstart:
-			s = "\\draw[{0}, -{{latex[scale=0.75]}}] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [right] {{${1}$}};\n"
+			s = "\\draw[{0}, {{latex[scale=0.75]}}-{{latex[scale=0.75]}}] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{({7:.5f}, {8:.5f})}}] {{${1}$}};\n"
 		else:
-			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [right] {{${1}$}};\n"
-		self.off = s.format(offcolor, label, x, y, radius, start_angle, end_angle)
-		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle)
+			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{({7:.5f}, {8:.5f})}}] {{${1}$}};\n"
+		self.off = s.format(offcolor, label, x, y, radius, start_angle, end_angle, x_label_offset, y_label_offset)
+		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle, x_label_offset, y_label_offset)
+
+
+#vwf
+
+#	arc_slope_radius_15deg = 0.01
+#	drawables["arc_slope_upper_15deg"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius_15deg, 0, 10)
+#	drawables["arc_slope_lower_15deg"] = ArcArrow(offcolor, oncolor, "\\theta_s", True, ps.x, ps.y, arc_slope_radius_15deg, 360 - slope - 10, 360 - slope)
+
+
+class ArcDimArrow(Drawable): 
+	def __init__(self, offcolor: str, oncolor: str, label: str, inside: bool, x: float, y: float, radius: float, start_angle: float, end_angle: float):
+		delta_angle = end_angle - start_angle
+		half_angle = 0.5 * delta_angle
+		label_angle = start_angle + half_angle
+		if inside:
+#			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f}, {3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{({4:.5f}: {7:.5f})}}] {{${1}$}};\n"
+			s = "\\draw[{0}, {{latex[scale=0.75]}}-{{latex[scale=0.75]}}] ([shift=({5:.5f} : {4:.5f})] {2:.5f}, {3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [shift={{(-30 : 0.1)}}] {{${1}$}};\n"
+#		else:
+#			s = "\\draw[{0}, {{latex[scale=0.75]}}-] ([shift=({5:.5f} : {4:.5f})] {2:.5f},{3:.5f}) arc ({5:.5f} : {6:.5f} : {4:.5f}) node [right] {{${1}$}};\n"
+		self.off = s.format(offcolor, label, x, y, radius, start_angle, end_angle, label_angle, label_angle)
+		self.on = s.format(oncolor, label, x, y, radius, start_angle, end_angle, label_angle, label_angle)
+
+
+
+
 
 class Arrow(Drawable): 
 	def __init__(self, offcolor: str, oncolor: str, label: str, atstart: bool, x: float, y: float, length: float, angle: float, x_label_offset: float, y_label_offset: float):
@@ -810,7 +835,7 @@ figs3deg = {
 
 figs15deg = {
 
-	"fig11": {
+	"fig11a": {
 		"detail_begin": State.On,
 		"detail_clip": State.On,
 
@@ -836,9 +861,11 @@ figs15deg = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
+# VWF
 #		"arc_slope": State.On,
-		"arc_slope_upper": State.Off,
-		"arc_slope_lower": State.Off,
+#		"arc_slope_upper_15deg": State.Off,
+		"arc_slope_inside_15deg": State.On,
+#		"arc_slope_lower_15deg": State.Off,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -877,7 +904,7 @@ figs15deg = {
 		"end": State.On
 	},
 
-	"fig12": {
+	"fig11b": {
 		"detail_begin": State.On,
 		"detail_clip": State.On,
 
@@ -907,9 +934,10 @@ figs15deg = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
+# VWF
 #		"arc_slope": State.On,
-		"arc_slope_upper": State.Off,
-		"arc_slope_lower": State.Off,
+#		"arc_slope_upper_15deg": State.Off,
+#		"arc_slope_lower_15deg": State.Off,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -958,7 +986,7 @@ figs15deg = {
 
 
 
-	"fig13": {
+	"fig11c": {
 		"detail_begin": State.On,
 		"detail_clip": State.On,
 
@@ -988,9 +1016,10 @@ figs15deg = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
+# VWF
 #		"arc_slope": State.On,
-		"arc_slope_upper": State.Off,
-		"arc_slope_lower": State.Off,
+#		"arc_slope_upper_15deg": State.Off,
+#		"arc_slope_lower_15deg": State.Off,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -1038,7 +1067,7 @@ figs15deg = {
 
 
 
-	"fig14": {
+	"fig11d": {
 		"detail_begin": State.On,
 		"full_detail_clip": State.On,
 
@@ -1068,9 +1097,10 @@ figs15deg = {
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
 
+# VWF
 #		"arc_slope": State.On,
-		"arc_slope_upper": State.Off,
-		"arc_slope_lower": State.Off,
+#		"arc_slope_upper_15deg": State.Off,
+#		"arc_slope_lower_15deg": State.Off,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -1283,8 +1313,12 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arc_p3"] = Arc(offcolor, oncolor, "p3",  T / 2, p3.y,  T / 2 - p3.x, 140, 240)
 
 	arc_slope_radius = 0.023
-	drawables["arc_slope_upper"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius , 0, 10)
-	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope (\\theta_s)", True, ps.x, ps.y, arc_slope_radius , 360 - slope - 10, 360 - slope)
+	drawables["arc_slope_upper"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius, 0, 10, 0, 0)
+	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope (\\theta_s)", False, ps.x, ps.y, arc_slope_radius, 360 - slope, 360 - slope - 10, 0, 0)
+
+#vwf
+	drawables["arc_slope_inside_15deg"] = ArcArrow(offcolor, oncolor, "\\theta_s", True, ps.x, ps.y,  0.01, -slope, 0, 0.1, -0.1)
+
 
 	# arrows (layout)
 	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 4.0 * P , W+T, 0, -2.5, 0.1)
@@ -1306,7 +1340,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_r1_layout"] = Arrow(offcolor, oncolor, "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0, 0.0, 0.0)
 	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.4, -0.1)
 
-	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.1, 0.3)
+	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.03, 0.45)
 	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.5, -0.3)
 
 	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.3)
