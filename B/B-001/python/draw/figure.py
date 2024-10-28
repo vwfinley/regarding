@@ -839,7 +839,7 @@ figs15deg = {
 # VWF
 #		"arc_slope": State.On,
 #		"arc_slope_upper_15deg": State.Off,
-		"arc_slope_inside_15deg": State.On,
+		"arc_slope_inside_15deg": State.Off,
 #		"arc_slope_lower_15deg": State.Off,
 		"arc_slope_theta_s_left": State.On,
 		"arc_slope_theta_s_right": State.On,
