@@ -921,6 +921,9 @@ figs15deg = {
 #		"arc_c3": State.On,
 #		"arc_ps_p1": State.On,
 
+		"arc_slope_theta_g_p1_top": State.On,
+		"arc_slope_theta_g_p1_bottom": State.On,
+
 #		"arrow_NPrime": State.Off,
 #		"arrow_W": State.Off,
 #		"arrow_T": State.Off,
@@ -1313,6 +1316,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arc_slope_theta_s_left"] = ArcArrow(offcolor, oncolor, "\\theta_s", False, ps.x, ps.y,  arc_slope_radius, 270 - slope, 270 - slope - 20, -0.08, 0.02)
 	drawables["arc_slope_theta_s_right"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y, arc_slope_radius, 270, 270 + 20, 0, 0)
 
+	drawables["arc_slope_theta_g_p1_top"] = ArcArrow(offcolor, oncolor, "\\theta_g", False, p1.x, p1.y,  arc_slope_radius, 0 + theta_g, 0 + theta_g + 20, -0.07, 0.03)
+	drawables["arc_slope_theta_g_p1_bottom"] = ArcArrow(offcolor, oncolor, "", False, p1.x, p1.y, arc_slope_radius, 0, -20, 0, 0)
+
 
 	# arrows (layout)
 	drawables["arrow_NPrime"] = Arrow(offcolor, oncolor, "N'", True, -W, 4.0 * P , W+T, 0, -2.5, 0.1)
@@ -1335,7 +1341,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.4, -0.1)
 
 	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.03, 0.45)
-	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.56, -0.06)
+	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.50, -0.03)
 
 	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.22)
 
