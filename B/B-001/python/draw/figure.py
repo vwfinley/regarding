@@ -841,6 +841,8 @@ figs15deg = {
 #		"arc_slope_upper_15deg": State.Off,
 		"arc_slope_inside_15deg": State.On,
 #		"arc_slope_lower_15deg": State.Off,
+		"arc_slope_theta_s_left": State.On,
+		"arc_slope_theta_s_right": State.On,
 
 #		"arc_c1": State.On,
 #		"arc_c2": State.On,
@@ -872,7 +874,7 @@ figs15deg = {
 #		"pointmark_pg": State.On,
 		"pointmark_ps": State.On,
 #		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
+		"pointmark_p1_detail": State.On,
 #		"pointmark_p2": State.On,
 #		"pointmark_p3": State.On,
 
@@ -942,10 +944,10 @@ figs15deg = {
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
-		"pointmark_pg": State.On,
+		"pointmark_pg_detail": State.On,
 		"pointmark_ps": State.Off,
 #		"pointmark_pd": State.On,
-		"pointmark_p1": State.On,
+		"pointmark_p1_detail": State.On,
 #		"pointmark_p2": State.On,
 #		"pointmark_p3": State.On,
 
@@ -1025,10 +1027,10 @@ figs15deg = {
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
-		"pointmark_pg": State.On,
+		"pointmark_pg_detail": State.On,
 		"pointmark_ps": State.Off,
 #		"pointmark_pd": State.On,
-		"pointmark_p1": State.Off,
+		"pointmark_p1_detail": State.Off,
 		"pointmark_p2": State.On,
 #		"pointmark_p3": State.On,
 
@@ -1110,10 +1112,10 @@ figs15deg = {
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
-		"pointmark_pg": State.Off,
+		"pointmark_pg_detail": State.Off,
 		"pointmark_ps": State.Off,
 		"pointmark_pd": State.On,
-		"pointmark_p1": State.Off,
+		"pointmark_p1_detail": State.Off,
 		"pointmark_p2": State.On,
 		"pointmark_p3": State.On,
 
@@ -1213,10 +1215,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["line_p2_p3"] = Line(offcolor, oncolor, "", p2.x - 0.006, p2.y, p3.x + 0.006, p3.y, 0.0, 0.0)
 
-	drawables["line_ps_p1_horizontal"] = Line(offcolor, oncolor, "x_s", ps.x, p1.y, p1.x, p1.y, 0.15, 0.0)
+	drawables["line_ps_p1_horizontal"] = Line(offcolor, oncolor, "x_s", ps.x, p1.y, p1.x, p1.y, 0.15, -0.08)
 	drawables["line_pg_horizontal"] = Line(offcolor, oncolor, "", pg.x - 0.1, pg.y, pg.x + 0.1, pg.y, 0.0, 0.0)
 
-	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y, -0.35, -0.1)
+	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y, -0.40, -0.09)
 
 
 	# v lines
@@ -1290,6 +1292,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["pointmark_p2"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, 0.13, -0.07)
 	drawables["pointmark_p3"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, -0.14, 0)
 
+	drawables["pointmark_pg_detail"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, 0.07, 0.11)
+	drawables["pointmark_p1_detail"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, -0.08, -0.08)
+
+
 	# arcs
 	drawables["arc_c1"] = Arc(offcolor, oncolor, "c1", p1.x, p1.y, R1, -30, 115)
 	drawables["arc_c2"] = Arc(offcolor, oncolor, "c2", p2.x, p2.y, R2, 180, 285)
@@ -1302,6 +1308,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 #vwf
 	drawables["arc_slope_inside_15deg"] = ArcArrow(offcolor, oncolor, "\\theta_s", True, ps.x, ps.y,  0.01, -slope, 0, 0.1, -0.1)
+
+	arc_slope_radius = 0.004
+	drawables["arc_slope_theta_s_left"] = ArcArrow(offcolor, oncolor, "\\theta_s", False, ps.x, ps.y,  arc_slope_radius, 270 - slope, 270 - slope - 20, -0.08, 0.02)
+	drawables["arc_slope_theta_s_right"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y, arc_slope_radius, 270, 270 + 20, 0, 0)
 
 
 	# arrows (layout)
