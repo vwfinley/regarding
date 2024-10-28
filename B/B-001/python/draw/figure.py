@@ -1006,6 +1006,9 @@ figs15deg = {
 #		"arc_c3": State.On,
 #		"arc_ps_p1": State.On,
 
+		"arc_slope_theta_g_pg_top": State.On,
+		"arc_slope_theta_g_pg_bottom": State.On,
+
 #		"arrow_NPrime": State.Off,
 #		"arrow_W": State.Off,
 #		"arrow_T": State.Off,
@@ -1318,6 +1321,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["arc_slope_theta_g_p1_top"] = ArcArrow(offcolor, oncolor, "\\theta_g", False, p1.x, p1.y,  arc_slope_radius, 0 + theta_g, 0 + theta_g + 20, -0.07, 0.03)
 	drawables["arc_slope_theta_g_p1_bottom"] = ArcArrow(offcolor, oncolor, "", False, p1.x, p1.y, arc_slope_radius, 0, -20, 0, 0)
+
+	drawables["arc_slope_theta_g_pg_top"] = ArcArrow(offcolor, oncolor, "", False, pg.x, pg.y,  arc_slope_radius, 0 + theta_g, 0 + theta_g + 20, -0.07, 0.03)
+	drawables["arc_slope_theta_g_pg_bottom"] = ArcArrow(offcolor, oncolor, "\\theta_g", False, pg.x, pg.y, arc_slope_radius, 0, -20, -0.04, -0.05)
 
 
 	# arrows (layout)
