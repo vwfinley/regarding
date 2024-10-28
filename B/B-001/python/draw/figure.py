@@ -875,7 +875,7 @@ figs15deg = {
 		"pointmark_ps": State.On,
 #		"pointmark_pd": State.On,
 		"pointmark_p1_detail": State.On,
-#		"pointmark_p2": State.On,
+#		"pointmark_p2_detail": State.On,
 #		"pointmark_p3": State.On,
 
 		"end": State.On
@@ -951,7 +951,7 @@ figs15deg = {
 		"pointmark_ps": State.Off,
 #		"pointmark_pd": State.On,
 		"pointmark_p1_detail": State.On,
-#		"pointmark_p2": State.On,
+#		"pointmark_p2_detail": State.On,
 #		"pointmark_p3": State.On,
 
 		"end": State.On
@@ -983,8 +983,16 @@ figs15deg = {
 #		"line_p1_pg_horizontal": State.On,
 #		"line_p1_pg_vertical": State.On,
 
+
+
 #		"line_T": State.Off,
 #		"line_T2": State.Off,
+#vwf
+        "line_pg_p2_horizontal": State.On,
+
+#vwf
+        "line_pg_p2_vertical": State.On,
+
 #		"line_W": State.Off,
 
 		"line_slope_detail": State.Off,
@@ -1033,11 +1041,15 @@ figs15deg = {
 #		"arc_v1": State.Off,
 #		"arc_v2": State.Off,
 
+
+
+
+
 		"pointmark_pg_detail": State.On,
 		"pointmark_ps": State.Off,
 #		"pointmark_pd": State.On,
 		"pointmark_p1_detail": State.Off,
-		"pointmark_p2": State.On,
+		"pointmark_p2_detail": State.On,
 #		"pointmark_p3": State.On,
 
 		"end": State.On
@@ -1122,8 +1134,8 @@ figs15deg = {
 		"pointmark_ps": State.Off,
 		"pointmark_pd": State.On,
 		"pointmark_p1_detail": State.Off,
-		"pointmark_p2": State.On,
-		"pointmark_p3": State.On,
+		"pointmark_p2_detail": State.On,
+		"pointmark_p3_detail": State.On,
 
 		"end": State.On
 	}
@@ -1226,6 +1238,8 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y, -0.40, -0.09)
 
+	drawables["line_pg_p2_horizontal"] = Line(offcolor, oncolor, "x_2", pg.x, pg.y, p2.x, pg.y, -0.40, -0.09)
+
 
 	# v lines
 	top = P + overhang
@@ -1242,6 +1256,8 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["line_ps_p1_vertical"] = Line(offcolor, oncolor, "y_s", ps.x, ps.y, ps.x, p1.y, 0.1, 0.4)
 
 	drawables["line_p1_pg_vertical"] = Line(offcolor, oncolor, "y_g", pg.x, p1.y, pg.x, pg.y, 0.1, -0.15)
+
+	drawables["line_pg_p2_vertical"] = Line(offcolor, oncolor, "y_2", p2.x, pg.y, p2.x, p2.y, 0.1, -0.15)
 
 	# diag lines
 	slope1 =  math.radians(0.0 - slope)
@@ -1300,6 +1316,8 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["pointmark_pg_detail"] = Pointmark(offcolor, oncolor, pg.label, pg.x, pg.y, 0.07, 0.11)
 	drawables["pointmark_p1_detail"] = Pointmark(offcolor, oncolor, p1.label, p1.x, p1.y, -0.08, -0.08)
+	drawables["pointmark_p2_detail"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, 0.10, 0.1)
+	drawables["pointmark_p3_detail"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, -0.03, 0.1)
 
 
 	# arcs
@@ -1349,7 +1367,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.03, 0.45)
 	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.50, -0.03)
 
-	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.5, -0.22)
+	drawables["arrow_r2_pg_p2"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g, -0.6, -0.04)
 
 	# rarrows
 	drawables["rarrow_p2_pd"] = RArrow(offcolor, oncolor, "R2", False, p2.x, p2.y, pd.x, pd.y, 0.2, 0.6)
