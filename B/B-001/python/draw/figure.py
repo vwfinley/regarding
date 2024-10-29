@@ -832,6 +832,8 @@ figs15deg = {
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
 
+		"corner_xs_ys_vertical": State.On,
+        "corner_xs_ys_horizontal": State.On,
 #		"centermark_p1": State.Off,
 #		"centermark_p2": State.Off,
 #		"centermark_p3": State.Off,
@@ -906,6 +908,10 @@ figs15deg = {
 #		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
+
+		"corner_xg_yg_vertical": State.On,
+        "corner_xg_yg_horizontal": State.On,
+
 
 #		"centermark_p1": State.Off,
 #		"centermark_p2": State.Off,
@@ -999,6 +1005,10 @@ figs15deg = {
 #		"line_ps_p1": State.On,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
+
+		"corner_x2_y2_vertical": State.On,
+        "corner_x2_y2_horizontal": State.On,
+
 
 #		"centermark_p1": State.Off,
 #		"centermark_p2": State.Off,
@@ -1300,6 +1310,17 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	x2 = 1.5 * R1 * math.cos(slope2)
 	y2 = 1.5 * R1 * math.sin(slope2)
 	drawables["line_ps_p1"] = Line(offcolor, oncolor, "", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2, 0.0, 0.0)  # ps->p1 line
+
+	# corners
+	drawables["corner_xs_ys_vertical"] = Line(offcolor, oncolor, "", ps.x - 0.0007, p1.y, ps.x - 0.0007, p1.y + 0.0007, 0.0, 0.0)
+	drawables["corner_xs_ys_horizontal"] = Line(offcolor, oncolor, "", ps.x, p1.y + 0.0007, ps.x - 0.0007, p1.y + 0.0007, 0.0, 0.0)
+
+	drawables["corner_xg_yg_vertical"] = Line(offcolor, oncolor, "", pg.x - 0.0007, p1.y, pg.x - 0.0007, p1.y + 0.0007, 0.0, 0.0)
+	drawables["corner_xg_yg_horizontal"] = Line(offcolor, oncolor, "", pg.x, p1.y + 0.0007, pg.x - 0.0007, p1.y + 0.0007, 0.0, 0.0)
+
+	drawables["corner_x2_y2_vertical"] = Line(offcolor, oncolor, "", p2.x - 0.0007, pg.y, p2.x - 0.0007, pg.y + 0.0007, 0.0, 0.0)
+	drawables["corner_x2_y2_horizontal"] = Line(offcolor, oncolor, "", p2.x, pg.y + 0.0007, p2.x - 0.0007, pg.y + 0.0007, 0.0, 0.0)
+
 
 	# centermarks
 	drawables["centermark_p1"] = Centermark(offcolor, oncolor, p1.label, p1.x, p1.y)
