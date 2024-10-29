@@ -1091,6 +1091,8 @@ figs15deg = {
 #		"line_ps_p1_vertical": State.Off,
 		"line_pg_horizontal": State.Off,
 
+		"line_d_prime_horizontal_tic": State.Off,
+
 #		"line_p1_pg_horizontal": State.On,
 #		"line_p1_pg_vertical": State.On,
 
@@ -1123,6 +1125,8 @@ figs15deg = {
 #		"arrow_T2": State.Off,
 #		"arrow_P": State.Off,
 #		"arrow_DPrime": State.Off,
+
+		"arrow_d_prime_detail": State.Off,
 
 #		"arrow_r1": State.Off,
 #		"arrow_r2": State.Off,
@@ -1257,6 +1261,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 # vwf
 	drawables["line_yg_horizontal_tic"] = Line(offcolor, oncolor, "", -0.018 - 0.001, p1.y, -0.018 + 0.001, p1.y, 0.0, 0.0)
+	drawables["line_d_prime_horizontal_tic"] = Line(offcolor, oncolor, "", -0.018 - 0.001, pd.y, -0.018 + 0.001, pd.y, 0.0, 0.0)
+
+#	drawables["arrow_d_prime_detail"] = Arrow(offcolor, oncolor, "d'", True, -0.018, P, P - pd.y, 270.0, -0.1, 0.75)
+
 
 	# v lines
 	top = P + overhang
@@ -1383,6 +1391,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["arrow_P_detail"] = Arrow(offcolor, oncolor, "P", True, -0.018, 0, P, 90.0, -0.1, -0.35)
 	drawables["arrow_yg_detail"] = Arrow(offcolor, oncolor, "y_g", True, -0.018, 0, -p1.y, 270.0, -0.1, 0.13)
+	drawables["arrow_d_prime_detail"] = Arrow(offcolor, oncolor, "d'", True, -0.018, P, P - pd.y, 270.0, -0.1, 0.75)
 
 	# arrows (radius)
 	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
