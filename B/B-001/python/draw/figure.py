@@ -893,6 +893,11 @@ figs15deg = {
 		"line_P": State.Off,
 #		"line_Dprime": State.Off,
 
+		"arrow_P_detail": State.Off,
+		"arrow_yg_detail": State.Off,
+
+		"line_yg_horizontal_tic": State.Off,
+
 #		"line_ps_p1_horizontal": State.Off,
 #		"line_ps_p1_vertical": State.Off,
 		"line_pg_horizontal": State.Off,
@@ -1248,8 +1253,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["line_p1_pg_horizontal"] = Line(offcolor, oncolor, "x_g", p1.x, p1.y, pg.x, p1.y, -0.40, -0.09)
 
-	drawables["line_pg_p2_horizontal"] = Line(offcolor, oncolor, "x_2", pg.x, pg.y, p2.x, pg.y, -0.40, -0.09)
+	drawables["line_pg_p2_horizontal"] = Line(offcolor, oncolor, "x_2", pg.x, pg.y, p2.x, pg.y, -0.46, -0.09)
 
+# vwf
+	drawables["line_yg_horizontal_tic"] = Line(offcolor, oncolor, "", -0.018 - 0.001, p1.y, -0.018 + 0.001, p1.y, 0.0, 0.0)
 
 	# v lines
 	top = P + overhang
@@ -1265,7 +1272,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["line_ps_p1_vertical"] = Line(offcolor, oncolor, "y_s", ps.x, ps.y, ps.x, p1.y, 0.1, 0.4)
 
-	drawables["line_p1_pg_vertical"] = Line(offcolor, oncolor, "y_g", pg.x, p1.y, pg.x, pg.y, 0.1, -0.15)
+	drawables["line_p1_pg_vertical"] = Line(offcolor, oncolor, "y_g", pg.x, p1.y, pg.x, pg.y, 0.1, -0.12)
 
 	drawables["line_pg_p2_vertical"] = Line(offcolor, oncolor, "y_2", p2.x, pg.y, p2.x, p2.y, 0.1, -0.15)
 
@@ -1373,6 +1380,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -1.05 * W, 0, P, 90.0, 0.07, -0.25)
 	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -1.1 * W, P - D_PRIME, D_PRIME, 90.0, 0.1, -0.6)
+
+	drawables["arrow_P_detail"] = Arrow(offcolor, oncolor, "P", True, -0.018, 0, P, 90.0, -0.1, -0.35)
+	drawables["arrow_yg_detail"] = Arrow(offcolor, oncolor, "y_g", True, -0.018, 0, -p1.y, 270.0, -0.1, 0.13)
 
 	# arrows (radius)
 	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
