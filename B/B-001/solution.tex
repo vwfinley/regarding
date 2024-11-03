@@ -181,13 +181,26 @@
 
 \subsection{Axes and Layout lines}
 
-	
 
+\section{Analytical Solution}
 
-\subsection{Locate $p_1$}
+Discovering the equations for critical points will enable us to calculate precise locations.
+Our strategy will be to:
+\begin{enumerate}
+	\item Identify a series of right triangles that contain pairs of critical points.
+	\item Apply trigonometry to find the sides of those right triangles.
+	\item Use the right triangle sides to locate cartesian coordinates for the critical points.
+\end{enumerate}
 
+\subsection{Right triangle with $p_s$ and $p_1$}
 
+Figure \ref{fig:fig_f11a} shows a right triangle containing vertices at points $p_s$ and $p_1$.
+Point $p_s$ is the location where the wheel tread begins, and $p_1$ is the center of the fillet arc $R1$.
+The hypotenuse has length $R1$.
+Let's label the lengths of the horizontal and vertical sides, $x_s$ and $y_s$ respectively.
+Since the hypotenuse is at right angles to the tread slope, the angle between vertical side $y_s$ and hypotenuse $R1$ is the slope angle $\theta_s$.
 
+The lengths of $x_s$ and $y_s$ can be found as follows.
 
 \begin{equation}
 	x_s = R1 \cdot \sin(\theta_s)
@@ -199,7 +212,8 @@
 
 
 
-\subsection{Locate $p_g$}
+\subsection{Right triangle with $p_1$ and $p_g$}
+Figure \ref{fig:fig_f11b} shows a right triangle containing vertices at points $p_1$ and $p_g$.
 
 \begin{equation}
 	y_g = y_s - P
@@ -214,7 +228,10 @@
 \end{equation}
 
 
-\subsection{Locate $p_2$}
+\subsection{Right triangle with $p_g$ and $p_2$}
+
+Figure \ref{fig:fig_f11c} shows a right triangle containing vertices at points $p_g$ and $p_2$.
+
 \begin{equation}
 	x_2 = R2 \cdot \cos(\theta_g)
 \end{equation}
@@ -224,7 +241,9 @@
 \end{equation}
 
 
-\subsection{Locate $p_d$}
+\subsection{Right triangle with $p_2$ and $p_d$}
+
+Figure \ref{fig:fig_f11d} shows a right triangle containing vertices at points $p_2$ and $p_d$.
 \begin{equation}
 	x_d = x_2 - T/2
 \end{equation}
