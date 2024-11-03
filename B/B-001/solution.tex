@@ -192,15 +192,16 @@ Our strategy will be to:
 	\item Use the right triangle sides to locate cartesian coordinates for the critical points.
 \end{enumerate}
 
-\subsection{Right triangle with $p_s$ and $p_1$}
-
+\subsection{Right triangle with points $p_s$ and $p_1$}
 Figure \ref{fig:fig_f11a} shows a right triangle containing vertices at points $p_s$ and $p_1$.
-Point $p_s$ is the location where the wheel tread begins, and $p_1$ is the center of the fillet arc $R1$.
-The hypotenuse has length $R1$.
-Let's label the lengths of the horizontal and vertical sides, $x_s$ and $y_s$ respectively.
-Since the hypotenuse is at right angles to the tread slope, the angle between vertical side $y_s$ and hypotenuse $R1$ is the slope angle $\theta_s$.
+Point $p_s$ is the location where the wheel tread begins, and $p_1$ is the center of the fillet arc whose radius is $R1$.
 
-The lengths of $x_s$ and $y_s$ can be found as follows.
+
+Let's label the lengths of the horizontal and vertical sides, $x_s$ and $y_s$ respectively.
+
+Since the hypotenuse of length $R1$ is at right angles to the tread slope, the angle between vertical side $y_s$ and hypotenuse $R1$ is the slope angle $\theta_s$.
+
+Therefore, the lengths of sides $x_s$ and $y_s$ can be found as follows:
 
 \begin{equation}
 	x_s = R1 \cdot \sin(\theta_s)
@@ -212,60 +213,107 @@ The lengths of $x_s$ and $y_s$ can be found as follows.
 
 
 
-\subsection{Right triangle with $p_1$ and $p_g$}
+\subsection{Right triangle with points $p_1$ and $p_g$}
 Figure \ref{fig:fig_f11b} shows a right triangle containing vertices at points $p_1$ and $p_g$.
+Point $p_g$ is the gage point.
+Furthermore, $p_1$ is the center of the fillet arc whose radius is $R1$.
+
+The hypotenuse of the triangle has length $R1$.
+Let's label the lengths of the horizontal and vertical sides, $x_g$ and $y_g$ respectively.
+
+Returning to figure \ref{fig:fig_f11a} we see $p_1$ is a distance $y_s$ below point $p_s$, where the wheel tread begins.
+Since point $p_g$ is a distance $P$ below point $p_s$, it is can be seen that $y_s = y_g + P$ and: 
 
 \begin{equation}
 	y_g = y_s - P
 \end{equation}
 
+Now that $y_g$ is known, we can use the Pythagorean theorem to find $x_g$:
+
 \begin{equation}
 	x_g = \sqrt{(R1)^2 - y_g^2}
 \end{equation}
 
-\begin{equation}
-	\theta_g = \arcsin \left( \frac{y_g}{R1} \right)
+Let's assign the label $\theta_g$ to the angle between side $x_g$ and hypotenuse $R1$.
+The angle $\theta_g$ can be found easily with:
+
+\begin{equation}  
+	\label{eqn:theta_g}
+	\theta_g = \arccos \left( \frac{x_g}{R1} \right)   
 \end{equation}
 
 
-\subsection{Right triangle with $p_g$ and $p_2$}
+\subsection{Right triangle with points $p_g$ and $p_2$}
 
 Figure \ref{fig:fig_f11c} shows a right triangle containing vertices at points $p_g$ and $p_2$.
 
+Point $p_g$ is the gage point.
+Point $p_2$ is at the center of the wheel flange arc whose radius is $R2$.
+Let's label the horizontal and vertical sides $x_2$ and $y_2$ respectively.
+
+The hypotenuse is length $R2$. 
+
+The angle between side $x_2$ and hypotenuse $R2$ is the same $\theta_g$ value found by equation \ref{eqn:theta_g}, such that:
+
 \begin{equation}
+	\label{eqn:x_2}
 	x_2 = R2 \cdot \cos(\theta_g)
 \end{equation}
+
+And:
 
 \begin{equation}
 	y_2 = R2 \cdot \sin(\theta_g)
 \end{equation}
 
 
-\subsection{Right triangle with $p_2$ and $p_d$}
-
+\subsection{Right triangle with points $p_2$ and $p_d$}
 Figure \ref{fig:fig_f11d} shows a right triangle containing vertices at points $p_2$ and $p_d$.
+
+Point $p_2$ is the center of the flange arc whose radius is $R2$.
+Point $p_d$ is the bottom of the flange where the two flange halves intersect.
+Let's label the lengths of the horizontal and vertical sides $x_d$ and $y_d$ respectively.
+
+The hypotenuse is of length $R2$.
+
+From figure \ref{fig:fig_f10} we can see the horizontal distance $x_2$, found in equation \ref{eqn:x_2}, is just a distance $x_d$ to the right of $T/2$.
+In other words: $x_2 = T/2 + x_d$
+
+Therefore we can write:
+
 \begin{equation}
 	x_d = x_2 - T/2
 \end{equation}
+
+Using the Pythagorean theorem we can find the vertical distance $y_d$ as follows:
 
 \begin{equation}
 	y_d = \sqrt{(R2)^2 - x_d^2}
 \end{equation}
 
+Now the horizontal distance of $p_3$ from $p_2$ is just twice the distance $x_d$:
 
-\subsection{Locate $p_3$}
 \begin{equation}
 	x_3 = 2 \cdot x_d
 \end{equation}
 
+Since $p_3$ is at the same vertical coordinate as $y_2$, the vertical distance $y_3$ is zero.
 \begin{equation}
 	y_3 = 0
 \end{equation}
 
 
 
+\subsection{Locating the points}
 
+We have found the series of right-triangles that connect the points.
+In doing so we have found distances between points on the triangles.
+However, the point locations are only relative to each other.
 
+Ultimately we desire to reference all the points to a common origin.
+By referencing all points to a common origin, calculating the actual point locations on a coordinate system becomes possible.
+
+Let's begin by choosing the gage point $p_g$ to be the origin, such that $p_g$ will always be at coordinate (0, 0).
 \begin{equation}
 	p_g = (0, 0)
 \end{equation}
@@ -290,11 +338,18 @@ Figure \ref{fig:fig_f11d} shows a right triangle containing vertices at points $
 	p_3 = (x_2 - x_3, y_2)
 \end{equation}
 
+Figure \ref{fig:fig_f11d} shows length $d'$ ghosted.
+Length $d'$ is the actual flange depth.
+It is just the vertical distance from point $p_s$, where the wheel tread begins, down to the flange bottom at $p_d$.
 
+Length $d'$ is equal to the distance $P$ (vertical distance down from $p_s$ to $p_g$), minus 
+distance $y_2$ (vertical distance up from $p_g$ to $p_2$), plus distance $y_d$ (vertical distance down from $p_2$ down to $p_d$).
 \begin{equation}
-	d' = P - x_2 + y_d
+	d' = P - y_2 + y_d
 \end{equation}
 
+Compare $d'$ against the $D'$ value given by the RP-25 document.
+Keep in mind the $D'$ is the maximum depth allowed by RP-25.
 
 \subsection{Taper}
 
