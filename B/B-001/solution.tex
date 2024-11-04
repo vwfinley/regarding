@@ -310,22 +310,32 @@ We have found the series of right-triangles that connect the points.
 In doing so we have found distances between points on the triangles.
 However, the point locations are only relative to each other.
 
-Ultimately we desire to reference all the points to a common origin.
+Ultimately we desire to reference all points to a common origin.
 By referencing all points to a common origin, calculating the actual point locations on a coordinate system becomes possible.
 
 Let's begin by choosing the gage point $p_g$ to be the origin, such that $p_g$ will always be at coordinate (0, 0).
 \begin{equation}
+	\label{eqn:p_g}
 	p_g = (0, 0)
 \end{equation}
 
+
+From Figure \ref{fig:fig_f11b} we see point $p_1$ is left of and below $p_g$ distances of $x_g$ and $y_g$ respectively.
 \begin{equation}
+	\label{eqn:p_1}
 	p_1 = (-x_g, -y_g)
 \end{equation}
 
+
+In Figure \ref{fig:fig_f11a} point $p_s$ is relative to $p_1$ a distance $x_s$ to the right, and distance $y_s$ above.
+Since, in equation \ref{eqn:p_1}, $p_1$ is relative to the origin at $(-x_g, -y_g)$, $p_s$ shall be relative to the origin at: 
 \begin{equation}
+	\label{eqn:p_s}
 	p_s = (x_s - x_g, y_s - y_g)
 \end{equation}
 
+In Figure \ref{fig:fig_f11c} it is seen that point $p_2$ is right of $p_g$ a distance $x_2$, and above $p_g$ a distance $y_2$.
+Therefore relative to $p_g$ at the the origin, $p_2$ is located at:
 \begin{equation}
 	p_2 = (x_2, y_2)
 \end{equation}
