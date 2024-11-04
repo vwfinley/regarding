@@ -204,10 +204,12 @@ Since the hypotenuse of length $R1$ is at right angles to the tread slope, the a
 Therefore, the lengths of sides $x_s$ and $y_s$ can be found as follows:
 
 \begin{equation}
+	\label{eqn:x_s}
 	x_s = R1 \cdot \sin(\theta_s)
 \end{equation}
 
 \begin{equation}
+	\label{eqn:y_s}
 	y_s = R1 \cdot \cos(\theta_s)
 \end{equation}
 
@@ -225,12 +227,14 @@ Returning to figure \ref{fig:fig_f11a} we see $p_1$ is a distance $y_s$ below po
 Since point $p_g$ is a distance $P$ below point $p_s$, it is can be seen that $y_s = y_g + P$ and: 
 
 \begin{equation}
+	\label{eqn:y_g}
 	y_g = y_s - P
 \end{equation}
 
 Now that $y_g$ is known, we can use the Pythagorean theorem to find $x_g$:
 
 \begin{equation}
+	\label{eqn:x_g}
 	x_g = \sqrt{(R1)^2 - y_g^2}
 \end{equation}
 
@@ -263,6 +267,7 @@ The angle between side $x_2$ and hypotenuse $R2$ is the same $\theta_g$ value fo
 And:
 
 \begin{equation}
+	\label{eqn:y_2}
 	y_2 = R2 \cdot \sin(\theta_g)
 \end{equation}
 
@@ -282,23 +287,27 @@ In other words: $x_2 = T/2 + x_d$
 Therefore we can write:
 
 \begin{equation}
+	\label{eqn:x_d}
 	x_d = x_2 - T/2
 \end{equation}
 
 Using the Pythagorean theorem we can find the vertical distance $y_d$ as follows:
 
 \begin{equation}
+	\label{eqn:y_d}
 	y_d = \sqrt{(R2)^2 - x_d^2}
 \end{equation}
 
 Now the horizontal distance of $p_3$ from $p_2$ is just twice the distance $x_d$:
 
 \begin{equation}
+	\label{eqn:x_3}
 	x_3 = 2 \cdot x_d
 \end{equation}
 
 Since $p_3$ is at the same vertical coordinate as $y_2$, the vertical distance $y_3$ is zero.
 \begin{equation}
+	\label{eqn:y_3}
 	y_3 = 0
 \end{equation}
 
@@ -359,7 +368,8 @@ Relative to $p_g$ at the origin, point $p_d$ is located at:
 \end{equation}
 
 The point $p_3$ shown in figure \ref{fig:fig_f11c} is a distance $x_3 = 2 \cdot x_d$ to the left of $p_2$.
-Therefore relative to $P_g$ at the origin, $p_3$ is at: 
+Its y-coordinate is the same as the y-coordinate of $p_2$.
+Therefore relative to $p_g$ at the origin, $p_3$ is at: 
 \begin{equation}
 	\label{eqn:p_3}
 	\boxed{
