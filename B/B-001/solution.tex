@@ -316,14 +316,18 @@ By referencing all points to a common origin, calculating the actual point locat
 Let's begin by choosing the gage point $p_g$ to be the origin, such that $p_g$ will always be at coordinate (0, 0).
 \begin{equation}
 	\label{eqn:p_g}
-	p_g = (0, 0)
+	\boxed{
+		p_g = (0, 0)
+	}
 \end{equation}
 
 
 From Figure \ref{fig:fig_f11b} we see point $p_1$ is left of and below $p_g$ distances of $x_g$ and $y_g$ respectively.
 \begin{equation}
 	\label{eqn:p_1}
-	p_1 = (-x_g, -y_g)
+	\boxed{
+		p_1 = (-x_g, -y_g)
+	}
 \end{equation}
 
 
@@ -331,31 +335,49 @@ In Figure \ref{fig:fig_f11a} point $p_s$ is relative to $p_1$ a distance $x_s$ t
 Since, in equation \ref{eqn:p_1}, $p_1$ is relative to the origin at $(-x_g, -y_g)$, $p_s$ shall be relative to the origin at: 
 \begin{equation}
 	\label{eqn:p_s}
-	p_s = (x_s - x_g, y_s - y_g)
+	\boxed{
+		p_s = (x_s - x_g, y_s - y_g)
+	}
 \end{equation}
 
 In Figure \ref{fig:fig_f11c} it is seen that point $p_2$ is right of $p_g$ a distance $x_2$, and above $p_g$ a distance $y_2$.
 Therefore relative to $p_g$ at the the origin, $p_2$ is located at:
 \begin{equation}
-	p_2 = (x_2, y_2)
+	\label{eqn:p_2}
+	\boxed{
+		p_2 = (x_2, y_2)
+	}
 \end{equation}
 
+Figure \ref{fig:fig_f11c} shows point $p_d$ to the left of and below $p_2$ distances of $x_d$ and $y_d$ respectively.
+Relative to $p_g$ at the origin, point $p_d$ is located at:
 \begin{equation}
-	p_d = (x_2 - x_d, y_2 - y_d)
+	\label{eqn:p_d}
+	\boxed{
+		p_d = (x_2 - x_d, y_2 - y_d)
+	}
 \end{equation}
 
+The point $p_3$ shown in figure \ref{fig:fig_f11c} is a distance $x_3 = 2 \cdot x_d$ to the left of $p_2$.
+Therefore relative to $P_g$ at the origin, $p_3$ is at: 
 \begin{equation}
-	p_3 = (x_2 - x_3, y_2)
+	\label{eqn:p_3}
+	\boxed{
+		p_3 = (x_2 - x_3, y_2)
+	}
 \end{equation}
 
 Figure \ref{fig:fig_f11d} shows length $d'$ ghosted.
-Length $d'$ is the actual flange depth.
-It is just the vertical distance from point $p_s$, where the wheel tread begins, down to the flange bottom at $p_d$.
+Length $d'$ is the true flange depth.
+It is just the vertical distance from point $p_s$, where the tread slope begins, down to the flange bottom at $p_d$.
 
 Length $d'$ is equal to the distance $P$ (vertical distance down from $p_s$ to $p_g$), minus 
 distance $y_2$ (vertical distance up from $p_g$ to $p_2$), plus distance $y_d$ (vertical distance down from $p_2$ down to $p_d$).
 \begin{equation}
-	d' = P - y_2 + y_d
+	\label{eqn:d_prime}
+	\boxed{
+		d' = P - y_2 + y_d
+	}
 \end{equation}
 
 Compare $d'$ against the $D'$ value given by the RP-25 document.
