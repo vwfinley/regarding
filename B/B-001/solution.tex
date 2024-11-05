@@ -90,7 +90,9 @@ If you are using a CAD drawing program on a computer, either:
 	and labels should follow $p_g$ and maintain their relative positions.
 \end{enumerate}
 
-\subsection{Drawing $p_2$}
+
+%%%%%
+\subsection{Step 5: Drawing $p_2$}
 
 \begin{figure}
 	\centering
@@ -99,12 +101,31 @@ If you are using a CAD drawing program on a computer, either:
 	\label{fig:fig_f5}
 \end{figure}
 
+Refer to Figure \ref{fig:fig_f5}.
+
+Draw a line through points $p_1$ and $p_g$, then extend it slightly beyond.
+Label the line $L$.
+
+Now sweep an arc, of radius $R2$, centered at $p_g$.
+Mark the location where the arc crosses line $L$, and label it point $p_2$.
+
+%%%%%
+\subsection{Step 6: Drawing circle $R2$}
+
 \begin{figure}
 	\centering
 	\input{python/draw/output/fig6.tikz}
 	\caption{\\Drawing R2}
 	\label{fig:fig_f6}
 \end{figure}
+
+Refer to Figure \ref{fig:fig_f6}.
+
+Sweep an arc, of radius $R2$, centered at point $p_2$.
+The arc should pass through point $p_g$, and extend below and to the right.
+
+%%%%%
+\subsection{Step 7: Drawing vertical guidelines}
 
 \begin{figure}
 	\centering
@@ -113,6 +134,20 @@ If you are using a CAD drawing program on a computer, either:
 	\label{fig:fig_f7}
 \end{figure}
 
+Refer to Figure \ref{fig:fig_f7}.
+
+The distance $T$ is given by the RP-25 document.
+
+Draw a vertical line a distance $T$ to the right of the origin.
+
+Now draw a vertical line a distance $T/2$ to the right of the origin, where $T/2$ is half the given distance $T$.
+
+
+
+
+%%%%%
+\subsection{Step 8: Drawing $p_3$}
+
 \begin{figure}
 	\centering
 	\input{python/draw/output/fig8.tikz}
@@ -120,12 +155,37 @@ If you are using a CAD drawing program on a computer, either:
 	\label{fig:fig_f8}
 \end{figure}
 
+Refer to Figure \ref{fig:fig_f8}.
+
+Draw a horizontal line through point $p_2$.
+Measure the distance from $p_2$ to the vertical guideline at $T/2$.
+
+Sweep an arc, with the radius found in the measurement above, centered at 
+the intersection where the horizontal line crosses the $T/2$ vertical guideline.
+
+Mark the point where the arc crosses the horizontal line, and label it $p_3$.
+
+This process above is equivalent to reflecting point $p_2$ across the $T/2$ vertical guideline.
+
+
+%%%%%
+\subsection{Step 9: Drawing $p_d$}
+
 \begin{figure}
 	\centering
 	\input{python/draw/output/fig9.tikz}
-	\caption{\\Drawing R3}
+	\caption{\\Drawing $p_d$}
 	\label{fig:fig_f9}
 \end{figure}
+
+Refer to Figure \ref{fig:fig_f9}.
+
+Sweep an arc, with radius $R3 = R2$, centered at $p_3$.
+Mark the point where the arc intersects the $R2$ radius arc at the $T/2$ vertical guideline.
+Label the point $p_d$.
+
+%%%%%
+\subsection{Step 10: Completing the Drawing}
 
 \begin{figure*}
 	\centering
@@ -134,9 +194,18 @@ If you are using a CAD drawing program on a computer, either:
 	\label{fig:fig_f10}
 \end{figure*}
 
+Refer to Figure \ref{fig:fig_f10}.
+
+Extend the wheel tread line to the left.
 
 
+Label the drawing with: $N'$, $W$, $P$ and $D'$; add the vertical and horizontal 
+guidelines, and dimensions given in the RP-25 document.
 
+Finally, break the sharp corner, shown in the RP-25 document, with a fillet (round off) or chamfer (clip).
+How much you break the corner is not critical.
+
+The drawing is now completed!
 
 
 
