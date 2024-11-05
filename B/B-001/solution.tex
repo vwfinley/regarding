@@ -1,6 +1,6 @@
 \section{Constructive Solution}
 
-\subsection{Drawing Point $p_s$}
+\subsection{Step 1: Drawing Point $p_s$}
 
 \begin{figure}
 	\centering
@@ -24,12 +24,7 @@ Now assign label $\theta_s$, to the slope angle between the horizontal line and 
 Finally, draw a line thru $p_s$ and at right angles to the tread line.
 
 
-\subsection{Drawing Point $p_1$}
-Refer to Figure \ref{fig:fig_f2}.
-
-Sweep an arc, of radius $R1$, centered at point $p_s$.
-The arc will intersect the line, that passes through $p_s$ and is at right angles to the tread.
-Mark the intersection and label it point $p_1$.
+\subsection{Step 2: Drawing Point $p_1$}
 
 \begin{figure}
 	\centering
@@ -38,8 +33,22 @@ Mark the intersection and label it point $p_1$.
 	\label{fig:fig_f2}
 \end{figure}
 
+Refer to Figure \ref{fig:fig_f2}.
 
-\subsection{Drawing Point $p_g$}
+Sweep an arc, of radius $R1$, centered at point $p_s$.
+The arc will intersect the line, that passes through $p_s$ and is at right angles to the tread.
+Mark the intersection and label it point $p_1$.
+
+
+\subsection{Step 3: Drawing Point $p_g$}
+
+\begin{figure}
+	\centering
+	\input{python/draw/output/fig3.tikz}
+	\caption{\\Locating $p_g$}
+	\label{fig:fig_f3}
+\end{figure}
+
 Refer to Figure \ref{fig:fig_f3}.
 
 Draw a new horizontal line.
@@ -52,15 +61,8 @@ The arc should pass thru point $p_s$.
 Mark the location where the arc intersects the new horizontal line.
 Label the intersection point $p_g$.
 
-\begin{figure}
-	\centering
-	\input{python/draw/output/fig3.tikz}
-	\caption{\\Locating $p_g$}
-	\label{fig:fig_f3}
-\end{figure}
 
-\subsection{Drawing axes}
-Refer to Figure \ref{fig:fig_f4}.
+\subsection{Step 4: Drawing axes}
 
 \begin{figure}
 	\centering
@@ -68,6 +70,27 @@ Refer to Figure \ref{fig:fig_f4}.
 	\caption{\\Establishing coordinate system}
 	\label{fig:fig_f4}
 \end{figure}
+
+Refer to Figure \ref{fig:fig_f4}.
+
+Draw an arrowhead on the right end of the horizontal line (drawn in previous step) that passes through $p_g$.
+Mark it with label $x$.
+The horizontal line is now the x-axis.
+
+Draw a vertical line thru $p_g$.
+Draw an arrowhead at the upper end of the vertical line and mark it with label $y$.
+The vertical line is now the y-axis.
+
+If you are using a CAD drawing program on a computer, either:
+
+\begin{enumerate}
+	\item Use the CAD program's feature to move the coordinate system origin to $p_g$,
+	\item or, select all the: points, lines, arcs and labels; drawn so far, then select $p_g$ as the relative 
+	insertion point, then drag and snap $p_g$ to the coordinate system origin.  All the points, lines, arcs 
+	and labels should follow $p_g$ and maintain their relative positions.
+\end{enumerate}
+
+\subsection{Drawing $p_2$}
 
 \begin{figure}
 	\centering
