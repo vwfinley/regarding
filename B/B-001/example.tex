@@ -1,71 +1,180 @@
 \section{Example}
+We now know how to algebraically locate all the features of the RP-25 wheel profile.
+
+As a test we should apply what we know to a concrete example.
+Let's calculate the critical: points, angles and distances; for a code 110 wheel profile with a $3^{\circ}$ tread slope.
 
 \paragraph{Given:}
 \begin{itemize}
-\item Item 1
-\item Item 2
+	\item A wheel profile where $code = 110$
+	\item Tread with $slope = \theta_s = 3^{\circ}$
 \end{itemize}
-
-\begin{align*}
-	Code &= 110 \\			
-	\theta_s &= 3^{\circ}	
-\end{align*}
 	
-
 
 \paragraph{Find:}
 \begin{itemize}
-\item $\theta_g$
-\item $p_g$
-\item $p_1$	
-\item $p_s$
-\item $p_2$
-\item $p_d$	
-\item $p_3$	
-\item $d'$	
+	\item Published values for: $N'$, $T$, $W$, $D'$, $P$, $R1$, $R2$ and $R3$
+	\item Calculated values for: $x_s$, $y_s$, $x_g$, $y_g$, $\theta_g$, $x_2$, $y_2$, $x_d$, $y_d$, $x_3$ and $y_3$
+	\item Calculated values for: $p_g$, $p_1$, $p_s$, $p_2$, $p_d$, $p_3$ and $d'$	
 \end{itemize}
+
 
 \paragraph{Steps:}
 \begin{enumerate}
-\item
-Let: 
+\item From the RP-25 document lookup the row with published values for code = 110 :
 \begin{align*}
-	a &= 0 \\
-	b &= 0
-\end{align*}
-\end{enumerate}
-
-
-
-
-\begin{align*}
-T &= 0.03 \\		
-P &= 0.01 \\		
+N' &= 0.110 \\
+T &= 0.030 \\
+W &= 0.080 \\
+D' &= 0.025 \\
+P &= 0.010 \\		
 R1 &= 0.014 \\		
 R2 &= 0.018 \\		
 R3 &= 0.018				
 \end{align*}		
 
+\item Substitute values for $R1$ and $slope = \theta_g$ into equation \ref{eqn:x_s} to find $x_s$.
 \begin{align*}
-x_s	&= 0.0007327034				Eq 1 \\
-y_s	&= 0.0139808135				Eq 2 \\
-y_g	&= 0.0039808135				Eq 3 \\
-x_g	&= 0.0134221132				Eq 4 \\
-\theta_g	&= 16.5196295818^{\circ}			Eq 5 \\
-x_2	&= 0.0172570027				Eq 6 \\
-y_2	&= 0.0051181888				Eq 7 \\
-x_d	&= 0.0022570027				Eq 8 \\
-y_d	&= 0.0178579377				Eq 9 \\
-x_3	&= 0.0045140055				Eq 10 \\
-y_3	&= 0				Eq 11
-\end{align*}					
+	x_s &= R1 \cdot \sin(\theta_s) \\
+	x_s &= 0.014 \cdot \sin(3^{\circ}) \\
+	x_s &= 0.014 \cdot 0.0523359562 \\
+	x_s &= 0.0007327034
+\end{align*}		
 
-\begin{align*}		
-p_g	&= (0, 0)			Eq 12 \\
-p_1	&= (-0.0134221132, -0.0039808135)			Eq 13 \\
-p_s	&= (-0.0126894099, 0.01)			Eq 14 \\
-p_2	&= (0.0172570027, 0.0051181888)			Eq 15 \\
-p_d	&= (0.015, -0.0127397489)			Eq 16 \\
-p_3	&= (0.0127429973, 0.0051181888)			Eq 17 \\
-d'	&= 0.0227397489				Eq 18
+\item Calculate $y_s$ by substituting values for $R1$ and $slope = \theta_g$ into equation \ref{eqn:y_s}.
+\begin{align*}
+	y_s &= R1 \cdot \cos(\theta_s) \\
+	y_s &= 0.014 \cdot \cos(3^{\circ}) \\
+	y_s &= 0.014 \cdot 0.9986295348	\\
+	y_s &= 0.0139808135
+\end{align*}		
+
+\item Now plug in the calculated value of $y_s$ and the published value for $P$ into equation \ref{eqn:y_g} to find $y_g$.
+\begin{align*}
+	y_g &= y_s - P \\
+	y_g &= 0.0139808135 - 0.01 \\
+	y_g &= 0.0039808135
+\end{align*}		
+
+\item Equation \ref{eqn:x_g} with values substituted in for $R1$ and $y_g$ yields $x_g$.
+\begin{align*}
+	x_g &= \sqrt{(R1)^2 - y_g^2} \\
+	x_g &= \sqrt{(0.014)^2 - (0.0039808135)^2} \\
+	x_g &= \sqrt{0.000196 - 0.000015846876015} \\
+	x_g &= \sqrt{0.000180153123985} \\
+	x_g &= 0.0134221132
+\end{align*}		
+
+\item To calculate angle $\theta_g$ simply apply values for $x_g$ and $R1$ to equation \ref{eqn:theta_g}.
+\begin{align*}  
+	\theta_g &= \arccos \left( \frac{x_g}{R1} \right) \\
+	\theta_g &= \arccos \left( \frac{0.0134221132}{0.014} \right) \\
+	\theta_g &= \arccos (0.9587223747) \\
+	\theta_g &= 16.5196295818^\circ
 \end{align*}
+
+\item Distance $x_2$ can be found with equation \ref{eqn:x_2} and the values for $R2$ and $\theta_g$.
+\begin{align*}
+	x_2 &= R2 \cdot \cos(\theta_g) \\
+	x_2 &= 0.018 \cdot \cos(16.5196295818^\circ) \\
+	x_2 &= 0.018 \cdot 0.9587223747	\\
+	x_2 &= 0.0172570027
+\end{align*}
+
+\item Likewise $y_2$ is calculated with $R2$, $\theta_g$ and equation \ref{eqn:y_2}.
+\begin{align*}
+	y_2 &= R2 \cdot \sin(\theta_g) \\
+	y_2 &= 0.018 \cdot \sin(16.5196295818^\circ) \\
+	y_2 &= 0.018 \cdot 0.2843438205 \\
+	y_2 &= 0.0051181888
+\end{align*}
+
+\item To calculate $x_d$, substitute the value $x_2$ and the published $T$ value into equation \ref{eqn:x_d}.
+\begin{align*}
+	x_d &= x_2 - T/2 \\
+	x_d &= 0.0172570027 - (0.03)/2 \\
+	x_d &= 0.0172570027 - 0.015	\\
+	x_d &= 0.0022570027
+\end{align*}
+
+
+\item Distance $y_d$ is calculated with equation \ref{eqn:y_d} and the values for $R2$ and $x_d$.
+\begin{align*}
+	y_d &= \sqrt{(R2)^2 - x_d^2} \\
+	y_d &= \sqrt{(0.018)^2 - (0.0022570027)^2} \\
+	y_d &= \sqrt{0.000324 - 0.000005094061390} \\
+	y_d &= \sqrt{0.0003189059} \\
+	y_d &= 0.0178579377
+\end{align*}
+
+
+\item From equation \ref{eqn:x_3}, find $x_3$ by plugging in the value for $x_d$.
+\begin{align*}
+	x_3 &= 2 \cdot x_d \\
+	x_3 &= 2 \cdot 0.0022570027 \\
+	x_3 &= 0.0045140055
+\end{align*}
+
+\item Equation \ref{eqn:y_3} simply states $y_3$ will always be zero.
+\begin{align*}
+	y_3 &= 0
+\end{align*}
+
+
+%%%%%%%
+
+\item Equation \ref{eqn:p_g} states gage point $p_g$ will always be at the origin by definition.
+\begin{equation*}
+	p_g = (0, 0)
+\end{equation*}
+
+
+\item To locate point $p_1$, plug in $x_g$ and $y_g$ into equation \ref{eqn:p_1}.
+\begin{align*}
+	p_1 &= (-x_g, -y_g) \\
+	p_1 &= (-0.0134221132, -0.0039808135) \\
+	p_1 &= (-0.0134, -0.0040)
+\end{align*}
+
+\item Point $p_s$ is found by applying values for: $x_s$, $x_g$, $y_s$ and $y_g$; to equation \ref{eqn:p_s}.
+\begin{align*}
+	p_s =\ &(x_s - x_g, y_s - y_g) \\
+	p_s =\ &(0.0007327034 - 0.0134221132, \\ &\ 0.0139808135 - 0.0039808135) \\
+	p_s =\ &(-0.0126894098, 0.01) \\
+	p_s =\ &(-0.0127, 0.0100)
+\end{align*}
+
+\item Use equation \ref{eqn:p_2} and the values for $x_2$ and $y_2$ to find point $p_2$.
+\begin{align*}
+	p_2 &= (x_2, y_2) \\
+	p_2 &= (0.0172570027, 0.0051181888) \\
+	p_2 &= (0.0173, 0.0051)
+\end{align*}
+
+\item Now use equation \ref{eqn:p_d} and values: $x_2$, $x_d$, $y_2$ and $y_d$; to yield point $p_d$.
+\begin{align*}
+	p_d =\ &(x_2 - x_d, y_2 - y_d) \\
+	p_d =\ &(0.0172570027 - 0.0022570027, \\ &\ 0.0051181888 - 0.0178579377) \\
+	p_d =\ &(0.015, -0.0127397489) \\
+	p_d =\ &(0.015, -0.0127)
+\end{align*}
+
+\item The location of point $p_3$ can by discovered by substituting values for: $x_2$, $x_3$ and $y_2$; into equation \ref{eqn:p_3}.
+\begin{align*}
+	p_3 =\ &(x_2 - x_3, y_2) \\
+	p_3 =\ &(0.0172570027 - 0.0045140055, \\ &\ 0.0051181888) \\
+	p_3 =\ &(0.0127429972, 0.0051181888) \\
+	p_3 =\ &(0.0127, 0.0051)
+\end{align*}
+
+\item Finally, the distance $d'$ can easily be calculated with equation \ref{eqn:d_prime} and values for: $P$, $y_2$ and $y_d$.
+\begin{align*}
+	d' &= P - y_2 + y_d \\
+	d' &= 0.01 - 0.0051181888 + 0.0178579377 \\
+	d' &= 0.022739748 \\
+	d' &= 0.0227
+\end{align*}
+
+
+
+\end{enumerate}
