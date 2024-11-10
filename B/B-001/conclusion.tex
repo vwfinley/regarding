@@ -1,0 +1,32 @@
+\section{Conclusion}
+
+In general, any of the RP-25 wheel profiles can be found by:
+\begin{itemize}
+	\item Looking up published values, in the RP-25 document, for a desired wheel code.
+	\item Choosing a desired tread slope $\theta_s$.
+	\item Calculating distance and angle values with equations \ref{eqn:x_s} through \ref{eqn:y_3}.
+	\item Calculating point locations with equations \ref{eqn:p_g} through \ref{eqn:d_prime}.
+\end{itemize}
+
+Table \ref{table:mytable} shows calculated values: $p_g$, $\theta_g$, $p_s$, $p_1$, $p_2$, $p_3$, $p_d$ and $d'$; found from equations \ref{eqn:x_s} through  \ref{eqn:d_prime}. 
+The values are tabulated by wheel code and indexed by tread slopes, $\theta_s$, from $0\degree$ to $3\degree$.
+
+Published values from RP-25 and tabulated values from Table \ref{table:mytable} can be used together to draw the profile shown in Figure \ref{fig:fig_f10}.
+To draw a wheel profile:
+\begin{itemize}
+	\item First draw $x$ and $y$ axes at the origin.
+	\item Then mark the calculated locations for points: $p_g$, $p_s$, $p_1$, $p_2$, $p_3$ and $p_d$.
+	\item Next draw arcs of radius $R1$, $R2$ and $R3$ centered at points $p_1$, $p_2$ and $p_3$.
+	\item From point $p_s$ draw the tread slope at an angle $\theta_s$.
+	\item Last, complete the drawing with vertical lines a distance $N'$ apart at the left and right sides of the profile.
+\end{itemize}
+
+Drawings for different wheel codes will have different relative spacing between points.
+This is expected and is due to the discrete values published in the RP-25 document.
+
+Upon inspecting Table \ref{table:mytable} you will notice the angle $\theta_g$ varies greatly for different wheel profile codes.
+For example $\theta_g$ for $Code\ 110$ at $\theta_s = 3\degree$ is $16.5196$, whereas it is $-0.0785$ at $\theta_s = 3\degree$ for $Code\ 93$.
+
+In Table \ref{table:mytable} you will notice that changing the slope angle $\theta_s$ within any particular wheel code has slight effect on $\theta_g$.
+Furthermore, changing $\theta_s$ has negligible effect upon point locations.
+Table \ref{table:mytable} is deliberately redundant to show that, when rounded to four decimal places, point locations are effectively independent of tread slope.

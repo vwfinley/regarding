@@ -1,4 +1,4 @@
-\section{Example}
+\section{Example} \label{sect:example}
 We now know how to algebraically locate all the features of the RP-25 wheel profile.
 
 As a test we should apply what we know to a concrete example.
@@ -8,8 +8,7 @@ Let's calculate the critical: points, angles and distances; for a code 110 wheel
 \begin{itemize}
 	\item A wheel profile where $code = 110$
 	\item Tread with $slope = \theta_s = 3^{\circ}$
-\end{itemize}
-	
+\end{itemize}	
 
 \paragraph{Find:}
 \begin{itemize}
@@ -17,7 +16,6 @@ Let's calculate the critical: points, angles and distances; for a code 110 wheel
 	\item Calculated values for: $x_s$, $y_s$, $x_g$, $y_g$, $\theta_g$, $x_2$, $y_2$, $x_d$, $y_d$, $x_3$ and $y_3$
 	\item Calculated values for: $p_g$, $p_1$, $p_s$, $p_2$, $p_d$, $p_3$ and $d'$	
 \end{itemize}
-
 
 \paragraph{Steps:}
 \begin{enumerate}
@@ -36,7 +34,7 @@ R3 &= 0.018
 \item Substitute values for $R1$ and $slope = \theta_g$ into equation \ref{eqn:x_s} to find $x_s$.
 \begin{align*}
 	x_s &= R1 \cdot \sin(\theta_s) \\
-	x_s &= 0.014 \cdot \sin(3^{\circ}) \\
+	x_s &= 0.014 \cdot \sin(\degree) \\
 	x_s &= 0.014 \cdot 0.0523359562 \\
 	x_s &= 0.0007327034
 \end{align*}		
@@ -159,6 +157,9 @@ R3 &= 0.018
 	p_d =\ &(0.015, -0.0127)
 \end{align*}
 
+%Tables
+\input{python/table/output/table.tex}
+
 \item The location of point $p_3$ can by discovered by substituting values for: $x_2$, $x_3$ and $y_2$; into equation \ref{eqn:p_3}.
 \begin{align*}
 	p_3 =\ &(x_2 - x_3, y_2) \\
@@ -174,14 +175,5 @@ R3 &= 0.018
 	d' &= 0.022739748 \\
 	d' &= 0.0227
 \end{align*}
-
-\item Finally, all the published and calculated values can be used to draw the profile shown in Figure \ref{fig:fig_f10}.
-\begin{itemize}
-	\item First draw $x$ and $y$ axes.
-	\item Then mark the calculated locations for the points.
-	\item Next draw arcs of radius $R1$, $R2$ and $R3$ centered at points $p_1$, $p_2$ and $p_3$.
-	\item From point $p_s$ draw the tread slope at an angle $\theta_s$.
-	\item Last, complete the drawing with vertical lines a distance $N'$ apart at the left and right sides of the profile.
-\end{itemize}
 
 \end{enumerate}
