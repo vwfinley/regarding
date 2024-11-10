@@ -65,7 +65,7 @@ def generate_row(code: int, slope: float) -> str:
     d_prime = output["d_prime"]["value"]
 
     s = f'{code} & {slope:.1f} & {pg} & {theta_g:.4f} & {
-        ps} & {pd} & {p1} & {p2} & {p3} & {d_prime:.4f}'
+        ps} & {p1} & {p2} & {p3} & {pd} & {d_prime:.4f}'
 
     return s
 
@@ -117,9 +117,9 @@ def main():
     args = parser.parse_args()
     print(begin_table())
     print('\\hline')
-    print('     & $\\theta_s$  & $p_g$               & $\\theta_g$             & $p_s$               & $p_d$               & $p_1$               & $p_2$               & $p_3$               & $d\'$                    \\\\ [0.5ex]') 
+    print('     & $\\theta_s$  & $p_g$               & $\\theta_g$             & $p_s$               & $p_1$               & $p_2$               & $p_3$               & $p_d$               & $d\'$                    \\\\ [0.5ex]') 
     print('Code & (degs)       & (inches)            & (degs)                  & (inches)            & (inches)            & (inches)            & (inches)            & (inches)            & (inches)                 \\\\ [0.5ex]') 
-    print('     & slope        & Eq\# \\ref{eqn:p_g} & Eq\# \\ref{eqn:theta_g} & Eq\# \\ref{eqn:p_s} & Eq\# \\ref{eqn:p_d} & Eq\# \\ref{eqn:p_1} & Eq\# \\ref{eqn:p_2} & Eq\# \\ref{eqn:p_3} & Eq\# \\ref{eqn:d_prime}  \\\\ [0.5ex]') 
+    print('     & slope        & Eq\# \\ref{eqn:p_g} & Eq\# \\ref{eqn:theta_g} & Eq\# \\ref{eqn:p_s} & Eq\# \\ref{eqn:p_1} & Eq\# \\ref{eqn:p_2} & Eq\# \\ref{eqn:p_3} & Eq\# \\ref{eqn:p_d} & Eq\# \\ref{eqn:d_prime}  \\\\ [0.5ex]') 
     print('\\hline')
 
     last_key = list(data.keys())[-1]
