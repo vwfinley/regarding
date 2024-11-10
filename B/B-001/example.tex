@@ -2,12 +2,12 @@
 We now know how to algebraically locate all the features of the RP-25 wheel profile.
 
 As a test we should apply what we know to a concrete example.
-Let's calculate the critical: points, angles and distances; for a code 110 wheel profile with a $3^{\circ}$ tread slope.
+Let's calculate the critical: points, angles and distances; for a code 110 wheel profile with a $3\degree$ tread slope.
 
 \paragraph{Given:}
 \begin{itemize}
 	\item A wheel profile where $code = 110$
-	\item Tread with $slope = \theta_s = 3^{\circ}$
+	\item Tread with $slope = \theta_s = 3\degree$
 \end{itemize}	
 
 \paragraph{Find:}
@@ -21,28 +21,28 @@ Let's calculate the critical: points, angles and distances; for a code 110 wheel
 \begin{enumerate}
 \item From the RP-25 document lookup the row with published values for code = 110 :
 \begin{align*}
-N' &= 0.110 \\
-T &= 0.030 \\
-W &= 0.080 \\
-D' &= 0.025 \\
-P &= 0.010 \\		
-R1 &= 0.014 \\		
-R2 &= 0.018 \\		
-R3 &= 0.018				
+N' &= 0.110\ inches\\
+T &= 0.030\ inches\\
+W &= 0.080\ inches\\
+D' &= 0.025\ inches\\
+P &= 0.010\ inches\\		
+R1 &= 0.014\ inches\\		
+R2 &= 0.018\ inches\\		
+R3 &= 0.018\ inches		
 \end{align*}		
 
-\item Substitute values for $R1$ and $slope = \theta_g$ into equation \ref{eqn:x_s} to find $x_s$.
+\item Substitute values for $R1$ and $slope = \theta_s$ into equation \ref{eqn:x_s} to find $x_s$.
 \begin{align*}
 	x_s &= R1 \cdot \sin(\theta_s) \\
-	x_s &= 0.014 \cdot \sin(\degree) \\
+	x_s &= 0.014 \cdot \sin(3\degree) \\
 	x_s &= 0.014 \cdot 0.0523359562 \\
 	x_s &= 0.0007327034
 \end{align*}		
 
-\item Calculate $y_s$ by substituting values for $R1$ and $slope = \theta_g$ into equation \ref{eqn:y_s}.
+\item Calculate $y_s$ by substituting values for $R1$ and $slope = \theta_s$ into equation \ref{eqn:y_s}.
 \begin{align*}
 	y_s &= R1 \cdot \cos(\theta_s) \\
-	y_s &= 0.014 \cdot \cos(3^{\circ}) \\
+	y_s &= 0.014 \cdot \cos(3\degree) \\
 	y_s &= 0.014 \cdot 0.9986295348	\\
 	y_s &= 0.0139808135
 \end{align*}		
@@ -68,13 +68,13 @@ R3 &= 0.018
 	\theta_g &= \arccos \left( \frac{x_g}{R1} \right) \\
 	\theta_g &= \arccos \left( \frac{0.0134221132}{0.014} \right) \\
 	\theta_g &= \arccos (0.9587223747) \\
-	\theta_g &= 16.5196295818^\circ
+	\theta_g &= 16.5196295818\degree
 \end{align*}
 
 \item Distance $x_2$ can be found with equation \ref{eqn:x_2} and the values for $R2$ and $\theta_g$.
 \begin{align*}
 	x_2 &= R2 \cdot \cos(\theta_g) \\
-	x_2 &= 0.018 \cdot \cos(16.5196295818^\circ) \\
+	x_2 &= 0.018 \cdot \cos(16.5196295818\degree) \\
 	x_2 &= 0.018 \cdot 0.9587223747	\\
 	x_2 &= 0.0172570027
 \end{align*}
@@ -82,7 +82,7 @@ R3 &= 0.018
 \item Likewise $y_2$ is calculated with $R2$, $\theta_g$ and equation \ref{eqn:y_2}.
 \begin{align*}
 	y_2 &= R2 \cdot \sin(\theta_g) \\
-	y_2 &= 0.018 \cdot \sin(16.5196295818^\circ) \\
+	y_2 &= 0.018 \cdot \sin(16.5196295818\degree) \\
 	y_2 &= 0.018 \cdot 0.2843438205 \\
 	y_2 &= 0.0051181888
 \end{align*}
