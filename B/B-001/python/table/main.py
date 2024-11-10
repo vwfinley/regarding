@@ -76,7 +76,7 @@ def begin_table() -> str:
  
 
 def end_table() -> str:
-    return '\\end{tabular}}\n\\caption{my table}\n\\label{table:mytable}\n\\end{table*}'
+    return '\\end{tabular}}\n\\caption{Calculated Values for RP-25}\n\\label{table:mytable}\n\\end{table*}'
 
 
 def main():
@@ -117,8 +117,9 @@ def main():
     args = parser.parse_args()
     print(begin_table())
     print('\\hline')
-    print('Code & slope  & $p_g=(x,y)$ & $\\theta_g$ & $p_s=(x,y)$ & $p_d=(x,y)$ & $p_1=(x,y)$ & $p_2=(x,y)$ & $p_3=(x,y)$ & $d\'$    \\\\ [0.5ex]') 
-    print('     & (degs) & (inches)    & (degs)      & (inches)    & (inches)    & (inches)    & (inches)    & (inches)    & (inches) \\\\ [0.5ex]') 
+    print('     & $\\theta_s$  & $p_g$               & $\\theta_g$             & $p_s$               & $p_d$               & $p_1$               & $p_2$               & $p_3$               & $d\'$                    \\\\ [0.5ex]') 
+    print('Code & (degs)       & (inches)            & (degs)                  & (inches)            & (inches)            & (inches)            & (inches)            & (inches)            & (inches)                 \\\\ [0.5ex]') 
+    print('     & slope        & Eq\# \\ref{eqn:p_g} & Eq\# \\ref{eqn:theta_g} & Eq\# \\ref{eqn:p_s} & Eq\# \\ref{eqn:p_d} & Eq\# \\ref{eqn:p_1} & Eq\# \\ref{eqn:p_2} & Eq\# \\ref{eqn:p_3} & Eq\# \\ref{eqn:d_prime}  \\\\ [0.5ex]') 
     print('\\hline')
 
     last_key = list(data.keys())[-1]
