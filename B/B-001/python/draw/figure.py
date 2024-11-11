@@ -701,7 +701,7 @@ figs3deg = {
 		"line_T_full": State.On,
 		"line_W": State.On,
 
-		"line_slope": State.Off,
+		"line_slope": State.On,
 		"line_ps_p1": State.Off,
 		"line_slope_corner_1": State.Off,
 		"line_slope_corner_2": State.Off,
@@ -737,7 +737,7 @@ figs3deg = {
 #		"arc_v1": State.Off,
 		"arc_v2": State.Off,
 
-		"arc_fillet_0deg": State.On,
+#		"arc_fillet_0deg": State.On,
 		"arc_fillet_3deg": State.On,
 
 		"pointmark_pg": State.On,
@@ -1303,7 +1303,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	y1 = l1 * math.sin(slope1)
 	x2 = l2 * math.cos(slope2)
 	y2 = l2 * math.sin(slope2)
-	drawables["line_slope"] = Line(offcolor, oncolor, "slope (\\theta_s)", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2, 0.0, 0.0)  # Tread slope
+	drawables["line_slope"] = Line(offcolor, oncolor, "slope = \\theta_s", ps.x + x1, ps.y + y1, ps.x + x2, ps.y + y2, 0.03, -0.1)  # Tread slope
 
 	l1 = 0.4 * T
 	l2 = 0.9 * W
@@ -1409,7 +1409,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	# arrows (radius)
 	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.30, -0.13)
 	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0, 0.27, 0.12)
-	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0, -0.05,0.2)
+	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0, -0.05, 0.22)
 	drawables["arrow_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, -105.0, -0.05, 0.3)
 	drawables["arrow_p3"] = Arrow(offcolor, oncolor, "", False, T / 2, p3.y, T / 2 - p3.x, 150.0, 0.0, 0.0)
 
@@ -1428,7 +1428,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["rarrow_xd"] = RArrow(offcolor, oncolor, "x_d", True, pd.x, p2.y + 0.001, p2.x, p2.y + 0.001, -0.09, 0.09)
 
 	# clines
-	drawables["cline_L"] = CLine(offcolor, oncolor, "L", 0, 0, theta_g, 0.035, 0.040)
+	drawables["cline_L"] = CLine(offcolor, oncolor, "", 0, 0, theta_g, 0.035, 0.040)
 
 	# arcs
 	drawables["arc_v1"] = Arc(offcolor, oncolor, "V1", pg.x, pg.y, R1, 180.0 + theta_g - 15.0, 180.0 + theta_g + 15.0)
