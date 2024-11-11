@@ -1377,7 +1377,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	arc_slope_radius = 0.023
 	drawables["arc_slope_upper"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius, 0, 10, 0, 0)
-	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope (\\theta_s)", False, ps.x, ps.y, arc_slope_radius, 360 - slope, 360 - slope - 10, 0, 0)
+	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope = \\theta_s", False, ps.x, ps.y, arc_slope_radius, 360 - slope, 360 - slope - 10, 0, -0.07)
 
 #vwf
 	drawables["arc_slope_inside_15deg"] = ArcArrow(offcolor, oncolor, "\\theta_s", True, ps.x, ps.y,  0.01, -slope, 0, 0.1, -0.1)
@@ -1407,7 +1407,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_d_prime_detail"] = Arrow(offcolor, oncolor, "d'", True, -0.018, P, P - pd.y, 270.0, -0.1, 0.75)
 
 	# arrows (radius)
-	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.27, -0.13)
+	drawables["arrow_r1"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, 45.0, -0.30, -0.13)
 	drawables["arrow_r2"] = Arrow(offcolor, oncolor, "R2", False, p2.x, p2.y, R2, -135.0, 0.27, 0.12)
 	drawables["arrow_r3"] = Arrow(offcolor, oncolor, "R3", False, p3.x, p3.y, R3, -45.0, -0.05,0.2)
 	drawables["arrow_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, -105.0, -0.05, 0.3)
@@ -1415,7 +1415,7 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 
 	# arrows
 	drawables["arrow_r1_layout"] = Arrow(offcolor, oncolor, "R1", False, pg.x, pg.y, R1, 180.0 + theta_g - 10.0, 0.0, 0.0)
-	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.4, -0.1)
+	drawables["arrow_r2_layout"] = Arrow(offcolor, oncolor, "R2", False, pg.x, pg.y, R2, theta_g + 10.0, -0.45, -0.1)
 
 	drawables["arrow_r1_ps_p1"] = Arrow(offcolor, oncolor, "R1", False, ps.x, ps.y, R1, 270.0 - slope, -0.03, 0.45)
 	drawables["arrow_r1_p1_pg"] = Arrow(offcolor, oncolor, "R1", False, p1.x, p1.y, R1, theta_g, -0.50, -0.03)
