@@ -661,6 +661,9 @@ figs3deg = {
 #		"arrow_ps_p1": State.Off,
 #		"arrow_p3": State.Off,
 
+		"arrow_dPrime_detail": State.On,
+		"dprime_measurement_detail": State.On,
+
 		"cline_L": State.Off,
 
 #		"arrow_r1_layout": State.Off,
@@ -682,7 +685,6 @@ figs3deg = {
 		"begin": State.Off,
 		"clip": State.Off,
 		"full_clip": State.On,
-
 
 		"x_axis": State.On,
 		"y_axis": State.On,
@@ -722,6 +724,7 @@ figs3deg = {
 		"arrow_T2": State.Off,
 		"arrow_P": State.Off,
 		"arrow_DPrime": State.Off,
+		"arrow_dPrime": State.Off,
 
 		"arrow_r1": State.Off,
 		"arrow_r2": State.Off,
@@ -730,6 +733,7 @@ figs3deg = {
 #		"arrow_p3": State.Off,
 
 		"cline_L": State.Off,
+		"dprime_measurement": State.Off,
 
 #		"arrow_r1_layout": State.Off,
 #		"arrow_r2_layout": State.Off,
@@ -1247,13 +1251,13 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["detail_clip"] = Clip(-0.021, -0.006, 0.021, 0.012)
 	drawables["full_detail_clip"] = Clip(-0.021, -0.015, 0.021, 0.012)
 
-	drawables["x_axis"] = XAxis(offcolor, oncolor, -W - 0.005, T + 2 * overhang)
+	drawables["x_axis"] = XAxis(offcolor, oncolor, -W + 0.001, T + 2 * overhang)
 	drawables["y_axis"] = YAxis(offcolor, oncolor, P - D_PRIME - 2 * overhang , P + 2 * overhang)
 
 	# h lines
 	left = -W - overhang
 	right = T + overhang
-	drawables["line_P"] = Line(offcolor, oncolor, "", -W - 0.01, P, right, P, 0.0, 0.0)
+	drawables["line_P"] = Line(offcolor, oncolor, "", -W - 0.01, P, right + 0.005, P, 0.0, 0.0)
 	drawables["line_false_x_axis"] = Line(offcolor, oncolor, "", -1, 0, 1, 0, 0.0, 0.0)
 	drawables["line_Dprime"] = Line(offcolor, oncolor, "", -W - 0.01, P - D_PRIME, right, P - D_PRIME, 0.0, 0.0)
 
@@ -1349,6 +1353,9 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["corner_xd_yd_vertical"] = Line(offcolor, oncolor, "", pd.x + 0.0007, p2.y, pd.x + 0.0007, p2.y - 0.0007, 0.0, 0.0)
 	drawables["corner_xd_yd_horizontal"] = Line(offcolor, oncolor, "", pd.x, p2.y - 0.0007, pd.x + 0.0007, p2.y - 0.0007, 0.0, 0.0)
 
+	drawables["dprime_measurement"] = Line(offcolor, oncolor, "", -1.04 * W, pd.y, -1.02 * W, pd.y, 0.0, 0.0)
+	drawables["dprime_measurement_detail"] = Line(offcolor, oncolor, "", right - 0.001, pd.y, right + 0.001, pd.y, 0.0, 0.0)
+
 
 	# centermarks
 	drawables["centermark_p1"] = Centermark(offcolor, oncolor, p1.label, p1.x, p1.y)
@@ -1368,7 +1375,6 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["pointmark_p2_detail"] = Pointmark(offcolor, oncolor, p2.label, p2.x, p2.y, 0.12, 0.03)
 	drawables["pointmark_p3_detail"] = Pointmark(offcolor, oncolor, p3.label, p3.x, p3.y, -0.03, 0.1)
 
-
 	# arcs
 	drawables["arc_c1"] = Arc(offcolor, oncolor, "c1", p1.x, p1.y, R1, -30, 115)
 	drawables["arc_c2"] = Arc(offcolor, oncolor, "c2", p2.x, p2.y, R2, 180, 285)
@@ -1379,7 +1385,6 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arc_slope_upper"] = ArcArrow(offcolor, oncolor, "", False, ps.x, ps.y,  arc_slope_radius, 0, 10, 0, 0)
 	drawables["arc_slope_lower"] = ArcArrow(offcolor, oncolor, "slope = \\theta_s", False, ps.x, ps.y, arc_slope_radius, 360 - slope, 360 - slope - 10, 0, -0.07)
 
-#vwf
 	drawables["arc_slope_inside_15deg"] = ArcArrow(offcolor, oncolor, "\\theta_s", True, ps.x, ps.y,  0.01, -slope, 0, 0.1, -0.1)
 
 	arc_slope_radius = 0.004
@@ -1399,8 +1404,10 @@ def generate_drawables(code: int, slope: float) -> dict[str, Drawable]:
 	drawables["arrow_T"] = Arrow(offcolor, oncolor, "T", True, 0, 3.5 * P, T, 0, -0.65, 0.1)
 	drawables["arrow_T2"] = Arrow(offcolor, oncolor, "T/2", True, 0, 3 * P, 0.5 * T, 0, -0.35, 0.1)
 
-	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -1.05 * W, 0, P, 90.0, 0.07, -0.25)
+	drawables["arrow_P"] = Arrow(offcolor, oncolor, "P", True, -0.96 * W, 0, P, 90.0, 0.07, -0.25)
 	drawables["arrow_DPrime"] = Arrow(offcolor, oncolor, "D'", True, -1.1 * W, P - D_PRIME, D_PRIME, 90.0, 0.1, -0.6)
+	drawables["arrow_dPrime"] = Arrow(offcolor, oncolor, "d'", True, -1.03 * W, P - d_prime, d_prime, 90.0, 0.08, -0.55)
+	drawables["arrow_dPrime_detail"] = Arrow(offcolor, oncolor, "d'", True, right, P - d_prime, d_prime, 90.0, 0.08, -0.55)
 
 	drawables["arrow_P_detail"] = Arrow(offcolor, oncolor, "P", True, -0.018, 0, P, 90.0, -0.1, -0.35)
 	drawables["arrow_yg_detail"] = Arrow(offcolor, oncolor, "y_g", True, -0.018, 0, -p1.y, 270.0, -0.1, 0.13)
