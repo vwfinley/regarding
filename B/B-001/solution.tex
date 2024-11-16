@@ -1,4 +1,12 @@
 \section{Constructive Solution}
+The wheel profile can be drawn either:
+\begin{itemize}
+	\item Manually, with paper, pencil and drafting tools; or,
+	\item Electronically, with a computer aided drafting (CAD) program.
+\end{itemize}
+
+If drawing manually, you will want to scale up all dimensions by a factor of $20\ times$ or so.
+Also when drawing manually, a dial caliper or machinist's ruler, graduated in tenths and hundredths, will be needed.
 
 \subsection{Step 1: Establishing Point $p_s$}
 
@@ -13,11 +21,11 @@ Begin the drawing as shown in Figure \ref{fig:fig_f1}.
 
 On a blank screen or page, draw a horizontal line.
 Next draw a second line at some slope, from $0\degree$ to $3\degree$, to the horizontal line.
-The second line is the wheel tread.
+The sloped line is the wheel tread.
 
 Mark the point where the horizontal line and wheel tread line intersect.
 Label the point $p_s$.
-Point $p_s$ is the point where the wheel fillet ends and the wheel tread begins. 
+Point $p_s$ is the point where the wheel fillet will end and the wheel tread begins. 
 
 Now assign label $\theta_s$, to the slope angle between the horizontal line and the wheel tread line.
 
@@ -60,7 +68,7 @@ It should be a distance $P$ below the original horizontal line.
 The Distance $P$ is given by the RP-25 document.
 
 Now sweep an arc, of radius $R1$, centered at point $p_1$.
-The arc should pass thru point $p_s$.
+The arc should pass thru point $p_s$ and intersect the new horizontal line.
 Mark the location where the arc intersects the new horizontal line.
 Label the intersection point $p_g$.
 
@@ -106,7 +114,7 @@ If you are using a CAD drawing program on a computer, either:
 
 Refer to Figure \ref{fig:fig_f5}.
 
-The RP-25 document says the circles of radius $R1$ and $R2$ are tangent to each other at the gauge point $p_g$.
+The RP-25 document says the circles of radius $R1$ and $R2$ are tangent to each other at the gaging point $p_g$.
 From Theorem 3 we know that the point of tangency $p_g$ is colinear with the circle centers, $p_1$ and $p_2$.
 
 Extend a line through points $p_1$ and $p_g$, and slightly beyond.
@@ -189,7 +197,7 @@ Sweep an arc, with radius $R3 = R2$, centered at $p_3$.
 Mark the point where the arc intersects the $R2$ radius arc at the $T/2$ vertical guideline.
 Label the point $p_d$.
 
-The arcs of radius $R2$ and $R3$ form a tangent ogive
+Observe that the arcs of radius $R2$ and $R3$ form a tangent ogive
 \endnote{
 https://github.com/vwfinley/regarding/blob/main/A/A-006/A-006.pdf,
 A-006,
@@ -199,7 +207,7 @@ September 2022
 }
 cross section.
 
-Note: $p_d$ is a distance $d'$ (not $D'$) below $p_s$.
+Note: $p_d$ is at some distance $d'$ (not $D'$) below $p_s$.
 
 %%%%%
 \subsection{Step 10: Completing the Drawing}
@@ -310,14 +318,14 @@ Therefore, the lengths of sides $x_s$ and $y_s$ can be found as follows:
 
 \subsection{Step b: Locating $p_g$}
 Figure \ref{fig:fig_f11b} shows a right triangle containing vertices at points $p_1$ and $p_g$.
-Point $p_g$ is the gage point.
+Point $p_g$ is the gaging point.
 Furthermore, $p_1$ is the center of the fillet arc whose radius is $R1$.
 
 The hypotenuse of the triangle has length $R1$.
 Let's label the lengths of the horizontal and vertical sides, $x_g$ and $y_g$ respectively.
 
 Returning to figure \ref{fig:fig_f11a} we see $p_1$ is a distance $y_s$ below point $p_s$, where the wheel tread begins.
-Since point $p_g$ is a distance $P$ below point $p_s$, it is can be seen that $y_s = y_g + P$ and: 
+Since point $p_g$ is a distance $P$ below point $p_s$, it can be seen that $y_s = y_g + P$ and: 
 
 \begin{equation}
 	\label{eqn:y_g}
@@ -346,7 +354,7 @@ The angle $\theta_g$ can be found easily with:
 
 Figure \ref{fig:fig_f11c} shows a right triangle containing vertices at points $p_g$ and $p_2$.
 
-Point $p_g$ is the gage point.
+Point $p_g$ is the gaging point.
 Point $p_2$ is at the center of the wheel flange arc whose radius is $R2$.
 Let's label the horizontal and vertical sides $x_2$ and $y_2$ respectively.
 
@@ -417,7 +425,7 @@ However, the point locations are only relative to each other.
 Ultimately we desire to reference all points to a common origin.
 By referencing all points to a common origin, calculating the actual point locations on a coordinate system becomes possible.
 
-Let's begin by choosing the gage point $p_g$ to be the origin, such that $p_g$ will always be at coordinate (0, 0).
+Let's begin by choosing the gaging point $p_g$ to be the origin, such that $p_g$ will always be at coordinate (0, 0).
 \begin{equation}
 	\label{eqn:p_g}
 	\boxed{
