@@ -76,7 +76,7 @@ def begin_table() -> str:
  
 
 def end_table() -> str:
-    return '\\end{tabular}}\n\\caption{Calculated Values for RP-25 Profile}\n\\label{table:mytable}\n\\end{table*}'
+    return '\\end{tabular}}\n\\caption{Tabulated Values for RP-25 Profile}\n\\label{table:mytable}\n\\end{table*}'
 
 
 def main():
