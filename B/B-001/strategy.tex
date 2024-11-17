@@ -1,0 +1,19 @@
+\section{Strategy}\label{sec_strategy}
+
+The RP-25 contour is difficult to draw accurately because a dependency chain exists amongst contour points.
+We would like to draw gaging point $p_g$ at a coordinate system origin, however; $p_g$ depends on point $p_1$.
+Furthermore, all point locations are dependant on slope angle $\theta_s$.
+
+If you draw the points in the wrong order, your attempt will fail.
+If you try to immediately locate $p_g$ at a coordinate system origin, your attempt will fail. 
+
+As we shall see, the chain of dependencies is: $p_d \to p_3 \to p_2 \to p_g \to p_1 \to p_s \to \theta_s$.
+
+\paragraph{The Trick:}
+Ideally, we want all points to have single dependencies upon a single point at the origin.
+
+To draw the RP-25 contour successfully, we will employ a trick.
+Trick: Rather than establishing a coordinate system and locating points relative to the origin,
+we will instead wait to find $p_g$ and only then establish a coordinate system at $p_g$ as the origin.
+
+To apply our trick we must draw tread slope angle $\theta_s$ first!
