@@ -21,7 +21,7 @@ To draw a wheel profile:
 	\item Last, complete the drawing with vertical lines a distance $N'$ apart at the left and right sides of the profile.
 \end{itemize}
 
-Drawings for different wheel codes will have different relative spacing between points.
+Drawings for adjacent wheel codes will have different relative spacing between points.
 This is expected and is due to the discrete values published in the RP-25 document.
 
 Upon inspecting Table \ref{table:mytable} you will notice the angle $\theta_g$ varies greatly for different wheel profile codes.
@@ -37,6 +37,11 @@ This is due to the tabulated data being rounded to 4 decimal places.
 If you need greater precision you can always perform calculations with equations \ref{eqn:x_s} through \ref{eqn:d_prime} to whatever precision you require.
 
 Also, if you need point locations for an intermediate value of slope angle, say for $\theta_s = 1.5\degree$, you should perform calculations with equations \ref{eqn:x_s} through \ref{eqn:d_prime}.
+
+Furthermore, you can propose wheel profiles for new wheel codes that follow the RP-25 form.
+To do this, propose new values for $N'$, $T$, $W$, $D'$, $P$, $R1$, $R2$ and $R3$.  
+Then declare the code number of the new profile based upon the value of $N'$.
+Next use equations \ref{eqn:x_s} through \ref{eqn:d_prime} to determine the proposed profile: distances, angles and points.
 
 As a final thought, the location of $p_d$ is at flange depth $d'$, which is well short of the flange depth $D'$ given in the RP-25 document.
 The RP-25 document misleadingly draws the intersection of arcs $R2$ and $R3$ at flange depth $D'$.
