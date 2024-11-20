@@ -1,4 +1,4 @@
-#Series
+# Series
 - [Series A : Regarding Mathematics](A/README.md)
 - [Series B : Regarding Engineering](B/README.md)
 
