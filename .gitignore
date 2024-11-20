@@ -1,6 +1,5 @@
 *.aux
 *.log
-*.pdf
 *.ent
 *.pyc
 *.tikz
