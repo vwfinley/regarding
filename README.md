@@ -1,6 +1,7 @@
 # Series
 - [Series A : Regarding Mathematics](A/README.md)
 - [Series B : Regarding Engineering](B/README.md)
+- [Series C : Regarding Computing](C/README.md)
 
 # Regarding the *"regarding"* repository
 - This repository contains my personal notes **regarding** various: topics, interests and hobbies.
