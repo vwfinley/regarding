@@ -1,0 +1,575 @@
+https://earlruby.org/2021/06/fixing-vscode-when-it-keeps-dropping-ssh-connections/
+
+---------------------
+1) Hypervisor and VM
+
+Preamble
+- Old monolith desktop development model (everything on your local machine, remote source control)
+- New microservice/cloud/container model (local machine is just a terminal, development on remote machine (VM), developer container, remote staging/deployment, remote source control)
+
+Planning, Take inventory of hardware
+Password keeper (KeePass, Bitwarden, etc.)
+
+Where are VMs going to run?
+- Local (laptop)
+- Network server
+
+VPN connection
+Login and Get account on Hypervisor
+
+Or, Install hypervisor
+- VMWare
+- Proxmox
+- Openbox
+- HyperV
+
+Download Linux OS
+- Distrowatch.org
+- Debian/Ubuntu (download address)
+- Fedora/RHEL8 (download address)
+
+Create VM
+- Initial resources (cpu, memory, storage)
+- Install OS
+- Minimum install
+- Give VM a name
+- Setup user account
+- Ping google test
+- Get ip address, write it down
+- Run software update (yum, apt)
+
+
+VirtualBox > Settings > Network > Bridged adapter.
+
+--------------
+
+2)https://www.bing.com/videos/riverview/relatedvideo?q=virtualbox+ubuntu+22.04+cannot+ping+from+host&mid=5B1AA719E4ADB9624DB45B1AA719E4ADB9624DB4&mcid=FEEEA5610D984BF1B9DDC47C30A02B7B&FORM=VIRE
+
+Memory 2048
+Processors 2
+Video mem 16MB?
+
+
+For Ubuntu Desktop Distro
+a) In Ubuntu > Settings > Network > Wired Connected Gear button > Details tab > IP4 address 10.0.2.15
+b) In Ubuntu > terminal > ping google.com
+c) In VirtualBox > Select machine (powered off) > Settings > Network > Adapter 1 tab
+  - (default checked) Enable Network Adapter
+  - (default) Attached to: NAT
+  - (default) Adapter type: Intel PRO/1000 MT Desktop (82540EM)
+  - MAC Address: 080027742766
+  - (default checked) Cable Connected
+d) Adapter 2 Tab
+  - Check: Enable Network Adapter
+  - Select: Attached to:  Host-only Adapter
+  - Name, Adapter type, Promiscuous Mode, MAC Address, Cable   connected: Will auto populate
+  - Click OK
+e) VirtualBox > File > Tools > Network Manager > VHost-only Networks
+  - VirtualBox Host-Only Ethernet Adapter should appear in list.
+  - IPV4 Prefix 192.168.56.1/24
+  - DHCP Server = Enabled
+f) Start the Ubuntu VM 
+g) Settings > Network > Choose second adapter > Gear icon
+  - IPv4 Address 192.168.56.104
+h) From host CMD shell: Ping 192.168.56.104
+i) See video for Ubuntu Server distro (netplan setup?)
+j) sudo apt-get update
+
+3) Edit hosts file
+- On Windows11 system
+- Run Notepad as admin
+- Open C:\Windows\System32\drivers\etc\hosts
+- Add entry: 192.168.56.104    alpha # Ubuntu VM
+- Save and close the hosts file
+- In CMD shell: ping alpha
+
+3.5) Install SSHD
+
+4) Initial login
+C:\Users\vfinl>ssh vfinley@alpha
+The authenticity of host 'alpha (192.168.56.104)' can't be established.
+ED25519 key fingerprint is SHA256:YTJSyWrfm2oppwq+vtpskrQjk0hMw80dJ8xzBAfkcOI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'alpha' (ED25519) to the list of known hosts.
+vfinley@alpha's password:
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-57-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+vfinley@alpha:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  snap  ssh  Templates  Videos
+
+--------------------
+
+https://www.maketecheasier.com/fix-ubuntu-freezing-virtualbox/
+
+Screen settings:
+In Ubuntu Display 1680x1050 landscape
+Privacy > Screen 
+- Blank screen: Never
+- Automatic Screen Lock: Disabled
+- Lock Screen on Suspend: Disabled
+
+
+-----------------------------
+a) Alpha Run Window > Devices > Insert Guest Additions CD Image
+b) Doubleclick on disk icon
+c) Right click VBox_GAs_7.1.6 > properties 
+d) Make note of the parent folder
+e) Open terminal and goto parent folder: cd /media/vfinley/VBox_GAs_7.1.6
+f) sudo ./VBoxLinuxAdditions.run
+
+
+
+
+
+
+
+Guest additions
+4.2.2.1. Installing the Linux Guest Additions
+See section 4.2.2.1 https://docs.oracle.com/en/virtualization/virtualbox/6.0/user/guestadd-install.html
+
+
+--------------------------------
+
+https://devconnected.com/how-to-install-and-enable-ssh-server-on-ubuntu-20-04/
+sudo apt-get install openssh-server
+sudo systemctl status sshd
+sudo systemctl restart sshd 
+Edit local host file with VM name and IP address.
+- C:\Windows\System32\drivers\etc\hosts
+- Open notepad as admin
+- Or ask admin to put in DNS
+
+Local BASH shell, Local SSH client.
+Install/enable/start SSH service
+Create SSH public+private keys
+- gitbash
+- ssh-keygen
+
+
+C:\Users\vfinl>ssh-keygen
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\vfinl/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\vfinl/.ssh/id_ed25519
+Your public key has been saved in C:\Users\vfinl/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:rp5oLbld4wp4biuWzVsnoALpThqM2x06ud5Poty4xnY vfinl@victor
+The key's randomart image is:
++--[ED25519 256]--+
+|                 |
+|                 |
+|                 |
+| .               |
+|o   .   S        |
+|=  o . .         |
+|+=o==o+ =        |
+|+*XXEO.B .       |
+|o*XOXBB..        |
++----[SHA256]-----+
+
+
+
+
+
+
+C:\Users\vfinl\.ssh
+ssh-copy-id -i ~/.ssh/id_rsa.pub vfinley@remote_server
+Install public key.
+Test connection
+
+# In GitBASH terminal
+vfinl@victor MINGW64 ~
+$ ssh-copy-id -i ~/.ssh/id_ed25519.pub vfinley@alpha
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/vfinl/.ssh/id_ed25519.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+vfinley@alpha's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'vfinley@alpha'"
+and check to make sure that only the key(s) you wanted were added.
+
+vfinl@victor MINGW64 ~
+$ ssh vfinley@alpha
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-57-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+35 updates can be applied immediately.
+15 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+9 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '24.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Mon May  5 06:49:56 2025 from 192.168.56.1
+
+## VWF TODO: Setup VSCode (Version 1.99.3)
+- Install IDE (VSCode) locally
+- Start remote machine
+- Verify remote machine is running.
+- Ipaddr 192.168.56.104=alpha
+- Install Remote Development plugins
+  - Click Extensions
+  - Search "Remote"
+  - Find/Install "Remote Development" pack.
+- Click Remote Explorer Icon
+  - Select Remotes(Tunnels/SSH) from drop down at top of Remote Explorer panel.
+  - Hover over the SSH section on the panel
+  - Click the Plus icon (new Remote)
+  - In the "Enter SSH Connection Command" box, enter ssh vfinley@alpha -A
+  - In the "Select SSH configuration file to update" box enter C:/Users/vfinl/.ssh/config (first file in list).
+- In Remoter Explorer SSH list, find the host (alpha) you just added.
+  - Hover over alpha
+  - Click the right arrow (Connect in current window) button.
+  - Wait about 30 sec for VSCode server to install.
+  - Click Explorer icon in left bar (Ctrl+Shift+E), click "Open Folder" button.
+  - Select default path, click OK
+  - Dialog "Do you trust the authors of the files in this folder?"
+    - Click "Yes, I trust the authors"
+  - Terminal > New Terminal
+  - At the command line `ping google`
+Setup remote SSH connection.
+Connect, login to remote VM
+Save shortcut in system toolbar.
+  - Right-click VSCode icon
+  - Select Recent Folders (vfinley [SSH:alpha])
+  - Click Pin to list icon
+
+## TODO: Git Configuration Setup
+- For each remote host:
+- On alpha install git with `sudo apt install git`
+```
+sudo apt install git
+
+# Be sure to change user name and email to YOUR name and email address
+git config --global user.name "John Doe"
+git config --global user.email "john.doe@youremail.com"
+```
+
+# Git Password Saver Setup
+- Typing your password/PAT (personal access token) over and over for Git(hub/lab) is annoying.
+- Fortunately there is a better way.
+- At the Bash shell prompt enter:
+```
+git config --global credential.helper store
+```
+- Next time you enter password info for Git, you password will be remembered thereafter.
+- Note some Git repos are setup to use a PAT in place of a password, when prompted for a password use the PAT instead.
+
+
+
+# Creating a PAT
+- Login to GitHub
+- Click on the user icon
+- Select "Settings" from the menu.
+- Left menu, scroll to bottom, click "Developer Settings".
+- Left menu, under Access Tokens, select Fine-Grained Tokens
+- Click green "Generate new token" button.
+- Fill in the "Token name" field with a name you will remember.
+- Set the Expiration date to a convenient date.
+- Select "All Repositories"
+- Under "Permissions / Repository permissions" at a minimum give yourself "Read and write" access to Contents and Pull requests.
+- Click the green "Generate token" button at the bottom.
+- In the popup dialog click the green "Generate token" again.
+- In the page that appears, copy the PAT (including the github_pat_ prefix), name and expiration date.  Save it somewhere for later use.
+button at the bottom.
+
+
+
+# Clone a repo
+- In browser find a repo, for example: https://github.com/vwfinley/regarding
+- Click on green "Code" button.
+- Click on the "Local" tab.
+- Select "Https"
+- Copy the URL in the "Clone using the web URL" field.  For example: https://github.com/vwfinley/regarding.git
+
+```
+# Create a directory for your project and go there.
+vfinley@alpha:~$ mkdir ~/Documents/projects
+vfinley@alpha:~$ cd ~/Documents/projects/
+
+# Clone the repo with the URL you copied above.
+vfinley@alpha:~/Documents/projects$ git clone https://github.com/vwfinley/regarding.git
+Cloning into 'regarding'...
+remote: Enumerating objects: 2047, done.
+remote: Counting objects: 100% (271/271), done.
+remote: Compressing objects: 100% (179/179), done.
+remote: Total 2047 (delta 188), reused 158 (delta 90), pack-reused 1776 (from 2)
+Receiving objects: 100% (2047/2047), 3.91 MiB | 4.60 MiB/s, done.
+Resolving deltas: 100% (1243/1243), done.
+
+# Make change to project
+vfinley@alpha:~/Documents/projects$ cd regarding/
+vfinley@alpha:~/Documents/projects/regarding$ ls
+A  B  LICENSE.md  README.md
+vfinley@alpha:~/Documents/projects/regarding$ mkdir C
+vfinley@alpha:~/Documents/projects/regarding$ ls
+A  B  C  LICENSE.md  README.md
+vfinley@alpha:~/Documents/projects/regarding$ mkdir C/C-001
+vfinley@alpha:~/Documents/projects/regarding$ cd C/C-001
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ echo "Hello World" > README.md
+```
+
+# Initial checkin
+```
+git add README.md
+git commit -m "New File"
+git push
+
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ git add README.md 
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ git commit -m "New File"
+[main 5ed57a6] New File
+ 1 file changed, 1 insertion(+)
+ create mode 100644 C/C-001/README.md
+
+# When prompted for password paste your PAT token.
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ git push
+Username for 'https://github.com': vwfinley
+Password for 'https://vwfinley@github.com': <paste_PAT_token_here> 
+
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (5/5), 365 bytes | 365.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/vwfinley/regarding.git
+   7ff2319..5ed57a6  main -> main
+```
+Now goto repo webpage and verify the change was pushed!
+
+Gitlab/GitHub (online or corporate) account
+Create PAT token, save it.
+Install Git client
+Setup Git local id (Username and email)
+Setup Git password keeper.  (username and PAT or password).
+Git checkout of code base.
+
+
+# Docker install/setup
+Follow steps here:
+https://docs.docker.com/engine/install/ubuntu/
+
+Add yourself to the docker group
+https://docs.docker.com/engine/install/linux-postinstall/
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
+
+```
+
+
+
+# Create new dev container
+- In VSCode Ctrl+Shift+P
+- Search for: "Dev Containers: New Dev Container..."
+- Pick Latex
+- Wait a few mins while container image downloads and installs 
+
+
+```
+# https://linux.how2shout.com/install-tex-live-on-ubuntu-20-04-lts-a-free-typesetting-system/
+# https://www.linuxfordevices.com/tutorials/ubuntu/fix-unable-to-acquire-the-dpkg-frontend-lock
+
+FROM ghcr.io/jmuchovej/devcontainers/latex:2024
+
+USER root
+RUN sudo su
+RUN dpkg --configure -a
+RUN apt update
+#RUN apt-get install -y texlive-full
+RUN apt-get install -y texlive
+
+USER vscode
+
+```
+- Search for: "Dev Containers: Add Dev Container Configuration Files..."
+- Select Alpine
+- Select 3.20 (default)
+- At prompt to "Select additional features to install" search for Latex.
+- Select "Latex Workshop", click OK
+- Select "Configure Options"
+- Choose "full"
+- When prompted to Provide a custom mirror, just hit Enter
+- Include optional file .GitHub/dependabot.yml
+- .devcontainer/devcontainer.json will be created.
+- Click on blue button "Reopen in Container"
+- Wait a f
+
+# TLMGR
+```
+$ tlmgr search --file --global "/tikz.sty"
+
+tlmgr: Local TeX Live (2024) is older than remote repository (2025).
+Cross release updates are only supported with
+  update-tlmgr-latest(.sh/.exe) --update
+See https://tug.org/texlive/upgrade.html for details.
+vscode ➜ /workspaces/regarding/C/C-001 (main) $  update-tlmgr-latest  --update
+```
+
+https://www.linuxfordevices.com/tutorials/ubuntu/fix-unable-to-acquire-the-dpkg-frontend-lock
+
+https://stackoverflow.com/questions/71505468/running-r-tikzdevice-with-tinytex-help-troubleshooting-latex-error-file-ti
+
+https://tug.org/texlive/quickinstall.html
+
+https://stackoverflow.com/questions/68937464/running-devcontainer-as-local-user-instead-of-root
+
+latex C-001.tex
+tlmgr search --file --global "/tikz.sty"
+sudo su
+tlmgr install pgf
+tlmgr install gensymb
+tlmgr install booktabs
+tlmgr install paralist
+tlmgr install caption
+tlmgr install lastpage
+tlmgr install sectsty
+tlmgr install tocbibind
+tlmgr install tocloft
+tlmgr install mathtools
+tlmgr install multirow
+tlmgr install makecell
+tlmgr install subfig
+exit
+latex C-001.tex
+
+
+"postCreateCommand": "tlmgr install breqn pgf gensymb booktabs paralist caption lastpage sectsty tocbibind tocloft mathtools multirow makecell subfig",
+
+	"remoteUser": "root", 
+	"postCreateCommand": "/usr/local/texlive/bin/x86_64-linux/tlmgr install breqn pgf gensymb booktabs paralist caption lastpage sectsty tocbibind tocloft mathtools multirow makecell subfig",
+
+
+https://stackoverflow.com/questions/68937464/running-devcontainer-as-local-user-instead-of-root
+
+
+# Fonts
+https://blog.yfei.page/en/2019/05/how-to-install-fonts-in-texlive/
+```
+sudo su
+mktexlsr
+updmap-sys --enable Map=fontname.map
+```
+
+https://tex.stackexchange.com/questions/597312/avoiding-kpathsea-running-mktexpk
+
+
+# tikz
+```
+sudo apt-get install libpgf-dev
+
+```
+
+# Setup docker to point to external repo
+# auto login docker to repo
+# Developer container
+# gitlab-ci.yaml file (gitlab/GitHub pipeline setup)
+# Setup package manager (maven, pypi etc to point to package repositories)
+# auto login to repositories
+# Install Plugins
+- Spelling
+- Markdown->PDF
+
+# SSH VSCode timeout
+https://stackoverflow.com/questions/59978826/why-ssh-connection-timed-out-in-vscode
+
+https://code.visualstudio.com/docs/remote/ssh
+
+
+3) Containers
+Install Local Docker
+Remote Docker and Podman.  Yum and Apt install
+Container repository on remote host, on network (artifactory).  Dockerhub, Quay
+IronBank
+Logging into repository: docker login, podman login
+Create a developer container.
+- From VSCode UI
+- .devcontainer
+- VSCode plugins
+Initial connection
+Save shortcut in system toolbar.
+Test code
+Additional stuff, remote debugger.
+Sharing and mapping of dirs. between host and devcontainer.
+- Root access (docker vs. podman)
+
+4) Git Build pipelines
+Latex
+.gitlab-ci.yaml
+
+5) K8s cluster setup
+- Staging and production
+- OpenShift, RKE, etc.
+- Setup a K8s cluster (2 worker nodes, 1 control node).
+- Deployment
+- Security
+
+6) Specific VSCode tooling for golang, java, etc.
+- Latex
+
+7) AWS/cloud hosting
+
+7) Setup of a K8s cluster
+
+8) Test app project (golang pull data)
+- Microservices
+- WebUI
+
+9) Test app project deployment
+- Deployment
+- Database
+- Services: NodeAddress,ClusterIP, Loadbalancer.
+- Ingress
+
+10) IaC
+- Helm
+- Ansible
+- Terraform
+
+11) Kubestranaut certs
+- KCNA + Courses + Exam
+- KCSA + Course + Exam
+- Etc.
+
+
+
+
+
+
