@@ -1,3 +1,78 @@
 \section{sshclient}
 
 TODO: WRITE ME!
+
+
+Local BASH shell, Local SSH client.
+Install/enable/start SSH service
+Create SSH public+private keys
+- gitbash
+- ssh-keygen
+
+
+C:\Users\vfinl>ssh-keygen
+Generating public/private ed25519 key pair.
+Enter file in which to save the key (C:\Users\vfinl/.ssh/id_ed25519):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase again:
+Your identification has been saved in C:\Users\vfinl/.ssh/id_ed25519
+Your public key has been saved in C:\Users\vfinl/.ssh/id_ed25519.pub
+The key fingerprint is:
+SHA256:rp5oLbld4wp4biuWzVsnoALpThqM2x06ud5Poty4xnY vfinl@victor
+The key's randomart image is:
++--[ED25519 256]--+
+|                 |
+|                 |
+|                 |
+| .               |
+|o   .   S        |
+|=  o . .         |
+|+=o==o+ =        |
+|+*XXEO.B .       |
+|o*XOXBB..        |
++----[SHA256]-----+
+
+
+
+
+
+
+C:\Users\vfinl\.ssh
+ssh-copy-id -i ~/.ssh/id_rsa.pub vfinley@remote_server
+Install public key.
+Test connection
+
+# In GitBASH terminal
+vfinl@victor MINGW64 ~
+$ ssh-copy-id -i ~/.ssh/id_ed25519.pub vfinley@alpha
+/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/vfinl/.ssh/id_ed25519.pub"
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+vfinley@alpha's password:
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'vfinley@alpha'"
+and check to make sure that only the key(s) you wanted were added.
+
+vfinl@victor MINGW64 ~
+$ ssh vfinley@alpha
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-57-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+35 updates can be applied immediately.
+15 of these updates are standard security updates.
+To see these additional updates run: apt list --upgradable
+
+9 additional security updates can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+New release '24.04.2 LTS' available.
+Run 'do-release-upgrade' to upgrade to it.
+
+Last login: Mon May  5 06:49:56 2025 from 192.168.56.1

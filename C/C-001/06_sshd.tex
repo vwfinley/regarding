@@ -1,3 +1,54 @@
 \section{sshd}
 
 TODO: WRITE ME!
+
+
+3.5) Install SSHD
+
+4) Initial login
+C:\Users\vfinl>ssh vfinley@alpha
+The authenticity of host 'alpha (192.168.56.104)' can't be established.
+ED25519 key fingerprint is SHA256:YTJSyWrfm2oppwq+vtpskrQjk0hMw80dJ8xzBAfkcOI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'alpha' (ED25519) to the list of known hosts.
+vfinley@alpha's password:
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-57-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+vfinley@alpha:~$ ls
+Desktop  Documents  Downloads  Music  Pictures  Public  snap  ssh  Templates  Videos
+
+--------------------
+
+--------------------------------
+
+https://devconnected.com/how-to-install-and-enable-ssh-server-on-ubuntu-20-04/
+sudo apt-get install openssh-server
+sudo systemctl status sshd
+sudo systemctl restart sshd 
+Edit local host file with VM name and IP address.
+- C:\Windows\System32\drivers\etc\hosts
+- Open notepad as admin
+- Or ask admin to put in DNS

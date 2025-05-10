@@ -1,3 +1,43 @@
 \section{devcontainer}
 
 TODO: WRITE ME!
+
+
+# Create new dev container
+- In VSCode Ctrl+Shift+P
+- Search for: "Dev Containers: New Dev Container..."
+- Pick Latex
+- Wait a few mins while container image downloads and installs 
+
+
+```
+# https://linux.how2shout.com/install-tex-live-on-ubuntu-20-04-lts-a-free-typesetting-system/
+# https://www.linuxfordevices.com/tutorials/ubuntu/fix-unable-to-acquire-the-dpkg-frontend-lock
+
+FROM ghcr.io/jmuchovej/devcontainers/latex:2024
+
+USER root
+RUN sudo su
+RUN dpkg --configure -a
+RUN apt update
+#RUN apt-get install -y texlive-full
+RUN apt-get install -y texlive
+
+USER vscode
+
+```
+- Search for: "Dev Containers: Add Dev Container Configuration Files..."
+- Select Alpine
+- Select 3.20 (default)
+- At prompt to "Select additional features to install" search for Latex.
+- Select "Latex Workshop", click OK
+- Select "Configure Options"
+- Choose "full"
+- When prompted to Provide a custom mirror, just hit Enter
+- Include optional file .GitHub/dependabot.yml
+- .devcontainer/devcontainer.json will be created.
+- Click on blue button "Reopen in Container"
+- Wait a f
+
+
+Write with focus on GoLang.  Save the LaTeX container mods for another article C-002.

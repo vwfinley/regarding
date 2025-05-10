@@ -1,3 +1,36 @@
 \section{vscode}
 
 TODO: WRITE ME!
+
+
+## VWF TODO: Setup VSCode (Version 1.99.3)
+- Install IDE (VSCode) locally
+- Start remote machine
+- Verify remote machine is running.
+- Ipaddr 192.168.56.104=alpha
+- Install Remote Development plugins
+  - Click Extensions
+  - Search "Remote"
+  - Find/Install "Remote Development" pack.
+- Click Remote Explorer Icon
+  - Select Remotes(Tunnels/SSH) from drop down at top of Remote Explorer panel.
+  - Hover over the SSH section on the panel
+  - Click the Plus icon (new Remote)
+  - In the "Enter SSH Connection Command" box, enter ssh vfinley@alpha -A
+  - In the "Select SSH configuration file to update" box enter C:/Users/vfinl/.ssh/config (first file in list).
+- In Remoter Explorer SSH list, find the host (alpha) you just added.
+  - Hover over alpha
+  - Click the right arrow (Connect in current window) button.
+  - Wait about 30 sec for VSCode server to install.
+  - Click Explorer icon in left bar (Ctrl+Shift+E), click "Open Folder" button.
+  - Select default path, click OK
+  - Dialog "Do you trust the authors of the files in this folder?"
+    - Click "Yes, I trust the authors"
+  - Terminal > New Terminal
+  - At the command line `ping google`
+Setup remote SSH connection.
+Connect, login to remote VM
+Save shortcut in system toolbar.
+  - Right-click VSCode icon
+  - Select Recent Folders (vfinley [SSH:alpha])
+  - Click Pin to list icon

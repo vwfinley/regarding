@@ -1,3 +1,117 @@
 \section{git}
 
 TODO: WRITE ME!
+
+
+## TODO: Git Configuration Setup
+- For each remote host:
+- On alpha install git with `sudo apt install git`
+```
+sudo apt install git
+
+# Be sure to change user name and email to YOUR name and email address
+git config --global user.name "John Doe"
+git config --global user.email "john.doe@youremail.com"
+```
+
+# Git Password Saver Setup
+- Typing your password/PAT (personal access token) over and over for Git(hub/lab) is annoying.
+- Fortunately there is a better way.
+- At the Bash shell prompt enter:
+```
+git config --global credential.helper store
+```
+- Next time you enter password info for Git, you password will be remembered thereafter.
+- Note some Git repos are setup to use a PAT in place of a password, when prompted for a password use the PAT instead.
+
+
+
+# Creating a PAT
+- Login to GitHub
+- Click on the user icon
+- Select "Settings" from the menu.
+- Left menu, scroll to bottom, click "Developer Settings".
+- Left menu, under Access Tokens, select Fine-Grained Tokens
+- Click green "Generate new token" button.
+- Fill in the "Token name" field with a name you will remember.
+- Set the Expiration date to a convenient date.
+- Select "All Repositories"
+- Under "Permissions / Repository permissions" at a minimum give yourself "Read and write" access to Contents and Pull requests.
+- Click the green "Generate token" button at the bottom.
+- In the popup dialog click the green "Generate token" again.
+- In the page that appears, copy the PAT (including the github_pat_ prefix), name and expiration date.  Save it somewhere for later use.
+button at the bottom.
+
+
+
+# Clone a repo
+- In browser find a repo, for example: https://github.com/vwfinley/regarding
+- Click on green "Code" button.
+- Click on the "Local" tab.
+- Select "Https"
+- Copy the URL in the "Clone using the web URL" field.  For example: https://github.com/vwfinley/regarding.git
+
+```
+# Create a directory for your project and go there.
+vfinley@alpha:~$ mkdir ~/Documents/projects
+vfinley@alpha:~$ cd ~/Documents/projects/
+
+# Clone the repo with the URL you copied above.
+vfinley@alpha:~/Documents/projects$ git clone https://github.com/vwfinley/regarding.git
+Cloning into 'regarding'...
+remote: Enumerating objects: 2047, done.
+remote: Counting objects: 100% (271/271), done.
+remote: Compressing objects: 100% (179/179), done.
+remote: Total 2047 (delta 188), reused 158 (delta 90), pack-reused 1776 (from 2)
+Receiving objects: 100% (2047/2047), 3.91 MiB | 4.60 MiB/s, done.
+Resolving deltas: 100% (1243/1243), done.
+
+# Make change to project
+vfinley@alpha:~/Documents/projects$ cd regarding/
+vfinley@alpha:~/Documents/projects/regarding$ ls
+A  B  LICENSE.md  README.md
+vfinley@alpha:~/Documents/projects/regarding$ mkdir C
+vfinley@alpha:~/Documents/projects/regarding$ ls
+A  B  C  LICENSE.md  README.md
+vfinley@alpha:~/Documents/projects/regarding$ mkdir C/C-001
+vfinley@alpha:~/Documents/projects/regarding$ cd C/C-001
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ echo "Hello World" > README.md
+```
+
+# Initial checkin
+```
+git add README.md
+git commit -m "New File"
+git push
+
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ git add README.md 
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ git commit -m "New File"
+[main 5ed57a6] New File
+ 1 file changed, 1 insertion(+)
+ create mode 100644 C/C-001/README.md
+
+# When prompted for password paste your PAT token.
+vfinley@alpha:~/Documents/projects/regarding/C/C-001$ git push
+Username for 'https://github.com': vwfinley
+Password for 'https://vwfinley@github.com': <paste_PAT_token_here> 
+
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (5/5), 365 bytes | 365.00 KiB/s, done.
+Total 5 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/vwfinley/regarding.git
+   7ff2319..5ed57a6  main -> main
+```
+Now goto repo webpage and verify the change was pushed!
+
+Gitlab/GitHub (online or corporate) account
+Create PAT token, save it.
+Install Git client
+Setup Git local id (Username and email)
+Setup Git password keeper.  (username and PAT or password).
+Git checkout of code base.
+
+

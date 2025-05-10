@@ -1,3 +1,53 @@
 \section{VM}
 
 TODO: WRITE ME!
+
+
+2)https://www.bing.com/videos/riverview/relatedvideo?q=virtualbox+ubuntu+22.04+cannot+ping+from+host&mid=5B1AA719E4ADB9624DB45B1AA719E4ADB9624DB4&mcid=FEEEA5610D984BF1B9DDC47C30A02B7B&FORM=VIRE
+
+Memory 2048
+Processors 2
+Video mem 16MB?
+
+
+For Ubuntu Desktop Distro
+a) In Ubuntu > Settings > Network > Wired Connected Gear button > Details tab > IP4 address 10.0.2.15
+b) In Ubuntu > terminal > ping google.com
+c) In VirtualBox > Select machine (powered off) > Settings > Network > Adapter 1 tab
+  - (default checked) Enable Network Adapter
+  - (default) Attached to: NAT
+  - (default) Adapter type: Intel PRO/1000 MT Desktop (82540EM)
+  - MAC Address: 080027742766
+  - (default checked) Cable Connected
+d) Adapter 2 Tab
+  - Check: Enable Network Adapter
+  - Select: Attached to:  Host-only Adapter
+  - Name, Adapter type, Promiscuous Mode, MAC Address, Cable   connected: Will auto populate
+  - Click OK
+e) VirtualBox > File > Tools > Network Manager > VHost-only Networks
+  - VirtualBox Host-Only Ethernet Adapter should appear in list.
+  - IPV4 Prefix 192.168.56.1/24
+  - DHCP Server = Enabled
+f) Start the Ubuntu VM 
+g) Settings > Network > Choose second adapter > Gear icon
+  - IPv4 Address 192.168.56.104
+h) From host CMD shell: Ping 192.168.56.104
+i) See video for Ubuntu Server distro (netplan setup?)
+j) sudo apt-get update
+
+3) Edit hosts file
+- On Windows11 system
+- Run Notepad as admin
+- Open C:\Windows\System32\drivers\etc\hosts
+- Add entry: 192.168.56.104    alpha # Ubuntu VM
+- Save and close the hosts file
+- In CMD shell: ping alpha
+
+
+
+Screen settings:
+In Ubuntu Display 1680x1050 landscape
+Privacy > Screen 
+- Blank screen: Never
+- Automatic Screen Lock: Disabled
+- Lock Screen on Suspend: Disabled
