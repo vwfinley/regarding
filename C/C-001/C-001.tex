@@ -43,6 +43,16 @@
 \usepackage{lastpage} % page x of y
 \usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
 
+%%% Background color for commandline/code
+\usepackage{color}
+\let\oldv\verbatim
+\let\oldendv\endverbatim
+\def\verbatim{\par\setbox0\vbox\bgroup\oldv}
+\def\endverbatim{\oldendv\egroup\fboxsep0pt \noindent\colorbox[gray]{0.8}{\usebox0}\par}
+
+%%% Foce lines between paragraphs
+\usepackage[indent=12pt]{parskip}
+
 \pagestyle{fancy} % options: empty , plain , fancy
 %\renewcommand{\headrulewidth}{0pt} % customise the layout...
 %\lhead{}\chead{}\rhead{}
@@ -104,6 +114,7 @@
 
 \input{04_hypervisor.tex}
 \input{05_vm.tex}
+\input{05_5_hosts.tex}
 \input{06_sshd.tex}
 \input{07_sshclient.tex}
 \input{08_vscode.tex}

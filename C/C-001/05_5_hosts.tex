@@ -1,0 +1,74 @@
+\section{Hosts File}
+
+At this point we have an Ubuntu Linux desktop distribution running in a virtual machine.
+Our virtual machine is named "alpha".
+
+We want to begin establishing communication between our laptop and the "alpha" VM.
+The first thing we want to do is discover which network alpha is on, and what address can be used to access it.
+
+To accomplish this first open a terminal on alpha and do the following:
+\begin{enumerate}
+  \item Goto: Activities $>$ Settings $>$ Network
+  \item Click the gear icon beside each ethernet connection.
+  \item Write down the IPv4 Link address for each ethernet connection.
+  \item For example, addresses for 2 ethernet connections: 10.0.2.15 and 192.168.56.104
+\end{enumerate}
+
+The next step is to Ping alpha with our ethernet connections addresses, and determine which alpha responds to.
+On our laptop, open a Windows cmd shell and do the following:
+\begin{verbatim}
+C:\Users\vfinl>ping 10.0.2.15
+
+Pinging 10.0.2.15 with 32 bytes of data:
+Request timed out.
+
+Ping statistics for 10.0.2.15:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\Users\vfinl>ping 192.168.56.104
+
+Pinging 192.168.56.104 with 32 bytes of data:
+Reply from 192.168.56.104: bytes=32 time=1ms TTL=64
+
+Ping statistics for 192.168.56.104:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+\end{verbatim}
+
+Alpha responded to the Ping at address 192.168.56.104.
+This address will be used to communicate with alpha hereafter.
+However, the address is difficult to remember and tedious to type frequently.
+
+It would be good to alias the address to a friendly name like "alpha".
+Let's update the laptop's hosts file to associate the address to the friendly name.
+
+To edit the hosts file on a Windows 11 system, run Notepad as admin.
+\begin{itemize}
+  \item Click Windows start icon.
+  \item Type "notepad".
+  \item Expand menu under Open.
+  \item Select as "Run as administrator".
+  \item Open file \begin{verbatim}C:\Windows\System32\drivers\etc\hosts\end{verbatim}
+  \item Add following entry to the file: \begin{verbatim}192.168.56.104  alpha # Ubuntu VM\end{verbatim}
+  \item Save the file.
+  \item Close Notepad.
+\end{itemize}
+
+Verify that the friendly name is associated with the address.
+At a Windows cmd shell prompt, do the following and verify alpha replies to the ping.
+
+\begin{verbatim}
+C:\Users\vfinl>ping alpha
+
+Pinging alpha [192.168.56.104] with 32 bytes of data:
+Reply from 192.168.56.104: bytes=32 time=1ms TTL=64
+Reply from 192.168.56.104: bytes=32 time<1ms TTL=64
+Reply from 192.168.56.104: bytes=32 time<1ms TTL=64
+Reply from 192.168.56.104: bytes=32 time<1ms TTL=64
+
+Ping statistics for 192.168.56.104:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 0ms, Maximum = 1ms, Average = 0ms
+\end{verbatim}

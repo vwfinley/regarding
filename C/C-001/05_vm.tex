@@ -1,47 +1,56 @@
-\section{VM}
+\section{Virtual Machine}
 
-TODO: WRITE ME!
-
-
-2)
 \begin{verbatim}
 https://www.bing.com/videos/riverview/relatedvideo?q=virtualbox+ubuntu+22.04+cannot+ping+from+host&mid=5B1AA719E4ADB9624DB45B1AA719E4ADB9624DB4&mcid=FEEEA5610D984BF1B9DDC47C30A02B7B&FORM=VIRE
 \end{verbatim}
 
-Memory 2048
-Processors 2
-Video mem 16MB?
-
+\begin{itemize}
+  \item Memory 2048
+  \item Processors 2
+  \item Video mem 16MB?
+\end{itemize}
 
 For Ubuntu Desktop Distro
-a) In Ubuntu > Settings > Network > Wired Connected Gear button > Details tab > IP4 address 10.0.2.15
-b) In Ubuntu > terminal > ping google.com
-c) In VirtualBox > Select machine (powered off) > Settings > Network > Adapter 1 tab
-  - (default checked) Enable Network Adapter
-  - (default) Attached to: NAT
-  - (default) Adapter type: Intel PRO/1000 MT Desktop (82540EM)
-  - MAC Address: 080027742766
-  - (default checked) Cable Connected
-d) Adapter 2 Tab
-  - Check: Enable Network Adapter
-  - Select: Attached to:  Host-only Adapter
-  - Name, Adapter type, Promiscuous Mode, MAC Address, Cable   connected: Will auto populate
-  - Click OK
-e) VirtualBox > File > Tools > Network Manager > VHost-only Networks
-  - VirtualBox Host-Only Ethernet Adapter should appear in list.
-  - IPV4 Prefix 192.168.56.1/24
-  - DHCP Server = Enabled
-f) Start the Ubuntu VM 
-g) Settings > Network > Choose second adapter > Gear icon
-  - IPv4 Address 192.168.56.104
-h) From host CMD shell: Ping 192.168.56.104
-i) See video for Ubuntu Server distro (netplan setup?)
-j) sudo apt-get update
+\begin{enumerate}
+  \item In Ubuntu > Settings > Network > Wired Connected Gear button > Details tab > IP4 address 10.0.2.15
+  \item In Ubuntu > terminal > ping google.com
+  \item In VirtualBox > Select machine (powered off) > Settings > Network > Adapter 1 tab
+    \begin{itemize}
+      \item (default checked) Enable Network Adapter
+      \item (default) Attached to: NAT
+      \item (default) Adapter type: Intel PRO/1000 MT Desktop (82540EM)
+      \item MAC Address: 080027742766
+      \item (default checked) Cable Connected
+    \end{itemize}
+  \item Adapter 2 Tab
+    \begin{itemize}
+      \item Check: Enable Network Adapter
+      \item Select: Attached to:  Host-only Adapter
+      \item Name, Adapter type, Promiscuous Mode, MAC Address, Cable   connected: Will auto populate
+      \item Click OK
+    \end{itemize}
+  \item VirtualBox > File > Tools > Network Manager > VHost-only Networks
+    \begin{itemize}
+      \item VirtualBox Host-Only Ethernet Adapter should appear in list.
+      \item IPV4 Prefix 192.168.56.1/24
+      \item DHCP Server = Enabled
+     \end{itemize}
+  \item Start the Ubuntu VM 
+  \item Settings > Network > Choose second adapter > Gear icon
+    \begin{itemize}
+      \item IPv4 Address 192.168.56.104
+      \item From host CMD shell: Ping 192.168.56.104
+      \item See video for Ubuntu Server distro (netplan setup?)
+      \item sudo apt-get update
+    \end{itemize}
+  \item Edit hosts file
+    \begin{itemize}
+      \item On Windows11 system
+      \item Run Notepad as admin
+      \item Open 
+    \end{itemize}
+\end{enumerate}
 
-3) Edit hosts file
-- On Windows11 system
-- Run Notepad as admin
-- Open 
 \begin{verbatim}
 C:\Windows\System32\drivers\etc\hosts
 - Add entry: 192.168.56.104    alpha # Ubuntu VM
@@ -51,8 +60,25 @@ C:\Windows\System32\drivers\etc\hosts
 
 
 Screen settings:
-In Ubuntu Display 1680x1050 landscape
-Privacy > Screen 
-- Blank screen: Never
-- Automatic Screen Lock: Disabled
-- Lock Screen on Suspend: Disabled
+\begin{itemize}
+\item In Ubuntu Display 1680x1050 landscape
+\item Privacy > Screen
+  \begin{itemize} 
+    \item Blank screen: Never
+    \item Automatic Screen Lock: Disabled
+    \item Lock Screen on Suspend: Disabled
+  \end{itemize}
+\end{itemize}
+
+Settings > Power > Automatic Suspend = off
+
+
+\begin{verbatim}
+sudo apt-get install openssh-server
+sudo systemctl status sshd
+sudo systemctl restart sshd 
+Edit local host file with VM name and IP address.
+- C:\Windows\System32\drivers\etc\hosts
+- Open notepad as admin
+- Or ask admin to put in DNS
+\end{verbatim}
