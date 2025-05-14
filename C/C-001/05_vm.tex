@@ -1,84 +1,78 @@
 \section{Virtual Machine}
 
-\begin{verbatim}
-https://www.bing.com/videos/riverview/relatedvideo?q=virtualbox+ubuntu+22.04+cannot+ping+from+host&mid=5B1AA719E4ADB9624DB45B1AA719E4ADB9624DB4&mcid=FEEEA5610D984BF1B9DDC47C30A02B7B&FORM=VIRE
-\end{verbatim}
+Setting up a Virtual Machine is not difficult, but there are many steps involved.
 
-\begin{itemize}
-  \item Memory 2048
-  \item Processors 2
-  \item Video mem 16MB?
-\end{itemize}
+\subsection{Download Linux image}
+To create an Ubuntu Desktop virtual machine on the VirtualBox hypervisor, we will need a distribution image.
 
-For Ubuntu Desktop Distro
 \begin{enumerate}
-  \item In Ubuntu > Settings > Network > Wired Connected Gear button > Details tab > IP4 address 10.0.2.15
-  \item In Ubuntu > terminal > ping google.com
-  \item In VirtualBox > Select machine (powered off) > Settings > Network > Adapter 1 tab
-    \begin{itemize}
-      \item (default checked) Enable Network Adapter
-      \item (default) Attached to: NAT
-      \item (default) Adapter type: Intel PRO/1000 MT Desktop (82540EM)
-      \item MAC Address: 080027742766
-      \item (default checked) Cable Connected
-    \end{itemize}
-  \item Adapter 2 Tab
-    \begin{itemize}
-      \item Check: Enable Network Adapter
-      \item Select: Attached to:  Host-only Adapter
-      \item Name, Adapter type, Promiscuous Mode, MAC Address, Cable   connected: Will auto populate
-      \item Click OK
-    \end{itemize}
-  \item VirtualBox > File > Tools > Network Manager > VHost-only Networks
-    \begin{itemize}
-      \item VirtualBox Host-Only Ethernet Adapter should appear in list.
-      \item IPV4 Prefix 192.168.56.1/24
-      \item DHCP Server = Enabled
-     \end{itemize}
-  \item Start the Ubuntu VM 
-  \item Settings > Network > Choose second adapter > Gear icon
-    \begin{itemize}
-      \item IPv4 Address 192.168.56.104
-      \item From host CMD shell: Ping 192.168.56.104
-      \item See video for Ubuntu Server distro (netplan setup?)
-      \item sudo apt-get update
-    \end{itemize}
-  \item Edit hosts file
-    \begin{itemize}
-      \item On Windows11 system
-      \item Run Notepad as admin
-      \item Open 
-    \end{itemize}
+  \item Browse to https://ubuntu.com/download/desktop
+  \item Search the page for "check out our alternative downloads", and click it.
+  \item Search the page under Past Releases for Ubuntu 22.04 LTS (Jammy Jellyfish), and click it.
+  \item Click the link for "64-bit PC (AMD64) desktop image".
+  \item Download of the file named ubuntu-22.04.5-desktop-amd64.iso will complete in a few minutes.
 \end{enumerate}
 
-\begin{verbatim}
-C:\Windows\System32\drivers\etc\hosts
-- Add entry: 192.168.56.104    alpha # Ubuntu VM
-- Save and close the hosts file
-- In CMD shell: ping alpha
-\end{verbatim}
 
 
-Screen settings:
-\begin{itemize}
-\item In Ubuntu Display 1680x1050 landscape
-\item Privacy > Screen
-  \begin{itemize} 
-    \item Blank screen: Never
-    \item Automatic Screen Lock: Disabled
-    \item Lock Screen on Suspend: Disabled
-  \end{itemize}
-\end{itemize}
+\subsection{Create New Virtual Machine}
+Let's create a new virtual machine in VirtualBox with the image we downloaded.
 
-Settings > Power > Automatic Suspend = off
+\begin{enumerate}
+  \item From the Windows start menu, launch Oracle VirtualBox.
+  \item In Oracle VirtualBox Manager application goto: Machine $>$ New... 
+  \item In the Create Virtual Machine popup dialog, we'll set Name="alpha".
+  \item Click the ISO Image field and search for the ubuntu-22.04.5-desktop-amd64.iso you downloaded.
+  \item Set Type=Linux
+  \item Set Subtype=Ubuntu
+  \item Set Version=Ubuntu (64-bit)
+  \item Check "Skip Unattended Installation".
+  \item Expand the Hardware section.
+  \item Increase Processors to 2 CPUs.
+  \item Click the Finish button.
+\end{enumerate}
 
 
-\begin{verbatim}
-sudo apt-get install openssh-server
-sudo systemctl status sshd
-sudo systemctl restart sshd 
-Edit local host file with VM name and IP address.
-- C:\Windows\System32\drivers\etc\hosts
-- Open notepad as admin
-- Or ask admin to put in DNS
-\end{verbatim}
+
+\subsection{Start the Virtual Machine}
+Okay, let's launch Ubuntu inside VirtualBox.
+
+\begin{enumerate}
+  \item In the Oracle VirtualBox Manager application, search the left panel for the machine "alpha" you just created.
+  \item Right-click on "alpha" and select Start $>$ Normal Start.
+  \item Once the boot screen appears in the preview pane, click "Show" on the top menu.
+  \item Click inside window the boot window that appears, select "Try or Install Ubuntu", and hit enter.
+\end{enumerate}
+
+\subsection{Install Ubuntu}
+Time to install Ubuntu onto the VM!
+
+\begin{enumerate}
+  \item Once the Ubuntu desktop appears, you should see a window the the title "Install".
+  \item The page has two options, choose your language then select the option "Install Ubuntu".
+  \item On the Keyboard Layout page, choose your keyboard layout and click "Continue".
+  \item On the Updates and Other Software page, choose Minimal Installation, uncheck "Download Updates while installing Ubuntu", check "Install third-party software..."
+  \item Click "Continue".
+  \item On the Installation Type page, select "Erase disk and install Ubuntu".
+  \item Click "Install Now".
+  \item On the pop-up box that says "Write the changes to disk?", click "Continue".
+  \item Select your timezone and click "Continue".
+  \item On the "Who are you?" page, populate your name, set the computer name to "alpha", set your username and password.
+  \item Choose "Require my password to log in".
+  \item Click "Continue".
+  \item Ubutnu will begin installing onto the VM, be patient it will take 10-15 minutes to complete.
+  \item Once the installation has completed, click the "Restart Now" button.
+  \item Wait a few moments, an Ubutnu screen will appear telling you to remove the installation media.  DO NOT Press Enter Yet!
+  \item Go into the VirtualBox Manager application, select the "alpha" machine, and click Settings on the top menu.
+  \item Select Storage from the Left panel.
+  \item Under Controller IDE, click the disk icon.
+  \item Uncheck Live CD/DVD.  Click OK.
+  \item Now go back to the remove installation media screen, and press Enter.
+  \item Wait for the VM to shutdown.
+\end{enumerate}
+
+
+
+
+
+

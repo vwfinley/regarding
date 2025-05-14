@@ -1,0 +1,152 @@
+\section{Network Setup}
+
+The Ubuntu desktop distribution has been installed into a VM that runs in VirtualBox on the laptop.
+As far as the laptop is concerned, the VM is a wholly independent machine, even though the VM lives on the laptop.
+
+We need a way to talk to the VM from the laptop.
+To achieve this we will be making a change to the network, and then gathering some information.
+
+Initally, VirtualBox created the VM with a single default network adapter that supports Network Address Translations (NAT).
+This default adapter is fine for connecting to the outside world: browsing to an internet website, or pinging google.com.
+In other words, outbound traffic is supported.
+
+However, inbound traffic is unsupported.
+If we were to ping the "alpha" VM from the commandline on the laptop, we would get no reply.
+
+\subsection{Add Bridge Adapter}
+To support inbound traffic, we need to add another network adapter.
+
+\begin{enumerate}
+  \item In VirtualBox: Select machine alpha (powered off).
+  \item Goto Settings $>$ Network $>$ Adapter 2 tab
+  \item Check Enable Network Adapter
+  \item Change Attached to: = Bridged Adapter
+  \item Click OK
+\end{enumerate}
+
+
+
+\subsection{Gather IP Addresses}
+Let's verify the network is configured correctly, and can send/receive traffic.
+While we are at it, let's remember the alpha VM IP addresses.
+
+\begin{enumerate}
+  \item In VirtualBox right-click the VM named alpha.
+  \item Select Start $>$ Normal Start
+  \item When the Ubuntu login window appears, login.
+  \item When the desktop appears, click Activities $>$ Settings $>$ Network
+  \item For each of the two Ethernet connections: 
+    Click on the Gear button
+    Click on the Details tab
+    Write down the IP4 address
+    
+    10.0.2.15
+  \item Click in the boot window, and 
+\end{enumerate}
+
+
+VirtualBox > Settings > Network > Bridged adapter.
+
+
+
+\begin{verbatim}
+https://www.bing.com/videos/riverview/relatedvideo?q=virtualbox+ubuntu+22.04+cannot+ping+from+host&mid=5B1AA719E4ADB9624DB45B1AA719E4ADB9624DB4&mcid=FEEEA5610D984BF1B9DDC47C30A02B7B&FORM=VIRE
+\end{verbatim}
+
+\begin{itemize}
+  \item Memory 2048
+  \item Processors 2
+  \item Video mem 16MB?
+\end{itemize}
+
+For Ubuntu Desktop Distro
+\begin{enumerate}
+  \item In Ubuntu > Settings > Network > Wired Connected Gear button > Details tab > IP4 address 10.0.2.15
+  \item In Ubuntu > terminal > ping google.com
+  \item In VirtualBox > Select machine (powered off) > Settings > Network > Adapter 1 tab
+    \begin{itemize}
+      \item (default checked) Enable Network Adapter
+      \item (default) Attached to: NAT
+      \item (default) Adapter type: Intel PRO/1000 MT Desktop (82540EM)
+      \item MAC Address: 080027742766
+      \item (default checked) Cable Connected
+    \end{itemize}
+  \item Adapter 2 Tab
+    \begin{itemize}
+      \item Check: Enable Network Adapter
+      \item Select: Attached to:  Host-only Adapter
+      \item Name, Adapter type, Promiscuous Mode, MAC Address, Cable   connected: Will auto populate
+      \item Click OK
+    \end{itemize}
+  \item VirtualBox > File > Tools > Network Manager > VHost-only Networks
+    \begin{itemize}
+      \item VirtualBox Host-Only Ethernet Adapter should appear in list.
+      \item IPV4 Prefix 192.168.56.1/24
+      \item DHCP Server = Enabled
+     \end{itemize}
+  \item Start the Ubuntu VM 
+  \item Settings > Network > Choose second adapter > Gear icon
+    \begin{itemize}
+      \item IPv4 Address 192.168.56.104
+      \item From host CMD shell: Ping 192.168.56.104
+      \item See video for Ubuntu Server distro (netplan setup?)
+      \item sudo apt-get update
+    \end{itemize}
+  \item Edit hosts file
+    \begin{itemize}
+      \item On Windows11 system
+      \item Run Notepad as admin
+      \item Open 
+    \end{itemize}
+\end{enumerate}
+
+\begin{verbatim}
+C:\Windows\System32\drivers\etc\hosts
+- Add entry: 192.168.56.104    alpha # Ubuntu VM
+- Save and close the hosts file
+- In CMD shell: ping alpha
+\end{verbatim}
+
+
+Screen settings:
+\begin{itemize}
+\item In Ubuntu Display 1680x1050 landscape
+\item Privacy > Screen
+  \begin{itemize} 
+    \item Blank screen: Never
+    \item Automatic Screen Lock: Disabled
+    \item Lock Screen on Suspend: Disabled
+  \end{itemize}
+\end{itemize}
+
+Settings > Power > Automatic Suspend = off
+
+
+\begin{verbatim}
+sudo apt-get install openssh-server
+sudo systemctl status sshd
+sudo systemctl restart sshd 
+Edit local host file with VM name and IP address.
+- C:\Windows\System32\drivers\etc\hosts
+- Open notepad as admin
+- Or ask admin to put in DNS
+\end{verbatim}
+
+
+
+\subsection{Inital Ubuntu Setup}
+
+
+\noindent
+Create VM
+\begin{itemize}
+  \item Initial resources (cpu, memory, storage)
+  \item Install OS
+  \item Minimum install
+  \item Give VM a name
+  \item Setup user account
+  \item Ping google test
+  \item Get ip address, write it down
+  \item Run software update (yum, apt)
+\end{itemize}
+

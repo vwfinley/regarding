@@ -1,56 +1,18 @@
 \section{Hypervisor}
 
+Let's begin setting up the development environment.
+We will install Oracle VirtualBox onto the laptop.
 
-Preamble
-\begin{itemize}
-  \item Old monolith desktop development model (everything on your local machine, remote source control)
-  \item New microservice/cloud/container model (local machine is just a terminal, development on remote machine (VM), developer container, remote staging/deployment, remote source control)
-\end{itemize}
-
-
-\noindent
-Planning, Take inventory of hardware
-Password keeper (KeePass, Bitwarden, etc.)
-Where are VMs going to run?
-\begin{itemize}
-  \item Local (laptop)
-  \item Network server
-\end{itemize}
-
-
-\noindent
-VPN connection
-Login and Get account on Hypervisor
-Or, Install hypervisor
-\begin{itemize}
-  \item VMWare
-  \item Proxmox
-  \item Openbox
-  \item HyperV
-\end{itemize}
-
-
-\noindent
-Download Linux OS
-\begin{itemize}
-  \item Distrowatch.org
-  \item Debian/Ubuntu (download address)
-  \item Fedora/RHEL8 (download address)
-\end{itemize}
-
-
-\noindent
-Create VM
-\begin{itemize}
-  \item Initial resources (cpu, memory, storage)
-  \item Install OS
-  \item Minimum install
-  \item Give VM a name
-  \item Setup user account
-  \item Ping google test
-  \item Get ip address, write it down
-  \item Run software update (yum, apt)
-\end{itemize}
-
-
-VirtualBox > Settings > Network > Bridged adapter.
+Do the following:
+\begin{enumerate}
+  \item Browse to https://www.virtualbox.org/wiki/Downloads
+  \item Select the link for "Windows hosts".
+  \item Once the download has completed, open the download location and run the *.exe file.
+  \item When prompted if you want the app to make changes to your Device, click Yes.
+  \item On the welcom panel, click Next.
+  \item Accept the terms of the license agreement and click Next.
+  \item On the Custom Setup panel, accept all the defaults, and click Next.
+  \item On the Warning: Network Interfaces panel, click Yes.
+  \item After installation has completed, reboot your laptop.
+  \item Once you've logged back into your laptop, launch Oracle VirtualBox from the Windows start menu.
+\end{enumerate}
