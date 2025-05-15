@@ -1,0 +1,92 @@
+\section{Network Setup}
+
+The Ubuntu desktop distribution has been installed into a VM that runs in VirtualBox on the laptop.
+As far as the laptop is concerned, the VM is a wholly independent machine, even though the VM lives on the laptop.
+
+We need a way to talk to the VM from the laptop.
+To achieve this we will be making a change to the network, and then gathering some information.
+
+Initally, VirtualBox created the VM with a single default network adapter that supports Network Address Translations (NAT).
+This default adapter is fine for connecting to the outside world: browsing to an internet website, or pinging google.com.
+In other words, outbound traffic is supported.
+
+However, inbound traffic is unsupported.
+If we were to ping the "alpha" VM from the commandline on the laptop, we would get no reply.
+
+\subsection{Add Bridge Adapter}
+To support inbound traffic, we need to add another network adapter.
+
+\begin{enumerate}
+  \item In VirtualBox: Select machine alpha (powered off).
+  \item Goto Settings $>$ Network $>$ Adapter 2 tab
+  \item Check Enable Network Adapter
+  \item Change Attached to: = Bridged Adapter
+  \item Click OK
+\end{enumerate}
+
+
+
+\subsection{Gather IP Addresses}
+Let's verify the network is configured correctly, and can send/receive traffic.
+While we are at it, let's find the alpha VM IP addresses.
+
+\begin{enumerate}
+  \item You should still be logged into the alpha VM from the previous section.
+  \item Click Activities $>$ Settings $>$ Network
+  \item For each of the two Ethernet connections:
+    \begin{itemize}
+      \item Click on the Gear button
+      \item Click on the Details tab
+      \item Write down the IPv4 addresses for later.
+      \item For example: 10.0.2.15 and 10.0.0.71
+    \end{itemize}
+  \item Close the Settings application. 
+\end{enumerate}
+
+
+\subsection{Outbound connection}
+We have two network adapters each with a IPv4 address associated to it.
+It is unclear which address is the mapped to the NAT adapter and which is mapped to the Bridged adapter.
+In other words we don't know which is being used for outbound and inbound traffic.
+However we can test to verify the outbound connection is working properly.
+
+\begin{enumerate}
+  \item On the Ubuntu destop, click Activities.
+  \item Search for and select "terminal".
+  \item Once the terminal application launches, at the commandline type: \begin{verbatim}ping google.com\end{verbatim}
+  \item Hit Enter
+  \item Verify you get a response back.
+  \item Hit Ctrl+C to stop pinging.
+\end{enumerate}
+
+\subsection{Inbound connection}
+Okay, let's verify that the inbound (Bridged) connection is working.
+It is also an opportunity to determine which address is the inbound address, and which is the outbound address.
+
+\begin{enumerate}
+  \item On the laptop, open a Windows CMD terminal.
+  \item In at the commandline in the terminal you opened above, run ping with one of the addresses you wrote down above.
+  \item For example: \begin{verbatim}ping 10.0.2.15\end{verbatim}
+  \item If you get a response, it is the inbound (Bridged) traffic address, otherwise it is the outbound (NAT) address.
+  \item Write either "inbound" or "outbound" next to this address.
+  \item At the commandline try pinging the other address.
+  \item For example: \begin{verbatim}ping 10.0.0.71\end{verbatim}
+  \item If you get a response, it is the inbound (Bridged) traffic address, otherwise it is the outbound (NAT) address.
+  \item Write either "inbound" or "outbound" next to this address.
+\end{enumerate}
+
+
+
+
+
+%%\begin{verbatim}
+%%https://www.bing.com/videos/riverview/relatedvideo?q=virtualbox+ubuntu+22.04+cannot+ping+from+host&mid=5B1AA719E4ADB9624DB45B1AA719E4ADB9624DB4&mcid=FEEEA5610D984BF1B9DDC47C30A02B7B&FORM=VIRE
+%%\end{verbatim}
+
+
+
+
+
+
+
+

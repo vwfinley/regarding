@@ -1,0 +1,57 @@
+\section{Initial Login}
+
+We will restart the VM named alpha, and login for the first-time.
+
+\subsection{First time login pages}
+\begin{enumerate}
+  \item In VirtualBox right-click the VM named alpha.
+  \item Select Start $>$ Normal Start
+  \item When the Ubuntu login window appears, login.
+  \item When the desktop appears, a setup window named "Online Accounts" will appear.
+  \item Click Skip.
+  \item On the page Enable Ubutnu Pro, select Skip for Now and then click Next.
+  \item On the Help Improve Ubuntu, make a choice and click Next.
+  \item On the Privacy page, enable Location Services, and click Next.
+  \item On the Your Ready To Go Page, click Done.
+\end{enumerate}
+
+\subsection{Screen Blank}
+
+Until you get everything setup, it would be good to turn off the annoying screen blanking.
+
+\begin{enumerate}
+  \item In the Ubuntu desktop, got Activities $>$ Settings $>$ Privacy $>$ Screen
+  \item Change Blank screen to: Never
+  \item Change Automatic Screen Lock to: Disabled
+  \item Change Lock Screen on Suspend to: Disabled
+\end{enumerate}
+
+
+\subsection{Power Auto Suspend}
+
+Since the alpha VM is running on the laptop, it will lose connections when the laptop goes to sleep to save power.
+Let's prevent this from happening.
+
+\begin{enumerate}
+  \item In the Ubuntu desktop, got Activities $>$ Settings $>$ Power
+  \item Change Screen Blank to: Never
+  \item Change Automatic Power Saver to: Disabled
+  \item Change Automatic Suspend to: Off
+\end{enumerate}
+
+
+\subsection{Screen Resolution}
+
+Finally it would be good for the alpha guest VM to make full use of the display on the laptop host.
+
+\begin{enumerate}
+  \item In the Ubuntu desktop, got Activities $>$ Settings $>$ Displays
+  \item You will need to try different settings for Resolution.
+  \item Click the green Apply button.
+  \item If you like the resolution setting click Keep Changes, otherwise click Revert Settings.
+  \item For my laptop, Resolution=1680x1050 seems to work best.
+\end{enumerate}
+
+\subsection{Shutdown}
+
+Shutdown the alpha VM to prepare for the next section.
