@@ -30,7 +30,7 @@ Now that alpha has an available SSH service, let's test the connection.
 \begin{verbatim}
 C:\Users\vfinl>ssh vfinley@alpha
 
-The authenticity of host 'alpha (192.168.56.104)' can't be established.
+The authenticity of host 'alpha (10.0.0.246)' can't be established.
 ED25519 key fingerprint is SHA256:YTJSyWrfm2oppwq+vtpskrQjk0hMw80dJ8xzBAfkcOI.
 This key is not known by any other names.
 Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
@@ -61,15 +61,3 @@ vfinley@alpha:~$ ls
 Desktop  Documents  Downloads  Music  Pictures
   Public  snap  ssh  Templates  Videos
 \end{verbatim}
-
-
-
-%%\begin{verbatim}
-%%sudo apt-get install openssh-server
-%%sudo systemctl status sshd
-%%sudo systemctl restart sshd 
-%%Edit local host file with VM name and IP address.
-%%- C:\Windows\System32\drivers\etc\hosts
-%%- Open notepad as admin
-%%- Or ask admin to put in DNS
-%%\end{verbatim}
