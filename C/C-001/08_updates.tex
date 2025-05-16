@@ -1,0 +1,28 @@
+\section{Software Updates}
+
+You have verified that the network is configured and functional.
+While your are still logged into the desktop, it is a great opportunity to update all the software on the system.
+
+There are a couple ways to update.
+
+\subsection{Method 1: Update Graphically}
+Ubuntu desktop has an application named Software Updater to make system updates convenient.
+
+You may notice a message box that periodicially appears.
+It will say "Updated software is available for this computer.  Do you want to update it now?".
+
+You can also manually run the Software Updater application by going to: Activities $>$ Software Updater
+
+When prompted, click Install Now.
+
+\subsection{Method 2: Update Commandline}
+A better way to update is from the commandline.
+This method better supports automation and will work with headless (server) Ubuntu distributions.
+
+First launch a terminal: Activities > Terminal
+
+Then enter the following at the commandline.
+\begin{verbatim}
+$ sudo apt-get update
+$ sudo apt-get upgrade
+\end{verbatim}
