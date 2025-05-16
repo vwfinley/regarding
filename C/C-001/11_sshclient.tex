@@ -1,17 +1,88 @@
-\section{sshclient}
+\section{OpenSSH Client}
+It is important to keep in mind that SSH (Secure SHell) is a protocol.
+The implementation of the protocol has a client and server associated with it.
 
-TODO: WRITE ME!
+OpenSSH client should already be installed on Windows 11 by default.
+Earlier Windows versions may have it disabled.
+
+If OpenSSH is unavailable on your laptop, search the internet on how to enable or install it.
+
+The best way to verify if OpenSSH client is available is to enter the following at the Windows CMD prompt:
+\begin{verbatim}
+$ ssh
+$ where ssh
+\end{verbatim}
+
+As part of OpenSSH support for Windows, ssh-keygen and ssh-copy-id commandline utilities are probably bundled in.
 
 
-Local BASH shell, Local SSH client.
-Install/enable/start SSH service
-Create SSH public+private keys
-- gitbash
-- ssh-keygen
+\subsection{Initial SSH remote login}
+In the previous section, you enabled the SSH service on the remote VM named alpha.
+Let's test the connection!
+
+\begin{itemize}
+  \item On your laptop, open a Windows command shell and do the commands below.
+  \item When prompted "Are you sure you want to continue connecting" enter "yes".
+  \item Then enter your password for alpha.
+\end{itemize}
+
 
 \begin{verbatim}
+C:\Users\vfinl>ssh vfinley@alpha
 
-C:\Users\vfinl>ssh-keygen
+The authenticity of host 'alpha (10.0.0.246)' can't be established.
+ED25519 key fingerprint is SHA256:YTJSgWrfm9oppwq+vtpskrQjk0hPw80dJ8xzBAfacOI.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+
+Warning: Permanently added 'alpha' (ED25519) to the list of known hosts.
+
+vfinley@alpha's password:
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-57-generic x86_64)
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+\end{verbatim}
+
+
+\subsection{Check BASH shell response}
+
+Congratulations, you are SSH'd into alpha!
+To verify everything is working, enter "ls" at the BASH shell prompt.
+Inspect contents of your user directory, it should contain Desktop, Documents, etc. as shown below.
+
+\begin{verbatim}
+vfinley@alpha:~$ ls
+Desktop  Documents  Downloads  Music  Pictures
+  Public  snap  ssh  Templates  Videos
+\end{verbatim}
+
+Now exit the shell by entering exit.
+
+\begin{verbatim}
+vfinley@alpha:~$ exit
+\end{verbatim}
+
+\subsection{Generate Key}
+SSH secures authenticaion and communication by using a public+private key pair.
+Using the key pair makes it convenient since you won't need to login everytime you connect to the remote alpha VM.
+
+You wil need to:
+\begin{itemize}
+  \item Create the key pair.
+  \item Save the pair to your laptop.
+  \item Then give the public key to the remote VM named alpha (Ubuntu Desktop). 
+\end{itemize}
+
+When asked for a fil in which to save the key, hit Enter to save it to the default location.
+When creating the key pair you can set an optional password (or leave it blank) when asked for a passphrase.
+If you set a passphrase you will prompted for it once a session when making connections.
+
+Here's how do generate a keypair and copy it to the remote VM named alpha.
+On the laptop, at the Windows CMD prompt do the following:
+\begin{verbatim}
+C:\Users\vfinl> ssh-keygen
 Generating public/private ed25519 key pair.
 Enter file in which to save the key (C:\Users\vfinl/.ssh/id_ed25519):
 Enter passphrase (empty for no passphrase):
@@ -19,7 +90,7 @@ Enter same passphrase again:
 Your identification has been saved in C:\Users\vfinl/.ssh/id_ed25519
 Your public key has been saved in C:\Users\vfinl/.ssh/id_ed25519.pub
 The key fingerprint is:
-SHA256:rp5oLbld4wp4biuWzVsnoALpThqM2x06ud5Poty4xnY vfinl@victor
+SHA256:rp5oKbld4wp4biuWaVsnoALpThqM2x16ud5Poty4xnY vfinl@victor
 The key's randomart image is:
 +--[ED25519 256]--+
 |                 |
@@ -29,17 +100,14 @@ The key's randomart image is:
 |o   .   S        |
 |=  o . .         |
 |+=o==o+ =        |
-|+*XXEO.B .       |
-|o*XOXBB..        |
+|+*XXAO.B .       |
+|o*XOYBB..        |
 +----[SHA256]-----+
 
 
+C:\Users\vfinl>  cd C:\Users\vfinl\.ssh
 
-
-
-
-C:\Users\vfinl\.ssh
-ssh-copy-id -i ~/.ssh/id_rsa.pub vfinley@remote_server
+C:\Users\vfinl\.ssh> ssh-copy-id -i id_ed25519.pub vfinley@alpha
 Install public key.
 Test connection
 
