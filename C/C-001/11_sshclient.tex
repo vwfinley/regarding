@@ -1,11 +1,12 @@
 \section{OpenSSH Client}
-It is important to keep in mind that SSH (Secure SHell) is a protocol.
+Keep in mind, SSH (Secure SHell) is a protocol.
 The implementation of the protocol has a client and server associated with it.
 
 OpenSSH client should already be installed on Windows 11 by default.
 Earlier Windows versions may have it disabled.
 
-If OpenSSH is unavailable on your laptop, search the internet on how to enable or install it.
+If OpenSSH client is unavailable on your laptop, search the internet on how to enable or install it.
+You will find the project page here: https://www.openssh.com/
 
 The best way to verify if OpenSSH client is available is to enter the following at the Windows CMD prompt:
 \begin{verbatim}
@@ -13,7 +14,7 @@ $ ssh
 $ where ssh
 \end{verbatim}
 
-As part of OpenSSH support for Windows, ssh-keygen and ssh-copy-id commandline utilities are probably bundled in.
+As part of OpenSSH support for Windows, ssh-keygen commandline utility is probably bundled in.
 
 
 \subsection{Initial SSH remote login}
@@ -46,7 +47,7 @@ Expanded Security Maintenance for Applications is not enabled.
 \end{verbatim}
 
 
-\subsection{Check BASH shell response}
+\subsection{Check BASH shell functionality}
 
 Congratulations, you are SSH'd into alpha!
 To verify everything is working, enter "ls" at the BASH shell prompt.
@@ -104,46 +105,108 @@ The key's randomart image is:
 |o*XOYBB..        |
 +----[SHA256]-----+
 
+\end{verbatim}
 
+
+\subsection{Copy Public Key}
+Okay, now we need to copy the public key over to the alpha VM.
+There are two possible ways to do this.
+If you have ssh-copy-id already installed we can use it to copy the key.
+Otherwise don't worry, we can copy the key manually.
+
+To copy the key with ssh-copy-id, goto where the keys were generated in the previous subsection.
+And do the following:
+\begin{verbatim}
 C:\Users\vfinl>  cd C:\Users\vfinl\.ssh
 
-C:\Users\vfinl\.ssh> ssh-copy-id -i id_ed25519.pub vfinley@alpha
-Install public key.
-Test connection
+C:\Users\vfinl\.ssh> dir
 
-# In GitBASH terminal
-vfinl@victor MINGW64 ~
-$ ssh-copy-id -i ~/.ssh/id_ed25519.pub vfinley@alpha
-/usr/bin/ssh-copy-id: INFO: Source of key(s) to be installed: "/c/Users/vfinl/.ssh/id_ed25519.pub"
-/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
-/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+C:\Users\vfinl\.ssh> ssh-copy-id -i id_ed25519.pub vfinley@alpha
+\end{verbatim}
+
+To manually copy the public key: 
+\begin{itemize}
+  \item In the Windows CMD shell, Goto where the public key was generated in the previous section.
+  \item Use the Windows type command to display the line from the .pub file.
+  \item Copy the line from the .pub file.
+  \item ssh into the alpha remote VM.
+  \item Goto the .ssh hidden directory.
+  \item Edit or create the file named authorized_keys
+  \item Paste the line from the .pub file into the authorized_keys file.
+  \item Save the file and quit the editor.
+\end{itemize}
+
+Here's an example of how to manually copy the public key.
+\begin{verbatim}
+# Goto where the ssh keys live.
+C:\Users\vfinl>cd .ssh
+
+C:\Users\vfinl\.ssh>dir
+ Volume in drive C is Windows-SSD
+ Volume Serial Number is 9484-3D6D
+
+ Directory of C:\Users\vfinl\.ssh
+
+05/06/2025  07:07 AM    <DIR>          .
+05/05/2025  06:49 AM    <DIR>          ..
+05/06/2025  07:23 AM                62 config
+05/05/2025  06:51 AM               399 id_ed25519
+05/05/2025  06:51 AM                95 id_ed25519.pub
+05/05/2025  06:49 AM               816 known_hosts
+05/05/2025  06:49 AM                88 known_hosts.old
+               5 File(s)          1,460 bytes
+               2 Dir(s)  332,340,908,032 bytes free
+
+# Display the line in the public key file.
+# We will copy and paste this.
+C:\Users\vfinl\.ssh>type id_ed25519.pub
+ssh-ed25519 AAABC3NzaC1lZEI1NTE5AAAAILbyJgcZLOc2E8cEe4m5myuCEcpsrvtkWmGhHCb+ok50 vfinl@victor
+
+# SSH into the alpha VM.
+C:\Users\vfinl\.ssh>ssh vfinley@alpha
 vfinley@alpha's password:
 
-Number of key(s) added: 1
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-59-generic x86_64)
 
-Now try logging into the machine, with:   "ssh 'vfinley@alpha'"
-and check to make sure that only the key(s) you wanted were added.
+# Goto the hidden .ssh directory on alpha, and edit the authorized_keys
+vfinley@alpha:~$ cd .ssh
+vfinley@alpha:~/.ssh$ vi authorized_keys
 
-vfinl@victor MINGW64 ~
-$ ssh vfinley@alpha
-Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-57-generic x86_64)
+# Now, copy/paste the line from above into authorized_keys file
+ssh-ed25519 AAABC3NzaC1lZEI1NTE5AAAAILbyJgcZLOc2E8cEe4m5myuCEcpsrvtkWmGhHCb+ok50 vfinl@victor
 
- * Documentation:  https://help.ubuntu.com
- * Management:     https://landscape.canonical.com
- * Support:        https://ubuntu.com/pro
+# Save the line you just pasted, by hitting Escape then colon wq, then Enter.
+<ESC>
+:wq
+<ENTER>
 
-Expanded Security Maintenance for Applications is not enabled.
+# Now exit the SSH sessionvfinley@alpha:~/.ssh$ exit
+vfinley@alpha:~/.ssh$ exit
+logout
+Connection to alpha closed.
 
-35 updates can be applied immediately.
-15 of these updates are standard security updates.
-To see these additional updates run: apt list --upgradable
+\end{verbatim}
 
-9 additional security updates can be applied with ESM Apps.
-Learn more about enabling ESM Apps service at https://ubuntu.com/esm
 
-New release '24.04.2 LTS' available.
-Run 'do-release-upgrade' to upgrade to it.
+\subsection{Testing SSH connection with keyed login}
+Let's verify that the public SSH key is being used.
+At the Windows CMD prompt, you should be able to ssh into the alpha VM.
+If you set a passphrase when generating the keypair, you will be prompted for the passphrase.
+Otherwise if you left passphrase empty, you will be automatically connected.
 
-Last login: Mon May  5 06:49:56 2025 from 192.168.56.1
+\begin{verbatim}
+# No passphrase was set.
+C:\Users\vfinl>ssh vfinley@alpha
+Welcome to Ubuntu 22.04.5 LTS (GNU/Linux 6.8.0-59-generic x86_64)
+....
+....
+....
+Last login: Tue May 20 10:36:47 2025 from 10.0.0.137
 
+# Type exit to leave ssh and return to Windows CMD prompt.
+vfinley@alpha:~$ exit
+logout
+Connection to alpha closed.
+
+C:\Users\vfinl>
 \end{verbatim}
