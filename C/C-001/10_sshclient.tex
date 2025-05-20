@@ -160,7 +160,9 @@ C:\Users\vfinl\.ssh>dir
 # Display the line in the public key file.
 # We will copy and paste this.
 C:\Users\vfinl\.ssh>type id_ed25519.pub
-ssh-ed25519 AAABC3NzaC1lZEI1NTE5AAAAILbyJgcZLOc2E8cEe4m5myuCEcpsrvtkWmGhHCb+ok50 vfinl@victor
+ssh-ed25519 \
+  AAABC3NzaC1lZEI1NTE5AAAAILbyJgcZLOc2E8cEe4m5myuCEcpsrvtkWmGhHCb+ok50 \
+    vfinl@victor
 
 # SSH into the alpha VM.
 C:\Users\vfinl\.ssh>ssh vfinley@alpha
@@ -173,7 +175,9 @@ vfinley@alpha:~$ cd .ssh
 vfinley@alpha:~/.ssh$ vi authorized_keys
 
 # Now, copy/paste the line from above into authorized_keys file
-ssh-ed25519 AAABC3NzaC1lZEI1NTE5AAAAILbyJgcZLOc2E8cEe4m5myuCEcpsrvtkWmGhHCb+ok50 vfinl@victor
+ssh-ed25519 \
+  AAABC3NzaC1lZEI1NTE5AAAAILbyJgcZLOc2E8cEe4m5myuCEcpsrvtkWmGhHCb+ok50 \
+    vfinl@victor
 
 # Save the line you just pasted, by hitting Escape then colon wq, then Enter.
 <ESC>
