@@ -21,11 +21,11 @@ As part of OpenSSH support for Windows, ssh-keygen commandline utility is probab
 In the previous section, you enabled the SSH service on the remote VM named alpha.
 Let's test the connection!
 
-\begin{itemize}
+\begin{enumerate}
   \item On your laptop, open a Windows command shell and do the commands below.
   \item When prompted "Are you sure you want to continue connecting" enter "yes".
   \item Then enter your password for alpha.
-\end{itemize}
+\end{enumerate}
 
 
 \begin{verbatim}
@@ -70,11 +70,11 @@ SSH secures authenticaion and communication by using a public+private key pair.
 Using the key pair makes it convenient since you won't need to login everytime you connect to the remote alpha VM.
 
 You wil need to:
-\begin{itemize}
+\begin{enumerate}
   \item Create the key pair.
   \item Save the pair to your laptop.
   \item Then give the public key to the remote VM named alpha (Ubuntu Desktop). 
-\end{itemize}
+\end{enumerate}
 
 When asked for a fil in which to save the key, hit Enter to save it to the default location.
 When creating the key pair you can set an optional password (or leave it blank) when asked for a passphrase.
@@ -125,7 +125,7 @@ C:\Users\vfinl\.ssh> ssh-copy-id -i id_ed25519.pub vfinley@alpha
 \end{verbatim}
 
 To manually copy the public key: 
-\begin{itemize}
+\begin{enumerate}
   \item In the Windows CMD shell, Goto where the public key was generated in the previous section.
   \item Use the Windows type command to display the line from the .pub file.
   \item Copy the line from the .pub file.
@@ -134,7 +134,7 @@ To manually copy the public key:
   \item Edit or create the file named authorized_keys
   \item Paste the line from the .pub file into the authorized_keys file.
   \item Save the file and quit the editor.
-\end{itemize}
+\end{enumerate}
 
 Here's an example of how to manually copy the public key.
 \begin{verbatim}
