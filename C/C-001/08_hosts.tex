@@ -1,9 +1,9 @@
 \section{Hosts File}
 
 At this point we have an Ubuntu Linux desktop distribution running in a virtual machine.
-Our virtual machine is named "alpha".
+Our virtual machine is named ``alpha''.
 
-A couple sections ago, we had established communication between our laptop and the "alpha" VM.
+A couple sections ago, we had established communication between our laptop and the ``alpha'' VM.
 
 Alpha responded to the Ping at address 10.0.0.246.
 This address is the inbound traffic address associated with the Bridged network adapter.
@@ -11,15 +11,15 @@ This address is the inbound traffic address associated with the Bridged network 
 This address will be used to communicate with alpha hereafter.
 However, the address is difficult to remember and tedious to type frequently.
 
-It would be good to alias the address to a friendly name like "alpha".
+It would be good to alias the address to a friendly name like ``alpha''.
 Let's update the laptop's hosts file to associate the address to the friendly name.
 
 To edit the hosts file on a Windows 11 system, run Notepad as admin.
 \begin{enumerate}
   \item Click Windows start icon.
-  \item Type "notepad".
+  \item Type ``notepad''.
   \item Expand menu under Open.
-  \item Select as "Run as administrator".
+  \item Select as ``Run as administrator''.
   \item Open file \begin{verbatim}C:\Windows\System32\drivers\etc\hosts\end{verbatim}
   \item Add following entry to the file: \begin{verbatim}10.0.0.246  alpha # Ubuntu VM\end{verbatim}
   \item Save the file.
