@@ -6,7 +6,7 @@ As far as the laptop is concerned, the VM is a wholly independent machine, even 
 We need a way to talk to the VM from the laptop.
 To achieve this we will be making a change to the network, and then gathering some information.
 
-Initally, VirtualBox created the VM with a single default network adapter that supports Network Address Translations (NAT).
+Initially, VirtualBox created the VM with a single default network adapter that supports Network Address Translations (NAT).
 This default adapter is fine for connecting to the outside world: browsing to an internet website, or pinging google.com.
 In other words, outbound traffic is supported.
 
@@ -51,7 +51,7 @@ In other words we don't know which is being used for outbound and inbound traffi
 However we can test to verify the outbound connection is working properly.
 
 \begin{enumerate}
-  \item On the Ubuntu destop, click Activities.
+  \item On the Ubuntu desktop, click Activities.
   \item Search for and select ``terminal''.
   \item Once the terminal application launches, at the commandline type: \begin{verbatim}ping google.com\end{verbatim}
   \item Hit Enter
