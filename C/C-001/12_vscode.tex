@@ -1,36 +1,67 @@
-\section{vscode}
+\section{Microsoft Visual Studio Code (VSCode)}
+Now that the SSH keys and connection have been established, it is a convenient time to setup VSCode.
+Sure there are other IDEs you could install, but we'll be installing VSCode as the baseline example.
+VSCode has a couple advantages: it is widely used by developers, and it is freely available.
 
-TODO: WRITE ME!
+\subsection{Setup VSCode}
+To setup VSCode:
+\begin{itemize}
+  \item On your your laptop, browse to the Microsoft App Store at https://apps.microsoft.com/
+  \item Search for VSCode or go here: https://apps.microsoft.com/detail/xp9khm4bk9fz7q?hl=en-US&gl=US
+  \item Download and Install VSCode on your laptop.
+  \item After VSCode has installed, launch it.
+  \item The current VSCode version is Version 1.100.2, you version may be newer.
+\end{itemize}
 
 
-VWF TODO: Setup VSCode (Version 1.99.3)
-- Install IDE (VSCode) locally
-- Start remote machine
-- Verify remote machine is running.
-- Ipaddr 192.168.56.104=alpha
-- Install Remote Development plugins
-  - Click Extensions
-  - Search "Remote"
-  - Find/Install "Remote Development" pack.
-- Click Remote Explorer Icon
-  - Select Remotes(Tunnels/SSH) from drop down at top of Remote Explorer panel.
-  - Hover over the SSH section on the panel
-  - Click the Plus icon (new Remote)
-  - In the "Enter SSH Connection Command" box, enter ssh vfinley@alpha -A
-  - In the "Select SSH configuration file to update" box enter C:/Users/vfinl/.ssh/config (first file in list).
-- In Remoter Explorer SSH list, find the host (alpha) you just added.
-  - Hover over alpha
-  - Click the right arrow (Connect in current window) button.
-  - Wait about 30 sec for VSCode server to install.
-  - Click Explorer icon in left bar (Ctrl+Shift+E), click "Open Folder" button.
-  - Select default path, click OK
-  - Dialog "Do you trust the authors of the files in this folder?"
-    - Click "Yes, I trust the authors"
-  - Terminal > New Terminal
-  - At the command line `ping google`
-Setup remote SSH connection.
-Connect, login to remote VM
-Save shortcut in system toolbar.
-  - Right-click VSCode icon
-  - Select Recent Folders (vfinley [SSH:alpha])
-  - Click Pin to list icon
+\subsection{Install Remote Development extension pack}
+Once VSCode is up and running, we need to install the Remote Development extenion pack.
+The pack contains 4 extenions that will help us connect VSCode to the alpha VM.
+
+\begin{itemize}
+  \item In VSCode goto View > Extenions or type (Ctrl+Shift+X)
+  \item In the "Search Extensions in Marketplace" searchbar, type "Remote Development".
+  \item The Remote Development pack icon (has number 4) should appear at the top of the search results.
+  \item Click the blue install button under Remote Development.
+  \item After the Remote Development pack installs you may be asked to restart VSCode.
+\end{itemize}
+
+
+\subsection{Connect VSCode to the alpha VM}
+Let's point VSCode to our alpha VM.
+Doing so will let us use VSCode to develop code on alpha.
+
+\begin{itemize}
+  \item First we need to verify our alpha VM is running in VirtualBox.
+  \item Next, in VSCode click Remote Explorer icon on the left vertical panel.
+  \item Select Remotes(Tunnels/SSH) from drop down at top of Remote Explorer panel.
+  \item Hover over the SSH section on the panel.
+  \item Click the Plus (New Remote) to the right of SSH.
+  \item In the "Enter SSH Connection Command" box, enter "ssh your_username@remotemachine -A", for example: ssh vfinley@alpha -A
+  \item In the "Select SSH configuration file to update" box enter the first file in the list, for example C:/Users/vfinl/.ssh/config
+\end{itemize}
+
+\subsection{Initial Connection}
+Let's use VSCode to connect to the alpha VM.
+
+\begin{itemize}
+  \item In Remoter Explorer SSH list, find the host (alpha) you just added.
+  \item Hover over alpha
+  \item Click the right arrow (Connect in current window) button.
+  \item Wait about 30 sec for VSCode server to install.
+  \item Click Explorer icon in left bar (Ctrl+Shift+E), click "Open Folder" button.
+  \item Select default path, click OK
+  \item You will see dialogbox "Do you trust the authors of the files in this folder?"
+  \item Click "Yes, I trust the authors"
+\end{itemize}
+
+
+\subsection{Testing the terminal}
+Once we've got a connection to our alpha VM, we need to check the terminal is available.
+
+\begin{itemize}
+  \item In VSCode goto View > Terminal
+  \item Click in the terminal panel that appears at bottom and enter: ping google
+\end{itemize}
+
+
