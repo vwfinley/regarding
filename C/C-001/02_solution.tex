@@ -31,18 +31,25 @@ Let's assume we want to write Golang code for some project.
   \item We will need an IDE installed on our Windows laptop, talking to the remote Linux machine.
 \end{itemize}
 
-Our development environment will roughly look like Figure 1.
+Our development environment will roughly look like Figure \ref{fig:fig1}.
 
-\begin{verbatim}
-Laptop (Windows)   Remote Dev machine (Linux)   Golang Dev Docker Container
-----------       ----------      ------------
-| VSCode |------>|Docker  |----->| Golang   |
-|        |       | Git    |      |          |
-----------       ---|------      ------------
-                    |
-                    V
-                repository
-\end{verbatim}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+  \node (r1) at (0,0)  [draw, align=center, label={[align=center]above:Windows\\Laptop}, minimum height=2cm,minimum width=2cm] {VSCode};
+  \node (r2) at (5,0)  [draw, align=center, label={[align=center]above:Ubuntu\\Remote VM}, minimum height=2cm,minimum width=2cm] {Docker\\+ Git};
+  \node (r3) at (10,0) [draw, align=center, label={[align=center]above:Dev\\Container}, minimum height=2cm,minimum width=2cm] {Golang};
+  \node (r4) at (2.5,-5) [draw, align=center, minimum height=2cm,minimum width=2cm] {Git\\Repo};
+  \node (r5) at (7.5,-5) [draw, align=center, minimum height=2cm,minimum width=2cm] {Container\\Repo};
+  \draw[arrows={-Latex[length=6pt]}] (r1.east) -- (r2.west);
+  \draw[arrows={-Latex[length=6pt]}] (r2.east) -- (r3.west);
+  \draw[arrows={-Latex[length=6pt]}] (r2.south) -- (r4.north);
+  \draw[arrows={-Latex[length=6pt]}] (r2.south) -- (r5.north);
+\end{tikzpicture}
+\caption{The Development Environment}
+\label{fig:fig1}
+\end{figure}
+
 
 \subsection{Remote Dev Machine}
 
