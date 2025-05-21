@@ -1,46 +1,98 @@
-\section{devcontainer}
+\section{Developer Container}
+Finally we are at the point where we can create a developer container for our development environment.
+Having a dev container will insure uniformity and repeatability, and generally make life easier.
+We show how to create a dev container for GoLang, however you could select/create dev containers for other languages too.
+Although we won't get into customization, dev containers can be customized by modifying the devcontainer.json file.
 
-TODO: WRITE ME!
+\subsection{Create a new dev container}
+Let's create a basic dev container for our GoLang development.
+
+\begin{enumerate}
+  \item In VSCode Ctrl+Shift+P
+  \item Search for and select: ``Dev Containers: New Dev Container...'' from the Select Dev Container Configuration prompt.
+  \item Search for an appropriate GoLang container, for example ``Go devcontainers''.
+    \begin{enumerate}
+      \item This item has with official checkmark certificate icon.
+      \item Description starts with ``Develop Go based applications...''
+      \item You could select other developer containers depending on the languages you want to develop.
+    \end{enumerate}
+  \item Select ``Create Dev Container go''.  You could also select ``Additional Options...'', and pick your desired options.
+  \item Wait a few mins while container image downloads and installs 
+  \item A new instance of VSCode wil launch.
+  \item while you are waiting, you can click the box that says "Connecting to dev container (show log)" and watch the progress.
+\end{enumerate}
+
+\subsection{Container shell prompt}
+Did it work?
+It would be good to test out our dev container before writing any code.
+
+\begin{enumerate}
+  \item Once the container has downloaded and installed, open a new terminal in VSCode by clicking View $>$ Terminal.
+  \item You should see the prompt change to ``vscode ➜ /workspaces/go \$'' to indicate you are now running inside the developer container.
+  \item At the prompt, enter ``go version''  
+\end{enumerate}
+
+You should see something that looks like this:
+\begin{verbatim}
+vscode ➜ /workspaces/go $ go version
+go version go1.23.8 linux/amd64
+\end{verbatim}
+
+
+\subsection{Devcontainer file}
+When the dev container was created, a file was also created in a hidden directory.
+Search for and open the file at .devcontainer/devcontainer.json
+
+The contents of the will resemble the JSON object below.
+
 
 \begin{verbatim}
+{
+	"name": "Go",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/go:1-1.23-bookworm"
 
-# Create new dev container
-- In VSCode Ctrl+Shift+P
-- Search for: "Dev Containers: New Dev Container..."
-- Pick Latex
-- Wait a few mins while container image downloads and installs 
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
 
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
 
-```
-# https://linux.how2shout.com/install-tex-live-on-ubuntu-20-04-lts-a-free-typesetting-system/
-# https://www.linuxfordevices.com/tutorials/ubuntu/fix-unable-to-acquire-the-dpkg-frontend-lock
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "go version",
 
-FROM ghcr.io/jmuchovej/devcontainers/latex:2024
+	// Configure tool-specific properties.
+	// "customizations": {},
 
-USER root
-RUN sudo su
-RUN dpkg --configure -a
-RUN apt update
-#RUN apt-get install -y texlive-full
-RUN apt-get install -y texlive
-
-USER vscode
-
-```
-- Search for: "Dev Containers: Add Dev Container Configuration Files..."
-- Select Alpine
-- Select 3.20 (default)
-- At prompt to "Select additional features to install" search for Latex.
-- Select "Latex Workshop", click OK
-- Select "Configure Options"
-- Choose "full"
-- When prompted to Provide a custom mirror, just hit Enter
-- Include optional file .GitHub/dependabot.yml
-- .devcontainer/devcontainer.json will be created.
-- Click on blue button "Reopen in Container"
-- Wait a f
-
-
-Write with focus on GoLang.  Save the LaTeX container mods for another article C-002.
-
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}
 \end{verbatim}
+
+The important part of the JSON is the value for the ``image'' field.
+We see the value is ``mcr.microsoft.com/devcontainers/go:1-1.23-bookworm''.
+This tells us that you will find the developer container in the Microsoft Artifact Registry located at ``https://mcr.microsoft.com''.
+You can browse Microsoft's repository for other developer containers.
+You can also browse other repositories for containers.
+
+
+\subsection{Development and Customization}
+As you add files to your project, they should be available in your dev container and appear in VSCode.
+Developing in a dev container is a broad subject, beyond the scope of this article.
+You should know that you can customize and fine-tune your dev container by modifying devcontainer.json file.
+
+You are encouraged to read more here: https://code.visualstudio.com/docs/devcontainers/containers
+
+\subsection{Ready to Develop!}
+Pin your VSCode session on the Windows toolbar so you can quickly launch it next time.
+
+\begin{enumerate}
+  \item Right-click the VSCode icon on the Windows toolbar at the bottom of the screen.
+  \item Under ``Recent Folders'' hover over ``go [Dev Container]''
+  \item Click the pin icon.
+  \item Next time you want to launch your GoLang developer container, you will find it in the Pinned.
+  \item Just Right-click the VSCode icon.
+\end{enumerate}
+
+At this point your development environment is ready to use.
+You are open for business!

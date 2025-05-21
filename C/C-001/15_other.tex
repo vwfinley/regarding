@@ -1,0 +1,37 @@
+\section{Other Considerations}
+As you go, you'll no doubt want to add things to your environment to make life easier.
+Read the following subsections regarding helpful additions and fine-tuning.
+
+\subsection{VSCode Extensions}
+VSCode has a nice system for adding extensions.
+Earlier we used it to add the Remote Development extension pack so that we connect VSCode in to our remote alpha VM.
+
+There are thousands of VSCode extensions.
+Some useful, others not so.
+
+Through experience and habit I have found the following extensions to help me in my work.
+
+\begin{itemize}
+  \item Code Spell Checker: by Street Side Software
+  \item vscode-pdf: by tomoki1207
+  \item Markdown PDF: by yzane
+  \item Docker: by Microsoft
+  \item Go: by Go Team at Google
+\end{itemize}
+
+To install them and other extensions goto Ctrl+Shift+X in VSCode.
+
+\subsection{Docker repositories}
+The main public repositories are not the only container repositories that exist.
+Other semi-public and government sponsored repositories also exist.
+Private corporate repositories may also exist, for example hosted with Artifactory.
+
+\begin{itemize}
+  \item DockerHub (https://hub.docker.com/)
+  \item RedHat Quay (https://access.redhat.com/products/red-hat-quay)
+  \item Microsoft Artifact Registry (https://mcr.microsoft.com/)
+  \item IronBank (https://p1.dso.mil/ironbank)
+\end{itemize}
+
+You will want to setup Docker or Podman to recognize all the container repositories you plan to use for your work.
+You may also want to setup Docker or Podman to automatically login to those repositories when you begin a development session.
