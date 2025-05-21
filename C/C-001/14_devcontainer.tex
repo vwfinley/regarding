@@ -28,13 +28,13 @@ It would be good to test out our dev container before writing any code.
 
 \begin{enumerate}
   \item Once the container has downloaded and installed, open a new terminal in VSCode by clicking View $>$ Terminal.
-  \item You should see the prompt change to ``vscode ➜ /workspaces/go \$'' to indicate you are now running inside the developer container.
+  \item You should see the prompt change to ``vscode -> /workspaces/go \$'' to indicate you are now running inside the developer container.
   \item At the prompt, enter ``go version''  
 \end{enumerate}
 
 You should see something that looks like this:
 \begin{verbatim}
-vscode ➜ /workspaces/go $ go version
+vscode -> /workspaces/go $ go version
 go version go1.23.8 linux/amd64
 \end{verbatim}
 
@@ -48,24 +48,28 @@ The contents of the will resemble the JSON object below.
 
 \begin{verbatim}
 {
-	"name": "Go",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/go:1-1.23-bookworm"
+  "name": "Go",
+  // Or use a Dockerfile or Docker Compose file.
+  // More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/go:1-1.23-bookworm"
 
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+  // Features to add to the dev container.
+  // More info: https://containers.dev/features.
+  // "features": {},
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+  // Use 'forwardPorts' to make a list of ports inside the
+  // container available locally.
+  // "forwardPorts": [],
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "go version",
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "go version",
 
-	// Configure tool-specific properties.
-	// "customizations": {},
-
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+  // Configure tool-specific properties.
+  // "customizations": {},
+  
+  // Uncomment to connect as root instead.
+  // More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
 }
 \end{verbatim}
 
