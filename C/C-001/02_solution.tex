@@ -1,7 +1,7 @@
 \section{Solution}
 As with most developers, you are probably working on either a laptop or desktop PC.
 You are likely running a version of Microsoft Windows.
-Perhaps you are reluctant to uninstall that Windows distribution that came with your machine?
+Perhaps you are reluctant to uninstall the Windows distribution that came with your machine?
 Or perhaps your employer's IT policy prevents you?
 
 Good news, there's a solution to develop in a more friendly open-source Linux environment.
@@ -15,7 +15,7 @@ Especially when you are writing cloud deployable microservices and web-apps?
 
 The advantage of remoting into the development hosting environment is that you may be working with multiple teams on multiple projects.
 Each project or team could have their own development hosting environment.
-In the morning, you could point the IDE on your laptop to project A.
+In the morning, you could point your IDE on your laptop to project A.
 After lunch, you could point it to project B.
 You could also work on different applications within the same project environment, by simply running different containers.
 All this is possible without reconfiguring or disturbing your laptop.
@@ -78,7 +78,7 @@ For example AWS EC2 or Google Compute Engine are popular choices.
 For my environment I will be installing Oracle VirtualBox hypervisor on my laptop.
 Yes, the Linux instance can run in a VirtualBox hosted VM on the same Windows laptop where my IDE runs.
 From the IDE's point of view, the Linux instance will appear to be on a remote network machine.
-The IDE doesn't care if the remote machine lives in an EC2 instance or in a hypervisor 
+The IDE doesn't care if the remote machine lives in an EC2 instance or in my laptop's hypervisor 
 
 \subsection{Linux Distribution}
 
@@ -87,8 +87,8 @@ There you will find hundreds of Linux (and BSD) operating system distributions.
 
 Linux distributions fall into two main families that differ by package manager and available packages.
 Each has its pros and cons.
-The RHEL/Fedora family uses the YUM\footnote{Yellowdog Updater, Modified} package manager.
-The Debian/Ubuntu family uses the APT\footnote{Advanced Package Tool} package manager.
+The RHEL/Fedora family uses the YUM package manager.
+The Debian/Ubuntu family uses the APT package manager.
 
 RHEL/Fedora has packages to install Podman and Buildah.
 Podman increases security by enforcing rootless containers.
@@ -161,12 +161,12 @@ You can swap in/other components of this environment to suit your development sc
   \item Host OS: Windows 11 Home Edition
   \item Password Manager: KeePassXC 2.7.9
   \item Hypervisor: Oracle VirtualBox Version 7.1.6 r167084 (Qt6.5.3)
-  \item IDE: Visual Studio Code 1.100.0 (user setup)
+  \item IDE: Visual Studio Code 1.100.2 (user setup)
   \item Guest OS: Ubuntu 22.04.5 LTS Desktop
   \item Container runtime: Docker 28.8.1, build 4eba377
   \item Source code repository: GitHub
-  \item Container image repository: DockerHub
-  \item Golang container: 
-  \item Golang version
+  \item Container image repository: DockerHub, Microsoft Artifact Registry
+  \item Golang container: mcr.microsoft.com/devcontainers/go:1-1.23-bookworm
+  \item Golang version: go1.23.8 linux/amd64
 \end{itemize}
 
