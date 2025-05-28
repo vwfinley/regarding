@@ -1,11 +1,44 @@
 Notes for C-002
-Setting up a LaTeX devcontainer
+Regarding a Developer Container for LaTeX
 
 \section{devcontainer}
 
 TODO: WRITE ME!
 
 \begin{verbatim}
+
+Base containers
+Developed here:
+https://github.com/microsoft/vscode-dev-containers
+
+Published here:
+https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/
+
+Also published here:
+https://hub.docker.com/r/microsoft/vscode-devcontainers
+
+Other language specific containers:
+
+
+https://wiki.debian.org/TeXLive
+https://www.baeldung.com/linux/install-latex
+
+
+vscode ➜ /workspaces/regarding/C/C-002 (main) $ sudo tlmgr update --all
+(running on Debian, switching to user mode!)
+(see /usr/share/doc/texlive-base/README.tlmgr-on-Debian.md)
+TLPDB: not a directory, not loading: /root/texmf
+tlmgr: user mode not initialized, please read the documentation!
+
+https://tug.org/texlive/quickinstall.html
+
+
+    1  cd /tmp
+    2  wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    4  zcat < install-tl-unx.tar.gz | tar xf - # note final - on that command line
+    5  cd install-tl-2*
+    6  sudo perl ./install-tl --scheme=basic --no-interaction --no-doc-install --no-src-install
+
 
 # Create new dev container
 - In VSCode Ctrl+Shift+P
