@@ -3,7 +3,7 @@ Regarding a Developer Container for LaTeX
 
 \section{devcontainer}
 
-TODO: WRITE ME!
+TODO: WRITE ME SOON!
 
 \begin{verbatim}
 
