@@ -1,0 +1,83 @@
+Notes for C-003
+Regarding a Developer Container for LaTeX
+
+\section{devcontainer}
+
+TODO: WRITE ME SOON14!
+
+\begin{verbatim}
+
+Base containers
+Developed here:
+https://github.com/microsoft/vscode-dev-containers
+
+Published here:
+https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/
+
+Also published here:
+https://hub.docker.com/r/microsoft/vscode-devcontainers
+
+Other language specific containers:
+
+
+https://wiki.debian.org/TeXLive
+https://www.baeldung.com/linux/install-latex
+
+
+vscode ➜ /workspaces/regarding/C/C-002 (main) $ sudo tlmgr update --all
+(running on Debian, switching to user mode!)
+(see /usr/share/doc/texlive-base/README.tlmgr-on-Debian.md)
+TLPDB: not a directory, not loading: /root/texmf
+tlmgr: user mode not initialized, please read the documentation!
+
+https://tug.org/texlive/quickinstall.html
+
+
+    1  cd /tmp
+    2  wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    4  zcat < install-tl-unx.tar.gz | tar xf - # note final - on that command line
+    5  cd install-tl-2*
+    6  sudo perl ./install-tl --scheme=basic --no-interaction --no-doc-install --no-src-install
+
+
+# Create new dev container
+- In VSCode Ctrl+Shift+P
+- Search for: "Dev Containers: New Dev Container..."
+- Pick Latex
+- Wait a few mins while container image downloads and installs 
+
+
+```
+# https://linux.how2shout.com/install-tex-live-on-ubuntu-20-04-lts-a-free-typesetting-system/
+# https://www.linuxfordevices.com/tutorials/ubuntu/fix-unable-to-acquire-the-dpkg-frontend-lock
+
+FROM ghcr.io/jmuchovej/devcontainers/latex:2024
+
+USER root
+RUN sudo su
+RUN dpkg --configure -a
+RUN apt update
+#RUN apt-get install -y texlive-full
+RUN apt-get install -y texlive
+
+USER vscode
+
+```
+- Search for: "Dev Containers: Add Dev Container Configuration Files..."
+- Select Alpine
+- Select 3.20 (default)
+- At prompt to "Select additional features to install" search for Latex.
+- Select "Latex Workshop", click OK
+- Select "Configure Options"
+- Choose "full"
+- When prompted to Provide a custom mirror, just hit Enter
+- Include optional file .GitHub/dependabot.yml
+- .devcontainer/devcontainer.json will be created.
+- Click on blue button "Reopen in Container"
+- Wait a f
+
+
+Write with focus on GoLang.  Save the LaTeX container mods for another article C-002.
+
+\end{verbatim}
+

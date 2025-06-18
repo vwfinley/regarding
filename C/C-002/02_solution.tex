@@ -1,0 +1,202 @@
+\section{Solution}
+You are probably working on either a laptop or desktop PC running Microsoft Windows.
+This was the same situation encountered in the previous article.
+
+Since MS Windows already has a desktop, there is no need to install an Ubuntu desktop distro.
+We can use the MS Windows desktop as terminal that can connect to remote systems.
+
+\subsection{Strategy}
+So, what's our strategy to setup a remote development enviroment?
+
+We will:
+\begin{itemize}
+  \item Follow many of the steps found in the previous article.
+  \item Install an Ubuntu Server distro rather than the Ubuntu Desktop distro.
+  \item Make a few changes that are unique to the Server distro.
+  \item Connect VSCode to the remote Ubuntu Server instance.
+  \item Complete the enviroment setup.
+\end{itemize}
+
+
+\subsection{Ubuntu Server}
+
+\subsection{Netplan}
+See /etc/netplan/99_config.yaml 
+```
+# This file is generated from information provided by the datasource.  Changes
+# to it will not persist across an instance reboot.  To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    ethernets:
+        enp0s8:
+            dhcp4: true
+    version: 2
+```
+
+
+\subsection{Cloud Init}
+Cloud init assumes Ubuntu Server will be running on a cloud platform.
+It wants to setup the server's network to align with a cloud hosting enviroment.
+
+We are not interested in running on a cloud platform, so we will manually setup the network.
+To manually setup the network, we need to disable Cloud Init's network setup.
+
+To disable Cloud Init's network setup, let's create a file at /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg containing the following line:
+"network: {config: disabled}"
+
+Better yet, run the following script at the command line:
+```
+echo "network: {config: disabled}" | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
+```
+
+Ok, so what do we want to accomplish?
+Let's assume we want to write Golang code for some project.
+
+\begin{itemize}
+  \item We will need a container setup to build/run our Golang program.
+  \item We will need Docker/Podman installed on a remote Linux machine, to run the container.
+  \item We will also need a client to manage code in our source control repository.
+  \item We will need an IDE installed on our Windows laptop, talking to the remote Linux machine.
+\end{itemize}
+
+Our development environment will roughly look like Figure \ref{fig:fig1}.
+
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+  \node (r1) at (0,0)  [draw, align=center, label={[align=center]above:Windows\\Laptop}, minimum height=2cm,minimum width=2cm] {VSCode};
+  \node (r2) at (5,0)  [draw, align=center, label={[align=center]above:Ubuntu\\Remote VM}, minimum height=2cm,minimum width=2cm] {Docker\\+ Git};
+  \node (r3) at (10,0) [draw, align=center, label={[align=center]above:Dev\\Container}, minimum height=2cm,minimum width=2cm] {Golang};
+  \node (r4) at (2.5,-5) [draw, align=center, minimum height=2cm,minimum width=2cm] {Git\\Repo};
+  \node (r5) at (7.5,-5) [draw, align=center, minimum height=2cm,minimum width=2cm] {Container\\Repo};
+  \draw[arrows={-Latex[length=6pt]}] (r1.east) -- (r2.west);
+  \draw[arrows={-Latex[length=6pt]}] (r2.east) -- (r3.west);
+  \draw[arrows={-Latex[length=6pt]}] (r2.south) -- (r4.north);
+  \draw[arrows={-Latex[length=6pt]}] (r2.south) -- (r5.north);
+\end{tikzpicture}
+\caption{The Development Environment}
+\label{fig:fig1}
+\end{figure}
+
+
+\subsection{Remote Dev Machine}
+
+For this exercise, many of the technology choices will have already been made for us.
+For example, our Windows 11 laptop is a given.
+
+Other technology choices are open-ended.
+The biggest choice we need to make is related to the remote development machine.
+\begin{itemize}
+  \item Which Linux distribution will we run?
+  \item Will the machine be physical or virtual?
+  \item What hardware are we running on?
+\end{itemize}
+
+If you have a remote physical machine that you can dedicate to running a Linux distribution, you are indeed lucky.
+In most cases you will be interested in running a Linux distribution as a Virtual Machine inside a hypervisor.
+
+Fortunately, there are many hypervisors available.
+WSL, HyperV, vSphere, ESXi, ProxMox, VirtualBox: are some of the hypervisors you could use to run the Linux instance in a VM.
+Many can be installed either on a networked server or locally on your laptop.
+Which you choose depends upon budget, licensing and compute hardware.
+
+Another popular solution is to run the Linux instance in a Cloud VM service.
+For example AWS EC2 or Google Compute Engine are popular choices.
+
+For my environment I will be installing Oracle VirtualBox hypervisor on my laptop.
+Yes, the Linux instance can run in a VirtualBox hosted VM on the same Windows laptop where my IDE runs.
+From the IDE's point of view, the Linux instance will appear to be on a remote network machine.
+The IDE doesn't care if the remote machine lives in an EC2 instance or in my laptop's hypervisor 
+
+\subsection{Linux Distribution}
+
+The best place to start searching for a Linux distribution is DistroWatch\footnote{https://distrowatch.com}.
+There you will find hundreds of Linux (and BSD) operating system distributions.
+
+Linux distributions fall into two main families that differ by package manager and available packages.
+Each has its pros and cons.
+The RHEL/Fedora family uses the YUM package manager.
+The Debian/Ubuntu family uses the APT package manager.
+
+RHEL/Fedora has packages to install Podman and Buildah.
+Podman increases security by enforcing rootless containers.
+
+Debian/Ubuntu has packages to install Docker.
+Docker is easier to work with since much existing tooling had been developed for it.
+Sharing project files with developer containers is also easier in Docker.
+
+For my development environment I will choose an Ubuntu\footnote{https://ubuntu.com/} Desktop distribution since I want the ease of working with Docker.
+
+\subsection{Source Control}
+
+Git is the de facto standard for modern source control.
+Choosing Git is a no-brainer since I will be using a repository in GitHub to keep my source code.
+
+\subsection{IDE}
+
+Installing VSCode on my laptop is a matter of convenience.
+Better IDEs probably exist, but I am familiar with VSCode.
+
+VSCode has the advantage of developer container support.
+It also has extensions that integrate remote SSH connections.
+
+During routine usage VSCode acts almost like a thin-client terminal. 
+Once VSCode is setup, developing code in a dev container on a remote machine appears similar to developing code on your local laptop.
+This makes for a nice developer experience, to the point where one forgets where the code and compiler actually lives.
+
+\subsection{Password Manager}
+
+As you develop complex systems, you will accumulate (and forget) multiple passwords.
+It is helpful to secure your account logins and passwords in a single place.
+
+Several systems are available to keep your passwords handy and safe.
+I recommended you install one of the following password managers: Bitwarden, 1Password and KeePassXC; on your PC.
+
+\subsection{Laptop}
+
+VirtualBox hypervisor will be running on the same laptop where VSCode will be installed.
+For performance reasons it is worth noting the laptop configuration.
+Knowing the laptop configuration helps when setting expectations and making comparisons to other hardware environments.
+
+\begin{verbatim}
+Device Specifications
+---------------------
+Manufacturer: Lenovo
+Model: IdeaPad Slim 5 16IRU9
+Processor: Intel(R) Core(TM) 7 150U   1.80 GHz
+Installed RAM: 16.0 GB (15.7 GB usable)
+Product ID: 00342-22290-21080-AAOEM
+System type: 64-bit operating system, x64-based processor
+Pen and touch: No pen or touch input is available for this display
+
+
+Windows Specifications
+----------------------
+Edition: Windows 11 Home
+Version: 24H2
+Installed on: 2/14/2025
+OS build: 26100.3775
+Experience: Windows Feature Experience Pack 1000.26100.66.0
+\end{verbatim}
+
+\subsection{Environment Summary}
+
+After much consideration, the development below was selected.
+By no means is this an optimal solution.
+You can swap in/other components of this environment to suit your development scenario.
+
+\begin{itemize}
+  \item Host OS: Windows 11 Home Edition
+  \item Password Manager: KeePassXC 2.7.9
+  \item Hypervisor: Oracle VirtualBox Version 7.1.6 r167084 (Qt6.5.3)
+  \item IDE: Visual Studio Code 1.100.2 (user setup)
+  \item Guest OS: Ubuntu 22.04.5 LTS Desktop
+  \item Container runtime: Docker 28.8.1, build 4eba377
+  \item Source code repository: GitHub
+  \item Container image repository: DockerHub, Microsoft Artifact Registry
+  \item Golang container: mcr.microsoft.com/devcontainers/go:1-1.23-bookworm
+  \item Golang version: go1.23.8 linux/amd64
+\end{itemize}
+

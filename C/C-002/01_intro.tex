@@ -1,0 +1,37 @@
+\section{Introduction}
+The previous article described how to setup a Ubuntu desktop distribution as a VM and access it from VSCode.
+
+While it may make sense to install a desktop distro locally on a laptop, it makes less sense to install it on a remote shared development environment.
+Why?
+Because desktop distributions provide a GUI that presumes either local console access or a remote desktop client.
+
+Sure, installing a desktop distro works fine if you are using the desktop GUI on a laptop, and the laptop is being used as a terminal.
+The one lucky user currently logged into the desktop GUI at the console will have benefit of the physical: keyboard, mouse and video display.
+Other users, logged in via remote desktop connections, will experience a slow awkward desktop session.
+
+So, it would make more sense for users to:
+\begin{itemize}
+  \item Install desktop distros locally on their laptops.
+  \item Use the local desktop GUI as only as a terminal.
+  \item Connect remotely to a server distro.
+  \item Perform any work on the server distro.
+\end{itemize}
+
+Typically a server disto gets installed on powerful hardware with vast resources.
+When installed on powerful server hardware, users can experience fast compute and compile cycles.
+The time to perform work on a powerful server can be significantly less than doing it locally on an underpowered laptop.
+
+Another advantage is that server distros tend to be smaller than desktop distros.
+How can this be?
+Well, server distros do not include all the graphical packages and libraries needed to display a desktop GUI.
+
+
+
+
+
+
+distributions make senese a
+
+Remote development environments are often shared amongst multiple developers.
+Because of this, desktop OS distributions make little sense in shared environments.  
+
