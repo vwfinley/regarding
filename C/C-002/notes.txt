@@ -10,4 +10,4 @@ Regarding Configuration of Ubuntu Server for Development
 - Netplan changes
 - Cloud init changes
 
-
+https://linuxconfig.org/how-to-configure-static-ip-address-on-ubuntu-18-04-bionic-beaver-linux

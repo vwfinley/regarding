@@ -2,11 +2,16 @@
 You are probably working on either a laptop or desktop PC running Microsoft Windows.
 This was the same situation encountered in the previous article.
 
-Since MS Windows already has a desktop, there is no need to install an Ubuntu desktop distro.
-We can use the MS Windows desktop as terminal that can connect to remote systems.
+MS Windows already has a desktop.
+As in the previous article, we will use the MS Windows desktop the "terminal" that can connect to remote systems.
+
+However this time instead of installing Ubuntu Desktop, we will install Ubuntu Server.
+
+We would call Ubuntu Server "headless" because it does not include a GUI.
+The headless server installation is more appropiate for teams of developers.
 
 \subsection{Strategy}
-So, what's our strategy to setup a remote development enviroment?
+Okay, so what's our strategy to setup a remote development enviroment?
 
 We will:
 \begin{itemize}
@@ -19,8 +24,70 @@ We will:
 
 
 \subsection{Ubuntu Server}
+In the previous article, our guest OS was Ubuntu 22.04.5 LTS Desktop.
+This time around our guest OS will be Ubuntu 22.04.5 LTS Server.
+
+Let's download Ubuntu 22.04.5 LTS Server for AMD64 architecture from the Ubuntu project website.
+Or download directly from here: https://ubuntu.com/download/server/thank-you?version=22.04.5&architecture=amd64&lts=true
+
+In VirtualBox, or the hypervisor you are using, follow steps tbd to tbd from the previous article.
+
+Instead of naming the VM "alpha" we will name it "bravo".
+vwf tbd: recommend to increase storage space.
+
+Boot Ubuntu Server in the VirtualBox VM and follow the setup prompts.
+vwf tbd: provide info about prompts (choose all defaults?) 
+
 
 \subsection{Netplan}
+In the previous article steps tbd to tbd provided instructions for setting up the network.
+Those steps assumed a GUI since we were working with a Desktop version of Ubuntu.
+
+This time around we are working with a headless server version of Ubuntu.
+So, we will need to configure the network manually by editing text files.
+
+Let's start by discovering the virtual network adapters available to our VM.
+At the commandline on the VM enter: 
+\verbatim{begin} 
+\$ ip a
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+    ...
+    ...
+    ...
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:31:cd:75 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 metric 100 brd 10.0.2.255 scope global dynamic enp0s3
+       valid_lft 79566sec preferred_lft 79566sec
+    ...
+    ...
+    ...
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:c3:8e:b1 brd ff:ff:ff:ff:ff:ff
+\verbatim{end} 
+
+You should see output that looks similar to what is shown above.
+We are interested in the two vitual adapters created by VirtualBox.
+They start with the prefix "enp0s".
+
+The vitual network adapter with ID=enp0s3 should have an IP4 address already set by VirtualBox.
+This adapter was defined by the first adapter tab in VirtualBox.
+In this case the address is 10.0.2.15 and the address was automatically assigned by DNS.
+VirtualBox has it setup for NAT.
+This adapter will be primarilly used for outbound connections to the internet from the VM, and inbound responses back to the VM.
+
+You defined the second virtual network adapter with ID=enp0s8 on the second adapter tab in VirtualBox.
+Remember you had defined this adapter to for Bridge Host configruation.  
+\subsection{Netplan}
+
+The network manager used by Ubuntu is called "Netplan".
+
+
+https://linuxconfig.org/how-to-configure-static-ip-address-on-ubuntu-18-04-bionic-beaver-linux
+
+
 See /etc/netplan/99_config.yaml 
 ```
 # This file is generated from information provided by the datasource.  Changes
