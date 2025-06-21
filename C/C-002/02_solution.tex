@@ -8,8 +8,8 @@ As in the previous article, we will use the MS Windows desktop the as a "termina
 However this time instead of installing Ubuntu Desktop, we will install Ubuntu Server.
 Ubuntu Server will act as the remote system.
 
-We would call Ubuntu Server "headless" because it does not include a GUI.
-The headless server installation is more appropiate for teams of developers.
+We can describe Ubuntu Server as "headless" because it does not include a GUI.
+A headless server installation is more appropiate place for teams of developers to collaborate.
 
 \subsection{Strategy}
 Okay, so what's our strategy to setup a remote development enviroment?
@@ -23,12 +23,11 @@ We will:
   \item Complete the enviroment setup.
 \end{itemize}
 
-
 \subsection{Ubuntu Server}
-In the previous article, our guest OS was Ubuntu 22.04.5 LTS Desktop.
-This time around our guest OS will be Ubuntu 22.04.5 LTS Server.
+Previously article, our guest OS was Ubuntu 22.04.5 LTS \textbf{Desktop}.
+This time around our guest OS will be Ubuntu 22.04.5 LTS \textbf{Server}.
 
-Let's download Ubuntu 22.04.5 LTS Server for AMD64 architecture from the Ubuntu project website.
+Let's download Ubuntu 22.04.5 LTS \textbf{Server} for AMD64 architecture from the Ubuntu project website.
 Or download directly from here: https://ubuntu.com/download/server/thank-you?version=22.04.5&architecture=amd64&lts=true
 
 In VirtualBox, or the hypervisor you are using, follow sections 1 thru 4 of the previous article.
@@ -52,7 +51,7 @@ So, we will need to configure the network manually by editing text files.
 
 Let's start by doing section 6.1 to setup a second virtual ethernet adapter as a bridged network adapter.
 
-You will recall in Ubuntu Desktop the second virtual ethernet adapter was automatically setup to receive an IP address from your local DHCP server.
+You will recall previously on Ubuntu Desktop the second virtual ethernet adapter was automatically setup to receive an IP address from your local DHCP server.
 However, in Ubuntu Server we need to manually setup this second adapter with an IP address.
 
 We'll manually setup the second adapter to receive a dynamic IP address from the local DHCP server.
