@@ -3,9 +3,10 @@ You are probably working on either a laptop or desktop PC running Microsoft Wind
 This was the same situation encountered in the previous article.
 
 MS Windows already has a desktop.
-As in the previous article, we will use the MS Windows desktop the "terminal" that can connect to remote systems.
+As in the previous article, we will use the MS Windows desktop the as a "terminal" that can connect to remote systems.
 
 However this time instead of installing Ubuntu Desktop, we will install Ubuntu Server.
+Ubuntu Server will act as the remote system.
 
 We would call Ubuntu Server "headless" because it does not include a GUI.
 The headless server installation is more appropiate for teams of developers.
@@ -30,21 +31,36 @@ This time around our guest OS will be Ubuntu 22.04.5 LTS Server.
 Let's download Ubuntu 22.04.5 LTS Server for AMD64 architecture from the Ubuntu project website.
 Or download directly from here: https://ubuntu.com/download/server/thank-you?version=22.04.5&architecture=amd64&lts=true
 
-In VirtualBox, or the hypervisor you are using, follow steps tbd to tbd from the previous article.
+In VirtualBox, or the hypervisor you are using, follow sections 1 thru 4 of the previous article.
 
 Instead of naming the VM "alpha" we will name it "bravo".
-vwf tbd: recommend to increase storage space.
+Also, when asked how much space to dedicate to storage increase storage to 40Gb or more.
+Why? 
+Because we will be installing Docker, and our containers are hungry for storage.  
 
-Boot Ubuntu Server in the VirtualBox VM and follow the setup prompts.
+Boot Ubuntu Server in the VirtualBox VM then follow the setup prompts.
 vwf tbd: provide info about prompts (choose all defaults?) 
 
+\subsection{Initial Login}
 
-\subsection{Netplan}
-In the previous article steps tbd to tbd provided instructions for setting up the network.
+\subsection{Network Setup}
+Section 6 of the previous article provided instructions for setting up the network.
 Those steps assumed a GUI since we were working with a Desktop version of Ubuntu.
 
 This time around we are working with a headless server version of Ubuntu.
 So, we will need to configure the network manually by editing text files.
+
+Let's start by doing section 6.1 to setup a second virtual ethernet adapter as a bridged network adapter.
+
+You will recall in Ubuntu Desktop the second virtual ethernet adapter was automatically setup to receive an IP address from your local DHCP server.
+However, in Ubuntu Server we need to manually setup this second adapter with an IP address.
+
+We'll manually setup the second adapter to receive a dynamic IP address from the local DHCP server.
+We will do this to determine which network on the host (our laptop) to use for our bravo VM. 
+
+Once we know which network to use we'll manually set a static IP address.
+Setting a static IP address makes sense on a server because any clients need a reliable unchanging address to locate the server.
+
 
 Let's start by discovering the virtual network adapters available to our VM.
 At the commandline on the VM enter: 
