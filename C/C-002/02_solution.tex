@@ -179,6 +179,19 @@ network:
 ```
 
 
+
+network:
+    ethernets:
+        enp0s3:
+            dhcp4: true
+        enp0s8:
+            dhcp4: false
+            addresses:
+                - 10.0.0.117/24
+    version: 2
+
+
+
 \subsection{Cloud Init}
 Cloud init assumes Ubuntu Server will be running on a cloud platform.
 It wants to setup the server's network to align with a cloud hosting enviroment.
