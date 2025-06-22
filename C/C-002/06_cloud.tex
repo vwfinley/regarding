@@ -1,20 +1,38 @@
 \section{Cloud Init}
-See /etc/netplan/99_config.yaml 
-```
-# This file is generated from information provided by the datasource.  Changes
-# to it will not persist across an instance reboot.  To disable cloud-init's
-# network configuration capabilities, write a file
-# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
-# network: {config: disabled}
-network:
-    ethernets:
-        enp0s8:
-            dhcp4: true
-    version: 2
-```
+Reboot our VM named "bravo".
+Log back in and view the /etc/netplan/50-cloud-init.yaml file.
 
+You will see the change we made in the previous section was removed and now a notice appears at the top of the file.
+The notice says "...To disable cloud-init's network configuration capabilities..."
 
+Cloud init assumes Ubuntu Server will be running on a cloud platform.
+It wants to setup the server's network to align with a cloud hosting enviroment.
 
+We are not interested in running on a cloud platform, so we will manually setup the network.
+To manually setup the network, we need to disable Cloud Init's network setup.
+
+\subsection{Disable Cloud Init network setup}
+To disable Cloud Init's network setup, let's create a file at /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg containing the following line:
+"network: {config: disabled}"
+
+Better yet, run the following script at the command line:
+
+\verbatim{begin}
+echo "network: {config: disabled}" | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
+\verbatim{end}
+
+\subsection{Set Static IP}
+Okay, again edit the /etc/netplan/50-cloud-init.yaml file as sudo.
+
+This time change it so that virtual adapter enp0s8 has:
+\itemize{begin}
+  \item dhcp4 set to false.
+  \item the static IP address, you wrote down in the previous section (10.0.0.117/24), explicitly set.
+\itemize{end}
+
+Save the the /etc/netplan/50-cloud-init.yaml file file.
+It should appear as below.
+\verbatim{begin}
 network:
     ethernets:
         enp0s3:
@@ -24,20 +42,8 @@ network:
             addresses:
                 - 10.0.0.117/24
     version: 2
+\verbatim{end}
 
-
-
-\section{Cloud Init}
-Cloud init assumes Ubuntu Server will be running on a cloud platform.
-It wants to setup the server's network to align with a cloud hosting enviroment.
-
-We are not interested in running on a cloud platform, so we will manually setup the network.
-To manually setup the network, we need to disable Cloud Init's network setup.
-
-To disable Cloud Init's network setup, let's create a file at /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg containing the following line:
-"network: {config: disabled}"
-
-Better yet, run the following script at the command line:
-```
-echo "network: {config: disabled}" | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
-```
+Now reboot the VM.
+When the VM is back up, ping the static IP address (10.0.0.117) from the laptop Windows host CMD shell.
+You should see a reply to the ping.
