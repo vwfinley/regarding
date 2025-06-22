@@ -18,25 +18,26 @@ Setting a static IP address makes sense on a server because any clients need a r
 
 Let's start by discovering the virtual network adapters available to our VM.
 At the commandline on the VM enter: 
-\verbatim{begin} 
-\$ ip a
 
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+\begin{verbatim} 
+$ ip a
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state ...
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
     ...
     ...
     ...
-2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state ...
     link/ether 08:00:27:31:cd:75 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 metric 100 brd 10.0.2.255 scope global dynamic enp0s3
        valid_lft 79566sec preferred_lft 79566sec
     ...
     ...
     ...
-3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state ...
     link/ether 08:00:27:c3:8e:b1 brd ff:ff:ff:ff:ff:ff
-\verbatim{end} 
+\end{verbatim} 
 
 You should see output that looks similar to what is shown above.
 We are interested in the two vitual adapters created by VirtualBox.
@@ -52,7 +53,7 @@ You defined the second virtual network adapter with ID=enp0s8 on the second adap
 Remember you had defined this adapter in VirtualBox with Bridge Host configruation.  
 You'll notice that adapter enp0s8 has no IP address assigned, yet.
 
-\section{Netplan}
+\subsection{Netplan}
 
 https://linuxconfig.org/how-to-configure-static-ip-address-on-ubuntu-18-04-bionic-beaver-linux
 
@@ -62,14 +63,15 @@ Netplan is responsible for configuring any network adapters and getting an IP ad
 Netplan uses one or more yaml files to configure how it will setup adapters.
 
 Open the file /etc/netplan/50-cloud-init.yaml in an editor:
-\verbatim{begin}
-\$ sudo vi /etc/netplan/50-cloud-init.yaml
-\verbatim{end}
+
+\begin{verbatim} 
+$ sudo vi /etc/netplan/50-cloud-init.yaml
+\end{verbatim}
 
 Edit the file to add configuration for adapter enp0s8.
 Set it up to get its IP address from the DHCP server.
 Save the file and quit the editor.
-\verbatim{begin}
+\begin{verbatim} 
 network:
     ethernets:
         enp0s3:
@@ -77,33 +79,33 @@ network:
         enp0s8:
             dhcp4: true
     version: 2
-\verbatim{end}
+\end{verbatim} 
 sudo netplan apply
 
 Now restart netplan to see the changes applied.
-\verbatim{begin}
-\$ sudo netplan apply
-\$ ip a
+\begin{verbatim} 
+$ sudo netplan apply
+$ ip a
 
-1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state ...
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
     inet 127.0.0.1/8 scope host lo
     ...
     ...
     ...
-2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state ...
     link/ether 08:00:27:31:cd:75 brd ff:ff:ff:ff:ff:ff
     inet 10.0.2.15/24 metric 100 brd 10.0.2.255 scope global dynamic enp0s3
     ...
     ...
     ...
-3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state ...
     link/ether 08:00:27:c3:8e:b1 brd ff:ff:ff:ff:ff:ff
     inet 10.0.0.117/24 metric 100 brd 10.0.0.255 scope global dynamic enp0s8
     ...
     ...
     ...
-\verbatim{end}
+\end{verbatim} 
 
 Notice that adapter enp0s8 has an IP address assigned?
 In the example above the IP address and subnet mask (CIDR block) is 10.0.0.117/24.
@@ -112,9 +114,9 @@ This tells us that our bravo VM is connected on host (VirtualBox on the laptop) 
 To test everything is working okay, ping address 10.0.0.117 from the Windows host on the laptop.
 
 In Windows open a CMD shell session and enter:
-\verbatim{begin}
+\begin{verbatim} 
 C:\> ping 10.0.0.117
-\verbatim{end}
+\end{verbatim} 
 
 You should see a reply from the bravo VM.
 Now write down the IP address that you pinged (10.0.0.117), you will need it for the next section.

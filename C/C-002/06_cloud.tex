@@ -17,22 +17,23 @@ To disable Cloud Init's network setup, let's create a file at /etc/cloud/cloud.c
 
 Better yet, run the following script at the command line:
 
-\verbatim{begin}
-echo "network: {config: disabled}" | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
-\verbatim{end}
+\begin{verbatim} 
+echo "network: {config: disabled}" \
+    | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
+\end{verbatim} 
 
 \subsection{Set Static IP}
 Okay, again edit the /etc/netplan/50-cloud-init.yaml file as sudo.
 
 This time change it so that virtual adapter enp0s8 has:
-\itemize{begin}
+\begin{itemize}
   \item dhcp4 set to false.
   \item the static IP address, you wrote down in the previous section (10.0.0.117/24), explicitly set.
-\itemize{end}
+\end{itemize}
 
 Save the the /etc/netplan/50-cloud-init.yaml file file.
 It should appear as below.
-\verbatim{begin}
+\begin{verbatim} 
 network:
     ethernets:
         enp0s3:
@@ -42,7 +43,7 @@ network:
             addresses:
                 - 10.0.0.117/24
     version: 2
-\verbatim{end}
+\end{verbatim} 
 
 Now reboot the VM.
 When the VM is back up, ping the static IP address (10.0.0.117) from the laptop Windows host CMD shell.
