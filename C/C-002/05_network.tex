@@ -53,11 +53,16 @@ You defined the second virtual network adapter with ID=enp0s8 on the second adap
 Remember you had defined this adapter in VirtualBox with Bridge Host configruation.  
 You'll notice that adapter enp0s8 has no IP address assigned, yet.
 
-\subsection{Netplan}
+\subsection{Canonical Netplan}
 
+This subsection summarizes setup of the network.
+For a more detailed explaination, browse to:
+\begin{verbatim}
 https://linuxconfig.org/how-to-configure-static-ip-address-on-ubuntu-18-04-bionic-beaver-linux
+\end{verbatim}
 
-The network manager used by Ubuntu is called "Netplan".
+The network manager used by Ubuntu is called Netplan\footnote{https://netplan.io}.
+It is published by Canonical\footnote{https://canonical.com}.
 Netplan is responsible for configuring any network adapters and getting an IP address assigned to them.
 
 Netplan uses one or more yaml files to configure how it will setup adapters.

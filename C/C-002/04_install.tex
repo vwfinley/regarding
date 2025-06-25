@@ -1,0 +1,51 @@
+\section{Install Ubuntu Server}
+
+In VirtualBox, or the hypervisor you are using:
+1) Click Add (add new VM)
+2) Give the VM a name (for example bravo) and select the ISO image, in this case ubuntu-22.04.5-live-server-amd64.iso
+3) Optionally check "Skip Unattended installation", or not.  Check the box for a quick installation, or uncheck it to fine tune your Ubuntu configuration. 
+4) Expand the Hard Disk panel and Increase the hard disk size to match your development needs.
+5) Expand the Hardware tab and increase the processors to at least two CPUs.
+
+\subsection{Attended Installation}
+If you checked the "Skip Unattended installation" box.
+1) Click Finish
+2) In VirtualBox, select the VM you just created and click the Start button on the menubar. 
+3) After the VM starts, the GNU GRUB bootloader prompt will appear.
+4) From the prompt select, "Try or Install Ubuntu Server", and hit Enter.
+5) Be patient while Ubuntu starts.
+6) The installer process will prompt you for information.
+7) When prompted select your language and hit Enter.
+8) When prompted about updating the installer select "Continue without updating" and hit Enter.
+9) When prompted select your keyboard configuration and Done, then hit Enter.
+10) When prompted to "Choose type of installation" select the Default Ubuntu Server installation, then "Done" and hit Enter.
+11) When prompted for Network configuration, select the Defaults, then "Done" and hit Enter.
+12) When prompted for Proxy configuration, enter a proxy address if necessary for your network, otherwise leave it blank.  Select "Done" and hit Enter.
+13) When prompted for Mirror configuration, wait for mirror location to pass tests, then select "Done" and hit Enter.
+14) When prompted for "Guided Storage configuration" leave the defaults, select "Done" and hit Enter.
+15) When prompted for "Storage configuration" leave the defaults, select "Done" and hit Enter.
+16) When prompted to "Confirm Destructive Action" select Continue and hit Enter.
+17) When prompted for "Profile Configuration" populate the fields, select Done and hit Enter.
+19) When prompted to "Upgrade to Ubuntu Pro" select "Skip for now", select Continue and hit Enter.
+20) When prompted for "SSH configuration", select "Install OpenSSH Server", then select Done and hit Enter.
+21) When prompted for "Featured Server Snaps", leave all blank, then select Done and hit Enter.
+22) Be patient while the system installs (30+ minutes).
+23) When installation has completed, select "Reboot Now" and hit Enter.
+24) In you get a message "Failed to unmount CDROM", hit Enter.
+25) After system start up, login at the prompt.
+26) Once you've logged in, verify you can reach the internet by entering: ping google.com
+27) Shutdown the VM by entering: sudo shutdown now
+
+\subsection{Unattended Installation}
+If you left the "Skip Unattended installation" unchecked:
+1) Expand the Unattended Install panel.
+2) Set your user name and a password you will remember.
+3) Optionally check install in background.
+4) Optionally set the domain name.
+5) Click Finish.
+6) Wait while the VM boots the Ubuntu and begins complete the installation cycle.
+7) Be patient, wait for about 30 minutes while installation completes.
+8) You may need to hit the enter key to see the login prompt.
+9) When the login prompt appears, try logging into the VM with the username and password you had previously set.
+10) Once you've logged in, verify you can reach the internet by entering: ping google.com
+11) Shutdown the VM by entering: sudo shutdown now
