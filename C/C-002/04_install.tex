@@ -1,42 +1,42 @@
-\section{Install Ubuntu Server}
+\section{Installation of Ubuntu Server}
 In VirtualBox, or the hypervisor you are using:
 
 \begin{enumerate}
-  \item Click Add (add new VM)
-  \item Give the VM a name (for example bravo) and select the ISO image, in this case ubuntu-22.04.5-live-server-amd64.iso
-  \item Optionally check "Skip Unattended installation", or not.  Check the box for a quick installation, or uncheck it to fine tune your Ubuntu configuration. 
+  \item Click Add from the menubar to add a new VM.
+  \item Give the VM a name (for example ``bravo'') and select the ISO image, in this case ubuntu-22.04.5-live-server-amd64.iso
+  \item Optionally check ``Skip Unattended installation'', or not.  Check the box for a quick installation, or uncheck it to fine tune your Ubuntu configuration. 
   \item Expand the Hard Disk panel and Increase the hard disk size to match your development needs.
   \item Expand the Hardware tab and increase the processors to at least two CPUs.
 \end{enumerate}
 
 
 \subsection{Attended Installation}
-If you checked the "Skip Unattended installation" box.
+If you checked the ``Skip Unattended installation'' box.
 
 \begin{enumerate}
   \item Click Finish
   \item In VirtualBox, select the VM you just created and click the Start button on the menubar. 
   \item After the VM starts, the GNU GRUB bootloader prompt will appear.
-  \item From the prompt select, "Try or Install Ubuntu Server", and hit Enter.
+  \item From the prompt select, ``Try or Install Ubuntu Server'', and hit Enter.
   \item Be patient while Ubuntu starts.
   \item The installer process will prompt you for information.
   \item When prompted select your language and hit Enter.
-  \item When prompted about updating the installer select "Continue without updating" and hit Enter.
+  \item When prompted about updating the installer select ``Continue without updating'' and hit Enter.
   \item When prompted select your keyboard configuration and Done, then hit Enter.
-  \item When prompted to "Choose type of installation" select the Default Ubuntu Server installation, then "Done" and hit Enter.
-  \item When prompted for Network configuration, select the Defaults, then "Done" and hit Enter.
-  \item When prompted for Proxy configuration, enter a proxy address if necessary for your network, otherwise leave it blank.  Select "Done" and hit Enter.
-  \item When prompted for Mirror configuration, wait for mirror location to pass tests, then select "Done" and hit Enter.
-  \item When prompted for "Guided Storage configuration" leave the defaults, select "Done" and hit Enter.
-  \item When prompted for "Storage configuration" leave the defaults, select "Done" and hit Enter.
-  \item When prompted to "Confirm Destructive Action" select Continue and hit Enter.
-  \item When prompted for "Profile Configuration" populate the fields, select Done and hit Enter.
-  \item When prompted to "Upgrade to Ubuntu Pro" select "Skip for now", select Continue and hit Enter.
-  \item When prompted for "SSH configuration", select "Install OpenSSH Server", then select Done and hit Enter.
-  \item When prompted for "Featured Server Snaps", leave all blank, then select Done and hit Enter.
+  \item When prompted to ``Choose type of installation'' select the Default Ubuntu Server installation, then Done and hit Enter.
+  \item When prompted for Network configuration, select the Defaults, then Done and hit Enter.
+  \item When prompted for Proxy configuration, enter a proxy address if necessary for your network, otherwise leave it blank.  Select Done and hit Enter.
+  \item When prompted for Mirror configuration, wait for mirror location to pass tests, then select Done and hit Enter.
+  \item When prompted for ``Guided Storage configuration'' leave the defaults, select Done and hit Enter.
+  \item When prompted for ``Storage configuration'' leave the defaults, select Done and hit Enter.
+  \item When prompted to ``Confirm Destructive Action'' select Continue and hit Enter.
+  \item When prompted for ``Profile Configuration'' populate the fields, select Done and hit Enter.
+  \item When prompted to ``Upgrade to Ubuntu Pro'' select ``Skip for now'', select Continue and hit Enter.
+  \item When prompted for ``SSH configuration'', select ``Install OpenSSH Server'', then select Done and hit Enter.
+  \item When prompted for ``Featured Server Snaps'', leave all blank, then select Done and hit Enter.
   \item Be patient while the system installs (30+ minutes).
-  \item When installation has completed, select "Reboot Now" and hit Enter.
-  \item In you get a message "Failed to unmount CDROM", hit Enter.
+  \item When installation has completed, select ``Reboot Now'' and hit Enter.
+  \item In you get a message ``Failed to unmount CDROM'', hit Enter.
   \item After system start up, login at the prompt.
   \item Once you've logged in, verify you can reach the internet by entering: ping google.com
   \item Shutdown the VM by entering: sudo shutdown now
@@ -44,7 +44,7 @@ If you checked the "Skip Unattended installation" box.
 
 
 \subsection{Unattended Installation}
-If you left the "Skip Unattended installation" unchecked:
+If you left the ``Skip Unattended installation'' unchecked:
 
 \begin{enumerate}
   \item Expand the Unattended Install panel.
@@ -56,6 +56,6 @@ If you left the "Skip Unattended installation" unchecked:
   \item Be patient, wait for about 30 minutes while installation completes.
   \item You may need to hit the enter key to see the login prompt.
   \item When the login prompt appears, try logging into the VM with the username and password you had previously set.
-  \item  Once you've logged in, verify you can reach the internet by entering: ping google.com
-  \item  Shutdown the VM by entering: sudo shutdown now
+  \item Once you've logged in, verify you can reach the internet by entering: \begin{verbatim}ping google.com\end{verbatim}
+  \item Shutdown the VM by entering: \begin{verbatim}sudo shutdown now\end{verbatim}
 \end{enumerate}

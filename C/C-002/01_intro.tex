@@ -1,9 +1,9 @@
 \section{Introduction}
-The previous article\footnote{https://github.com/vwfinley/regarding/blob/main/C/C-001/C-001.pdf} described how to setup an Ubuntu desktop distribution as a VM and access it from VSCode.
+The previous article\footnote{C-001: Regarding Setup of a Development Environment, https://github.com/vwfinley/regarding/blob/main/C/C-001/C-001.pdf} described how to setup an Ubuntu desktop distribution as a VM (Virtual Machine) and access it from VSCode (Visual Studio Code).
 
 While it may make sense to install a desktop distro locally on a laptop, it makes less sense to install it on a remote shared development environment.
 Why?
-Because desktop distributions provide a GUI that need either local console access or a remote desktop client.
+Because desktop distributions provide a GUI (Graphical User Interface) that need either local console access or a remote desktop client.
 
 Sure, installing a desktop distro works fine if you are using the desktop GUI on a laptop, and the laptop is being used as a terminal.
 The single lucky user currently logged into the desktop GUI at the console will have benefit of the physical: keyboard, mouse and video display.
@@ -11,17 +11,17 @@ Other users, logged in via remote desktop connections, will experience a slow aw
 
 So, it would make more sense for users to:
 \begin{itemize}
-  \item Install desktop distros locally on their laptops.
+  \item Install a desktop distro locally on their laptops.
   \item Use the local desktop GUI as only as a terminal.
-  \item Connect remotely to a server distro.
-  \item Perform any work on the server distro.
+  \item Connect remotely to a server running a server distro.
+  \item Perform any work on the server.
 \end{itemize}
 
-Typically a server disto gets installed on powerful hardware with vast resources.
+Typically a server distro gets installed on fast hardware with vast resources.
 When installed on powerful server hardware, users can experience fast compute and compile cycles.
 The time to perform work on a powerful server can be significantly less than doing it locally on an underpowered laptop.
 
-Another advantage is that server distros tend to be smaller than desktop distros.
+The other advantage of server distros is they tend to be smaller than desktop distros.
 How can this be?
 Server distros do not include all the graphical packages and libraries needed to display a desktop GUI.
-Less packages equals smaller footprint.
+Less packages equals smaller footprint and easier maintenance.
