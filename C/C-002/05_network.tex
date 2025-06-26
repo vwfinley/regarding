@@ -41,7 +41,7 @@ $ ip a
 
 You should see output that looks similar to what is shown above.
 We are interested in the two vitual adapters created by VirtualBox.
-Above they start with the prefix "enp0s".
+Above they start with the prefix ``enp0s''.
 
 The vitual network adapter with ID=enp0s3 should have an IP4 address already set by VirtualBox.
 This adapter was defined by the first adapter tab in VirtualBox.
@@ -74,7 +74,7 @@ $ sudo vi /etc/netplan/50-cloud-init.yaml
 \end{verbatim}
 
 Edit the file to add configuration for adapter enp0s8.
-Set it up to get its IP address from the DHCP server.
+Set it up to get its IP address from the DHCP (Dynamic Host Configuration Protocol) server.
 Save the file and quit the editor.
 \begin{verbatim} 
 network:

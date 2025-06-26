@@ -1,9 +1,9 @@
 \section{Cloud Init}
-Reboot our VM named "bravo".
+Reboot our VM named ``bravo''.
 Log back in and view the /etc/netplan/50-cloud-init.yaml file.
 
 You will see the change we made in the previous section was removed and now a notice appears at the top of the file.
-The notice says "...To disable cloud-init's network configuration capabilities..."
+The notice says ``''...To disable cloud-init's network configuration capabilities...''.
 
 Cloud init assumes Ubuntu Server will be running on a cloud platform.
 It wants to setup the server's network to align with a cloud hosting enviroment.
@@ -13,7 +13,7 @@ To manually setup the network, we need to disable Cloud Init's network setup.
 
 \subsection{Disable Cloud Init network setup}
 To disable Cloud Init's network setup, let's create a file at /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg containing the following line:
-"network: {config: disabled}"
+``network: {config: disabled}''.
 
 Better yet, run the following script at the command line:
 
