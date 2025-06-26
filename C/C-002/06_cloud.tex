@@ -1,24 +1,27 @@
-\section{Cloud Init}
+\section{cloud-init}
 Reboot our VM named ``bravo''.
 Log back in and view the /etc/netplan/50-cloud-init.yaml file.
 
 You will see the change we made in the previous section was removed and now a notice appears at the top of the file.
-The notice says ``''...To disable cloud-init's network configuration capabilities...''.
+The notice says ``...To disable cloud-init's network configuration capabilities...''.
 
-Cloud init assumes Ubuntu Server will be running on a cloud platform.
-It wants to setup the server's network to align with a cloud hosting enviroment.
+cloud-init\footnote{https://cloud-init.io/} is a system for customizing the initialization of Cloud hosted operating systems.
+Like Netplan, it was written and published by Canonical.
 
-We are not interested in running on a cloud platform, so we will manually setup the network.
-To manually setup the network, we need to disable Cloud Init's network setup.
+cloud-init assumes Ubuntu Server will be running on a cloud platform.
+It wants to setup the server's network to align with a cloud hosting environment.
 
-\subsection{Disable Cloud Init network setup}
-To disable Cloud Init's network setup, let's create a file at /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg containing the following line:
-``network: {config: disabled}''.
+Though the Ubuntu Server distro we are using has Cloud capabilities baked-in, we are not interested in running on a cloud platform.
+So we will disable cloud-init's automatic network setup, and then manually setup our network. 
+
+\subsection{Disable cloud-init network setup}
+To disable cloud-init's network setup, let's create a file at /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg containing the following line:
+``network: \{config: disabled\}''.
 
 Better yet, run the following script at the command line:
 
 \begin{verbatim} 
-echo "network: {config: disabled}" \
+$ echo "network: {config: disabled}" \
     | sudo tee /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg > /dev/null
 \end{verbatim} 
 
