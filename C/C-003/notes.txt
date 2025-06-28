@@ -1,5 +1,6 @@
 Notes for C-003
-Regarding a Developer Container for LaTeX
+Regarding Developer Containers for LaTeX
+July 2025
 
 \section{devcontainer}
 
@@ -23,6 +24,13 @@ Other language specific containers:
 https://wiki.debian.org/TeXLive
 https://www.baeldung.com/linux/install-latex
 
+Opportunity to use GitHub actions (pipelines)
+GitHub -> container repository/artifact
+How to use the container.
+  - .devcontainer configuration
+  - call on commandline
+  - call inside container
+  - setup in pipeline
 
 vscode ➜ /workspaces/regarding/C/C-002 (main) $ sudo tlmgr update --all
 (running on Debian, switching to user mode!)
