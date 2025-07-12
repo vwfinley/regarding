@@ -1,0 +1,17 @@
+\section{SSH Setup}
+If you chose to follow the instructions for the Attended Installation, then you have already installed OpenSSH Server.
+Good for you!
+You can skip to the next section.
+
+However if you followed the instructions for the Unattended Installation, no worries.
+You'll just need to install OpenSSH Server now.
+No big deal.
+
+On the Ubuntu Server VM named bravo, goto the Bash shell commandline and enter the following, from section 9.1 of previous article C-001:
+\begin{verbatim}
+$ sudo apt-get install openssh-server
+$ systemctl status ssh
+
+# If ssh.service is not running, do the following command:
+$ sudo systemctl restart ssh
+\end{verbatim}
