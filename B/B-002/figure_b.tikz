@@ -29,6 +29,9 @@
 	% v-groove triangle
 	\draw[black] (p1) node[shift={(260 : 0.45)}] {$a$} node[shift={(292 : 0.2)}] {$\theta$} -- (p2) node[shift={(345 : 0.35)}] {$b$} -- (p3) node[shift={(130 : 0.75)}] {$c$} node[shift={(155 : 0.2)}] {$\theta$} -- (p1);
 
+    \draw[black] ([shift=(p1)] 0, -0.1)  arc (270 : 315 : 0.1);
+    \draw[black] ([shift=(p3)] -0.1, 0)  arc (180 : 135 : 0.1);
+
 	% corner
 	\draw[lightgray] (cornertop) -- ++ (\cornerlen, 0) -- ++ (0, -\cornerlen);
 
