@@ -20,14 +20,14 @@
 	\coordinate (milltooldim) at (0, \h + 0.1);
 
 	% axes
-	\draw[lightgray, {Latex[scale=1.5]}-] (xaxisStart) node [below] {\small $x$} -- (origin) ; % x-axis
-	\draw[lightgray, {Latex[scale=1.5]}-] (yaxisStart) node [left] {\small $z$} -- (origin) ; % z-axis	
+	\draw[lightgray, {Latex[scale=1.0]}-] (xaxisStart) node [below] {\small $x$} -- (origin) ; % x-axis
+	\draw[lightgray, {Latex[scale=1.0]}-] (yaxisStart) node [left] {\small $z$} -- (origin) ; % z-axis	
 
 	% origin
 	\draw[fill=black] (origin) circle (0.02);
 
 	% v-groove triangle
-	\draw[black] (p1) -- (p2) -- (p3) -- (p1);
+	\draw[black] (p1) node[shift={(260 : 0.45)}] {$a$} node[shift={(292 : 0.2)}] {$\theta$} -- (p2) node[shift={(345 : 0.35)}] {$b$} -- (p3) node[shift={(130 : 0.75)}] {$c$} node[shift={(155 : 0.2)}] {$\theta$} -- (p1);
 
 	% corner
 	\draw[lightgray] (cornertop) -- ++ (\cornerlen, 0) -- ++ (0, -\cornerlen);
@@ -36,7 +36,30 @@
 	\draw[black] (milltooltop) -- ++ (0, -\h) -- ++ (\D, 0) -- ++ (0, \h);
 
 	% milling dimension
-	\draw[black, {Latex[scale=1.0]}-{Latex[scale=1.0]}] (milltooldim) node[shift={(15 : 0.4)}] {\small $D$} -- ++ (\D, 0);
+	\draw[black, {Latex[scale=0.8]}-{Latex[scale=0.8]}] (milltooldim) node[shift={(15 : 0.4)}] {\small $D$} -- ++ (\D, 0);
+
+	% hdim
+	\def \hxstart{-0.5 * \L};
+	\def \hystart{-0.5 * \L -0.3};
+	\coordinate (hdimstart) at (\hxstart, \hystart);
+
+	\draw[black, {Latex[scale=0.8]}-] (hdimstart) node[shift={(330 : 0.2)}] {\small $L/2$} -- ++ (0.5 * \L, 0);
+	%\draw[black] (hdimstart) -- ++ (0.5 * \L, 0);
+
+	\draw[black] (\hxstart, \hystart + 0.05) -- ++ (0, -0.1);
+	\draw[black] (0, \hystart + 0.05) -- ++ (0, -0.1);
+
+
+	% vdim
+	\def \vxstart{-0.5 * \L - 0.3};
+	\def \vystart{-0.5 * \L};
+	\coordinate (vdimstart) at (\vxstart, \vystart);
+
+	\draw[black, {Latex[scale=0.8]}-] (vdimstart) node[shift={(130 : 0.25)}] {\small $L/2$} -- ++ (0, 0.5 * \L);
+	%\draw[black] (vdimstart) -- ++ (0.5 * \L, 0);
+
+	\draw[black] (\vxstart + 0.05, \vystart) -- ++ (-0.1, 0);
+	\draw[black] (\vxstart + 0.05, \vystart + 0.5 * \L) -- ++ (-0.1, 0);
 
 
 \end{tikzpicture}
