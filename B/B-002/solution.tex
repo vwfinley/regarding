@@ -1,1 +1,60 @@
 \section{Solution}
+As given, the right triangle shown in Figure \ref{fig:fig_b} has sides $a = b = L$.
+Therefore $\triangle{abc}$ is an isosceles triangle.
+
+Furthermore, angles $\theta$ are 
+\begin{equation}
+\theta = \frac{180\degree - 90\degree}{2} = 45\degree
+\end{equation}
+This is expected since the mounting angle of the work relative to the cutting tool was given as $\theta = 45\degree$.
+
+Symmetry of the initial setup can be used to create a symmetrical v-grove in the work.
+
+The diameter $D$ is relatively unimportant since removal of material from the v-grove is accomplished by the travel of the cutting tool.
+By gradually plunging the cutting tool downward a distance $L/2$ along the $z-axis$, and shifting leftward a distance $L/2$ along the $y-axis$, the groove is formed.
+
+Ideally the machinist should use a cutting tool where $D > L$, but this is not strictly necessary.
+This will avoid the need to return past the initial cutting pass.
+
+Choosing $L \geq D$, or using a cutting tool with diameter $D \leq L$, is possible but will leave missed material before the starting cut.
+The machinist will need to make extra passes to remove the missed material.
+
+Follow these steps to create a symmetrical v-grove in the work.  
+
+\subsection{Method 1}
+This method starts cutting on the surface of the v-groove centerline.
+It is easy to setup.
+
+\begin{enumerate}
+\item Determine the diameter $D$ of the cutting tool.
+\item Mount the cutting tool in the milling machine.
+\item Choose the desired length $L$ for the depth of side $a$ and width of side $b$.
+\item Calculate $L/2$, this will determine the travel of the cutting tool.
+\item Locate and scribe the place on surface of the work where the v-grove will be centered.
+\item Mount the work at a $\theta = 45\degree$ angle in a vise in the milling machine, with the scribed line parallel to the y-axis.
+\item Position the milling machine table so that the scribed line touches the bottom-left corner of the cutting tool.
+\item Zero out and Digital Readouts or dial indicators.
+\item Turn on the milling machine, make an initial pass along the y-axis.
+\item On subsequent passes, advance the cutter leftward in the x-axis until it has traveled a maximum of $L/2$ to the left.
+\item Advance the depth of cutter downward along the z-axis until it has sunk a maximum of $L/2$.
+\end{enumerate}
+
+\subsection{Method 2}
+This method takes a little longer to setup, but it will be easier to machine.
+If $D > L$, then it will only require the machinist to advance the cut depth along the z-axis until the maximum $L$ depth (not $L/2$) is reached.
+
+\begin{enumerate}
+\item Determine the diameter $D$ of the cutting tool.
+\item Mount the cutting tool in the milling machine.
+\item Choose the desired length $L$ for the depth of side $a$ and width of side $b$.
+\item Calculate $L/2$, this will determine the SETUP travels of the cutting tool.
+\item Locate and scribe the place on surface of the work where the v-grove will be centered.
+\item Mount the work at a $\theta = 45\degree$ angle in a vise in the milling machine, with the scribed line parallel to the y-axis.
+\item Position the milling machine table so that the scribed line touches the bottom-left corner of the cutting tool.
+\item Zero out and Digital Readouts or dial indicators.
+\item Now raise the cutting tool a distance $L/2$ along the z-axis.
+\item Move the cutting tool leftward a distance $L/2$ along the x-axis.
+\item Again, zero out and Digital Readouts or dial indicators.
+\item Turn on the milling machine, make an initial pass along the y-axis.
+\item On subsequent passes, advance the depth of cutter downward along the z-axis until it has sunk a maximum of $L$ (not $L/2$ here)!!!
+\end{enumerate}
