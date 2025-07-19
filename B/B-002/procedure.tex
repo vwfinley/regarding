@@ -1,36 +1,36 @@
 \section{Procedure}
-To start, design the v-groove by assigning a length for either $L$, $c$ or $d$.
+To start, review Figure \ref{fig:fig_a} and design the v-groove by assigning a length for either $a = b = L$, $c$ or $d$.
 This will be the input variable that will be used to calculate $t_x$ and $t_z$.
 You will want to consult your mechanical project blueprints to help you choose the input variable and its length.  
 
-\begin{center}
-\begin{tabular}{|c|c|}
-\hline
-Input Variable & Use Equation \# \\
-\hline
-$L$ & \ref{eqn:t_x_z_05_L} \\ \hline
-$c$ & \ref{eqn:t_x_z_035_c} \\ \hline
-$d$ & \ref{eqn:t_x_z_07_d} \\ \hline
-\end{tabular}
-\end{center}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    Input Variable & Use Equation \# \\
+    \hline
+    $a = b = L$ & \ref{eqn:t_x_z_05_L} \\ \hline
+    $c$ & \ref{eqn:t_x_z_035_c} \\ \hline
+    $d$ & \ref{eqn:t_x_z_07_d} \\ \hline
+    \end{tabular}
+    \caption{Input variables and equations}
+    \label{tab:table_a}
+\end{table}
 
-
-This method starts cutting on the surface of the v-groove centerline.
-It is easy to setup.
-An advanage to this method is the machinst can choose to increase the value of $L$ while machining, without disturbing the zero position of Digital Readouts or dial indicators.
-
+Now do the following:
 \begin{enumerate}
 \item Choose the input variable and its length.
 \item From the table above, find the equation corresponding to the input variable.
 \item Subsitute the length value of the input variable into the corresponding equation.
 \item Use the corresponding equation to calculate $t_x$ and $t_z$.
+\item Record the values of the input variable and calculated values for $t_x$ and $t_z$ onto Figure \ref{fig:fig_a}.  
 \item Locate and scribe the place on surface of the work where the v-grove will be centered.
-\item Mount the work at a $\theta = 45\degree$ angle in a vise in the milling machine, with the scribed line parallel to the y-axis.
+\item Mount the work at a $45\degree$ angle in a vise in the milling machine, with the scribed line parallel to the y-axis.
 \item Mount the cutting tool in the milling machine.
 \item Position the milling machine table so that the scribed line touches the bottom-left corner of the cutting tool.
 \item Zero out any Digital Readouts or dial indicators.
 \item Turn on the milling machine, make an initial pass along the y-axis.
 \item On subsequent passes, advance the cutter leftward in the x-axis until it has traveled a maximum of $t_x$ to the left.
 \item Advance the depth of cutter downward along the z-axis until it has sunk a maximum of $t_z$.
-\item If the diameter of the cutting tool $D \leq 2 \cdot t_x$, then make additional passes to remove missed material before the start point.
+\item If the diameter of the cutting tool $D \leq 2 \cdot t_x$, make additional passes to remove missed material before the start point.
 \end{enumerate}
