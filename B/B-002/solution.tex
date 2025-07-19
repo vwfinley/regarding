@@ -1,20 +1,73 @@
 \section{Solution}
-As given, the right triangle shown in Figure \ref{fig:fig_b} has sides related by
+As given, the right triangle shown in Figure \ref{fig:fig_b} has equal sides $a$ and $b$ of some length $L$
 \begin{equation}
     \label{eqn:a_b_L}
     a = b = L
 \end{equation}
-Therefore $\triangle{abc}$ is an isosceles triangle.
 
-Furthermore, angles $\theta$ are 
+Since lengths of $a$ and $b$ are equal, $\triangle{abc}$ is an isosceles triangle.
+Furthermore, angles $\theta$ will be: 
 \begin{equation}
 \theta = \frac{180\degree - 90\degree}{2} = 45\degree
 \end{equation}
-This is expected since the mounting angle of the work relative to the cutting tool was given as $\theta = 45\degree$.
+
+Side $c$ is related to $a$ and $b$ by the Pythagorean theorem.
+Substituting in equation \ref{eqn:a_b_L}, $L$ is found to be.
+\begin{align*}
+c^2 &= a^2 + b^2 \\
+c^2 &= L^2 + L^2 \\
+c^2 &= 2 L^2 \\
+\sqrt{c^2}   &= \sqrt{2 L^2} \\
+c   &= L\sqrt{2} \\
+L   &= \frac{c}{\sqrt{2}}
+\end{align*}
+
+Cut depth $d$ is found by applying Pythagorean to the right triangle formed by $d$, half of $c$, and with $b$ as the hypotenuse. 
+
+\begin{align*}
+b^2 &= d^2 + \left(\frac{c}{2}\right)^2 \\
+d^2 &= b^2 - \left(\frac{c}{2}\right)^2 \\
+d^2 &= L^2 - \left(\frac{L \cdot \sqrt{2}}{2}\right)^2 \\
+d^2 &= L^2 - \frac{2L^2}{4} \\
+d^2 &= L^2 - \frac{L^2}{2} \\ 
+d^2 &= \frac{L^2}{2} \\
+\sqrt{d^2} &= \sqrt{\frac{L^2}{2}} \\ 
+d &= \frac{L}{\sqrt{2}} \\
+L &= d \sqrt{2}
+\end{align*}
+
+
+\begin{align*}
+     d \sqrt{2} &= L \\ 
+     d \sqrt{2} &= \frac{c}{\sqrt{2}} \\
+     2d &= c \\
+     d &= \frac{c}{2}
+\end{align*}
+
+
+
+
+Since the midpoint of hypotenuse $c$ is at the origin, the starting position on the x-axis will be the midpoint of $b$.
+Therefore, the travel distance $t_x$ will be half the length of $b$.
+Substituting $b = L$ from equation \ref{eqn:a_b_L}, it is found.
+\begin{align*}
+t_x &= \frac{b}{2} \\
+t_x &= \frac{L}{2}
+\end{align*}
+
+The midpoint of hypotenuse $c$ is at the origin, so the starting position on the z-axis will be the midpoint of $a$.
+Therefore, the travel distance $t_z$ will be half the length of $a$:
+Substituting $a = L$ from equation \ref{eqn:a_b_L}, it is found.
+\begin{align*}
+t_z &= \frac{a}{2} \\
+t_z &= \frac{L}{2}
+\end{align*}
+
+
 
 Symmetry of the initial setup can be used to create a symmetrical v-grove in the work.
 
-The diameter $D$ is relatively unimportant since removal of material from the v-grove is accomplished by the travel of the cutting tool.
+The diameter $D$ of the cutting tool is relatively unimportant since removal of material from the v-grove is accomplished by the travel of the cutting tool.
 By gradually advancing the cutting tool downward a distance $L/2$ along the z-axis, and shifting leftward a distance $L/2$ along the y-axis, the groove is formed.
 
 Follow these steps to create a symmetrical v-grove in the work.  

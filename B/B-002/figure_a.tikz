@@ -35,6 +35,9 @@
 	% corner
 	\draw[lightgray] (cornertop) -- ++ (\cornerlen, 0) -- ++ (0, -\cornerlen);
 
+	% d
+	\draw[black] (0, 0) node[shift={(237 : 0.20)}] {$d$} -- (p2);
+
 	% milling tool
 	\draw[black] (milltooltop) -- ++ (0, -\h) -- ++ (\D, 0) -- ++ (0, \h);
 
@@ -46,7 +49,7 @@
 	\def \hystart{-0.5 * \L -0.3};
 	\coordinate (hdimstart) at (\hxstart, \hystart);
 
-	\draw[black, {Latex[scale=0.8]}-] (hdimstart) node[shift={(330 : 0.2)}] {\small $L/2$} -- ++ (0.5 * \L, 0);
+	\draw[black, {Latex[scale=0.8]}-] (hdimstart) node[shift={(335 : 0.22)}] {\small $t_x$} -- ++ (0.5 * \L, 0);
 	%\draw[black] (hdimstart) -- ++ (0.5 * \L, 0);
 
 	\draw[black] (\hxstart, \hystart + 0.05) -- ++ (0, -0.1);
@@ -58,7 +61,7 @@
 	\def \vystart{-0.5 * \L};
 	\coordinate (vdimstart) at (\vxstart, \vystart);
 
-	\draw[black, {Latex[scale=0.8]}-] (vdimstart) node[shift={(130 : 0.25)}] {\small $L/2$} -- ++ (0, 0.5 * \L);
+	\draw[black, {Latex[scale=0.8]}-] (vdimstart) node[shift={(115 : 0.25)}] {\small $t_z$} -- ++ (0, 0.5 * \L);
 	%\draw[black] (vdimstart) -- ++ (0.5 * \L, 0);
 
 	\draw[black] (\vxstart + 0.05, \vystart) -- ++ (-0.1, 0);
