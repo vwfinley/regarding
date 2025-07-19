@@ -1,5 +1,5 @@
 \section{Solution}
-As given, the right triangle shown in Figure \ref{fig:fig_b} has equal sides $a$ and $b$ of some length $L$
+The right triangle shown in Figure \ref{fig:fig_b} has equal sides $a$ and $b$ of some length $L$
 \begin{equation}
     \label{eqn:a_b_L}
     a = b = L
@@ -11,32 +11,30 @@ Furthermore, angles $\theta$ will be:
 \theta = \frac{180\degree - 90\degree}{2} = 45\degree
 \end{equation}
 
-Side $c$ is related to $a$ and $b$ by the Pythagorean theorem.
-Substituting in equation \ref{eqn:a_b_L}, $L$ is found to be.
+For a right triangle, side $c$ is related to $a$ and $b$ by the Pythagorean theorem.
+By substituting $L = a = b$ from equation \ref{eqn:a_b_L} into the theorem, $L$ is found to be.
 \begin{align}
-c^2 &= a^2 + b^2 \\
+c^2 &= a^2 + b^2 \notag \\
 c^2 &= L^2 + L^2 \notag \\
 c^2 &= 2 L^2 \notag \\
 \sqrt{c^2}   &= \sqrt{2 L^2} \notag \\
 c   &= L\sqrt{2} \notag \\
-L   &= \frac{c}{\sqrt{2}}
+L   &= \frac{c}{\sqrt{2}} \label{eqn:L_c_sqrt2} 
 \end{align}
 
-Cut depth $d$ is found by applying Pythagorean to the right triangle formed by $d$, half of $c$, and with $b$ as the hypotenuse. 
-
-
-
+A second smaller right isosceles triangle is formed by $d$ and $c/2$, with hypotenuse $b$. 
+Since $d$ bisects $c$, the length of $d$ will be equal to half of $c$.
 \begin{align}
      d &= \frac{c}{2} \notag \\ 
-     c &= 2 d
+     c &= 2 d \label{eqn:c_d} 
 \end{align}
 
-
+Substituting $c$ from equation \ref{eqn:c_d} into equation \ref{eqn:L_c_sqrt2} yields:
 \begin{align}
      L &= \frac{c}{\sqrt{2}} \notag \\ 
      L &= \frac{2d}{\sqrt{2}} \notag \\
      L &= \frac{d(\sqrt{2})^2}{\sqrt{2}} \notag \\
-     L &= d \sqrt{2}
+     L &= d \sqrt{2} \label{eqn:L_d_sqrt2}
 \end{align}
 
 
@@ -45,28 +43,30 @@ Therefore, the travel distance $t_x$ will be half the length of $b$.
 Substituting $b = L$ from equation \ref{eqn:a_b_L}, it is found.
 \begin{align}
 t_x &= \frac{b}{2} \notag \\
-t_x &= \frac{L}{2}
+t_x &= \frac{L}{2} \label{eqn:t_x_L_2}
 \end{align}
 
-The midpoint of hypotenuse $c$ is at the origin, so the starting position on the z-axis will be the midpoint of $a$.
+Likewise, the midpoint of hypotenuse $c$ is at the origin, so the starting position on the z-axis will be the midpoint of $a$.
 Therefore, the travel distance $t_z$ will be half the length of $a$:
 Substituting $a = L$ from equation \ref{eqn:a_b_L}, it is found.
 \begin{align}
 t_z &= \frac{a}{2} \notag \\
-t_z &= \frac{L}{2}
+t_z &= \frac{L}{2} \label{eqn:t_z_L_2}
 \end{align}
 
-\begin{align*}
-t_x = t_z &= \frac{L}{2} \notag \\
-t_x = t_z &= \left(\frac{1}{2}\right)L\notag \\
-\end{align*}
+From equations \ref{eqn:t_x_L_2} and \ref{eqn:t_z_L_2} it can be seen that $t_x$ an $t_z$ are equal to $L/2$, and are therefore equal to each other. 
+We can write:
+\begin{align}
+t_x = t_z &= \frac{L}{2} \label{eqn:t_x_z_L_2} \\
+t_x = t_z &= \left(\frac{1}{2}\right)L \notag
+\end{align}
 \begin{equation}
      \boxed{
-          t_x = t_z = 0.5 \cdot L
+          t_x = t_z = 0.5 \cdot L \label{eqn:t_x_z_05_L}
      }
 \end{equation}
 
-
+Substituting $L$ from equation \ref{eqn:L_c_sqrt2} into equation \ref{eqn:t_x_z_L_2} yields:
 \begin{align*}
 t_x = t_z &= \frac{L}{2} \notag \\
 t_x = t_z &= \frac{\frac{c}{\sqrt{2}}}{2} \notag \\
@@ -75,11 +75,11 @@ t_x = t_z &= \left(\frac{1}{2\sqrt{2}}\right) c \notag \\
 \end{align*}
 \begin{equation}
      \boxed{
-          t_x = t_z = 0.353553 \cdot c
+          t_x = t_z = 0.353553 \cdot c  \label{eqn:t_x_z_035_c}
      }
 \end{equation}
 
-
+Furthermore, substituting $L$ from equation \ref{eqn:L_d_sqrt2} into equation \ref{eqn:t_x_z_L_2} yields:
 \begin{align*}
 t_x = t_z &= \frac{L}{2} \\
 t_x = t_z &= \frac{d\sqrt{2}}{2} \\
@@ -87,53 +87,15 @@ t_x = t_z &= \left(\frac{\sqrt{2}}{2}\right)d
 \end{align*}
 \begin{equation}
      \boxed{
-          t_x = t_z = 0.707107 \cdot d
+          t_x = t_z = 0.707107 \cdot d \label{eqn:t_x_z_07_d}
      }
 \end{equation}
 
-Symmetry of the initial setup can be used to create a symmetrical v-grove in the work.
+Symmetry of the initial setup can be used to create a symmetrical v-grove in the work by passing the rotating tool along the y-axis.
 
-The diameter $D$ of the cutting tool is relatively unimportant since removal of material from the v-grove is accomplished by the travel of the cutting tool.
-By gradually advancing the cutting tool downward a distance $L/2$ along the z-axis, and shifting leftward a distance $L/2$ along the y-axis, the groove is formed.
+After each pass, the tool should be stepped slightly leftward until the tool has traveled a distance $t_x$ along the y-axis.
+Then the tool should be advanced downward after each pass, along the z-axis, until distance $t_z$ has been traveled. 
+Thus the groove is formed.
 
-Follow these steps to create a symmetrical v-grove in the work.  
-
-\subsection{Method 1}
-This method starts cutting on the surface of the v-groove centerline.
-It is easy to setup.
-An advanage to this method is the machinst can choose to increase the value of $L$ while machining, without disturbing the zero position of Digital Readouts or dial indicators.
-
-\begin{enumerate}
-\item Determine the diameter $D$ of the cutting tool.
-\item Mount the cutting tool in the milling machine.
-\item Choose the desired length $L$ for the depth of side $a$ and width of side $b$, such that equation \ref{eqn:a_b_L} is satisfied.
-\item Calculate $L/2$, this will determine the travel of the cutting tool.
-\item Locate and scribe the place on surface of the work where the v-grove will be centered.
-\item Mount the work at a $\theta = 45\degree$ angle in a vise in the milling machine, with the scribed line parallel to the y-axis.
-\item Position the milling machine table so that the scribed line touches the bottom-left corner of the cutting tool.
-\item Zero out any Digital Readouts or dial indicators.
-\item Turn on the milling machine, make an initial pass along the y-axis.
-\item On subsequent passes, advance the cutter leftward in the x-axis until it has traveled a maximum of $L/2$ to the left.
-\item Advance the depth of cutter downward along the z-axis until it has sunk a maximum of $L/2$.
-\end{enumerate}
-
-\subsection{Method 2}
-This method takes a little longer to setup, but it will be easier to machine.
-For a cutting tool where $D > L$, the machinist only needs to advance the cut depth along the z-axis until the maximum $L$ depth (not $L/2$) is reached.
-For a cutting tool where $D \leq L$, the machinist will need to make extra passes to remove missed material.
-
-\begin{enumerate}
-\item Determine the diameter $D$ of the cutting tool.
-\item Mount the cutting tool in the milling machine.
-\item Choose the desired length $L$ for the depth of side $a$ and width of side $b$.
-\item Calculate $L/2$, this will determine the SETUP travels of the cutting tool.
-\item Locate and scribe the place on surface of the work where the v-grove will be centered.
-\item Mount the work at a $\theta = 45\degree$ angle in a vise in the milling machine, with the scribed line parallel to the y-axis.
-\item Position the milling machine table so that the scribed line touches the bottom-left corner of the cutting tool.
-\item Zero out any Digital Readouts or dial indicators.
-\item Now raise the cutting tool a distance $L/2$ along the z-axis.
-\item Move the cutting tool leftward a distance $L/2$ along the x-axis.
-\item Again, zero out any Digital Readouts or dial indicators.
-\item Turn on the milling machine, make an initial pass along the y-axis.
-\item On subsequent passes, advance the depth of cutter downward along the z-axis until it has sunk a maximum of $L$ (not $L/2$ here)!!!
-\end{enumerate}
+The machinist should be advised that the diameter $D$ of the cutting tool is relatively unimportant.
+However if $D \leq 2 \cdot t_x$ then some leftover material may need to be cleaned up before the start point. 
