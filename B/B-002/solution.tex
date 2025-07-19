@@ -13,68 +13,83 @@ Furthermore, angles $\theta$ will be:
 
 Side $c$ is related to $a$ and $b$ by the Pythagorean theorem.
 Substituting in equation \ref{eqn:a_b_L}, $L$ is found to be.
-\begin{align*}
+\begin{align}
 c^2 &= a^2 + b^2 \\
-c^2 &= L^2 + L^2 \\
-c^2 &= 2 L^2 \\
-\sqrt{c^2}   &= \sqrt{2 L^2} \\
-c   &= L\sqrt{2} \\
+c^2 &= L^2 + L^2 \notag \\
+c^2 &= 2 L^2 \notag \\
+\sqrt{c^2}   &= \sqrt{2 L^2} \notag \\
+c   &= L\sqrt{2} \notag \\
 L   &= \frac{c}{\sqrt{2}}
-\end{align*}
+\end{align}
 
 Cut depth $d$ is found by applying Pythagorean to the right triangle formed by $d$, half of $c$, and with $b$ as the hypotenuse. 
 
-\begin{align*}
-b^2 &= d^2 + \left(\frac{c}{2}\right)^2 \\
-d^2 &= b^2 - \left(\frac{c}{2}\right)^2 \\
-d^2 &= L^2 - \left(\frac{L \cdot \sqrt{2}}{2}\right)^2 \\
-d^2 &= L^2 - \frac{2L^2}{4} \\
-d^2 &= L^2 - \frac{L^2}{2} \\ 
-d^2 &= \frac{L^2}{2} \\
-\sqrt{d^2} &= \sqrt{\frac{L^2}{2}} \\ 
-d &= \frac{L}{\sqrt{2}} \\
-L &= d \sqrt{2}
-\end{align*}
 
 
-\begin{align*}
-     d \sqrt{2} &= L \\ 
-     d \sqrt{2} &= \frac{c}{\sqrt{2}} \\
-     d &= \frac{c}{2}
-\end{align*}
+\begin{align}
+     d &= \frac{c}{2} \notag \\ 
+     c &= 2 d
+\end{align}
 
 
-\begin{align*}
-     d &= \frac{c}{2} \\ 
-     c &= 2 c
-\end{align*}
-
-
-\begin{align*}
-     L &= \frac{c}{\sqrt{2}} \\ 
-     L &= \frac{2d}{\sqrt{2}} \\
-     L &= \frac{d(\sqrt{2})^2}{\sqrt{2}} \\
+\begin{align}
+     L &= \frac{c}{\sqrt{2}} \notag \\ 
+     L &= \frac{2d}{\sqrt{2}} \notag \\
+     L &= \frac{d(\sqrt{2})^2}{\sqrt{2}} \notag \\
      L &= d \sqrt{2}
-\end{align*}
+\end{align}
 
 
 Since the midpoint of hypotenuse $c$ is at the origin, the starting position on the x-axis will be the midpoint of $b$.
 Therefore, the travel distance $t_x$ will be half the length of $b$.
 Substituting $b = L$ from equation \ref{eqn:a_b_L}, it is found.
-\begin{align*}
-t_x &= \frac{b}{2} \\
+\begin{align}
+t_x &= \frac{b}{2} \notag \\
 t_x &= \frac{L}{2}
-\end{align*}
+\end{align}
 
 The midpoint of hypotenuse $c$ is at the origin, so the starting position on the z-axis will be the midpoint of $a$.
 Therefore, the travel distance $t_z$ will be half the length of $a$:
 Substituting $a = L$ from equation \ref{eqn:a_b_L}, it is found.
-\begin{align*}
-t_z &= \frac{a}{2} \\
+\begin{align}
+t_z &= \frac{a}{2} \notag \\
 t_z &= \frac{L}{2}
+\end{align}
+
+\begin{align*}
+t_x = t_z &= \frac{L}{2} \notag \\
+t_x = t_z &= \left(\frac{1}{2}\right)L\notag \\
 \end{align*}
+\begin{equation}
+     \boxed{
+          t_x = t_z = 0.5 \cdot L
+     }
+\end{equation}
 
 
+\begin{align*}
+t_x = t_z &= \frac{L}{2} \notag \\
+t_x = t_z &= \frac{\frac{c}{\sqrt{2}}}{2} \notag \\
+t_x = t_z &= \frac{c}{2\sqrt{2}} \notag \\
+t_x = t_z &= \left(\frac{1}{2\sqrt{2}}\right) c \notag \\
+\end{align*}
+\begin{equation}
+     \boxed{
+          t_x = t_z = 0.353553 \cdot c
+     }
+\end{equation}
+
+
+\begin{align*}
+t_x = t_z &= \frac{L}{2} \\
+t_x = t_z &= \frac{d\sqrt{2}}{2} \\
+t_x = t_z &= \left(\frac{\sqrt{2}}{2}\right)d
+\end{align*}
+\begin{equation}
+     \boxed{
+          t_x = t_z = 0.707107 \cdot d
+     }
+\end{equation}
 
 Symmetry of the initial setup can be used to create a symmetrical v-grove in the work.
 

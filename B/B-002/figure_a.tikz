@@ -1,4 +1,6 @@
-\begin{tikzpicture}[x=1in,y=1in]
+\begin{tikzpicture}[x=1in, y=1in]
+\begin{scope}[xscale=1.5, yscale=1.5]	
+
 	\coordinate (origin) at (0,0);
 
 	\def \axisLen{0.3};
@@ -67,5 +69,5 @@
 	\draw[black] (\vxstart + 0.05, \vystart) -- ++ (-0.1, 0);
 	\draw[black] (\vxstart + 0.05, \vystart + 0.5 * \L) -- ++ (-0.1, 0);
 
-
+\end{scope}
 \end{tikzpicture}
