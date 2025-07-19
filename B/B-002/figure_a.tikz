@@ -33,7 +33,7 @@
     \draw[black] (0.5 * \L -0.1, -0.5 * \L)  arc (180 : 135 : 0.1);
 
 
-	\draw[black] (p1) node[shift={(262 : 0.70)}] {$a$} node[shift={(295 : 0.25)}] {$\theta$} -- (p2) node[shift={(350 : 0.5)}] {$b$} -- (p3) node[shift={(130 : 1.1)}] {$c$} node[shift={(155 : 0.25)}] {$\theta$} -- (p1);
+	\draw[black] (p1) node[shift={(262 : 0.70)}] {$a$} node[shift={(295 : 0.25)}] {$\theta$} -- (p2) node[shift={(350 : 0.5)}] {$b$} -- (p3) node[shift={(128 : 1.2)}] {$c/2$} node[shift={(115 : 0.4)}] {$c/2$}  node[shift={(155 : 0.25)}] {$\theta$} -- (p1);
 
 
 	% corner
