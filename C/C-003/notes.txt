@@ -89,3 +89,13 @@ Write with focus on GoLang.  Save the LaTeX container mods for another article C
 
 \end{verbatim}
 
+Regarding Container Images for LaTeX
+- Existing Images
+- Devcontainer (microsoft), Alpine, RedHat UBI
+- texlive
+- tlmgr package manager
+- Build pipeline GitHub/GitLab
+- Publish to registry (Dockerhub)
+- Running/Using from commandline to host .
+- Using as devcontainer in VSCode
+- Using container in pipeline
