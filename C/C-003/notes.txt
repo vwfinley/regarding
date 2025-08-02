@@ -99,3 +99,5 @@ Regarding Container Images for LaTeX
 - Running/Using from commandline to host .
 - Using as devcontainer in VSCode
 - Using container in pipeline
+- https://tug.org/texlive/
+- https://tug.org/texlive/doc/texlive-en/texlive-en.html
