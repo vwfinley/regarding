@@ -1,0 +1,32 @@
+\section{Solution B: Roll own container from base image}
+- Find base devcontainer image.
+- Add missing needed packages
+- Fix warnings/errors (mktexpk for generating missing fonts)
+- Integrate/Use container in project.
+
+Add TexLive tlmgr packages in Docker container and publish.
+vs. add packages 
+
+
+
+\begin{verbatim}
+FROM mcr.microsoft.com/devcontainers/base:dev-debian-12
+
+RUN apt-get update
+
+RUN <<EOF
+    cd /tmp
+    wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    zcat < install-tl-unx.tar.gz | tar xf -
+    cd install-tl-2*
+    perl ./install-tl --scheme=basic --no-interaction --no-doc-install --no-src-install
+    export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux
+    tlmgr update --all
+    rm -r /tmp/install-tl-*
+EOF
+
+RUN <<EOF
+    echo 'PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux' > /etc/profile.d/texlive_path.sh
+    echo 'export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux' >> ~/.bashrc
+EOF
+\end{verbatim}

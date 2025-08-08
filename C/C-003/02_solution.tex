@@ -1,26 +1,46 @@
 \section{Solution}
-You are probably working on either a laptop or desktop PC running Microsoft Windows.
-This was the same situation encountered in the previous article.
+TODO write ME
 
-Microsoft Windows already has a desktop.
-As in the previous article, we will use the Windows desktop the as a ``terminal'' that can connect to remote systems.
+- Old Windows environment
+- New Linux environment
+  - Refer to C-001 and C-002 Ubuntu
+  - Remote VSCode extensions to connect to VM Bravo remotely.
+- TexLive
+- Need VS add on packages
+- Gradual move toward automation.
+- TexLive flavors, basic, etc.
 
-However this time instead of installing Ubuntu Desktop in a VM, we will install Ubuntu Server in the VM.
-Ubuntu Server will act as our remote development system.
-
-We can describe Ubuntu Server as ``headless'' because it does not include a GUI.
-A headless server installation is more appropriate place for teams of developers to collaborate.
-
-Okay, so what's our strategy to setup a remote development environment?
-We will:
-\begin{itemize}
-  \item Follow many of the steps found in the previous article.
-  \item Install an Ubuntu server distro rather than the Ubuntu Desktop distro.
-  \item Make a few changes that are unique to the Server distro.
-  \item Connect VSCode to the remote Ubuntu Server instance.
-  \item Complete the environment setup.
-\end{itemize}
+- A word about Difference between packages, containers and virtual machines.
+  - Packages
+    - OS packages
+    - Language packages (npm, pip, etc.)
+  - containers
+  - virtual machines
 
 
+- Strategy existing container vs. from scratch
+  - Pros/cons
+  - Existing container is quicker to pull from Dockerhub and use
+  - Existing container is in unknown state.
+  - Possibly poorly documented.
+  - Maybe harder to troubleshoot.
+  - If existing container is missing stuff, they you'll need to figure out what's missing and why.
+  - May need to try several existing containers before finding a working match.
+  - Scratch container is known state, clean state, blank canvas.
+  - Need now worry about some unknown publisher's mistakes.
+  - Setup as you please, no need to workaround previous author's preferences.
+- Pros/cons of from scratch approach containers:
+Not an exhaustive list
+Good, Cheap, Fast
+  - Minimal (Alpine) Small footprint, consumes minimal resources during runtime
+  - Robust (UBI RHEL) Well tested and supported, good for production environment.
+  - Developer (Msft dev container) Excellent integration with VSCode.  
+    - Facilitates "Open in developer container".
+    - Run in developer container.
+    - Good directory mapping between host and devcontainer.
+    - Supports installation of VSCode extensions in devcontainer.
+    - Container process can also be run from Host.
+    - Good support for debuggers and debugging source code.
+    - Can be setup in host .devcontainer/devcontainer.json or Dockerfile
 
 
