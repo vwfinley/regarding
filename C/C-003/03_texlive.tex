@@ -1,5 +1,20 @@
 \section{TeXLive}
-- TexLive is a distro of LaTeX https://tug.org/texlive/
+
+In all cases the first step to realizing a containerized LaTeX distribution is selecting the desired distribution.
+The three main LaTeX distributions are: MacTeX, MiKTeX and TeXLive.
+Of these three, the TeXLive\footnote{https://tug.org/texlive/} distribution is most appropriate for the Linux containers we will be targeting. 
+
+When working with the TeXLive distribution there are a few important maxims to keep in mind.
+\begin{enumerate} 
+\item LaTeX is language much like Golang, C++, Java, Python, etc.
+\item The goal of LaTeX is to compile source code into a finished document, rather than an executable binary file as with programming languages.
+\item LaTeX and the TeXLive distribution includes a compiler and linker, just like the general purpose computing languages do.
+\item The TexLive distribution makes optional extension libraries available, much like the way distributions for general computing languages do.
+\item The TeXLive distribution includes its own package manager named "tlmgr", similar to how the pip, npm and maven package mangers are included in distributions for their respective languages. 
+\item TexLive library packages are kept in a mirrored\footnote{http://mirror.ctan.org/systems/texlive/tlnet} public registry, similar to how: GO Packages Repository\footnote{https://pkg.go.dev/}, PyPI\footnote{https://pypi.org/} and Maven Repository\footnote{https://mvnrepository.com/}; keep packages for their respective languages.  
+\end{enumerate}
+
+
 - LaTeX is language much like golang, c++, java, python, etc.
   - Has compiler
   - Add library packages
