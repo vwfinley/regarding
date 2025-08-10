@@ -19,18 +19,18 @@ You'll always be missing some TexLive library packages you need, but you shouldn
 
 
 
-- Package managers
-  - OS Package managers, Fedora/RHEL = yum/dnf, Debian/Ubuntu = apt, Alpine = apk
-  - OS feature level Packages for distro, included applications and software, tooling, low level drivers, etc.  
-  - Software developer kits for a Language usuallly include compiler, linker, libraries, tools, package manager.
-    - Most OS kernels are written in c/c++, 
-      - Since c/c++ are integral to the core of most OS kernels
-      - c/c++ usually installs with an OS distro. package manager
-      - GNU gcc/g++ developer tools is a good example.
-    - Other languages usually have their own package managers
-      - Other lanauages have their own release cycles
-      - Installed version of lanauage and libraries are independend of OS.
-      - examples: npm = nodejs javascript distro, pip = python, .net = Nuget
-      - Languages have their own package repos: python = pypi, .net nuget, https://www.npmjs.com/
-- We will want to identify any missing TexLive packages and use tlmgr to install them into container.
-- What kind of packages?  Tikz, etc.
+%- Package managers
+%  - OS Package managers, Fedora/RHEL = yum/dnf, Debian/Ubuntu = apt, Alpine = apk
+%  - OS feature level Packages for distro, included applications and software, tooling, low level drivers, etc.  
+%  - Software developer kits for a Language usuallly include compiler, linker, libraries, tools, package manager.
+%    - Most OS kernels are written in c/c++, 
+%      - Since c/c++ are integral to the core of most OS kernels
+%      - c/c++ usually installs with an OS distro. package manager
+%      - GNU gcc/g++ developer tools is a good example.
+%    - Other languages usually have their own package managers
+%      - Other lanauages have their own release cycles
+%      - Installed version of lanauage and libraries are independend of OS.
+%      - examples: npm = nodejs javascript distro, pip = python, .net = Nuget
+%      - Languages have their own package repos: python = pypi, .net nuget, https://www.npmjs.com/
+%- We will want to identify any missing TexLive packages and use tlmgr to install them into container.
+%- What kind of packages?  Tikz, etc.
