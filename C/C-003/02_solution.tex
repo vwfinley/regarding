@@ -1,19 +1,30 @@
 \section{Solution}
-Another initial burden of using LaTeX is the cumbersome environment setup.
+Awkward environment setup can be another burden of using LaTeX.
 At first an author using LaTeX for typesetting may want to the use a LaTeX WYSIWYG editor like TeXworks\footnote{https://tug.org/texworks}.
-The setup for TeXworks, especially on a Microsoft Windows platform, is simple and easy.
+Installation for TeXworks is simple and easy, especially on a Microsoft Windows platform.
 Choosing this option will start an author quickly down the path toward publication.
-In fact, for the early papers in the Regarding series, TeXworks was selected for this very reason.
+In fact, for the early articles in the Regarding series, TeXworks was selected for this very reason.
 
 However as an author gains more experience with LaTeX typesetting, and documents grow in complexity, the author will outgrow WYSIWYG tool.
 This is to be anticipated since people usually choose LaTeX vs. WYSIWYG wordprocessors as documents become complex.
 The ability to automate document management and generation gives LaTeX a big advantage when publishing 500 page long technical books.
 
-Since setting up LaTeX can be tricky, we would like to perform setup only when absolutely necessary.
+Because setting up LaTeX can be tricky, we would like to perform setup only when absolutely necessary.
 We would also like to standardize the setup across hosting platforms.
-The best way to achieve these aims is to containerize the LaTeX installation once and install the container image as needed.
+The best way to achieve both aims is to containerize the LaTeX installation once and install the container image as needed.
 
+A question then arises.  
+How does one use LaTeX in a container?
+There are many answers to this question, but they fall into two main categories.
+The first category is to find a pre-built container image that offers a LaTeX installation.
+The second category is to install a LaTeX distribution into a base container image.
 
+The pros and cons of each category will be discussed in their respective sections to follow.
+
+In all cases the first step to realizing a containerized LaTeX distribution is selecting the desired distribution.
+ 
+
+So how best to realize the 
 
 https://www.latex-project.org/
 
