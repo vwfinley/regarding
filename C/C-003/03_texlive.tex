@@ -14,11 +14,10 @@ When working with the TeXLive distribution there are a few important maxims to k
 \item TexLive library packages are kept in a mirrored\footnote{http://mirror.ctan.org/systems/texlive/tlnet} public registry, similar to how: GO Packages Repository\footnote{https://pkg.go.dev/}, PyPI\footnote{https://pypi.org/} and Maven Repository\footnote{https://mvnrepository.com/}; keep packages for their respective languages.  
 \end{enumerate}
 
+Aside from these maxims, the most important to remember is:
+You'll always be missing some TexLive library packages you need, but you shouldn't worry, because you can easily add the missing packages.
 
-- LaTeX is language much like golang, c++, java, python, etc.
-  - Has compiler
-  - Add library packages
-- Difference is that instead of compiling code into a executable binary file, LaTeX compiles into a finished document.
+
 
 - Package managers
   - OS Package managers, Fedora/RHEL = yum/dnf, Debian/Ubuntu = apt, Alpine = apk
@@ -33,6 +32,5 @@ When working with the TeXLive distribution there are a few important maxims to k
       - Installed version of lanauage and libraries are independend of OS.
       - examples: npm = nodejs javascript distro, pip = python, .net = Nuget
       - Languages have their own package repos: python = pypi, .net nuget, https://www.npmjs.com/
-- TexLive LaTeX has it's own package manager, tlmgr and it's own repository.
 - We will want to identify any missing TexLive packages and use tlmgr to install them into container.
 - What kind of packages?  Tikz, etc.
