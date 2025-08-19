@@ -5,6 +5,8 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 //	"image": "mcr.microsoft.com/devcontainers/base:alpine-3.18",
 //	"image": "ghcr.io/jmuchovej/devcontainers/latex:2025",
+	"image": "vwfinley/devcontainers/latex",
+
 //    "image": "pandoc/latex",
 //	"features": {
 //		"ghcr.io/prulloac/devcontainer-features/latex:1": {
@@ -25,15 +27,15 @@
 //	"remoteUser": "root", 
 //	"postCreateCommand": "tlmgr install pgf gensymb booktabs paralist caption lastpage sectsty tocbibind tocloft mathtools multirow makecell",
 
-"build": {
-    "args": {
- //       "REMOTE_USER": "${localEnv:USER}",
- //       "REMOTE_UID": "${localEnv:REMOTE_UID:1000}",
- //       "REMOTE_GID": "${localEnv:REMOTE_GID:1000}"
-    },
-    "dockerfile": "../Dockerfile"
-}
-
+//"build": {
+//    "args": {
+//			//       "REMOTE_USER": "${localEnv:USER}",
+//			//       "REMOTE_UID": "${localEnv:REMOTE_UID:1000}",
+//			//       "REMOTE_GID": "${localEnv:REMOTE_GID:1000}"
+//    },
+//    "dockerfile": "../Dockerfile"
+//}
+//
 
 	// Configure tool-specific properties.
 	// "customizations": {},

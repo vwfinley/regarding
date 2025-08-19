@@ -16,12 +16,14 @@ USER root
 # Note tikz is in the pgf package
 RUN <<EOF
     tlmgr update --self
+
     tlmgr install \
         pgf booktabs breqn caption \
         ec fc gensymb lastpage \
-        makecell mathtools multirow paralist \
-        parskip pgf sectsty subfig \
-        tex4ht tocbibind tocloft
+        makecell mathtools multirow \
+        paralist parskip pgf sectsty \
+        subfig tex4ht tocbibind 
+        
     mktexpk --mfmode / --bdpi 600 \
       --mag 1+0/600 --dpi 600 tcrm1095
     mktexpk --mfmode / --bdpi 600 \

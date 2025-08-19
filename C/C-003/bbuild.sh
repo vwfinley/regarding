@@ -9,7 +9,9 @@ OUTFILE=C-003
 
 
 mkdir $OUTDIR
-docker run --rm -it -v $(pwd):/workspace c186cd34cd9b latex -output-format=pdf -output-directory=$OUTDIR $INFILE.tex
+#docker run --rm -it -v $(pwd):/workspace c186cd34cd9b latex -output-format=pdf -output-directory=$OUTDIR $INFILE.tex
+#docker run --rm -it -v $(pwd):/workspace vwfinley/devcontainers/latex:latest latex -output-format=pdf -output-directory=$OUTDIR $INFILE.tex
+docker run --rm -it -v $(pwd):/workspace vwfinley/texlive_dev:latest latex -output-format=pdf -output-directory=$OUTDIR $INFILE.tex
 pushd $OUTDIR
 mv $INFILE.pdf $OUTFILE.pdf
 popd
