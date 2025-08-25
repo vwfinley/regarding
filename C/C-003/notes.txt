@@ -1,5 +1,5 @@
 Notes for C-003
-Regarding Developer Containers for LaTeX
+Regarding Container Images for LaTeX
 July 2025
 
 \section{devcontainer}
@@ -156,3 +156,52 @@ https://www.bing.com/videos/riverview/relatedvideo?q=browse+ghcr.io&mid=63835186
 https://stackoverflow.com/questions/59175332/using-output-from-a-previous-job-in-a-new-one-in-a-github-action
 
 https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idoutputs
+
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idoutputs
+
+https://stackoverflow.com/questions/57819539/how-to-share-a-calculated-value-between-job-steps
+
+https://stackoverflow.com/questions/63467662/github-actions-define-workflow-level-environment-variable-between-jobs
+
+https://github.com/orgs/community/discussions/88772
+
+https://github.com/orgs/community/discussions/25692
+
+https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#release
+
+https://docs.github.com/en/actions/how-tos/manage-workflow-runs?tool=cli
+
+https://medium.com/@sangeetv09/understanding-more-about-event-triggers-event-filters-and-activity-types-in-github-actions-8bfaec5b101e
+
+https://stackoverflow.com/questions/75733616/github-actions-how-to-call-a-reusable-workflow-as-a-step
+
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax
+
+
+
+Sections:                                                               usage
+                                                scratch   extended    | from_host from_.devcontainer 
+                                               Dockerfile Dockerfile    Script    
+"ghcr.io/jmuchovej/devcontainers/latex:2025"                 x                        x
+Official                                                                   ?       
+"ghcr.io/vwfinley/latex:1.0.0                     x                        x           
+"ghcr.io/vwfinley/latex_dev:1.0.0                            x             x         x
+
+Using
+Extending
+Creating
+
+                      Build    Run         Run                Extend                     Push
+                      Img      Container   script from        from
+                               x           host/container     .devcontainer/Dockerfile 
+jmuchovej                      x           x                  x
+texlive/texlive                x           x                  ?  
+vwfinley/latex          x      x           x                  x       
+vwfinley/latex_dev      x      x           x        
+
+https://hub.docker.com/r/texlive/texlive
+
+Workflow
+Pull > Run from host      > Build  > Push
+     > Run from Container
+     > Extend
