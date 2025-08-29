@@ -1,0 +1,132 @@
+\section{Solution}
+Let $n$ be some natural number where $n \in \mathbb{N}$.
+
+Use $n$ to denote the base of a number system.
+For example $n = 10$ for the base 10 decimal number system.
+Or $n = 16$ for the base 16 hexadecimal number system.
+
+Now let $A$ equal to the set whose elements $a$ are whole numbers less than $n$.
+\begin{align}
+  A &= \{a \in \mathbb{W} \mid a < n \} \\
+    &= \{0, 1, 2,\,...\,,n-1\}  
+\end{align}
+
+
+Also, let $B$ equal to the set whose elements $b$ are whole numbers less than $n$.
+\begin{align}
+  B &= \{b \in \mathbb{W} \mid b < n \} \\
+    &= \{0, 1, 2,\,...\,,n-1\}  
+\end{align}
+
+\begin{align}
+  A = B
+\end{align}
+
+Let $P$ be the set of whole numbers whose elements are the products $p$ formed by multiplying each element in $A$ by each element in $B$.
+\begin{equation}
+  P = \{p \in \mathbb{W} \mid p = ab \}
+\end{equation}
+
+Elements of $A$, $B$ and $P$ should be expressed as single digits appropriate for the base.
+For example: using hexadecimal digits $0, 1, 2,\, ...\,, D, E, F$ when $n = 16$.
+
+Let $p$ be the product of a multiplication of $a$ by $b$.
+If $p$ were divided by some divisor $d$, the result would be a quotient $q$ and remainder $r$.
+The product $p$ can then be recomposed by multiplying $d$ and $q$ back together and adding $r$.
+\begin{equation}
+ab = p = dq + r
+\end{equation}
+
+Comprehensive product is the carry-in added to the product.
+\begin{equation}
+c = p + c_i
+\end{equation}
+
+\makeatletter
+\newcommand*{\bdiv}{%
+  \nonscript\mskip-\medmuskip\mkern5mu%
+  \mathbin{\operator@font div}\penalty900\mkern5mu%
+  \nonscript\mskip-\medmuskip
+}
+\makeatother
+
+First(Left) digit
+\begin{align}
+  c_o &= c \bdiv n            \notag \\
+      &= (p + c_i) \bdiv n    \notag \\
+  c_o &= (ab + c_i) \bdiv n   \label{eqn:c_o} 
+\end{align}
+
+Second (Right) digit gets written down.
+\begin{align}
+  d &= c \bmod n           \notag \\
+    &= (p + c_i) \bmod n   \notag \\
+  d &= (ab + c_i) \bmod n  \label{eqn:d}
+\end{align}
+
+
+
+
+Table of products (Multiplication table)
+
+Example:
+   342
+   x67
+   ---
+212814
+02|12|81|4
+
+(2)1(2)8(1)4
+(2)(1+2)(8+1)4
+2394
+
+-------------
+01|82|41|2
+
+   02|12|81|04
+01|82|41|02|00
+--------------
+01|84|53|83|04
+01|12|08|11|04
+0|11|20|81|10|4
+0|2|2|9|1|4
+
+
+
+
+   342
+   x67
+   ---
+18241200
+00212814
+--------
+1|82|41|20|0
+0|02|12|81|4
+--------------
+01|84|53|101|4
+--------------
+01|84|531|01|4
+---------------
+01|12|09|01|4
+----------------
+011|02|09|01|4
+---------------
+2|2|9|1|4
+
+
+
+
+
+   342
+   x67
+   ---
+18241200
+00212814
+--------
+1|82|41|20|0
+0|02|12|81|4
+-------------
+1|12|8|11|4
+------------
+11|2|81|1|4
+2|2|9|1|4

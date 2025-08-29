@@ -205,3 +205,6 @@ Workflow
 Pull > Run from host      > Build  > Push
      > Run from Container
      > Extend
+       > .devcontainer
+       > Dockerfile
+
