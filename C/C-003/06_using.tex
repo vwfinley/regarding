@@ -7,7 +7,9 @@ TODO Write me!
 - Dockerfile
 - Additional packages
 
-\begin{verbatim}
+\begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
+  innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.1cm]
+\begin{code}
 #!/bin/bash
 
 # Run this inside developer container.
@@ -15,35 +17,43 @@ INFILE=main
 OUTDIR=output
 OUTFILE=C-003
 
-#rm *.pdf *.log *.dvi *.aux
-
 mkdir $OUTDIR
-latex -output-format=pdf -output-directory=$OUTDIR $INFILE.tex
+
+latex -output-format=pdf \
+  -output-directory=$OUTDIR \
+  $INFILE.tex
+
 pushd $OUTDIR
 mv $INFILE.pdf $OUTFILE.pdf
 popd
-
-\end{verbatim}
+\end{code}
+\end{mdframed}
 
 
 \subsection{From host (outside guest container)}
 
-\begin{verbatim}
+\begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
+  innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.1cm]
+\begin{code}
+#!/bin/bash
+
 # Run this from host.
 INFILE=main
 OUTDIR=output
 OUTFILE=C-003
 
-#rm *.pdf *.log *.dvi *.aux
-
 mkdir $OUTDIR
-docker run --rm -it -v $(pwd):/workspace c186cd34cd9b latex -output-format=pdf -output-directory=$OUTDIR $INFILE.tex
+
+docker run --rm -it -v $(pwd):/workspace \
+  ghcr.io/vwfinley/texlive-dev:latest \
+  latex -output-format=pdf \
+  -output-directory=$OUTDIR $INFILE.tex
+  
 pushd $OUTDIR
 mv $INFILE.pdf $OUTFILE.pdf
 popd
-
-\end{verbatim}
-
+\end{code}
+\end{mdframed}
 
 
 \subsection{Makefile}

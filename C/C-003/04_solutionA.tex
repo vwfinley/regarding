@@ -4,7 +4,55 @@ Add missing needed packages
 Fix warnings/errors (mktexpk for generating missing fonts)
 Integrate/Use container in project.
 
-\begin{verbatim}
+
+%%\lstnewenvironment{code}{%
+%%  \lstset{
+%%  fillcolor=\color{verbgray},
+%%  backgroundcolor=\color{verbgray},
+%%  frame=single,
+%%  framerule=2pt,
+%%  basicstyle=\ttfamily\small,
+%%  columns=fullflexible,
+%%  lineskip=0pt,  
+%%  aboveskip=0pt,
+%%  belowskip=0pt }}{}
+
+
+%%\lstnewenvironment{code}{%
+%%  \lstset{
+%%  fillcolor=\color{verbgray},
+%%  backgroundcolor=\color{verbgray},
+%%  basicstyle=\ttfamily\small,
+%%  lineskip=0pt,  
+%%  aboveskip=0pt,
+%%  belowskip=0pt }}{}
+%%
+
+\definecolor{shadecolor}{rgb}{.0, .0, .0}
+
+%%\lstset{language=c++,basicstyle=\linespread{1.1}\ttfamily\footnotesize,
+%%    xleftmargin=0.0cm, frame=t, framesep=0.15cm, framerule=0pt, tabsize=4,
+%%    showspaces=false, showstringspaces=false,showlines=true,
+%%    commentstyle=\ttfamily\footnotesize\color{gray},
+%%}
+
+
+
+\lstnewenvironment{code}
+{
+ \lstset{
+ basicstyle=\ttfamily\scriptsize,
+ columns=fullflexible,
+ }}{}
+
+
+\begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
+  innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.1cm]
+
+%%\begin{lstlisting}[mathescape, caption = This is some code]
+
+%%\begin{code}[mathescape, caption = This is some code]
+\begin{code}
 #-----------
 # Dockerfile
 #-----------
@@ -13,7 +61,6 @@ FROM ghcr.io/jmuchovej \
 
 USER root
 
-# Note tikz is in the pgf package
 RUN <<EOF
     tlmgr update --self
 
@@ -35,8 +82,8 @@ RUN <<EOF
 EOF
 
 USER vscode
-\end{verbatim}
-
+\end{code}
+\end{mdframed}
 
 
 

@@ -9,24 +9,41 @@ vs. add packages
 
 
 
-\begin{verbatim}
+
+\begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
+  innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.1cm]
+\begin{code}
+ARG IMG=mcr.microsoft.com/devcontainers/base
+ARG TAG=dev-debian-12
+
 FROM mcr.microsoft.com/devcontainers/base:dev-debian-12
+
+LABEL org.opencontainers.image.source https://github.com/vwfinley/texlive
+
+ENV TEXLIVE_VERSION=2025
+ENV TEXLIVE_SCHEME=small
+ENV PATH="$PATH:/usr/local/texlive/${TEXLIVE_VERSION}/bin/x86_64-linux"
+
 
 RUN apt-get update
 
-RUN <<EOF
-    cd /tmp
-    wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-    zcat < install-tl-unx.tar.gz | tar xf -
-    cd install-tl-2*
-    perl ./install-tl --scheme=basic --no-interaction --no-doc-install --no-src-install
-    export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux
-    tlmgr update --all
-    rm -r /tmp/install-tl-*
-EOF
+WORKDIR /tmp 
 
 RUN <<EOF
-    echo 'PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux' > /etc/profile.d/texlive_path.sh
-    echo 'export PATH=$PATH:/usr/local/texlive/2025/bin/x86_64-linux' >> ~/.bashrc
+    wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+    zcat < install-tl-unx.tar.gz | tar xf -
+    cd install-tl-*
+    perl ./install-tl --scheme=${TEXLIVE_SCHEME} \
+      --no-interaction --no-doc-install --no-src-install
+    tlmgr update --all
+    cd ..
+    rm -r install*
 EOF
-\end{verbatim}
+
+WORKDIR /workspace 
+
+USER vscode
+
+
+\end{code}
+\end{mdframed}

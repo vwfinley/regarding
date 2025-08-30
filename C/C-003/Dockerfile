@@ -15,16 +15,17 @@
 #USER vscode
 
 
-FROM vwfinley/texlive:latest
+FROM ghcr.io/vwfinley/texlive-dev:latest
 
-USER root
 
-RUN <<EOF
-    tlmgr install \
-         gensymb paralist \
-         lastpage sectsty \
-         tocbibind tocloft \
-         multirow makecell 
-EOF
+#USER root
+#
+#RUN <<EOF
+#    tlmgr install \
+#         gensymb paralist \
+#         lastpage sectsty \
+#         tocbibind tocloft \
+#         multirow makecell 
+#EOF
 
 USER vscode
