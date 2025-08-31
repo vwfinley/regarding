@@ -96,11 +96,15 @@
 % For boxed multiline equations
 \usepackage{empheq}
 
-%%\usepackage{fancyvrb}
-
+% For listings
 \usepackage{listings}
-%%\usepackage{xcolor}
 \usepackage{mdframed}
+
+% Endnotes package
+\usepackage{endnotes}
+\renewcommand{\notesname}{Endnotes}
+
+
 
 %%% END Article customizations
 
@@ -123,5 +127,7 @@
 \input{06_using.tex}
 \input{07_extensions.tex}
 \input{08_conclusion.tex}
+
+\theendnotes
 
 \end{document}
