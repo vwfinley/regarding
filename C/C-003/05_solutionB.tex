@@ -13,16 +13,21 @@ vs. add packages
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.1cm]
 \begin{code}
-ARG IMG=mcr.microsoft.com/devcontainers/base
+ARG SRC_IMG=mcr.microsoft.com/devcontainers/base
 ARG TAG=dev-debian-12
 
-FROM mcr.microsoft.com/devcontainers/base:dev-debian-12
+FROM ${SRC_IMG}/${TAG}
 
-LABEL org.opencontainers.image.source https://github.com/vwfinley/texlive
+ARG DEST=https://github.com/vwfinley/texlive
+ARG MIRROR=https://mirror.ctan.org
+ARG FILE=systems/texlive/tlnet/install-tl-unx.tar.gz
+ARG VER=2025
+ARG SCHEME=small
+ARG DIR=/usr/local/texlive/${VER}/bin/x86_64-linux
 
-ENV TEXLIVE_VERSION=2025
-ENV TEXLIVE_SCHEME=small
-ENV PATH="$PATH:/usr/local/texlive/${TEXLIVE_VERSION}/bin/x86_64-linux"
+ENV PATH="$PATH:${DIR}"
+
+LABEL org.opencontainers.image.source ${DEST}
 
 
 RUN apt-get update
@@ -30,14 +35,15 @@ RUN apt-get update
 WORKDIR /tmp 
 
 RUN <<EOF
-    wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-    zcat < install-tl-unx.tar.gz | tar xf -
-    cd install-tl-*
-    perl ./install-tl --scheme=${TEXLIVE_SCHEME} \
-      --no-interaction --no-doc-install --no-src-install
-    tlmgr update --all
-    cd ..
-    rm -r install*
+  wget ${MIRROR}/${FILE}
+  zcat < install-tl-unx.tar.gz | tar xf -
+  cd install-tl-*
+  perl ./install-tl --scheme=${SCHEME} \
+    --no-interaction --no-doc-install \
+    --no-src-install
+  tlmgr update --all
+  cd ..
+  rm -r install*
 EOF
 
 WORKDIR /workspace 
