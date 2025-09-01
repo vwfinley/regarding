@@ -212,6 +212,7 @@ Two approaches:
 Automation is the goal
 
 PreBuilt Workflow:
+jmuchovej example
 
 Pull > Use > Extend > Build > Push
   ^     ^---------------|       |
@@ -220,11 +221,11 @@ Pull > Use > Extend > Build > Push
 Pull:
   Find container and pull
 Use:
-  from_host
-  from_container
+  from_host  (script)
+  from_container  (run bash, internal script)
 Extend:
-  from_devcontainer.json
-  from_dockerfile
+  from_devcontainer.json (vscode launch)
+  from_dockerfile ()
 Build:
   from_host script
   from_vscode
@@ -232,11 +233,12 @@ Push:
   optional
 
 SelfBuilt Workflow:
-Two containers: latex and latex_dev
+Two containers: latex (small latex installation) and latex_dev (extra packages)
 
-Pull > Extend > Build > Test > Push
-  ^      ^----------------|     |
-  |-----------------------------|
+
+Pull > Use > Extend > Build > Test > Push
+  ^            ^----------------|     |
+  |-----------------------------------|
 
 Pull:
   Select base container
@@ -244,11 +246,14 @@ Extend:
   Dockerfile
 Build:
   from_host Script
-  pipeline automation/runners
+  github actions pipeline (diagram), yml, automation/runners
 Test/Use:
   from_host
   from_container
 Push:
-  Publishing to registry
+  Publishing to github registry
+  release tag, packages
+
+
 
 
