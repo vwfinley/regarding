@@ -196,8 +196,8 @@ Creating
                                x           host/container     .devcontainer/Dockerfile 
 jmuchovej                      x           x                  x
 texlive/texlive                x           x                  ?  
-vwfinley/latex          x      x           x                  x       
-vwfinley/latex_dev      x      x           x        
+vwfinley/latex          x      x           x                  x                           x
+vwfinley/latex_dev      x      x           x                                              x
 
 https://hub.docker.com/r/texlive/texlive
 
@@ -207,4 +207,48 @@ Pull > Run from host      > Build  > Push
      > Extend
        > .devcontainer
        > Dockerfile
+
+Two approaches:
+Automation is the goal
+
+PreBuilt Workflow:
+
+Pull > Use > Extend > Build > Push
+  ^     ^---------------|       |
+  |-----------------------------|  gray
+
+Pull:
+  Find container and pull
+Use:
+  from_host
+  from_container
+Extend:
+  from_devcontainer.json
+  from_dockerfile
+Build:
+  from_host script
+  from_vscode
+Push:
+  optional
+
+SelfBuilt Workflow:
+Two containers: latex and latex_dev
+
+Pull > Extend > Build > Test > Push
+  ^      ^----------------|     |
+  |-----------------------------|
+
+Pull:
+  Select base container
+Extend:
+  Dockerfile
+Build:
+  from_host Script
+  pipeline automation/runners
+Test/Use:
+  from_host
+  from_container
+Push:
+  Publishing to registry
+
 
