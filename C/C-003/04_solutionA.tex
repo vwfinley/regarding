@@ -5,6 +5,46 @@ Fix warnings/errors (mktexpk for generating missing fonts)
 Integrate/Use container in project.
 
 
+%\begin{figure}[!h]
+%\centering
+%\begin{tikzpicture}
+%  \node (r1) at (0,0) [draw, align=center, minimum height=2cm,minimum width=2cm] {Pull};
+%  \node (r2) at (5,0)  [draw, align=center, minimum height=2cm,minimum width=2cm] {Use};
+%  \node (r3) at (10,0) [draw, align=center, minimum height=2cm,minimum width=2cm] {Extend};
+%  \node (r4) at (2.5,-5) [draw, align=center, minimum height=2cm,minimum width=2cm] {Build};
+%  \node (r5) at (7.5,-5) [draw, align=center, minimum height=2cm,minimum width=2cm] {Push};
+%  \draw[arrows={-Latex[length=6pt]}] (r1.east) -- (r2.west);
+%  \draw[arrows={-Latex[length=6pt]}] (r2.east) -- (r3.west);
+%  \draw[arrows={-Latex[length=6pt]}] (r2.south) -- (r4.north);
+%  \draw[arrows={-Latex[length=6pt]}] (r2.south) -- (r5.north);
+%\end{tikzpicture}
+%\caption{The Development Environment}
+%\label{fig:fig1}
+%\end{figure}
+
+\usetikzlibrary{calc} 
+\usetikzlibrary{shapes}
+\begin{figure}[!h]
+\centering
+\begin{tikzpicture}
+  \node [minimum width=1.3cm,draw,circle] (a) at (0,0) {\scriptsize Pull};
+  \node [minimum width=1.3cm,draw,circle] (b) at ($(a)+(1.75,0)$) {\scriptsize Use};
+  \node [minimum width=1.3cm,draw,circle] (c) at ($(b)+(1.75,0)$) {\scriptsize Extend};
+  \node [minimum width=1.3cm,draw,circle] (d) at ($(c)+(1.75,0)$) {\scriptsize Build};
+  \node [minimum width=1.3cm,draw,circle] (e) at ($(d)+(1.75,0)$) {\scriptsize Push};
+
+  \draw[->] (a) -- (b);
+  \draw[->] (b) -- (c);
+  \draw[->] (c) -- (d);
+  \draw[->] (d) -- (e);
+  \draw[->] (e) to[out=135,in=45] (a);
+  \draw[->] (d) to[out=225,in=315] (b);
+
+\end{tikzpicture}
+\caption{Workflow}
+\label{fig:fig1}
+\end{figure}
+
 %%\lstnewenvironment{code}{%
 %%  \lstset{
 %%  fillcolor=\color{verbgray},
