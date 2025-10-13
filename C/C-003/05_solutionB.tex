@@ -42,9 +42,10 @@ When you are satisfied with the resulting document file, you can optionally publ
 \subsection{Customization Example}
 As an example, let's take a prebuilt LaTeX container image and customize it until it is suitable for typesetting this article you are now reading.
 
-Glancing at the code listing below you will see the LaTeX container image was written by user jmuchovej and is uploaded to the GHCR (GitHub container registry).  
-The container image is found at \url{https://github.com/jmuchovej/devcontainers/pkgs/container/devcontainers%2Flatex}
-Furthermore you can find the source code for the image at \url{https://github.com/jmuchovej/devcontainers/tree/main/images/src/latex}
+Glancing at Listing \ref{lst:lst1} below you will see the LaTeX container image was written by a GitHub user named jmuchovej.
+The image is uploaded to the GHCR (GitHub container registry).  
+The container image can be found at \url{https://github.com/jmuchovej/devcontainers/pkgs/container/devcontainers%2Flatex}
+Furthermore you can locate the image's source code at \url{https://github.com/jmuchovej/devcontainers/tree/main/images/src/latex}
 
 \lstnewenvironment{code}[1][]
 {
@@ -95,7 +96,7 @@ USER vscode
 
 The package manger for the TexLive LaTeX distribution is named 'tlmgr' and it already resides inside the container.
 We want to install some TexLive packages so that we can extend the functionality of the container.
-In Listing \ref{lst:lst1} the tlmgr install command is called with a list of desired packages.
+In the listing you will see the tlmgr install command is called with a list of desired packages.
 The list spans multiple lines that are separated with a backslash.
 
 When the container is used to generate a .pdf file from .tex files, the latex process emits errors regarding missing fonts.
