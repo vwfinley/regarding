@@ -1,13 +1,18 @@
-\section{Solution C: Roll own container from base image}
+\section{Solution C: Scratchbuilding from a Base Image}
 
-- Find base devcontainer image.
-- Add missing needed packages
-- Fix warnings/errors (mktexpk for generating missing fonts)
-- Integrate/Use container in project.
+Rather than depending upon container images that have been populated by others, a better solution is to populate your own image from a base image.
 
-Add TexLive tlmgr packages in Docker container and publish.
-vs. add packages 
+The advantage to this solution is you have total control over the contents and configuration of the image.
+You don't have to troubleshoot configurations some previous author may have forgotten to document.
 
+Also, once you know how to scratchbuild from base images, you can deploy almost any application to a container, including your own code projects.
+
+The workflow for building images from a base image is shown in Figure \ref{fig:fig2}.
+You will notice it is similar but not the same as the Solution B workflow from Figure \ref{fig:fig1}.
+Why is this?
+Well, since we are starting with a empty base container we will first need to populate it before testing by generating a PDF document.
+Usually, several attempts will be required to get the image to build correctly.
+Inevitably packages or configurations will be missing and you'll need to iterate through the cycle in \ref{fig:fig2}.
 
 \begin{figure}[!h]
 \centering
@@ -25,19 +30,51 @@ vs. add packages
   \draw[-{Latex[scale=1.0]}] (e) to[out=135,in=45] (a);
   \draw[-{Latex[scale=1.0]}] (d) to[out=135,in=45] (b);
 \end{tikzpicture}
-\caption{WorkflowB}
+\caption{\\Solution C Customization Workflow}
 \label{fig:fig2}
 \end{figure}
 
+\subsection{Strategy}
+The strategy for scratchbuilding our own LaTeX container image is:
+\begin{itemize}
+\item Pull a suitable base devcontainer image
+\item Install the TexLive LaTeX distribution into the image. 
+\item Add any missing needed packages
+\item Fix any warnings/errors (mktexpk for generating missing fonts)
+\item Use container for a project
+\end{itemize}
 
+Furthermore, we will be rebuilding the container image frequently during development and maintenance.
+It would be nice to automate the build process.
+Therefore, this is a great opportunity to learn about GitHub pipelines, actions and runners.
+
+We would like to break the problem up into two parts.
+The first part is to create an image only with a basic TexLive distribution.
+This second part is to add any extra packages to the first image and create another image.
+
+The idea here is that the basic TexLive image can be reused to create other images that are customized for specific document projects.
+If we pollute the basic TexLive image with unnecessary packages it won't suit most document projects anyway.
+The image would need to be customized to accommodate most document projects, so why not just start with a simple image and a clear way to customize it as needed.
+
+The code that follows is checked in at \url{https://github.com/vwfinley/texlive} and \url{https://github.com/vwfinley/texlive_dev}.
+
+\subsection{Select Base Image}
+
+First let's choose a suitable base image.
+The mcr.microsoft.com/devcontainers/base:dev-debian-12 image is a friendly plain vanilla developer container image.
+You will find it listed here: \url{The base image https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/tag/dev-debian-12}
+Sure we could find some non-developer image, but the developer image will play nice with VSCode.
+If you are setting up a production environment, where hundreds of documents will be built and published, you might consider a slim bare-bones non-developer image.
+
+\subsecion{Install TexLive}
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.9cm]
-\begin{code}[caption={TODO}, label=lst:lst2]
+\begin{code}[caption={Scratchbuilding the TexLive Image}, label=lst:scratchbuildTexlive]
 ARG SRC_IMG=mcr.microsoft.com/devcontainers/base
 ARG TAG=dev-debian-12
 
-FROM ${SRC_IMG}/${TAG}
+FROM ${SRC_IMG}:${TAG}
 
 ARG DEST=https://github.com/vwfinley/texlive
 ARG MIRROR=https://mirror.ctan.org
@@ -49,7 +86,6 @@ ARG DIR=/usr/local/texlive/${VER}/bin/x86_64-linux
 ENV PATH="$PATH:${DIR}"
 
 LABEL org.opencontainers.image.source ${DEST}
-
 
 RUN apt-get update
 
