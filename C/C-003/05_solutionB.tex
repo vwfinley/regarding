@@ -3,14 +3,14 @@
 For most documents and projects, finding an available LaTeX container image is a good strategy.
 
 Maybe the image was written by a colleague, or maybe by some unknown external developer.
-Perhaps the image has been published to: Docker Hub, GitHub registry, or a private corporate registry.
+Perhaps the image has been published to: Docker Hub, GitHub registry, or maybe a private corporate registry.
 
 In any case you will want to find an image that provides substantial functionality.
 The more completely an image compiles features from your source files into a finished document, the less work you'll need to do.
 
 Inevitably your selected image will be incomplete.
-Required packages will be missing.
-You will probably encounter errors that say something like ! LaTeX Error: File `gensymb.sty' not found.
+Some packages will be missing.
+You will probably encounter errors that say something like \verb|LaTeX Error: File `gensymb.sty' not found|.
 So, you will want to customize the container image to add any missing .sty package files.
 
 \subsection{Image Customization}
@@ -43,7 +43,7 @@ When you are satisfied with the resulting document file, you can optionally publ
 \subsection{Extending and Customization}
 As an example, let's take a prebuilt LaTeX container image and customize it until it is suitable for typesetting this article you are now reading.
 
-Glancing at Listing \ref{lst:lst1} below you will see the LaTeX container image was written by a GitHub user named jmuchovej.
+Glancing at Listing \ref{lst:dockerfile1} below you will see the LaTeX container image was written by a GitHub user named jmuchovej.
 The image is uploaded to the GHCR (GitHub container registry).  
 The container image can be found at \url{https://github.com/jmuchovej/devcontainers/pkgs/container/devcontainers%2Flatex}
 Furthermore you can locate the image's source code at \url{https://github.com/jmuchovej/devcontainers/tree/main/images/src/latex}
@@ -60,7 +60,7 @@ Furthermore you can locate the image's source code at \url{https://github.com/jm
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\Customization Example}, label=lst:lst1]
+\begin{code}[caption={\\Image Customization Example}, label=lst:dockerfile1]
 #-----------
 # Dockerfile
 #-----------
@@ -93,7 +93,7 @@ USER vscode
 \end{code}
 \end{mdframed}
 
-The package manger for the TexLive LaTeX distribution is named 'tlmgr' and it already resides inside the container.
+The package manger for the TexLive LaTeX distribution is named ``tlmgr'' (short for TexLive Manager) and it already resides inside the container.
 We want to install some TexLive packages so that we can extend the functionality of the container.
 In the listing you will see the tlmgr install command is called with a list of desired packages.
 The list spans multiple lines that are separated with a backslash.
@@ -107,7 +107,7 @@ Be sure to give the image a meaningful tag with the -t option.
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\buildImage.sh Script}, label=lst:lst2]
+\begin{code}[caption={\\Script to Build Image}, label=lst:buildImage]
 #!/bin/bash
 
 #--------------
@@ -118,7 +118,7 @@ docker images
 \end{code}
 \end{mdframed}
 
-You can capture the build command in a script file named build.sh and make it executable with a chmod 755 build.sh command. 
+As shown in listing \ref{lst:buildImage} you can capture the build command in a script file named build.sh and make it executable with a chmod 755 build.sh command. 
 Now call ./scriptImage.sh on the commandline to build the image.
 The image will be listed in the local Docker repository when the script completes. 
 
@@ -126,13 +126,13 @@ The image will be listed in the local Docker repository when the script complete
 Let's use the image we just created to generate a .pdf document from a LaTeX source file.
 We will put the command to generate the image into a shell script file named buildDocument.sh as shown in Listing \ref{lst:buildDocBasic}.
 
-The script will generate a pdf file from a source LaTeX file named "main.tex", but it can be named anything you want.
+The script will generate a pdf file from a source LaTeX file named ``main.tex'', but it can be named anything you want.
 You will want to run the buildDocument.sh script from the directory holding your main.tex file.
 
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\buildDocument.sh Script}, label=lst:buildDocBasic]
+\begin{code}[caption={\\Script to Build PDF Document}, label=lst:buildDocBasic]
 #!/bin/bash
 
 #-----------------
@@ -150,44 +150,44 @@ docker run \
 \end{code}
 \end{mdframed}
 
-Notice how the the listing calls the Docker run command with the -v option.
+Notice how the the listing calls the Docker run command with the -v option?
 This causes the current working directory with main.tex to be mapped into the running container.
 Since the directory is mapped, main.tex will be visible inside the running container.
 
-The container will run the application named "latex" on the main.tex file.
-Options -output-format=pdf and -output-directory for the "latex" application will write a pdf file in the current directory.
+The container will run the application named ``latex'' to build the main.tex file.
+Options -output-format=pdf and -output-directory for the ``latex'' application will write a pdf file in the current directory.
 
 
 \subsection{Using Image as Developer Container}
 When developing and troubleshooting your LaTeX container image, it may be helpful to work inside the container to resolve missing TexLive packages or other problems.
-If you plan to work inside your container, consider choosing a base image that is an appropriate "developer container" image.
+If you plan to work inside your container, consider choosing a base image that is a suitable ``developer container'' image.
 
 Some base images are optimized to integrate with the VSCode Dev Container extension.
 These optimized developer container images will give you a better VSCode development experience with less hassle. 
 If you plan to run your LaTeX container as a developer container it is worth checking your container's base image.
 
 Most developer containers should derive from official developer base images.
-You can find them at https://mcr.microsoft.com if you search for "development".
+You can find them at \url{https://mcr.microsoft.com} if you search for ``development''.
 For convenience, some development containers are already configured for specific languages such as: c++, java and python.
-However we are interested in the plain base containers found at https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/tags
+However we are interested in the plain vanilla base containers found at \url{https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/tags}
 
-You'll notice our latex image in Listing /ref{lst:lst1} derives from the latex container from ghcr.io/jmuchovej/devcontainers/latex:2025
-By looking at the source code at https://github.com/jmuchovej/devcontainers/blob/main/images/src/latex/Dockerfile we see that image is derived from the developer container at  mcr.microsoft.com/devcontainers/base:noble.
+You'll notice our latex image in Listing \ref{lst:dockerfile1} derives from the ghcr.io/jmuchovej/devcontainers/latex:2025 container image.
+By looking at the source code at \url{https://github.com/jmuchovej/devcontainers/blob/main/images/src/latex/Dockerfile} we see that image is derived from the mcr.microsoft.com/devcontainers/base:noble developer container image.
 
 Three different strategies can help you run your container as a developer container.
 Each has its own benefits and drawbacks.
 
-For more details about developer containers refer to https://code.visualstudio.com/docs/devcontainers/containers
+For more details about developer containers refer to \url{https://code.visualstudio.com/docs/devcontainers/containers}
 
 \subsubsection{Run Developer Container From commandline}
-Assuming you've previously built your container image as shown in Listing \ref{lst:lst2} you can run it as a developer container.
+Assuming you've previously built your container image as shown in Listing \ref{lst:buildImage} you can run it as a developer container.
 
 Simply run Docker with the container name from the directory containing your code as shown below.
 You will want to have Docker statup with the Bash shell as shown below in Listing \ref{lst:runDevContainer}.
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\Bash Shell in Dev Container}, label=lst:runDevContainer]
+\begin{code}[caption={\\Going Inside a Dev Container}, label=lst:runDevContainer]
 #!/bin/bash
 
 #-------------------
@@ -206,7 +206,7 @@ Once inside the developer container you can build your LaTeX document by running
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\Building inside Dev Container}, label=lst:buildDocument]
+\begin{code}[caption={\\Building PDF Inside Dev Container}, label=lst:buildDocument]
 #!/bin/bash
 
 #-------------------
@@ -221,15 +221,15 @@ main.tex
 
 
 \subsubsection{Run Developer Container as Dockerfile from VSCode}
-A quick dirty way to run a developer container is to directly reference the Dockerfile for the container image.
-The Dockerfile, similar to \ref{lst:lst1}, should be in the root directory of your document project.
+A quick dirty way to run inside a developer container is to directly reference the container image Dockerfile from a VSCode devcontainer.json file.
+The Dockerfile, similar to Listing \ref{lst:dockerfile1}, should be in the root directory of your document project.
 
-Now create a file named "devcontainer.json" and place it in a hidden directory named ".devcontainer".
-The .devcontainer should reference the Dockerfile in the build section of the "devcontainer.json" file as shown in Listing \ref{lst:runDevContainerAsDockerfile}.
+Now create a file named ``devcontainer.json'' and place it in a hidden directory named ``.devcontainer''.
+The devcontainer.json should reference the Dockerfile in the build section of the ``devcontainer.json'' file as shown in Listing \ref{lst:runDevContainerAsDockerfile}.
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\Running from Dockerfile}, label=lst:runDevContainerAsDockerfile]
+\begin{code}[caption={\\Run From VSCode As Dockerfile}, label=lst:runDevContainerAsDockerfile]
 #--------------------------------
 # .devcontainer/devcontainer.json
 #--------------------------------
@@ -248,17 +248,17 @@ The .devcontainer should reference the Dockerfile in the build section of the "d
 \end{mdframed}
 
 The next time you start VSCode in the root of your LaTeX document project, you should be prompted if you want to open VSCode in the developer container.
-You will see a prompt that says "Folder contains a Dev Container configuration file. Reopen folder to develop in a container".
-Click the Blue button to "Reopen in container".
+You will see a prompt that says ``Folder contains a Dev Container configuration file. Reopen folder to develop in a container''.
+Click the Blue button to ``Reopen in container''.
 
-Once the Bash shell inside the Developer container appears run the script in Listing \ref{lst:buildDocument} to build your document.
+Once the developer container's Bash shell prompt appears run the script in Listing \ref{lst:buildDocument} to build your document.
 
 A disadvantage to running a developer container this way is that VSCode will attempt to rebuild the Developer container every time VSCde runs.
-However, though awkward, you can tell VSCode to use the previously build images.
+However, though annoying, you can tell VSCode to use the previously built image.
 
 \subsubsection{Developer Container as Image from VSCode}
 
-If you previously build an image from Listing \ref{lst:lst2} starting the container from VSCde is relatively easy.
+If you previously build an image from Listing \ref{lst:buildImage} starting the container from VSCde is relatively easy.
 Simply create a developer file named .devcontainer/devcontainer.json as shown in Listing \ref{lst:runDevContainerFromImage}.
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
