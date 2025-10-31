@@ -66,11 +66,17 @@ You will find it listed here: \url{The base image https://mcr.microsoft.com/en-u
 Sure we could find some non-developer image, but the developer image will play nice with VSCode.
 If you are setting up a production environment, where hundreds of documents will be built and published, you might consider a slim bare-bones non-developer image.
 
-\subsecion{Install TexLive}
+\subsection{Install TexLive}
+
+In Listing \ref{lst:scratchbuildTexlive} we see a Dockerfile that installs the TexLive 2025 LaTeX distribution into a Debian 12 developer container.
+It makes heavy use of ARG and ENV variables to help cut down on the clutter and make it easier to read.
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-0.9cm]
 \begin{code}[caption={Scratchbuilding the TexLive Image}, label=lst:scratchbuildTexlive]
+#-----------
+# Dockerfile
+#-----------
 ARG SRC_IMG=mcr.microsoft.com/devcontainers/base
 ARG TAG=dev-debian-12
 
@@ -109,6 +115,34 @@ USER vscode
 \end{code}
 \end{mdframed}
 
+Most of the instructions in the Dockerfile are run as the root user.
+The important parts of this Dockerfile are the FROM and RUN statements.
+
+The FROM statement simply pulls the Debian 12 developer image from Microsoft's container registry.
+
+The RUN statements are a little more interesting.
+The first RUN statement simply calls ``apt-get'', which is Debian's package manager to update any installed packages.
+The second RUN statement is based upon the non-interactive commandline QuickInstall instructions for Unix.
+See the ``tl;dr: Unix(ish)'' section at \url{https://tug.org/texlive/quickinstall.html}
+
+Looking at the second RUN statement we notice wget is used to download the TexLive install-tl-unx tarball from a mirror server.
+Then zcat and tar are called to unpack the tarball.
+After changing directory to where the tarball was unpacked, perl is called with the install-tl installer script.
+The script is run with some options:
+\begin{itemize}
+\item The scheme option is set to small, this will install the core TexLive distribution plus some essential packages.
+\item The no-interaction option causes the installer to run without asking a human for any information.
+\item The no-doc-install option will save space by not installing any documentation files.
+\item The no-src-install option will save space by not installing any source code for packages.
+\end{itemize}
+Then tlmgr is run to install any updates to TexLive.
+Afterwards the install directory is removed to save space.
+
+The LABEL statement is worth noting.
+It sets the label attribute named ``org.opencontainers.image.source''.
+This label attribute is metadata that gets displayed in GitHub.
+
+The last two lines set the working directory and default user for the container.
 
 \subsection{Pull}
 \subsection{Extend}
