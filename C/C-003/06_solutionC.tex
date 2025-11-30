@@ -12,7 +12,7 @@ You will notice it is similar but not the same as the Solution B workflow from F
 Why is this?
 Well, since we are starting with a empty base container we will first need to populate it before testing by generating a PDF document.
 Usually, several attempts will be required to get the image to build correctly.
-Inevitably packages or configurations will be missing and you'll need to iterate through the cycle in \ref{fig:fig2}.
+Inevitably packages or configurations will be missing and you'll need to iterate through the cycle in Figure \ref{fig:fig2}.
 
 \begin{figure}[!h]
 \centering
@@ -52,7 +52,7 @@ We would like to break the problem up into two parts.
 The first part is to create an image only with a basic TexLive distribution.
 This second part is to add any extra packages to the first image and create another image.
 
-The idea here is that the basic TexLive image can be reused to create other images that are customized for specific document projects.
+The idea here is our basic TexLive image can be reused to create other images that are customized as necessary for specific document projects.
 If we pollute the basic TexLive image with unnecessary packages it won't suit most document projects anyway.
 The image would need to be customized to accommodate most document projects, so why not just start with a simple image and a clear way to customize it as needed.
 
@@ -63,8 +63,8 @@ The code that follows is checked in at \url{https://github.com/vwfinley/texlive}
 First let's choose a suitable base image.
 The mcr.microsoft.com/devcontainers/base:dev-debian-12 image is a friendly plain vanilla developer container image.
 You will find it listed here: \url{The base image https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/base/tag/dev-debian-12}
-Sure we could find some non-developer image, but the developer image will play nice with VSCode.
-If you are setting up a production environment, where hundreds of documents will be built and published, you might consider a slim bare-bones non-developer image.
+Sure we could find some non-developer image, but a developer image will play nice with VSCode.
+If you are setting up a production environment, where hundreds of documents will be built and published, then you might consider a slim bare-bones non-developer image.
 
 \subsection{Install TexLive}
 
@@ -73,7 +73,7 @@ It makes heavy use of ARG and ENV variables to help cut down on the clutter and 
 
 \begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
   innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
-\begin{code}[caption={\\Scratchbuilding the TexLive Image}, label=lst:scratchbuildTexlive]
+\begin{code}[caption={\\Dockerfile for TexLive Core Image}, label=lst:scratchbuildTexlive]
 #-----------
 # Dockerfile
 #-----------
@@ -144,8 +144,50 @@ This label attribute is metadata that gets displayed in GitHub.
 
 The last two lines set the working directory and default user for the container.
 
-\subsection{Pull}
-\subsection{Extend}
-\subsection{Build}
-\subsection{Test}
-\subsection{Push}
+\subsection{Building the TexLib Core image}
+Now that we've explained the contents of the Dockerfile in Listing \ref{lst:scratchbuildTexlive}, let's actually create the core TexLive image locally.
+Assuming Docker is installed on your host development system, this is easily accomplished at the command line.
+
+Simply change directories to where the Dockerfile lives and enter:
+
+\begin{mdframed}[backgroundcolor=black!20,leftmargin=0.0cm,skipabove=0.4cm,hidealllines=true,
+  innerleftmargin=0.1cm,innerrightmargin=0.1cm,innertopmargin=0.15cm,innerbottommargin=-1.4cm]
+\begin{code}[caption={\\Building the TexLive Core Image}, label=lst:buildingCore]
+docker build -t my_texlive_core .
+
+docker images
+\end{code}
+\end{mdframed}
+
+After a few minutes building, your image will appear in Docker's image list.
+
+\subsection{Testing}
+
+After buiding your TexLive Core image you will want to verify that TexLive works.
+Let's assume you have a sample LaTeX document you want to create, and the source of the document is contained in a file named main.tex.
+You can use your my_texlive_core container to transform the main.tex file into a .pdf file in two different ways.
+
+The resulting .pdf file will be written to the same directory where main.tex lives.
+If your main.tex file is complex or references other .tex files, you should expect the latex program to display errors.
+Don't worry, the errors are probably referring to some missing features.
+You could add the tlmgr command in the Dockerfile from Listing \ref{lst:scratchbuildTexlive} to install the features.
+However, as we'll see later in the article, there is a better way to add the missing features.
+
+\subsubsection{Build document from inside container}
+On the commandline of your host development system:
+\begin{itemize}
+  \item Change directories to where the main.tex file lives.
+  \item Start your Core TexLive container with current directory mounted.
+  \item Run the TexLive latex program with the pdf option. 
+\end{itemize}
+
+Your session should similar to Listings \ref{lst:runDevContainer} and \ref{lst:buildDocument}.
+
+\subsubsection{Build document from host (from outside the container)}
+
+This method of building your test document avoids the need to enter the container directly.
+Building the main.tex document from the outside allows you to create a build script that runs on your development host system.
+In other words, it encourages automation.
+
+On the commandline of your host development system, follow Listing \ref{lst:buildDocBasic} and change names and details as needed.
+Afterwards the resulting .pdf should appear in the current directory.
