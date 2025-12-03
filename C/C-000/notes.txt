@@ -568,9 +568,11 @@ Latex
 - KCSA + Course + Exam
 - Etc.
 
-C-002 - Regarding Setup of LaTeX Developer Container
-C-003 - Regarding Setup of AWS Deployment Environment
-C-004 - Regarding Cloud Project (TransitWatch) 
+C-003 - Regarding Container Images for LaTeX
+C-004 - Regarding Setup of AWS Deployment Environment
+C-005 - Regarding Cloud Project (TransitWatch) 
+C-006 - Regarding Slide Rules
+C-007 - Regarding Genaille–Lucas Rods
 
 
 
